@@ -1,0 +1,42 @@
+// Setup
+@import "setup/variables.scss";
+@import "setup/functions.scss";
+@import "setup/mixins.scss";
+
+// Basics
+@import "basics/helpers.scss";
+@import "basics/layout.scss";
+@import "basics/base.scss";
+@import "basics/links.scss";
+@import "basics/buttons.scss";
+
+//Component
+@import "components/LoadPage.scss";
+@import "components/ScreenFilter.scss";
+@import "components/Login.scss";
+@import "components/BoardList.scss";
+@import "components/BoardPreview.scss";
+@import "components/TasksList.scss";
+@import "components/TaskPreview.scss";
+@import "components/BoardColumns.scss";
+@import "components/ColumnAddForm.scss";
+@import "components/TopMenuOptions.scss";
+@import "components/TaskDetails.scss";
+@import "components/TaskForm.scss";
+@import "components/ScreenFilter.scss";
+@import "components/MiniDetails.scss";
+@import "components/BoardHistory.scss";
+@import "components/BoardTeamMembers.scss";
+@import "components/DueDate.scss";
+@import "components/CheckList.scss";
+
+//splash
+@import "components/SplashMenu.scss";
+
+//task details componenets / helpers
+@import "components/Labels.scss";
+@import "components/Members.scss";
+
+//views
+@import "views/HomePage.scss";
+@import "views/BoardPage.scss";

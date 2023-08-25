@@ -1,0 +1,54 @@
+.board-page {
+
+    .add-column {
+        &-form-container {
+            margin-top: 0;
+            padding: 4px;
+            min-width: 260px;
+            min-height: 52px;
+            background-color: #ebecf0;
+            border-radius: 4px;
+
+            input {
+                padding: 4px;
+                max-height: 140px;
+            }
+        }
+
+        &-back-to-board {
+            height: 22px;
+            margin: 3px 0 0 3px;
+            cursor: pointer;
+            transition: 0.3s;
+
+            &:hover {
+                border-radius: 4px;
+                ;
+            }
+        }
+
+        &-save-btn {
+            min-height: 32px;
+            height: 32px;
+            padding: 5px 10px;
+            color: white;
+            margin-right: 4px;
+            background-color: #5aac44;
+            transition: 0.3s;
+
+            &:hover {
+                background-color: #5bac44d5;
+            }
+        }
+
+        &-back-btn {
+            margin-top: 2px;
+            font-family: montserratBold, 'sans-sarif';
+        }
+
+    }
+}
+
+.save-btn-container {
+    margin-top: 4px;
+}

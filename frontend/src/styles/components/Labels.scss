@@ -1,0 +1,40 @@
+.labels-container {
+    box-shadow: 0px 0px 0px 2px #aeaeaeb5;
+    border-radius: 4px;
+    background: white;
+    position: absolute;
+    width: 200px;
+    top: 160px;
+    right: 21px;
+    z-index: 1;
+
+    @media (max-width: 488px) {
+        top: 93px;
+        right: 12px
+    }
+
+    p {
+        margin-inline-start: 0px;
+        padding: 7px 0px
+    }
+
+    hr {
+        margin: 0 5px;
+    }
+
+    &-close-btn {
+        cursor: pointer;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+
+    &-colors-container {
+        padding: 20px 10px;
+    }
+
+    &>.MuiSvgIcon-root {
+        height: 18px;
+        width: 18px;
+    }
+}

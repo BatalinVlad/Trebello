@@ -1,0 +1,186 @@
+.task-details-container {
+  position: relative;
+  overflow-y: auto;
+
+  &-wrapper {
+    margin: 5px;
+    padding: 5px;
+    background-color: white;
+    border-radius: 4px;
+    max-width: 768px;
+    min-height: 75vh;
+    max-height: 95vh;
+    @media (max-width: 488px) {
+      padding: 0px;
+    }
+  }
+
+  h2 {
+    font-weight: 600;
+  }
+
+  .MuiSvgIcon-root {
+    height: 25px;
+    width: 25px;
+  }
+
+  &-header {
+    margin: 10px 8px 8px 56px;
+  }
+
+  &-members-container {
+    margin-left: 56px;
+  }
+
+  &-check-list-container {
+    margin: 0 8px 8px 56px;
+
+    .todo-item {
+      &:hover {
+        background-color: rgba(235, 235, 235, 0.452);
+      }
+
+      .delete-btn {
+        height: 17px;
+        width: 17px;
+      }
+
+      &:hover {
+        background-color: rgba(235, 235, 235, 0.452);
+        cursor: pointer;
+      }
+    }
+
+    .check-list-progress {
+      height: 20px;
+      margin-top: 10px;
+      border-radius: 20px;
+      width: 200px;
+
+      .progress {
+        border-radius: 20px;
+        background-color: #5aac44;
+
+        small {
+          font-family: montserratBold, "sans-sarif";
+          color: white;
+        }
+      }
+    }
+  }
+
+  .chosen-labels-container {
+    margin-left: 56px;
+    margin-bottom: 8px;
+  }
+
+  &-duedate-container {
+    margin: 0 8px 8px 56px;
+
+    p {
+      position: relative;
+      left: 2px;
+    }
+  }
+
+  &-description {
+    margin: 0 8px 20px 56px;
+  }
+
+  textarea {
+    height: 10rem;
+    margin-top: 7px;
+    padding: 7px 5px;
+    background-color: rgba(9, 30, 66, 0.068);
+    border: none;
+    border-radius: 4px;
+  }
+
+  p {
+    font-weight: 400;
+    color: #172b4d;
+  }
+
+  h2,
+  h3 {
+    color: #172b4d;
+  }
+
+  .add-column-back-to-board {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #172b4d;
+    height: 20px;
+  }
+
+  &-overall-options {
+    padding: 75px 10px 0;
+
+    .container {
+      padding-top: 20px;
+    }
+
+    @media (max-width: 488px) {
+      padding: 30px 0px;
+    }
+
+  }
+
+  &-add-to-card {
+    padding: 30px 10px;
+  }
+
+  &-actions,
+  &-add-to-card {
+    &-options {
+
+      &-btn {
+        cursor: pointer;
+        font-size: 0.875rem;
+        font-weight: 400;
+        color: #172b4d;
+        background-color: rgba(9, 30, 66, 0.068);
+        border-radius: 4px;
+        height: 2rem;
+        margin-top: 8px;
+        padding: 0px 15px 0px 5px;
+        transition: 0.3s;
+
+        p {
+          margin-left: 5px;
+        }
+
+
+
+
+        &:hover {
+          background-color: rgba(9, 30, 66, 0.322);
+          color: white;
+        }
+
+        .MuiSvgIcon-root {
+          height: 18px;
+          width: 18px;
+        }
+
+        @media (max-width: 488px) {
+          p {
+            display: none;
+          }
+
+          max-width: 30px;
+        }
+
+      }
+
+      @media (max-width: 488px) {
+        align-items: center;
+
+        h3 {
+          display: none;
+        }
+      }
+    }
+  }
+}
