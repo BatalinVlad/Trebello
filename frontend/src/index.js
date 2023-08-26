@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 // import ReactNotification from 'react-notifications-component';
 
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+// import * as serviceWorker from './serviceWorker';
 
 // import 'react-notifications-component/dist/theme.css';
 
@@ -20,5 +20,5 @@ root.render(
   </Provider>
 );
 
-serviceWorker.register();
+// serviceWorker.register();
 
