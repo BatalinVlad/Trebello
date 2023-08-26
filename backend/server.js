@@ -24,11 +24,18 @@ app.use(session({
     cookie: { secure: false }
 }))
 
+
+
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.resolve(__dirname, 'public')));
+    const corsOptions = {
+        origin: ['https://trebello.netlify.app'],
+        credentials: true
+    };
+    app.use(cors(corsOptions));
 } else {
     const corsOptions = {
-        origin: ['https://trebello.netlify.app','http://127.0.0.1:8080', 'http://localhost:8080', 'http://127.0.0.1:3000', 'http://localhost:3000'],
+        origin: ['http://localhost:3000'],
         credentials: true
     };
     app.use(cors(corsOptions));
