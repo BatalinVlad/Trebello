@@ -19,7 +19,11 @@ const BoardsList = ({ boards, user }) => {
                         <p className="capitalize"> check our premade templates</p>
                         <hr />
                     </div>
-
+                    {(templateBoards.length === 0) &&
+                        <div className="fill-width text-center">
+                            <span className="caspanitalize"> working on it sorry :(  </span>
+                        </div>
+                    }
                     <div className="boards-list-main-inner-container-grid flex justify-center column">
                         {templateBoards.map(board => (
                             <div className="boards-list-main-inner-container-grid-item pointer" key={board._id} >
@@ -58,17 +62,17 @@ const BoardsList = ({ boards, user }) => {
                             <hr />
 
                             {(myCollaboratedBoards.length === 0) ?
-                            <div className="fill-width text-center">
+                                <div className="fill-width text-center">
                                     <span className="caspanitalize"> you're not collaborating on any boards yet... </span>
                                 </div>
                                 :
-                                    <div className="boards-list-main-inner-container-grid flex justify-center column">
-                                        {myCollaboratedBoards.map(myCollaboratedBoard => (
-                                            <NavLink className="boards-list-main-inner-container-grid-item" key={myCollaboratedBoard._id} to={`/board/${myCollaboratedBoard._id}`}>
-                                                <BoardPreview board={myCollaboratedBoard} />
-                                            </NavLink>
-                                        ))}
-                                    </div>
+                                <div className="boards-list-main-inner-container-grid flex justify-center column">
+                                    {myCollaboratedBoards.map(myCollaboratedBoard => (
+                                        <NavLink className="boards-list-main-inner-container-grid-item" key={myCollaboratedBoard._id} to={`/board/${myCollaboratedBoard._id}`}>
+                                            <BoardPreview board={myCollaboratedBoard} />
+                                        </NavLink>
+                                    ))}
+                                </div>
                             }
                         </div>
                     </div>
