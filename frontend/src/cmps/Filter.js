@@ -26,7 +26,7 @@ const Filter = props => {
     // }
 
     return (
-        <div className="board-page-nav-bar-filters-item all-filters flex">
+        <div className="board-page-nav-bar-filters-item all-filters flex justify-end">
           <input
             type="text"
             placeholder="Search card by name"

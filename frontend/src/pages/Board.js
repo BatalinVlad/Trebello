@@ -12,18 +12,11 @@ import BoardHistory from '../cmps/BoardHistory';
 import BoardTeamMembers from '../cmps/BoardTeamMembers';
 import ColumnAddForm from '../cmps/ColumnAddForm';
 import Login from '../cmps/Login';
-import Filter from '../cmps/Filter';
 // import Sort from '../cmps/Sort';
 import SplashMenu from '../cmps/SplashMenu';
 import TaskDetails from '../cmps/TaskDetails';
 import DynamicMiniComponent from '../cmps/dynamics/DynamicMiniComponent';
 
-import Typography from '@mui/material/Typography';
-
-import HomeIcon from '@mui/icons-material/Home';
-import GroupAddOutlinedIcon from '@mui/icons-material/GroupAddOutlined';
-import ImageSearchOutlinedIcon from '@mui/icons-material/ImageSearchOutlined';
-import HistoryOutlinedIcon from '@mui/icons-material/HistoryOutlined';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
@@ -33,10 +26,10 @@ import SocketService from '../services/SocketService';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadBoard, updateBoard, setBoard } from '../actions/BoardActions';
 import { logout, getLoggedInUser, getUsers } from '../actions/UserActions';
+import NavBarFilters from '../cmps/NavBarFilters';
 
 const Board = () => {
   const [filteredBoard, setFilteredBoard] = useState(null);
-
   const [showColAddForm, setShowColAddForm] = useState(false);
   const [showTaskDetails, setShowTaskDetails] = useState(false);
   const [showMiniTaskDetails, setShowMiniTaskDetails] = useState(false);
@@ -179,30 +172,6 @@ const Board = () => {
     }
   };
 
-  const toggleSplashMenuHandler = (ev) => {
-    ev.stopPropagation();
-    setToggleSplashMenu(prevToggleSplashMenu => !prevToggleSplashMenu);
-    setShowHistory(false);
-    setToggleBoardTeamMembers(false);
-    setToggleLogin(false);
-  };
-
-  const toggleBoardHistoryHandler = (ev) => {
-    ev.stopPropagation();
-    setShowHistory(prevShowHistory => !prevShowHistory);
-    setToggleSplashMenu(false);
-    setToggleBoardTeamMembers(false);
-    setToggleLogin(false);
-  };
-
-  const toggleBoardTeamMembersHandler = (ev) => {
-    ev.stopPropagation();
-    setToggleBoardTeamMembers(prevToggleBoardTeamMembers => !prevToggleBoardTeamMembers);
-    setShowHistory(false);
-    setToggleSplashMenu(false);
-    setToggleLogin(false);
-  };
-
   const openAddForm = (colId) => {
     setShowAddForm(true);
     setCurrColumnId(colId);
@@ -328,71 +297,20 @@ const Board = () => {
               </div>
             </div>
 
-            <div className="board-page-nav-bar-filters flex wrap align-center space-between">
-              <div className="left-section flex align-center wrap" style={{ marginTop: 2 }}>
-                <div className="left-section-mobile-mode flex align-center">
-                  <button
-                    className={`board-page-nav-bar-filters nav-btn flex 
-                ${(isDarkBackground) ? 'dark' : 'light'}`}
-                    onClick={goBackHandler} >
-                    <HomeIcon />
-                  </button>
-                  <div style={{ background: (isDarkBackground) ? 'white' : 'black' }} className="board-page-nav-bar-filters-divider"></div>
-                </div>
-                <Filter filterBoard={filterBoard}
-                  teamMembers={loadedBoard.teamMembers}
-                  isDarkBackground={isDarkBackground} />
-                {!mobileMod && <div style={{ background: (isDarkBackground) ? 'white' : 'black' }} className="board-page-nav-bar-filters-divider"></div>}
-              </div>
+            {/* filters ......... on nav bar */}
 
-              <div className="right-section flex align-center" style={{ marginTop: 2 }}>
-                <div className="board-page-nav-bar-filters-item fill-height">
-                  <button
-                    className={`nav-btn fill-height capitalize
-                  ${(isDarkBackground) ? 'dark' : 'light'}`}
-                    onClick={toggleBoardTeamMembersHandler}>
-                    {!filterIconMod ? <Typography component="p" className="flex align-center p-reset">
-                      <span className="flex align-center" >
-                        <GroupAddOutlinedIcon style={{ marginRight: '4px' }} />
-                        add members
-                      </span>
-                    </Typography> :
-                      <p> goup icon </p>}
-                  </button>
-                </div>
+            <NavBarFilters
+              isDarkBackground={isDarkBackground}
+              goBackHandler={goBackHandler}
+              loadedBoard={loadedBoard}
+              filterBoard={filterBoard}
+              
+              setToggleBoardTeamMembers={setToggleBoardTeamMembers}
+              setShowHistory={setShowHistory}
+              setToggleSplashMenu={setToggleSplashMenu}
+              setToggleLogin={setToggleLogin}
 
-                <div style={{ background: (isDarkBackground) ? 'white' : 'black' }} className="board-page-nav-bar-filters-divider"></div>
-
-                <div className="board-page-nav-bar-filters-item fill-height">
-                  <button
-                    className={`nav-btn fill-height capitalize
-                  ${(isDarkBackground) ? 'dark' : 'light'}`}
-                    onClick={(ev) => toggleSplashMenuHandler(ev)}>
-                    {!filterIconMod ? <Typography component="p" className="flex align-center p-reset">
-                      <ImageSearchOutlinedIcon style={{ marginRight: 5 }} />
-                      change background
-                    </Typography> :
-                      <ImageSearchOutlinedIcon />}
-                  </button>
-                </div>
-
-                <div style={{ background: (isDarkBackground) ? 'white' : 'black' }} className="board-page-nav-bar-filters-divider"></div>
-
-                <div className="board-page-nav-bar-filters-item flex fill-height">
-                  <button
-                    className={`nav-btn fill-height capitalize 
-                ${(isDarkBackground) ? 'dark' : 'light'}`}
-                    onClick={toggleBoardHistoryHandler}>
-                    {!filterIconMod ? <Typography component="p" className="flex align-center p-reset">
-                      <HistoryOutlinedIcon style={{ marginRight: 5 }} />
-                      show history
-                    </Typography> :
-                      <HistoryOutlinedIcon />
-                    }
-                  </button>
-                </div>
-              </div>
-            </div>
+            />
 
 
             <CSSTransition
