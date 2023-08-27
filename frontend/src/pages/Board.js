@@ -263,6 +263,8 @@ const Board = () => {
       {!loadedBoard._id && <LoadPage />}
       {loadedBoard._id &&
         <div className="screen" onClick={closeAllTabs}>
+         
+         {/* nav bar to change! */}
           <div className="board-page fill-height flex column" style={{ backgroundImage: 'url(' + loadedBoard.boardBgImage + ')', backgroundAttachment: 'fixed' }}>
             <div className="board-page-nav-bar flex align-center space-between">
               <div className="board-page-nav-bar-logo" onClick={goBackHandler}> </div>
@@ -289,7 +291,7 @@ const Board = () => {
                 {
                   loggedInUser ? <ExitToAppIcon onClick={logOutHandler} /> :
                     <div className="login-btn flex"
-                      onClick={ev => toggleLogin(ev)}>
+                      onClick={ev => toggleLoginHandler(ev)}>
                       <PersonOutlineIcon />
                       <p>login</p>
                     </div>
@@ -297,21 +299,17 @@ const Board = () => {
               </div>
             </div>
 
-            {/* filters ......... on nav bar */}
-
             <NavBarFilters
               isDarkBackground={isDarkBackground}
               goBackHandler={goBackHandler}
               loadedBoard={loadedBoard}
               filterBoard={filterBoard}
-              
+
               setToggleBoardTeamMembers={setToggleBoardTeamMembers}
               setShowHistory={setShowHistory}
               setToggleSplashMenu={setToggleSplashMenu}
               setToggleLogin={setToggleLogin}
-
             />
-
 
             <CSSTransition
               in={toggleSplashMenu}
