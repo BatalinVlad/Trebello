@@ -12,9 +12,6 @@
     @media (max-width: 500px) {
       width: 85%;
     }
-    // @media (max-width: 400) {
-    //   width: rem(300px);
-    // }
 
     &-search-bar {
       flex-basis: 50px;
@@ -55,12 +52,14 @@
     &-item {
       border-radius: 4px;
       width: 50%;
-      // max-height: 150px;
       padding: 5px;
+
+      @media (max-width: 400px) {
+        width: 100%;
+      }
 
       img {
         cursor: pointer;
-        // border: 1px solid #aeaeae59;
         border-radius: 8px;
         height: 130px;
         width: 100%;
