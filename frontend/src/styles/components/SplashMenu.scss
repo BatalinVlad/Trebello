@@ -9,6 +9,13 @@
     right: 0;
     overflow-y: hidden;
 
+    @media (max-width: 500px) {
+      width: 85%;
+    }
+    // @media (max-width: 400) {
+    //   width: rem(300px);
+    // }
+
     &-search-bar {
       flex-basis: 50px;
       border-radius: 2px;
@@ -71,4 +78,3 @@
 .filter-container {
   margin-bottom: 5px;
 }
-
