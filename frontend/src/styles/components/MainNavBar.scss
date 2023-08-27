@@ -1,0 +1,37 @@
+
+
+.home-page-login {
+  z-index: 2;
+  color: whitesmoke;
+  background: #00000099;
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  right: 0px;
+  padding: 15px 20px;
+
+  .MuiButtonBase-root {
+    font-size: rem(16px);
+    width: auto;
+    color: rgba(250, 250, 250, 0.932);
+    transition: 0.3s;
+    margin-left: 5px;
+
+    .MuiButton-outlined {
+      padding: 15px 25px;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.185);
+    }
+  }
+
+  .team-member-icon {
+    padding: 0 13px;
+    border-radius: 50%;
+    margin-right: 5px;
+    background-color: rgba(223, 225, 230, 0.8);
+    color: #172b4d;
+    font-weight: 700;
+  }
+}

@@ -11,13 +11,17 @@ const BoardsList = ({ boards, user }) => {
     }) : '';
 
     return (
-        <section className="boards-list column">
+        <section className="boards-list">
+
             <div className="boards-list-main-inner-container-wrapper">
                 <div className="boards-list-main-inner-container">
-                    <h3 className="capitalize"> check our premade templates</h3>
+                    <div>
+                        <p className="capitalize"> check our premade templates</p>
+                        <hr />
+                    </div>
+
                     <div className="boards-list-main-inner-container-grid flex justify-center column">
                         {templateBoards.map(board => (
-                            
                             <div className="boards-list-main-inner-container-grid-item pointer" key={board._id} >
                                 <BoardPreview board={board} />
                             </div>
@@ -25,16 +29,19 @@ const BoardsList = ({ boards, user }) => {
                     </div>
                 </div>
             </div>
+
             {user &&
                 <div>
-                    {(myBoards.length === 0) ?
-                        <div className="capitalize flex justify-center noboards">
-                            you haven't created a board yet! click on get started or try one of our premade templates!
-                        </div> 
-                        :
-                        <div className="boards-list-main-inner-container-wrapper">
+                    <div className="boards-list-main-inner-container-wrapper">
+                        {(myBoards.length === 0) ?
+                            <p> you haven't created a board yet...</p> :
                             <div className="boards-list-main-inner-container">
-                                <h3 className="capitalize">created boards</h3>
+
+                                <div>
+                                    <p className="capitalize">created boards</p>
+                                    <hr />
+                                </div>
+
                                 <div className="boards-list-main-inner-container-grid flex justify-center column">
                                     {myBoards.map(myBoard => (
                                         <NavLink className="boards-list-main-inner-container-grid-item" key={myBoard._id} to={`/board/${myBoard._id}`}>
@@ -43,26 +50,30 @@ const BoardsList = ({ boards, user }) => {
                                     ))}
                                 </div>
                             </div>
-                        </div>
-                    }
-                    {(myCollaboratedBoards.length === 0) ?
-                        <div className="capitalize flex justify-center noboards">
-                            you're not collaborating on any boards yet
-                        </div> :
-                        <div className="boards-list-main-inner-container-wrapper">
-                            <div className="boards-list-main-inner-container">
-                                <h3 className="capitalize"> boards you collaborate on </h3>
-                                <div className="boards-list-main-inner-container-grid flex justify-center column">
-                                    {myCollaboratedBoards.map(myCollaboratedBoard => (
-                                        <NavLink className="boards-list-main-inner-container-grid-item" key={myCollaboratedBoard._id} to={`/board/${myCollaboratedBoard._id}`}>
-                                            <BoardPreview board={myCollaboratedBoard} />
-                                        </NavLink>
-                                    ))}
+                        }
+                    </div>
+                    <div className="boards-list-main-inner-container-wrapper">
+                        <div className="boards-list-main-inner-container">
+                            <p className="capitalize"> boards you collaborate on </p>
+                            <hr />
+
+                            {(myCollaboratedBoards.length === 0) ?
+                            <div className="fill-width text-center">
+                                    <span className="caspanitalize"> you're not collaborating on any boards yet... </span>
                                 </div>
-                            </div>
+                                :
+                                    <div className="boards-list-main-inner-container-grid flex justify-center column">
+                                        {myCollaboratedBoards.map(myCollaboratedBoard => (
+                                            <NavLink className="boards-list-main-inner-container-grid-item" key={myCollaboratedBoard._id} to={`/board/${myCollaboratedBoard._id}`}>
+                                                <BoardPreview board={myCollaboratedBoard} />
+                                            </NavLink>
+                                        ))}
+                                    </div>
+                            }
                         </div>
-                    }
-                </div>}
+                    </div>
+                </div>
+            }
         </section>
     )
 }

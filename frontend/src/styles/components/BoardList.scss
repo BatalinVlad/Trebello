@@ -1,52 +1,40 @@
 .boards-list {
-    background-image: linear-gradient(#00000040, #000000);
-    margin: 0 auto;
-
-    &-main-inner-container {
-        padding: 0 20px 20px 20px;
-        margin: 0px 70px;
-
-        @media(max-width: 980px) {
-            margin: 0;
-        }
-
-        h3 {
-            color: white;
-            font-weight: 600;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #ffffff3d;
-
-            @media(max-width: 580px) {
-                text-align: center;
-            }
-        }
-
-        &-wrapper {
-            padding: 25px 0px;
-        }
-
-        &-grid {
-            display: grid;
-            grid-gap: 26px;
-            grid-template-columns: repeat(auto-fill, 250px);
-
-
-            &-item {
-                display: grid;
-                height: 200px;
-                width: 250px;
-                border-radius: 4px;
-                box-shadow: 0px 0px 26px 20px rgba(139, 139, 139, 0.349);
-            }
-        }
-    }
-}
-
-
-.noboards {
+  background: #262626;
+  padding: 20px 0px;
+  p {
+    padding-left: 10px;
+    font-weight: 600;
     color: white;
-    width: 100%;
+    font-size: rem(12px);
+  }
+
+  span {
     text-align: center;
-    font-size: 1.6rem;
-    margin-top: 15px;
+    color: white;
+    font-size: rem(10px);
+  }
+
+  hr {
+    margin: 0px 0px 15px 0px;
+    border-color: #535456;
+  }
+
+  &-main-inner-container {
+    height: 260px;
+    &-grid {
+      display: grid;
+      grid-gap: 26px;
+      grid-template-columns: repeat(auto-fill, 250px);
+      &-item {
+        display: grid;
+        height: 200px;
+        width: 250px;
+        border-radius: 4px;
+        box-shadow: 0px 0px 2px 1px rgba(255, 255, 255, 0.529);
+        &:hover {
+          box-shadow: 0px 0px 4px 1px rgba(255, 255, 255, 0.529);
+        }
+      }
+    }
+  }
 }
