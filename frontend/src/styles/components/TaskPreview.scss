@@ -6,7 +6,7 @@
   white-space: normal;
   border-radius: 4px;
   background-color: #fff;
-  box-shadow: 0 1px 0 rgba(9, 30, 66, .25);
+  box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
   max-width: 256px;
   text-decoration: none;
 
@@ -23,7 +23,7 @@
     color: #172b4d;
 
     &:after {
-      content: '';
+      content: "";
       width: 70%;
       border-bottom: 1px solid rgba(163, 163, 163, 0.514);
     }
@@ -73,7 +73,6 @@
     }
   }
 
-
   .asign-member-to-task {
     padding: 2px;
   }
@@ -110,5 +109,11 @@
 
   .team-members-container {
     overflow: auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .task-container-open-menu.MuiSvgIcon-root {
+    display: none;
   }
 }

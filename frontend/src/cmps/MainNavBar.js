@@ -1,59 +1,65 @@
-// import React, { useEffect, useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import {
-//   getLoggedInUser,
-//   login,
-//   logout,
-//   signup
-// } from '../actions/UserActions';
+import React, {useEffect} from "react"
 
-// const Login = props => {
-//   const [msg, setMsg] = useState('');
-//   const [loginCred, setLoginCred] = useState({ email: '', password: '' });
-//   const [signupCred, setSignupCred] = useState({
-//     firstName: '',
-//     lastName: '',
-//     username: '',
-//     email: '',
-//     password: ''
-//   });
+import { CSSTransition } from 'react-transition-group';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import Login from '../cmps/Login';
+import utils from '../services/utils';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { logout, getLoggedInUser } from '../actions/UserActions'
 
-//   return (
-//     <div className="board-page-nav-bar flex align-center space-between">
-//     <div className="board-page-nav-bar-logo" onClick={goBackHandler}> </div>
-//     <div className="flex align-center">
-//       {loggedInUser &&
-//         <div className="flex">
-//           <div className="team-member-icon-wrapper flex align-center justify-center" style={{ backgroundColor: 'rgba(223, 225, 230, 0.8)', color: '#172b4d' }} >
-//             <div className="team-member-icon">
-//               <p>
-//                 {utils.createUserIcon(loggedInUser.firstName,
-//                   loggedInUser.lastName)}
-//               </p>
-//             </div>
-//           </div>
+const MainNavBar = ({ toggleLoginHandler , isLogin }) => {
+    
+    const loggedInUser = useSelector(state => state.user.loggedInUser);
+    const dispatch = useDispatch();
+  
+    useEffect(() => {
+      dispatch(getLoggedInUser());
+    }, [dispatch]);
 
-//           {!mobileMod &&
-//             <div className="logged-in-user flex column">
-//               <small>Logged as:</small>
-//               <p> {loggedInUser.username}</p>
-//             </div>
-//           }
-//         </div>
-//       }
-//       {
-//         !loggedInUser ? <ExitToAppIcon onClick={logOutHandler} /> :
-//           <div className="login-btn flex"
-//             onClick={ev => toggleLogin(ev)}>
-//             <PersonOutlineIcon />
-//             <p>login</p>
-//           </div>
-//       }
-//     </div>
-//   </div>
-//   );
-// }
+    const logoutHandler = () => {
+        dispatch(logout());
+    }
+    return (
+        <React.Fragment>
+            <div className="home-page-login flex justify-end align-center">
+                {loggedInUser &&
+                    <div className="flex">
+                        <div className="team-member-icon flex align-center">
+                            <p>
+                                {utils.createUserIcon(loggedInUser.firstName,
+                                    loggedInUser.lastName)}
+                            </p>
+                        </div>
+                        <p className="flex column" style={{ paddingRight: 10 }}>
+                            <small>welcome!</small>
+                            {loggedInUser.username}
+                        </p>
+                    </div>
+                }
+                {loggedInUser ?
+                    <ExitToAppIcon className="login-btn" onClick={logoutHandler} />
+                    :
+                    <div className="login-btn cursor-pointer flex" onClick={toggleLoginHandler}>
+                        <PersonOutlineIcon />
+                        <p>login</p>
+                    </div>
+                }
+            </div>
 
+            <CSSTransition
+                in={isLogin}
+                timeout={700}
+                classNames="modal"
+                unmountOnExit>
+                <Login
+                    className="home-page-login"
+                    toggleLogin={toggleLoginHandler} />
+            </CSSTransition>
 
-// export default Login;
+        </React.Fragment>
+    )
+}
+
+export default MainNavBar

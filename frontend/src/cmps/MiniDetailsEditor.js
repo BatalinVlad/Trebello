@@ -71,7 +71,7 @@ export default class MiniDetailsEditor extends Component {
             className="mini-details-editor"
             style={{
                 left: (boundingClientRect.left + 265) + 'px',
-                top: (top + 1) + 'px'
+                top: (top - 5) + 'px'
             }}
         >
             <MiniDetailsButton text="🖊️ Edit Labels" onClick={this.onToggleLabels} />

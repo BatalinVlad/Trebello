@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { CSSTransition } from 'react-transition-group';
 import Fab from '@mui/material/Fab';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import EmailIcon from '@mui/icons-material/Email';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+
+import MainNavBar from '../cmps/MainNavBar';
 import BoardsList from '../cmps/BoardsList';
-import Login from '../cmps/Login';
 import utils from '../services/utils';
 
-import { loadBoards, loadBoard, createBoard } from '../actions/BoardActions'
-import { logout, getLoggedInUser } from '../actions/UserActions'
+import { loadBoards, createBoard } from '../actions/BoardActions'
+import { getLoggedInUser } from '../actions/UserActions'
 
-const Home = props => {
-  const [toggleLogin, setToggleLogin] = useState(false);
+const Home = () => {
+  const [isLogin, setIsLogin] = useState(false);
   const loggedInUser = useSelector(state => state.user.loggedInUser);
   const boards = useSelector(state => state.boards.boards);
   const dispatch = useDispatch();
@@ -24,10 +22,10 @@ const Home = props => {
   useEffect(() => {
     dispatch(loadBoards());
     dispatch(getLoggedInUser());
-  }, []);
+  }, [dispatch]);
 
   const toggleLoginHandler = () => {
-    setToggleLogin(prevToggleLogin => !prevToggleLogin);
+    setIsLogin(prevIsLogin => !prevIsLogin);
   };
 
   const createBoardHandler = async () => {
@@ -77,47 +75,14 @@ const Home = props => {
     window.open('mailto:' + mail);
   }
 
-  const logoutHandler = () => {
-    dispatch(logout());
-  }
+
 
   return (
     <div className="home-page">
-      {toggleLogin && <div className="home-page screen" onClick={toggleLoginHandler}></div>}
+      {isLogin && <div className="home-page screen" onClick={toggleLoginHandler}></div>}
+      <MainNavBar isLogin={isLogin} toggleLoginHandler={toggleLoginHandler} />
+      
       <section className="home-page-header">
-        <div className="home-page-login flex justify-end align-center">
-          {loggedInUser &&
-            <div className="flex">
-              <div className="team-member-icon flex align-center">
-                <p>
-                  {utils.createUserIcon(loggedInUser.firstName,
-                    loggedInUser.lastName)}
-                </p>
-              </div>
-              <p className="flex column" style={{ paddingRight: 10 }}>
-                <small>welcome!</small>
-                {loggedInUser.username}
-              </p>
-            </div>
-          }
-          {loggedInUser ?
-            <ExitToAppIcon className="login-btn" onClick={logoutHandler} />
-            :
-            <div className="login-btn cursor-pointer flex" onClick={toggleLoginHandler}>
-              <PersonOutlineIcon />
-              <p>login</p>
-            </div>
-          }
-        </div>
-        <CSSTransition
-          in={toggleLogin}
-          timeout={700}
-          classNames="modal"
-          unmountOnExit>
-          <Login
-            className="home-page-login"
-            toggleLogin={toggleLoginHandler} />
-        </CSSTransition>
         <div className="home-page-header-container flex">
           <div className="header-image flex align-center justify-center fill-width fill-height">
             <div className="login-get-started-container flex align-center justify-center align-center">

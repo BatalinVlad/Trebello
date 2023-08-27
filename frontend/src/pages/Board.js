@@ -57,7 +57,7 @@ const Board = () => {
 
   const prevProps = useRef(loadedBoard);
 
-  const boardToShow = (filteredBoard) ? filteredBoard : loadBoard;
+  const boardToShow = (filteredBoard) ? filteredBoard : loadedBoard;
   // we will have state and useEffect for filter..
 
   const navigate = useNavigate();
@@ -291,7 +291,7 @@ const Board = () => {
                 {
                   loggedInUser ? <ExitToAppIcon onClick={logOutHandler} /> :
                     <div className="login-btn flex"
-                      onClick={ev => toggleLoginHandler(ev)}>
+                      onClick={toggleLoginHandler}>
                       <PersonOutlineIcon />
                       <p>login</p>
                     </div>

@@ -41,7 +41,7 @@ export default class TaskPreview extends Component {
                         }
                     </div>
                     <p className="task-container-title">{task.title}</p>
-                    {(showEditBtn && (onTaskId === task.id)) &&
+                    {(showEditBtn && (onTaskId === task.id)) && 
                         <CreateIcon className="task-container-open-menu"
                             onClick={e => this.toggleMiniDetails(e)} />
                     }
