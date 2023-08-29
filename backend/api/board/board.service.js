@@ -3,9 +3,9 @@ const ObjectId = require('mongodb').ObjectId;
 
 const logger = require('../../services/logger.service')
 
-async function query() {
+async function query(type) {
 
-    const collection = await dbService.getCollection('board');
+    const collection = await dbService.getCollection(type);
     try {
         const boards = await collection.find().toArray();
         return boards;
@@ -15,9 +15,9 @@ async function query() {
     }
 }
 
-async function getById(boardId) {
+async function getById(type, boardId) {
 
-    const collection = await dbService.getCollection('board');
+    const collection = await dbService.getCollection(type);
 
     try {
         const board = await collection.findOne({ "_id": ObjectId(boardId) });

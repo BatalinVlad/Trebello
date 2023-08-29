@@ -5,7 +5,7 @@ import utils from '../services/utils';
 export function loadBoards() {
   return async dispatch => {
     try {
-      const boards = await BoardService.query();
+      const boards = await BoardService.query('board');
       dispatch(_setBoards(boards));
     } catch (err) {
       console.log('BoardActions: err in loadBoards', err);
@@ -20,10 +20,28 @@ function _setBoards(boards) {
   };
 }
 
-export function loadBoard(boardId) {
+export function loadTemplateBoards() {
   return async dispatch => {
     try {
-      const board = await BoardService.get(boardId);
+      const templateBoards = await BoardService.query('templates');
+      dispatch(_setTemplateBoards(templateBoards));
+    } catch (err) {
+      console.log('BoardActions: err in loadBoards', err);
+    }
+  };
+}
+
+function _setTemplateBoards(templateBoards) {
+  return {
+    type: 'SET_TEMPLATE_BOARDS',
+    templateBoards
+  };
+}
+
+export function loadBoard(type, boardId) {
+  return async dispatch => {
+    try {
+      const board = await BoardService.get(type, boardId);
       dispatch(_boardUpdate(board)); // type UPDATE_BOARD , data: board
     } catch (err) {
       console.log('BoardActions: err in loadBoard', err);

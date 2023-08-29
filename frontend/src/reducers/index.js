@@ -4,6 +4,7 @@ import UserReducer from './UserReducer';
 
 const rootReducer = combineReducers({
   boards: BoardReducer,
+  templateBoards: BoardReducer,
   user: UserReducer
 })
 

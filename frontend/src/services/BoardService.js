@@ -8,12 +8,12 @@ export default {
   remove
 };
 
-function query() {
-  return HttpService.get('board');
+function query(boardsType) {
+  return HttpService.get(`board/boards/${boardsType}`);
 }
 
-function get(boardId) {
-  return HttpService.get(`board/${boardId}`);
+function get(type,boardId) {
+  return HttpService.get(`board/${type}/${boardId}`);
 }
 
 // function _createQueryString(filterBy) {

@@ -9,7 +9,6 @@
     height: 100%;
   }
 
-
   h2 {
     font-size: 2rem;
     color: white;
@@ -138,6 +137,10 @@
     background: #1b1b1b;
     color: rgb(255, 255, 255);
 
+    a {
+      color: white;
+    }
+    
     .MuiSvgIcon-root {
       cursor: pointer;
       transition: 0.2s;

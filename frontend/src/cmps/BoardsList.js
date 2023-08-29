@@ -3,8 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import BoardPreview from './BoardPreview';
 
-const BoardsList = ({ boards, user }) => {
-    const templateBoards = boards.filter(board => board.isTemplate);
+const BoardsList = ({ boards, templateBoards, user }) => {
     const myBoards = (user) ? boards.filter(board => board.createdBy._id === user._id) : '';
     const myCollaboratedBoards = (user) ? boards.filter(board => {
         return board.teamMembers.find(teamMember => user._id === teamMember._id && user._id !== board.createdBy._id);
@@ -25,16 +24,17 @@ const BoardsList = ({ boards, user }) => {
                         </div>
                     }
                     <div className="boards-list-main-inner-container-grid flex justify-center column">
-                        {templateBoards.map(board => (
-                            <div className="boards-list-main-inner-container-grid-item pointer" key={board._id} >
-                                <BoardPreview board={board} />
-                            </div>
+                        {templateBoards.map(templateBoard => (
+                            <NavLink className="boards-list-main-inner-container-grid-item pointer" key={templateBoard._id} to={`/board/${'templates'}/${templateBoard._id}`} >
+                                <BoardPreview board={templateBoard} />
+                            </NavLink>
                         ))}
                     </div>
                 </div>
             </div>
 
-            {user &&
+            {
+                user &&
                 <div>
                     <div className="boards-list-main-inner-container-wrapper">
                         {(myBoards.length === 0) ?
@@ -48,7 +48,7 @@ const BoardsList = ({ boards, user }) => {
 
                                 <div className="boards-list-main-inner-container-grid flex justify-center column">
                                     {myBoards.map(myBoard => (
-                                        <NavLink className="boards-list-main-inner-container-grid-item" key={myBoard._id} to={`/board/${myBoard._id}`}>
+                                        <NavLink className="boards-list-main-inner-container-grid-item" key={myBoard._id} to={`/board/${'board'}/${myBoard._id}`}>
                                             <BoardPreview board={myBoard} />
                                         </NavLink>
                                     ))}
@@ -78,7 +78,7 @@ const BoardsList = ({ boards, user }) => {
                     </div>
                 </div>
             }
-        </section>
+        </section >
     )
 }
 

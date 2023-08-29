@@ -64,11 +64,14 @@ const Board = () => {
   const dispatch = useDispatch();
 
   const boardId = useParams().id;
+  const boardType = useParams().type;
+
 
   useEffect(() => {
     dispatch(getUsers());
     dispatch(getLoggedInUser());
-    dispatch(loadBoard(boardId));
+    // check if board  is template or ...
+    dispatch(loadBoard(boardType, boardId));
     resize();
     window.addEventListener('resize', resize);
 

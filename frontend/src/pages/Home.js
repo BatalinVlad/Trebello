@@ -9,19 +9,21 @@ import MainNavBar from '../cmps/MainNavBar';
 import BoardsList from '../cmps/BoardsList';
 import utils from '../services/utils';
 
-import { loadBoards, createBoard } from '../actions/BoardActions'
+import { loadBoards, loadTemplateBoards, createBoard } from '../actions/BoardActions'
 import { getLoggedInUser } from '../actions/UserActions'
 
 const Home = () => {
   const [isLogin, setIsLogin] = useState(false);
   const loggedInUser = useSelector(state => state.user.loggedInUser);
   const boards = useSelector(state => state.boards.boards);
+  const templateBoards = useSelector(state => state.templateBoards.templateBoards);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(loadBoards());
-    // dispatch(loadTemplateBoards());
+    dispatch(loadTemplateBoards());
     dispatch(getLoggedInUser());
   }, [dispatch]);
 
@@ -47,24 +49,6 @@ const Home = () => {
     navigate(`/board/${newBoard._id}`);
   }
 
-  // const duplicateBoard = async (board) => {
-  //   let duplicatedBoard = JSON.parse(JSON.stringify(board));
-  //   delete duplicatedBoard._id;
-  //   delete duplicatedBoard.boardBgThumbnailTitleStyle;
-  //   duplicatedBoard.history = [];
-  //   duplicatedBoard.teamMembers = [];
-  //   duplicatedBoard.title = '';
-  //   duplicatedBoard.isTemplate = false;
-  //   duplicatedBoard.createdBy = this.props.loggedInUser || { _id: 'guest', username: 'guest' };
-  //   for (const task in duplicatedBoard.tasks) {
-  //     duplicatedBoard.tasks[task].taskTeamMembers = [];
-  //     duplicatedBoard.tasks[task].createdAt = Date.now();
-  //   }
-  //   createdBoardMessage(duplicatedBoard);
-  //   const newBoard = await this.props.createBoard(duplicatedBoard);
-  //   this.props.history.push(`/board/${newBoard._id}`);
-  // }
-
   const createdBoardMessage = (board) => {
     const username = (loggedInUser) ? loggedInUser.username : 'Guest';
     let msg = `The Board was created by ${username}`;
@@ -79,7 +63,9 @@ const Home = () => {
 
 
   return (
+    
     <div className="home-page">
+      {templateBoards && <p> there is templateBoards</p>}
       {isLogin && <div className="home-page screen" onClick={toggleLoginHandler}></div>}
       <MainNavBar isLogin={isLogin} toggleLoginHandler={toggleLoginHandler} />
 
@@ -109,9 +95,8 @@ const Home = () => {
       </section>
 
       {
-        boards && loggedInUser &&
-        // duplicateBoard={duplicateBoard}
-        <BoardsList boards={boards} user={loggedInUser} />
+        templateBoards && boards && loggedInUser &&
+        <BoardsList boards={boards} templateBoards={templateBoards} user={loggedInUser} />
       }
 
       <footer className="home-page-footer flex column align-center justify-center">
@@ -119,7 +104,8 @@ const Home = () => {
           <div className="info fill-width flex space-between">
             <p>Vlad Batalin</p>
             <div className="flex">
-              <a href="https://www.linkedin.com/in/vlad-batalin-647725180/" target="blank"><LinkedInIcon className="linkedInIcon"></LinkedInIcon></a>
+              <a href="https://www.linkedin.com/in/vlad-batalin-647725180/" target="blank">
+                <LinkedInIcon className="linkedInIcon"></LinkedInIcon></a>
               <EmailIcon onClick={() => sendMail('batalinvlad@gmail.com')} className="mail" />
             </div>
           </div>

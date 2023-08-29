@@ -2,8 +2,9 @@ const logger = require('../../services/logger.service')
 const boardService = require('./board.service')
 
 async function getBoards(req, res) {
+    const type = req.params.type;
     try {
-        const boards = await boardService.query();
+        const boards = await boardService.query(type);
         res.send(boards);
     } catch (err) {
         logger.error('Cannot get boards', err);
@@ -13,8 +14,9 @@ async function getBoards(req, res) {
 
 async function getBoard(req, res) {
     const id = req.params.id;
+    const type = req.params.type;
     try {
-        const board = await boardService.getById(id);
+        const board = await boardService.getById(type, id);
         res.send(board);
     } catch (err) {
         logger.error('Cannot get board', err);
