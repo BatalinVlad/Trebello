@@ -46,7 +46,7 @@ const Home = () => {
     createdBoardMessage(board);
 
     const newBoard = await dispatch(createBoard(board));
-    navigate(`/board/${newBoard._id}`);
+    navigate(`/board/board/${newBoard._id}`);
   }
 
   const createdBoardMessage = (board) => {

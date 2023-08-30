@@ -16,7 +16,6 @@ async function query(type) {
 }
 
 async function getById(type, boardId) {
-
     const collection = await dbService.getCollection(type);
 
     try {

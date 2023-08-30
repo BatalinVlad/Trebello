@@ -71,6 +71,8 @@ const Board = () => {
     dispatch(getUsers());
     dispatch(getLoggedInUser());
     // check if board  is template or ...
+    console.log(boardType);
+    console.log(boardId);
     dispatch(loadBoard(boardType, boardId));
     resize();
     window.addEventListener('resize', resize);

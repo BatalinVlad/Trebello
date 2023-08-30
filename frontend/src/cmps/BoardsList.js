@@ -25,7 +25,7 @@ const BoardsList = ({ boards, templateBoards, user }) => {
                     }
                     <div className="boards-list-main-inner-container-grid flex justify-center column">
                         {templateBoards.map(templateBoard => (
-                            <NavLink className="boards-list-main-inner-container-grid-item pointer" key={templateBoard._id} to={`/board/${'templates'}/${templateBoard._id}`} >
+                            <NavLink className="boards-list-main-inner-container-grid-item pointer" key={templateBoard._id} to={`/board/${'templatez'}/${templateBoard._id}`} >
                                 <BoardPreview board={templateBoard} />
                             </NavLink>
                         ))}
