@@ -1,13 +1,13 @@
 @import "./typography.scss";
 
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 4px;
+  height: 4px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.541);
+  background: rgba(34, 34, 34, 0.541);
   border-radius: 4px;
 }
 

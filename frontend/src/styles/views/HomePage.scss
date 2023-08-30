@@ -1,5 +1,5 @@
 .home-page {
-  background-color: #262626;
+  background-color: #1b1b1b;
   position: relative;
 
   .screen {
@@ -132,15 +132,20 @@
   }
 
   &-footer {
-    padding: 50px 0px;
+    padding: 30px 0px;
     min-height: 100px;
     background: #1b1b1b;
     color: rgb(255, 255, 255);
 
+
+    span {
+      font-size: 10px;
+    }
+
     a {
       color: white;
     }
-    
+
     .MuiSvgIcon-root {
       cursor: pointer;
       transition: 0.2s;

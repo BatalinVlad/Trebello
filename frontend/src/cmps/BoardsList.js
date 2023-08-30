@@ -12,24 +12,16 @@ const BoardsList = ({ boards, templateBoards, user }) => {
     return (
         <section className="boards-list">
 
-            <div className="boards-list-main-inner-container-wrapper">
-                <div className="boards-list-main-inner-container">
-                    <div>
-                        <p className="capitalize"> check our premade templates</p>
-                        <hr />
-                    </div>
-                    {(templateBoards.length === 0) &&
-                        <div className="fill-width text-center">
-                            <span className="caspanitalize"> working on it sorry :(  </span>
-                        </div>
-                    }
-                    <div className="boards-list-main-inner-container-grid flex justify-center column">
-                        {templateBoards.map(templateBoard => (
-                            <NavLink className="boards-list-main-inner-container-grid-item pointer" key={templateBoard._id} to={`/board/${'templatez'}/${templateBoard._id}`} >
-                                <BoardPreview board={templateBoard} />
-                            </NavLink>
-                        ))}
-                    </div>
+            <div className="boards-list-container">
+                <div>
+                    <p className="capitalize">check our premade templates</p>
+                </div>
+                <div className="templates-container flex row">
+                    {templateBoards && templateBoards.map(templateBoard => (
+                        <NavLink className="pointer" key={templateBoard._id} to={`/board/${'templates'}/${templateBoard._id}`} >
+                            <BoardPreview board={templateBoard} />
+                        </NavLink>
+                    ))}
                 </div>
             </div>
 
@@ -53,9 +45,9 @@ const BoardsList = ({ boards, templateBoards, user }) => {
                                         </NavLink>
                                     ))}
                                 </div>
-                            </div>
-                        }
+                            </div>}
                     </div>
+
                     <div className="boards-list-main-inner-container-wrapper">
                         <div className="boards-list-main-inner-container">
                             <p className="capitalize"> boards you collaborate on </p>

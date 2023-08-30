@@ -63,7 +63,7 @@ const Home = () => {
 
 
   return (
-    
+
     <div className="home-page">
       {templateBoards && <p> there is templateBoards</p>}
       {isLogin && <div className="home-page screen" onClick={toggleLoginHandler}></div>}
@@ -95,12 +95,13 @@ const Home = () => {
       </section>
 
       {
-        templateBoards && boards && loggedInUser &&
+        templateBoards && boards &&
         <BoardsList boards={boards} templateBoards={templateBoards} user={loggedInUser} />
       }
 
       <footer className="home-page-footer flex column align-center justify-center">
         <div className="about-container">
+          <span>created by</span>
           <div className="info fill-width flex space-between">
             <p>Vlad Batalin</p>
             <div className="flex">
@@ -109,7 +110,7 @@ const Home = () => {
               <EmailIcon onClick={() => sendMail('batalinvlad@gmail.com')} className="mail" />
             </div>
           </div>
-          <span className="text-center fill-width capitalize">Full-stack development</span>
+          <p className="text-center fill-width capitalize">Full-stack development</p>
         </div>
 
       </footer>

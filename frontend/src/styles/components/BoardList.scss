@@ -1,6 +1,5 @@
 .boards-list {
   background: #1b1b1b;
-  padding: 20px 0px;
   p {
     padding-left: 10px;
     font-weight: 600;
@@ -19,21 +18,22 @@
     border-color: #535456;
   }
 
+  .templates-container {
+    gap: 10px;
+    overflow-x: scroll;
+    margin: 0px 30px;
+    padding-bottom: 5px;
+  }
+
   &-main-inner-container {
-    // height: 260px;
-    &-grid {
+    &-item {
       display: grid;
-      grid-gap: 26px;
-      grid-template-columns: repeat(auto-fill, 250px);
-      &-item {
-        display: grid;
-        height: 200px;
-        width: 250px;
-        border-radius: 4px;
-        box-shadow: 0px 0px 2px 1px rgba(255, 255, 255, 0.529);
-        &:hover {
-          box-shadow: 0px 0px 4px 1px rgba(255, 255, 255, 0.529);
-        }
+      height: 200px;
+      width: 250px;
+      border-radius: 4px;
+      box-shadow: 0px 0px 2px 1px rgba(255, 255, 255, 0.529);
+      &:hover {
+        box-shadow: 0px 0px 4px 1px rgba(255, 255, 255, 0.529);
       }
     }
   }
