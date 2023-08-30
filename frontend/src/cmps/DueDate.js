@@ -39,6 +39,7 @@ export default class DueDate extends React.Component {
         const msg = `${this.props.user} changed the due date for task '${this.props.task.title}'`;
         const notificationType = 'success';
         this.props.updateBoard(newBoard, msg, notificationType);
+        this.props.onToggle();
 
     }
 

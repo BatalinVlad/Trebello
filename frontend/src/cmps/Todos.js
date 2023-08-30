@@ -38,6 +38,8 @@ export default class Todo extends Component {
         const notificationType = 'success';
         this.props.updateBoard(newBoard, msg, notificationType);
         this.props.updateProgressBar();
+
+        this.state.text = '';
     }
 
     onStopPropagation = (ev) => {
@@ -54,7 +56,7 @@ export default class Todo extends Component {
                 </div>
 
                 <div className="input-container flex column justify-center align-center">
-                    <input className="text-center" type="text" placeholder="add new todo"
+                    <input className="" type="textarea" rows='4' placeholder="add new todo"
                         value={this.state.text}
                         onChange={this.updateTodo} name="text">
                     </input>

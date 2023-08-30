@@ -27,13 +27,13 @@
       padding-right: 5px;
       max-width: 300px;
       max-height: 81px;
-      overflow: scroll;
+      overflow: auto;
     }
     @media (max-width: 400px) {
       h2 {
         max-width: 200px;
         max-height: 81px;
-        overflow: scroll;
+        overflow: auto;
       }
     }
   }

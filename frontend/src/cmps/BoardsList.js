@@ -13,20 +13,7 @@ const BoardsList = ({ boards, templateBoards, user }) => {
         <section className="boards-list">
 
             <div className="boards-list-container" >
-                <div>
-                    <h1 className="capitalize">check our premade templates</h1>
-                </div>
-                {/* {templateBoards.length > 0 &&
-                    <>
-                        <NavLink className="pointer" key={templateBoards[0]._id} to={`/board/${'templates'}/${templateBoards[0]._id}`} >
-                            <BoardPreview board={templateBoards[0]} />
-                        </NavLink>
-                        <NavLink className="pointer" key={templateBoards[1]._id} to={`/board/${'templates'}/${templateBoards[1]._id}`} >
-                            <BoardPreview board={templateBoards[1]} />
-                        </NavLink>
-                    </>
-                } */}
-
+                <h1 className="capitalize">check our premade templates</h1>
                 <div className="templates-container flex row" >
                     {templateBoards.map(templateBoard => (
                         <NavLink className="pointer" key={templateBoard._id} to={`/board/${'templates'}/${templateBoard._id}`} >

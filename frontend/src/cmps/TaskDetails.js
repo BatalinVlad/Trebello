@@ -57,7 +57,7 @@ export default class TaskDetails extends Component {
     }
 
     onToggleDueDate = ev => {
-        ev.stopPropagation();
+        ev && ev.stopPropagation();
         this.setState(prevState => ({ onToggleDueDate: !prevState.onToggleDueDate }));
     }
 
@@ -69,6 +69,8 @@ export default class TaskDetails extends Component {
     onStopPropagationAndCloseOptions = (ev) => {
         ev.stopPropagation();
         this.setState({
+            onToggleDueDate: false,
+            toggleTodos: false,
             toggleChooseLabels: false,
             toggleChooseMembers: false
         })
@@ -106,7 +108,7 @@ export default class TaskDetails extends Component {
     }
 
     onDuplicateTask = (column, task) => {
-        const newTask = { ...task, id: utils.getRandomId(), labels: [...task.labels], todos: [...task.todos], taskTeamMembers: [...task.taskTeamMembers]};
+        const newTask = { ...task, id: utils.getRandomId(), labels: [...task.labels], todos: [...task.todos], taskTeamMembers: [...task.taskTeamMembers] };
         column.taskIds.push(newTask.id);
         const newBoard = {
             ...this.props.board,
@@ -481,13 +483,13 @@ export default class TaskDetails extends Component {
                                         <EventOutlinedIcon />
                                         <p className="capitalize">due date</p>
                                     </div>
-                                    <div className="task-details-container-add-to-card-options-btn flex align-center">
+                                    <input style={{ display: "none" }} type="file" id="upload-img-2" onChange={ev => this.uploadImage(ev)}></input>
+                                    <label className="task-details-container-add-to-card-options-btn flex align-center" htmlFor="upload-img-2">
                                         <ImageOutlinedIcon />
-                                        <input style={{ display: "none" }} type="file" id="upload-img-2" onChange={ev => this.uploadImage(ev)}></input>
-                                        <label htmlFor="upload-img-2"><p className="capitalize">
+                                        <p className="capitalize">
                                             upload image
-                                            </p></label>
-                                    </div>
+                                        </p>
+                                    </label>
                                 </div>
                             </div>
 

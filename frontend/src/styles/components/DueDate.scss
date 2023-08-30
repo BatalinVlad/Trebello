@@ -33,12 +33,10 @@
 }
 
 .react-datepicker {
-  display: "inline-flex";
+  display: flex;
   position: relative;
   height: 245px;
   width: 328px;
-  bottom: 344px;
-  right: 51px;
 }
 
 .close-btn-container {
