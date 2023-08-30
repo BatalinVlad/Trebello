@@ -12,19 +12,21 @@
 
   @media (max-width: 488px) {
     top: 133px;
-    right: 12px
+    right: 12px;
   }
 
   &-asign-members {
-    max-height: 200px;
+    max-height: 120px;
     overflow-y: auto;
+    margin: 0px 5px;
+    padding-left: 10px;
 
     &-wrapper {
       padding: 5px;
     }
   }
 
-  &>.MuiSvgIcon-root {
+  & > .MuiSvgIcon-root {
     height: 18px;
     width: 18px;
   }
@@ -80,9 +82,9 @@
     &-wrapper {
       padding: 5px;
     }
-
-    padding: 10px;
-    max-height: 300px;
+    max-height: 120px;
     overflow-y: auto;
+    margin: 0px 5px;
+    padding-left: 10px;
   }
 }
