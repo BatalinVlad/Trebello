@@ -31,7 +31,7 @@ const BoardsList = ({ boards, templateBoards, user }) => {
                     <div className="boards-list-container">
                         {(myBoards.length === 0) ?
                             <p> you haven't created a board yet...</p> :
-                            <div className="boards-list-main-inner-container">
+                            <>
                                 <p className="capitalize">created boards</p>
                                 <div className="boards-container flex row">
                                     {myBoards.map(myBoard => (
@@ -40,14 +40,14 @@ const BoardsList = ({ boards, templateBoards, user }) => {
                                         </NavLink>
                                     ))}
                                 </div>
-                            </div>}
+                            </>
+                        }
                     </div>
 
-                    <div className="boards-list-container">
-                        <div className="boards-list-main-inner-container">
+                    <div className="boards-list-container flex column">
                             <p className="capitalize"> boards you collaborate on </p>
                             {(myCollaboratedBoards.length === 0) ?
-                                <div className="fill-width text-center">
+                                <div className="fill-width flex grow center">
                                     <span className="caspanitalize"> you're not collaborating on any boards yet... </span>
                                 </div>
                                 :
@@ -61,7 +61,6 @@ const BoardsList = ({ boards, templateBoards, user }) => {
                             }
                         </div>
                     </div>
-                </div>
             }
         </section >
     )

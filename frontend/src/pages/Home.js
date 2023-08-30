@@ -65,7 +65,6 @@ const Home = () => {
   return (
 
     <div className="home-page">
-      {templateBoards && <p> there is templateBoards</p>}
       {isLogin && <div className="home-page screen" onClick={toggleLoginHandler}></div>}
       <MainNavBar isLogin={isLogin} toggleLoginHandler={toggleLoginHandler} />
 

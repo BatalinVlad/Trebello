@@ -1,5 +1,12 @@
 .boards-list {
-  padding: 30px;
+  padding: 30px 100px;
+  @media (max-width: 600px) {
+    padding: 20px 0px;
+
+    p{
+        padding-left: 20px;
+    }
+  }
   p {
     margin-bottom: 10px;
     color: white;
@@ -7,7 +14,6 @@
   }
 
   span {
-    text-align: center;
     color: white;
     font-size: rem(10px);
   }
@@ -17,11 +23,15 @@
     border-color: #535456;
   }
 
+  &-container {
+    min-height: 150px;
+  }
+
   .templates-container,
   .boards-container {
     gap: 10px;
     overflow-x: scroll;
-    margin: 0px 30px;
     padding-bottom: 5px;
+    margin-bottom: 45px;
   }
 }

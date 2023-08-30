@@ -81,7 +81,15 @@
     &.wrap {
         flex-wrap: wrap;
     }
+    &.grow{ 
+        flex-grow: 1;
+    }
 
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
 }
 
 //text helpers 
