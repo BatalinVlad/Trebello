@@ -1,9 +1,9 @@
 .boards-list {
   padding: 30px 100px;
-  @media (max-width: 600px) {
+  @media (max-width: 750px) {
     padding: 20px 0px;
 
-    p{
+    h1{
         padding-left: 20px;
     }
   }

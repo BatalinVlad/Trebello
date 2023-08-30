@@ -98,20 +98,26 @@ const Home = () => {
         <BoardsList boards={boards} templateBoards={templateBoards} user={loggedInUser} />
       }
 
-      <footer className="home-page-footer flex column align-center justify-center">
-        <div className="about-container">
+      <footer className="home-page-footer">
+        <div className='about-container-wrapper relative'>
           <span>created by</span>
-          <div className="info fill-width flex space-between">
-            <p>Vlad Batalin</p>
-            <div className="flex">
-              <a href="https://www.linkedin.com/in/vlad-batalin-647725180/" target="blank">
-                <LinkedInIcon className="linkedInIcon"></LinkedInIcon></a>
-              <EmailIcon onClick={() => sendMail('batalinvlad@gmail.com')} className="mail" />
+          <div className="about-container flex">
+            <div className="info fill-width flex column ">
+              <div className="flex">
+                <p>Vlad Batalin</p>
+                <div>
+                  <a href="https://www.linkedin.com/in/vlad-batalin-647725180/" target="blank">
+                    <LinkedInIcon className="linkedInIcon"></LinkedInIcon></a>
+                  <EmailIcon onClick={() => sendMail('batalinvlad@gmail.com')} className="mail" />
+                </div>
+              </div>
+              <p className="bold capitalize">Full-stack development</p>
             </div>
-          </div>
-          <p className="text-center fill-width capitalize">Full-stack development</p>
-        </div>
 
+          </div>
+          <div className="creator-img absolute pointer"> </div>
+
+        </div>
       </footer>
     </div>
   )

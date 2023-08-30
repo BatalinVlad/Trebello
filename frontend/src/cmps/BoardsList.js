@@ -12,12 +12,23 @@ const BoardsList = ({ boards, templateBoards, user }) => {
     return (
         <section className="boards-list">
 
-            <div className="boards-list-container">
+            <div className="boards-list-container" >
                 <div>
-                    <p className="capitalize">check our premade templates</p>
+                    <h1 className="capitalize">check our premade templates</h1>
                 </div>
-                <div className="templates-container flex row">
-                    {templateBoards && templateBoards.map(templateBoard => (
+                {/* {templateBoards.length > 0 &&
+                    <>
+                        <NavLink className="pointer" key={templateBoards[0]._id} to={`/board/${'templates'}/${templateBoards[0]._id}`} >
+                            <BoardPreview board={templateBoards[0]} />
+                        </NavLink>
+                        <NavLink className="pointer" key={templateBoards[1]._id} to={`/board/${'templates'}/${templateBoards[1]._id}`} >
+                            <BoardPreview board={templateBoards[1]} />
+                        </NavLink>
+                    </>
+                } */}
+
+                <div className="templates-container flex row" >
+                    {templateBoards.map(templateBoard => (
                         <NavLink className="pointer" key={templateBoard._id} to={`/board/${'templates'}/${templateBoard._id}`} >
                             <BoardPreview board={templateBoard} />
                         </NavLink>
@@ -45,22 +56,22 @@ const BoardsList = ({ boards, templateBoards, user }) => {
                     </div>
 
                     <div className="boards-list-container flex column">
-                            <p className="capitalize"> boards you collaborate on </p>
-                            {(myCollaboratedBoards.length === 0) ?
-                                <div className="fill-width flex grow center">
-                                    <span className="caspanitalize"> you're not collaborating on any boards yet... </span>
-                                </div>
-                                :
-                                <div className="boards-list-container">
-                                    {myCollaboratedBoards.map(myCollaboratedBoard => (
-                                        <NavLink className="pointer" key={myCollaboratedBoard._id} to={`/board/${myCollaboratedBoard._id}`}>
-                                            <BoardPreview board={myCollaboratedBoard} />
-                                        </NavLink>
-                                    ))}
-                                </div>
-                            }
-                        </div>
+                        <p className="capitalize"> boards you collaborate on </p>
+                        {(myCollaboratedBoards.length === 0) ?
+                            <div className="fill-width flex grow center">
+                                <span className="caspanitalize"> you're not collaborating on any boards yet... </span>
+                            </div>
+                            :
+                            <div className="boards-list-container">
+                                {myCollaboratedBoards.map(myCollaboratedBoard => (
+                                    <NavLink className="pointer" key={myCollaboratedBoard._id} to={`/board/${myCollaboratedBoard._id}`}>
+                                        <BoardPreview board={myCollaboratedBoard} />
+                                    </NavLink>
+                                ))}
+                            </div>
+                        }
                     </div>
+                </div>
             }
         </section >
     )
