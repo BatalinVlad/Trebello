@@ -45,12 +45,12 @@ const Filter = props => {
             name="teamMembers"
             style={{
               color: props.isDarkBackground ? 'white' : 'black',
-              background: props.isDarkBackground ? '#0000006b' : '#ffffff8e'
             }}
+            className='dark'
             onChange={inputChange}
             value={filterBy.teamMembers}
           >
-            <option value="">all team</option>
+            <option value="" >all team</option>
             {teamMembers.map((teamMember) => (
               <option
                 className="capitalize"
