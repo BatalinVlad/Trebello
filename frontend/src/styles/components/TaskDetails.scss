@@ -42,6 +42,24 @@
     margin-left: 56px;
   }
 
+  .asigned-team-members-container {
+    max-width: 80%;
+    overflow: auto;
+    padding-bottom: 3px;
+  }
+
+  &-team-member {
+    background: #dfe1e6;
+    border-radius: 100%;
+    font-weight: bold;
+    margin: 3px;
+
+    span {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
   &-check-list-container {
     margin: 0 8px 8px 56px;
 

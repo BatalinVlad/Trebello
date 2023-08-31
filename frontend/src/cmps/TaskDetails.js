@@ -344,21 +344,14 @@ export default class TaskDetails extends Component {
                                     fontWeight: 500,
                                     letterSpacing: '.04em'
                                 }}>members</h3>}
-                                <div className="flex">
+                                <div className="flex asigned-team-members-container">
                                     {
                                         task.taskTeamMembers.map(member => {
-                                            return <div key={member._id} style={{
-                                                backgroundColor: '#dfe1e6',
-                                                height: 28,
-                                                width: 28,
-                                                fontSize: '0.85rem',
-                                                margin: '4px 4px 4px 0',
-                                                color: '#172b4d',
-                                                fontWeight: 600,
-                                                textAlign: 'center'
-                                            }}>
-                                                {utils.createUserIcon(member.firstName,
-                                                    member.lastName)}
+                                            return <div key={member._id} className="task-details-container-team-member" >
+                                                <span className="uppercase fs14 flex center">
+                                                    {utils.createUserIcon(member.firstName,
+                                                        member.lastName)}
+                                                </span>
                                             </div>
                                         })
                                     }

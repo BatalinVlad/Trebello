@@ -33,7 +33,7 @@ export default class ImagePreview extends Component {
         return (
             <section ref={this.imgContainer}>
                 <div
-                    className={"task-container without-padding flex column align center"}
+                    className={"task-container  without-padding flex column align center"}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                     ref={innerRef}
@@ -51,7 +51,9 @@ export default class ImagePreview extends Component {
                         <CreateIcon className="task-container-open-menu"
                             onClick={e => this.toggleMiniDetails(e)} />
                     }
-                    <div className={"bottom-container grid-container " + (task.description === '' ? ' row-reverse' : '')}>
+                    <div className="bottom-container flex row fill-width"
+                        style={(task.taskTeamMembers.length !== 0) ? { minHeight: '30px' } : null} >
+
                         {(task.description !== '') &&
                             <div className="grid-item justify-self-center align-self-center">
                                 <SubjectIcon />

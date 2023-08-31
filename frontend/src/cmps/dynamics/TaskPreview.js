@@ -41,20 +41,20 @@ export default class TaskPreview extends Component {
                         }
                     </div>
                     <p className="task-container-title">{task.title}</p>
-                    {(showEditBtn && (onTaskId === task.id)) && 
+                    {(showEditBtn && (onTaskId === task.id)) &&
                         <CreateIcon className="task-container-open-menu"
                             onClick={e => this.toggleMiniDetails(e)} />
                     }
 
-                    <div className={"bottom-container grid-container " + (task.description === '' ? ' row-reverse' : '')}>
+                    <div className="bottom-container flex row" style={(task.taskTeamMembers.length !== 0) ? {minHeight: '30px'} : null}> 
                         {(task.description !== '') &&
-                            <div className="grid-item justify-self-center align-self-center">
+                            <div className="flex center">
                                 <SubjectIcon />
                             </div>
                         }
 
                         {(task.todos.length > 0) &&
-                            <div className="grid-item align-center ">
+                            <div className="flex center">
                                 <div className="flex align-center">
                                     <CheckBoxIcon />
                                     <p>{task.todosDone + '/' + task.todos.length}</p>
@@ -63,11 +63,9 @@ export default class TaskPreview extends Component {
                         }
 
                         {(task.dueDate) &&
-                            <div className="grid-item">
-                                <div className="flex align-center">
+                                <div className="flex center">
                                     <CalendarMonthIcon />
                                 </div>
-                            </div>
                         }
                         <div className="team-members-container grid-item">
                             <div className="flex justify-end">

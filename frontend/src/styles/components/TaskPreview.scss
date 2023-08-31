@@ -56,13 +56,6 @@
   }
 
   .bottom-container {
-    &.grid-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 10fr;
-    }
-
-    padding: 0px 5px 5px 5px;
-
     .MuiSvgIcon-root {
       color: rgb(119, 119, 119);
       height: 22px;
@@ -108,7 +101,11 @@
   }
 
   .team-members-container {
+    max-width: 115px;
     overflow: auto;
+    position: absolute;
+    bottom: 3px;
+    right: 5px;
   }
 }
 
