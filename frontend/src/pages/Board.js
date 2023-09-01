@@ -23,6 +23,9 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import utils from '../services/utils';
 import SocketService from '../services/SocketService';
 
+//for checking bg images brightness
+import lightOrDarkImage from '@check-light-or-dark/image';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { loadBoard, updateBoard, setBoard } from '../actions/BoardActions';
 import { logout, getLoggedInUser, getUsers } from '../actions/UserActions';
@@ -46,7 +49,7 @@ const Board = () => {
 
   const [miniTaskDetails, setMiniTaskDetails] = useState({});
   const [currColumnId, setCurrColumnId] = useState('');
-  const [isBoardLoaded, setIsBoardLoaded] = useState(false);
+  // const [isBoardLoaded, setIsBoardLoaded] = useState(false);
   const [isDarkBackground, setIsDarkBackground] = useState(true); // change it later with new package
   const [filterIconMod, setFilterIconMod] = useState(false);
   const [mobileMod, setMobileMod] = useState(false);
@@ -55,7 +58,7 @@ const Board = () => {
   const loggedInUser = useSelector(state => state.user.loggedInUser);
   const users = useSelector(state => state.user.users);
 
-  const prevProps = useRef(loadedBoard);
+  // const prevProps = useRef(loadedBoard);
 
   const boardToShow = (filteredBoard) ? filteredBoard : loadedBoard;
   // we will have state and useEffect for filter..
@@ -88,26 +91,20 @@ const Board = () => {
   }, [dispatch, boardId]);
 
   useEffect(() => {
-    // if (isBoardLoaded) {
-    //   if (prevProps.board.boardBgImage !== board.boardBgImage) {
-    //     isDarkBackground();
-    //   }
-    // } else
-    if (boardId === loadedBoard._id) {
-      setIsDarkBackground(true);
-      setIsBoardLoaded(true);
-      // isDarkBackground();
+    if (loadedBoard.boardBgImage) {
+      checkBgBrightenss(loadedBoard.boardBgImage)
     }
-    if (prevProps.loadedBoard !== loadedBoard && filterBy) {
-      filterBoard(filterBy);
-    }
-    // if (prevProps.board !== board && sortOrder) {
-    //   sortBoard();
-    // }
+  }, [loadedBoard.boardBgImage])
 
-    // isDarkBackground
-    // for depen..
-  }, [isBoardLoaded, prevProps.loadedBoard, loadedBoard, boardId, filterBy]);
+
+
+  const checkBgBrightenss = async (imageUrl) => {
+    lightOrDarkImage({
+      image: imageUrl
+    }).then(res => {
+      res === 'dark' ? setIsDarkBackground(true) : setIsDarkBackground(false);
+    });
+  }
 
   const updateBoardHandler = (board, msg, notificationType) => {
     dispatch(updateBoard(board, msg, notificationType));
@@ -194,18 +191,19 @@ const Board = () => {
     setShowTopMenuOptions(false);
   };
 
-  // isDarkBackground = async (img) => {
-  //   // const fac = new FastAverageColor();
-  //   let backgroundImage = new Image();
-  //   backgroundImage.crossOrigin = 'anonymous';
-  //   backgroundImage.src = img || board.boardBgImage;
-  //   try {
-  //     const color = await fac.getColorAsync(backgroundImage, { algorithm: 'dominant' });
-  //     (color.isDark) ? setState({ isDarkBackground: true }) : setState({ isDarkBackground: false });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
+  const isDarkBackgroundhandler = async (img) => {
+    console.log('checking image bg');
+    // const fac = new FastAverageColor();
+    // let backgroundImage = new Image();
+    // backgroundImage.crossOrigin = 'anonymous';
+    // backgroundImage.src = img || board.boardBgImage;
+    // try {
+    //   const color = await fac.getColorAsync(backgroundImage, { algorithm: 'dominant' });
+    //   (color.isDark) ? setState({ isDarkBackground: true }) : setState({ isDarkBackground: false });
+    // } catch (err) {
+    //   console.log(err);
+    // }
+  }
 
   const filterBoard = (filterBy) => {
     if (!filterBy.title && !filterBy.teamMembers) {
@@ -265,8 +263,8 @@ const Board = () => {
       {!loadedBoard._id && <LoadPage />}
       {loadedBoard._id &&
         <div className="screen" onClick={closeAllTabs}>
-         
-         {/* nav bar to change! */}
+
+          {/* nav bar to change! */}
           <div className="board-page fill-height flex column" style={{ backgroundImage: 'url(' + loadedBoard.boardBgImage + ')', backgroundAttachment: 'fixed' }}>
             <div className="board-page-nav-bar dark flex align-center space-between">
               <div className="board-page-nav-bar-logo" onClick={goBackHandler}> </div>
@@ -306,7 +304,6 @@ const Board = () => {
               goBackHandler={goBackHandler}
               loadedBoard={loadedBoard}
               filterBoard={filterBoard}
-
               setToggleBoardTeamMembers={setToggleBoardTeamMembers}
               setShowHistory={setShowHistory}
               setToggleSplashMenu={setToggleSplashMenu}
