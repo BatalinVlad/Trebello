@@ -42,6 +42,8 @@ const Board = () => {
   const [toggleBoardTeamMembers, setToggleBoardTeamMembers] = useState(false);
   const [showTopMenuOptions, setShowTopMenuOptions] = useState(true);
   const [showAddForm, setShowAddForm] = useState(false);
+  const [toggleFilterByMember, setToggleFilterByMember] = useState(false);
+
 
   // const [sortBy, setSortBy] = useState(null);
   // const [sortOrder, setSortOrder] = useState(null);
@@ -91,8 +93,6 @@ const Board = () => {
     }
   }, [loadedBoard.boardBgImage])
 
-
-
   const checkBgBrightenss = async (imageUrl) => {
     lightOrDarkImage({
       image: imageUrl
@@ -129,6 +129,7 @@ const Board = () => {
     setToggleBoardTeamMembers(false);
     setShowTopMenuOptions(false);
     setShowAddForm(false);
+    setToggleFilterByMember(false);
   };
 
   const toggleTaskDetails = (currTask) => {
@@ -186,6 +187,10 @@ const Board = () => {
     setShowTopMenuOptions(false);
   };
 
+  const toggleFilterByMemberHandler = (ev) => {
+    ev && ev.stopPropagation();
+    setToggleFilterByMember(prevState => !prevState);
+  }
 
   const filterBoardHandler = (filterBy) => {
     if (!filterBy.title && !filterBy.teamMembers) {
@@ -280,6 +285,8 @@ const Board = () => {
 
             <NavBarFilters
               isDarkBackground={isDarkBackground}
+              toggleFilterByMember={toggleFilterByMember}
+              toggleFilterByMemberHandler={toggleFilterByMemberHandler}
               goBackHandler={goBackHandler}
               loadedBoard={loadedBoard}
               filterBoardHandler={filterBoardHandler}

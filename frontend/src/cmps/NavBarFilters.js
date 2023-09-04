@@ -45,6 +45,8 @@ const NavBarFilters = props => {
                     <div style={{ background: (props.isDarkBackground) ? 'white' : 'black' }} className="board-page-nav-bar-filters-divider"></div>
 
                     <Filter
+                        toggleFilterByMember={props.toggleFilterByMember}
+                        toggleFilterByMemberHandler={props.toggleFilterByMemberHandler}
                         filterBoardHandler={props.filterBoardHandler}
                         filterBoard={props.loadedBoard}
                         teamMembers={props.loadedBoard.teamMembers}
@@ -74,7 +76,7 @@ const NavBarFilters = props => {
                             <Typography component="p" className="flex align-center justify-center p-reset">
                                 <ImageSearchOutlinedIcon style={{ marginRight: 5 }} />
                                 <span> change background </span>
-                            </Typography> 
+                            </Typography>
                         </button>
                     </div>
 
@@ -87,7 +89,7 @@ const NavBarFilters = props => {
                             <Typography component="p" className="flex align-center justify-center p-reset">
                                 <HistoryOutlinedIcon style={{ marginRight: 5 }} />
                                 <span> show history </span>
-                            </Typography> 
+                            </Typography>
                         </button>
                     </div>
                 </div>

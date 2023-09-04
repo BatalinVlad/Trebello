@@ -7,22 +7,25 @@ const Filter = props => {
     teamMembers: ''
   });
 
+  const [filterByTeamMemberName, setMemberFilterName] = useState('all');
+
   const teamMembers = props.teamMembers;
 
   const prevFilterBy = useRef(filterBy);
 
   useEffect(() => {
-
     if (filterBy !== prevFilterBy.current) {
       prevFilterBy.current = filterBy;
       props.filterBoardHandler(filterBy);
     }
-
   }, [filterBy, props]);
 
   const inputChange = (fieldName, value) => {
-    debugger
     setFilterBy((prevState) => ({ ...prevState, [fieldName]: value }));
+    if (fieldName === 'teamMembers') {
+      props.toggleFilterByMemberHandler();
+      setMemberFilterName(value);
+    }
   };
 
   return (
@@ -40,24 +43,31 @@ const Filter = props => {
         className="board-page-nav-bar-filters-divider"
       ></div>
 
-      <div className={`custom-select ${props.isDarkBackground ? 'dark' : 'light'}`}>
-        <span>filter by member</span>
-        <ul className="options">
-          <li className="filter-option pointer" onClick={() => inputChange("")} >all...</li>
-          {teamMembers.map((teamMember) => (
-            <li
-              className="filter-option pointer capitalize"
-              key={teamMember._id}
-              value={teamMember.username}
-              onClick={() => inputChange('teamMembers', teamMember.username)}
-            >
-              {teamMember.firstName} {teamMember.lastName}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <div className={`custom-select ${props.isDarkBackground ? 'dark' : 'light'}`}
+        onClick={props.toggleFilterByMemberHandler}
+      >
+        <span>{filterByTeamMemberName}</span>
 
-    </div >
+        {props.toggleFilterByMember &&
+          <ul className="options">
+            <li className={`filter-option pointer ${'all' === filterByTeamMemberName && 'filter-checked'} `}
+              onClick={() => inputChange('teamMembers', "all")} >all...</li>
+            {teamMembers.map((teamMember) => (
+              <li
+                className={`filter-option pointer ${teamMember.username === filterByTeamMemberName && 'filter-checked'} `}
+                key={teamMember._id}
+                value={teamMember.username}
+                onClick={() => inputChange('teamMembers', teamMember.username)}
+              >
+                <span className="capitalize">
+                  {teamMember.firstName} {teamMember.lastName}
+                </span>
+              </li>
+            ))}
+          </ul>
+        }
+      </div>
+    </div>
   );
 }
 
