@@ -46,10 +46,10 @@ const Filter = props => {
       <div className={`custom-select ${props.isDarkBackground ? 'dark' : 'light'}`}
         onClick={props.toggleFilterByMemberHandler}
       >
-        <span>{filterByTeamMemberName}</span>
+        <span style={{ color: props.isDarkBackground ? 'white' : 'black' }}>{filterByTeamMemberName}</span>
 
         {props.toggleFilterByMember &&
-          <ul className="options">
+          <ul className={`options ${props.isDarkBackground ? 'dark' : 'light'}`}>
             <li className={`filter-option pointer ${'all' === filterByTeamMemberName && 'filter-checked'} `}
               onClick={() => inputChange('teamMembers', "all")} >all...</li>
             {teamMembers.map((teamMember) => (

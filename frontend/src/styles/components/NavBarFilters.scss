@@ -113,7 +113,6 @@
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
-  background-color: #fff;
   color: #333;
   font-size: 12px;
   width: 100%;
@@ -125,7 +124,6 @@
   top: 38px;
   left: 0px;
   z-index: 3;
-  background-color: #fff;
   list-style: none;
   margin: 0px;
   padding: 0px;
@@ -137,6 +135,34 @@
   overflow-y: auto; /* Enable scrolling if options overflow */
 }
 
+.options.light {
+  &:hover {
+    background-color: #ffffffdc;
+  }
+  li {
+    &:hover {
+      background-color: #fffffff3;
+    }
+  }
+  .filter-checked {
+    background-color: rgba(198, 198, 198, 0.879);
+  }
+}
+
+.options.dark {
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.685);
+  }
+  li {
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.841);
+    }
+  }
+  .filter-checked {
+    background-color: rgba(24, 24, 24, 0.879);
+  }
+}
+
 .options li {
   padding: 10px;
   cursor: pointer;
@@ -145,8 +171,4 @@
   &:hover {
     background-color: rgba(208, 208, 208, 0.879);
   }
-}
-
-.filter-checked {
-  background-color: rgba(180, 180, 180, 0.879);
 }
