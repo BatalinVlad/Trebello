@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import Typography from '@mui/material/Typography';
 
 import HomeIcon from '@mui/icons-material/Home';
@@ -8,7 +8,6 @@ import HistoryOutlinedIcon from '@mui/icons-material/HistoryOutlined';
 import Filter from '../cmps/Filter';
 
 const NavBarFilters = props => {
-    const [filterIconMod, setFilterIconMod] = useState(false);
 
     const toggleSplashMenuHandler = (ev) => {
         ev.stopPropagation();
@@ -44,9 +43,13 @@ const NavBarFilters = props => {
                         <HomeIcon />
                     </button>
                     <div style={{ background: (props.isDarkBackground) ? 'white' : 'black' }} className="board-page-nav-bar-filters-divider"></div>
-                    <Filter filterBoard={props.filterBoard}
+
+                    <Filter
+                        filterBoardHandler={props.filterBoardHandler}
+                        filterBoard={props.loadedBoard}
                         teamMembers={props.loadedBoard.teamMembers}
                         isDarkBackground={props.isDarkBackground} />
+
                     <div style={{ background: (props.isDarkBackground) ? 'white' : 'black' }} className="board-page-nav-bar-filters-divider"></div>
                 </div>
 
@@ -55,12 +58,10 @@ const NavBarFilters = props => {
                         <button
                             className={`nav-btn fill-height capitalize ${(props.isDarkBackground) ? 'dark' : 'light'}`}
                             onClick={toggleBoardTeamMembersHandler}>
-                            {!props.filterIconMod ? <Typography component="p" className="flex align-center justify-center p-reset">
+                            <Typography component="p" className="flex align-center justify-center p-reset">
                                 <GroupAddOutlinedIcon style={{ marginRight: '4px' }} />
                                 <span>add members </span>
-                            </Typography> :
-                                <GroupAddOutlinedIcon />
-                            }
+                            </Typography>
                         </button>
                     </div>
 
@@ -70,11 +71,10 @@ const NavBarFilters = props => {
                         <button
                             className={`nav-btn fill-height capitalize ${(props.isDarkBackground) ? 'dark' : 'light'}`}
                             onClick={(ev) => toggleSplashMenuHandler(ev)}>
-                            {!props.filterIconMod ? <Typography component="p" className="flex align-center justify-center p-reset">
+                            <Typography component="p" className="flex align-center justify-center p-reset">
                                 <ImageSearchOutlinedIcon style={{ marginRight: 5 }} />
                                 <span> change background </span>
-                            </Typography> :
-                                <ImageSearchOutlinedIcon />}
+                            </Typography> 
                         </button>
                     </div>
 
@@ -84,12 +84,10 @@ const NavBarFilters = props => {
                         <button
                             className={`nav-btn fill-height capitalize ${(props.isDarkBackground) ? 'dark' : 'light'}`}
                             onClick={toggleBoardHistoryHandler}>
-                            {!filterIconMod ? <Typography component="p" className="flex align-center justify-center p-reset">
+                            <Typography component="p" className="flex align-center justify-center p-reset">
                                 <HistoryOutlinedIcon style={{ marginRight: 5 }} />
                                 <span> show history </span>
-                            </Typography> :
-                                <HistoryOutlinedIcon />
-                            }
+                            </Typography> 
                         </button>
                     </div>
                 </div>

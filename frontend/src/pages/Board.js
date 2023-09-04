@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { store } from 'react-notifications-component';
 // import FastAverageColor from 'fast-average-color';
 import { CSSTransition } from 'react-transition-group';
@@ -45,13 +45,13 @@ const Board = () => {
 
   // const [sortBy, setSortBy] = useState(null);
   // const [sortOrder, setSortOrder] = useState(null);
-  const [filterBy, setFilterBy] = useState(null);
+  // const [filterBy, setFilterBy] = useState(null);
 
   const [miniTaskDetails, setMiniTaskDetails] = useState({});
   const [currColumnId, setCurrColumnId] = useState('');
-  // const [isBoardLoaded, setIsBoardLoaded] = useState(false);
   const [isDarkBackground, setIsDarkBackground] = useState(true); // change it later with new package
-  const [filterIconMod, setFilterIconMod] = useState(false);
+  // const [filterIconMod, setFilterIconMod] = useState(false);
+  // const []
   const [mobileMod, setMobileMod] = useState(false);
   const [currTaskDetails, setCurrTaskDetails] = useState(null)
   const loadedBoard = useSelector(state => state.boards.board);
@@ -60,7 +60,7 @@ const Board = () => {
 
   // const prevProps = useRef(loadedBoard);
 
-  const boardToShow = (filteredBoard) ? filteredBoard : loadedBoard;
+  // const boardToShow = (filteredBoard) ? filteredBoard : loadedBoard;
   // we will have state and useEffect for filter..
 
   const navigate = useNavigate();
@@ -71,16 +71,19 @@ const Board = () => {
 
 
   useEffect(() => {
-    dispatch(getUsers());
-    dispatch(getLoggedInUser());
-    dispatch(loadBoard(boardType, boardId));
-    resize();
-    window.addEventListener('resize', resize);
+    if (filteredBoard) console.log('there is filtered board')
+    else {
+      dispatch(getUsers());
+      dispatch(getLoggedInUser());
+      dispatch(loadBoard(boardType, boardId));
+      resize();
+      window.addEventListener('resize', resize);
 
-    SocketService.setup();
-    SocketService.emit('boardId', boardId);
-    SocketService.on('updateBoard', (loadedBoard) => dispatch(setBoard(loadedBoard)));
-    SocketService.on('getNotification', (notification) => store.addNotification(notification));
+      SocketService.setup();
+      SocketService.emit('boardId', boardId);
+      SocketService.on('updateBoard', (loadedBoard) => dispatch(setBoard(loadedBoard)));
+      SocketService.on('getNotification', (notification) => store.addNotification(notification));
+    }
 
     return () => {
       window.removeEventListener('resize', resize);
@@ -88,13 +91,16 @@ const Board = () => {
       SocketService.off('getNotification');
       SocketService.terminate();
     };
-  }, [dispatch, boardId]);
+  }, [dispatch, boardId, boardType , filteredBoard]);
+
 
   useEffect(() => {
     if (loadedBoard.boardBgImage) {
       checkBgBrightenss(loadedBoard.boardBgImage)
     }
-  }, [loadedBoard.boardBgImage])
+
+    if (filteredBoard) console.log('there is filtred board');
+  }, [loadedBoard.boardBgImage, filteredBoard])
 
 
 
@@ -191,28 +197,15 @@ const Board = () => {
     setShowTopMenuOptions(false);
   };
 
-  const isDarkBackgroundhandler = async (img) => {
-    console.log('checking image bg');
-    // const fac = new FastAverageColor();
-    // let backgroundImage = new Image();
-    // backgroundImage.crossOrigin = 'anonymous';
-    // backgroundImage.src = img || board.boardBgImage;
-    // try {
-    //   const color = await fac.getColorAsync(backgroundImage, { algorithm: 'dominant' });
-    //   (color.isDark) ? setState({ isDarkBackground: true }) : setState({ isDarkBackground: false });
-    // } catch (err) {
-    //   console.log(err);
-    // }
-  }
 
-  const filterBoard = (filterBy) => {
+  const filterBoardHandler = (filterBy) => {
     if (!filterBy.title && !filterBy.teamMembers) {
       setFilteredBoard(null);
       return;
     }
 
-    setFilterBy(filterBy);
-    const clonedBoard = _.cloneDeep(loadBoard);
+    // setFilterBy(filterBy);
+    const clonedBoard = _.cloneDeep(loadedBoard);
     const tasks = clonedBoard.tasks;
     const columns = { ...clonedBoard.columns };
     const matchedIds = [];
@@ -250,7 +243,7 @@ const Board = () => {
   };
 
   const resize = () => {
-    setFilterIconMod(window.innerWidth < 1075);
+    // setFilterIconMod(window.innerWidth < 1075);
     setMobileMod(window.innerWidth < 550);
   };
 
@@ -303,7 +296,7 @@ const Board = () => {
               isDarkBackground={isDarkBackground}
               goBackHandler={goBackHandler}
               loadedBoard={loadedBoard}
-              filterBoard={filterBoard}
+              filterBoardHandler={filterBoardHandler}
               setToggleBoardTeamMembers={setToggleBoardTeamMembers}
               setShowHistory={setShowHistory}
               setToggleSplashMenu={setToggleSplashMenu}

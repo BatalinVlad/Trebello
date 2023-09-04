@@ -22,7 +22,7 @@ export default class VideoPreview extends Component {
     }
 
     render() {
-        const { task, provided, innerRef, isDragging, style, showEditBtn, onTaskId } = this.props;
+        const { task, provided, innerRef , style, showEditBtn, onTaskId } = this.props;
         return (
             <section ref={this.videoContainer}>
                 <div
@@ -73,7 +73,7 @@ export default class VideoPreview extends Component {
                             {(task.taskTeamMembers.map(member => {
                                 return <div key={member._id} className="team-member-icon-wrapper flex align-center" style={{ backgroundColor: '#dfe1e6' }} >
                                     <div className="team-member-icon">
-                                        <p className="flex align-center" style={{ color: '#172b4d' }}>
+                                        <p className="flex align-center uppercase" style={{ color: '#172b4d' }}>
                                             {utils.createUserIcon(member.firstName,
                                                 member.lastName)}
                                         </p>
