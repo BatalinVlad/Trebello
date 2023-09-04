@@ -45,45 +45,36 @@ const Board = () => {
 
   // const [sortBy, setSortBy] = useState(null);
   // const [sortOrder, setSortOrder] = useState(null);
-  // const [filterBy, setFilterBy] = useState(null);
 
   const [miniTaskDetails, setMiniTaskDetails] = useState({});
   const [currColumnId, setCurrColumnId] = useState('');
   const [isDarkBackground, setIsDarkBackground] = useState(true); // change it later with new package
-  // const [filterIconMod, setFilterIconMod] = useState(false);
-  // const []
   const [mobileMod, setMobileMod] = useState(false);
   const [currTaskDetails, setCurrTaskDetails] = useState(null)
+
   const loadedBoard = useSelector(state => state.boards.board);
   const loggedInUser = useSelector(state => state.user.loggedInUser);
   const users = useSelector(state => state.user.users);
 
-  // const prevProps = useRef(loadedBoard);
-
-  // const boardToShow = (filteredBoard) ? filteredBoard : loadedBoard;
-  // we will have state and useEffect for filter..
+  const boardToShow = filteredBoard ? filteredBoard : loadedBoard;
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const boardId = useParams().id;
   const boardType = useParams().type;
 
 
   useEffect(() => {
-    if (filteredBoard) console.log('there is filtered board')
-    else {
-      dispatch(getUsers());
-      dispatch(getLoggedInUser());
-      dispatch(loadBoard(boardType, boardId));
-      resize();
-      window.addEventListener('resize', resize);
+    dispatch(getUsers());
+    dispatch(getLoggedInUser());
+    dispatch(loadBoard(boardType, boardId));
+    // resize();
+    window.addEventListener('resize', resize);
 
-      SocketService.setup();
-      SocketService.emit('boardId', boardId);
-      SocketService.on('updateBoard', (loadedBoard) => dispatch(setBoard(loadedBoard)));
-      SocketService.on('getNotification', (notification) => store.addNotification(notification));
-    }
+    SocketService.setup();
+    SocketService.emit('boardId', boardId);
+    SocketService.on('updateBoard', (loadedBoard) => dispatch(setBoard(loadedBoard)));
+    SocketService.on('getNotification', (notification) => store.addNotification(notification));
 
     return () => {
       window.removeEventListener('resize', resize);
@@ -91,16 +82,14 @@ const Board = () => {
       SocketService.off('getNotification');
       SocketService.terminate();
     };
-  }, [dispatch, boardId, boardType , filteredBoard]);
+  }, [dispatch, boardId, boardType]);
 
 
   useEffect(() => {
     if (loadedBoard.boardBgImage) {
       checkBgBrightenss(loadedBoard.boardBgImage)
     }
-
-    if (filteredBoard) console.log('there is filtred board');
-  }, [loadedBoard.boardBgImage, filteredBoard])
+  }, [loadedBoard.boardBgImage])
 
 
 
@@ -199,12 +188,12 @@ const Board = () => {
 
 
   const filterBoardHandler = (filterBy) => {
+    console.log('test');
     if (!filterBy.title && !filterBy.teamMembers) {
       setFilteredBoard(null);
       return;
     }
 
-    // setFilterBy(filterBy);
     const clonedBoard = _.cloneDeep(loadedBoard);
     const tasks = clonedBoard.tasks;
     const columns = { ...clonedBoard.columns };
@@ -243,7 +232,6 @@ const Board = () => {
   };
 
   const resize = () => {
-    // setFilterIconMod(window.innerWidth < 1075);
     setMobileMod(window.innerWidth < 550);
   };
 
@@ -253,8 +241,8 @@ const Board = () => {
 
   return (
     <React.Fragment>
-      {!loadedBoard._id && <LoadPage />}
-      {loadedBoard._id &&
+      {!boardToShow._id && <LoadPage />}
+      {boardToShow._id &&
         <div className="screen" onClick={closeAllTabs}>
 
           {/* nav bar to change! */}
@@ -337,8 +325,7 @@ const Board = () => {
                 {
                   // boardToShow._id &&
                   <BoardColumns
-                    board={loadedBoard}
-                    boardToShow={loadedBoard} // BoardToShow now temporery 
+                    board={boardToShow}
                     updateBoard={updateBoardHandler}
                     toggleTaskDetails={toggleTaskDetails}
                     toggleMiniDetails={toggleMiniDetails}
@@ -359,7 +346,7 @@ const Board = () => {
                       onClick={toggleAddColumn}>
                       <span className="add-icon">+</span>Add another list</button>
                   }
-                  {showColAddForm && <ColumnAddForm board={loadedBoard} updateBoard={updateBoardHandler}
+                  {showColAddForm && <ColumnAddForm board={boardToShow} updateBoard={updateBoardHandler}
                     toggleAddForm={toggleAddColumn} user={loggedInUser ? loggedInUser.username : 'Guest'} />}
                 </div>
               </div>
@@ -369,7 +356,7 @@ const Board = () => {
               showTaskDetails &&
               <TaskDetails
                 taskId={currTaskDetails.id}
-                board={loadedBoard}
+                board={boardToShow}
                 column={currTaskDetails.column}
                 updateBoard={updateBoardHandler}
                 toggleTaskDetails={toggleTaskDetails}
@@ -380,7 +367,7 @@ const Board = () => {
                 miniTask={miniTaskDetails}
                 updateBoard={updateBoardHandler}
                 onToggle={toggleMiniDetails}
-                board={loadedBoard}
+                board={boardToShow}
                 user={loggedInUser ? loggedInUser.username : 'Guest'}
               />}
             <CSSTransition
@@ -390,7 +377,7 @@ const Board = () => {
               unmountOnExit
             >
               <BoardHistory variant="outlined"
-                className="home-page-login" history={loadedBoard.history} />
+                className="home-page-login" history={boardToShow.history} />
             </CSSTransition>
             <CSSTransition
               in={toggleBoardTeamMembers}
@@ -398,7 +385,7 @@ const Board = () => {
               classNames="modal"
               unmountOnExit
             >
-              <BoardTeamMembers board={loadedBoard}
+              <BoardTeamMembers board={boardToShow}
                 users={users}
                 updateBoard={updateBoardHandler} />
             </CSSTransition>

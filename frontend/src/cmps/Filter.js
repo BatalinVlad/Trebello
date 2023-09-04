@@ -1,16 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useRef} from 'react';
 
 const Filter = props => {
-
+  
   const [filterBy, setFilterBy] = useState({
     title: '',
     teamMembers: ''
   });
-
+  
   const teamMembers = props.teamMembers;
 
+  const prevFilterBy = useRef(filterBy);
+
   useEffect(() => {
-    props.filterBoardHandler(filterBy);
+
+    if (filterBy !== prevFilterBy.current) {
+      prevFilterBy.current = filterBy;
+      props.filterBoardHandler(filterBy);
+    }
+    
   }, [filterBy, props]);
 
   const inputChange = (ev) => {
