@@ -245,9 +245,8 @@ const Board = () => {
       {boardToShow._id &&
         <div className="screen" onClick={closeAllTabs}>
 
-          {/* nav bar to change! */}
           <div className="board-page fill-height flex column" style={{ backgroundImage: 'url(' + loadedBoard.boardBgImage + ')', backgroundAttachment: 'fixed' }}>
-            <div className="board-page-nav-bar dark flex align-center space-between">
+            <div className="board-page-nav-bar flex align-center space-between">
               <div className="board-page-nav-bar-logo" onClick={goBackHandler}> </div>
               <div className="flex align-center">
                 {loggedInUser &&
@@ -323,7 +322,6 @@ const Board = () => {
                     toggleState={toggleLogin} />
                 </CSSTransition>
                 {
-                  // boardToShow._id &&
                   <BoardColumns
                     board={boardToShow}
                     updateBoard={updateBoardHandler}

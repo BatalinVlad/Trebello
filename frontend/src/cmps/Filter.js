@@ -26,12 +26,6 @@ const Filter = props => {
     setFilterBy((prevState) => ({ ...prevState, [fieldName]: value }));
   };
 
-  // inputChange = (ev) => {
-  //     let fieldName = ev.target.name;
-  //     let value = ev.target.value;
-  //     this.setState(prevState => ({ filterBy: { ...prevState.filterBy, [fieldName]: value } }), () => this.props.filterBoard(this.state.filterBy));
-  // }
-
   return (
     <div className="board-page-nav-bar-filters-item all-filters flex justify-end">
       <input
@@ -52,7 +46,6 @@ const Filter = props => {
         name="teamMembers"
         style={{
           color: props.isDarkBackground ? 'white' : 'black',
-          // background: props.isDarkBackground ? '#0000006b' : '#ffffff8e'
         }}
         className={`${props.isDarkBackground ? 'dark' : 'light'}`}
         onChange={inputChange}

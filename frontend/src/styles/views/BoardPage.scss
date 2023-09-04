@@ -37,9 +37,9 @@
       border-radius: 4px;
       transition: 0.3s;
 
-      &:hover {
-        background-color: #686868d3;
-      }
+      // &:hover {
+      //   background-color: #686868d3;
+      // }
     }
 
     &-logo {
@@ -100,14 +100,18 @@
 .dark {
   color: white;
   background-color: rgba(0, 0, 0, 0.685);
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.827);
+  }
 }
 
 .light {
   color: black;
-  background-color: #ffffffb3;
+  background-color: #ffffffdc;
 
   &:hover {
-    background-color: #ffffffdb;
+    background-color: #ffffffe7;
   }
 }
 
