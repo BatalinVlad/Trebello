@@ -188,7 +188,6 @@ const Board = () => {
 
 
   const filterBoardHandler = (filterBy) => {
-    console.log('test');
     if (!filterBy.title && !filterBy.teamMembers) {
       setFilteredBoard(null);
       return;

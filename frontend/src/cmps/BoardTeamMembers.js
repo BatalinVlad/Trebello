@@ -39,10 +39,10 @@ export default class BoardTeamMembers extends Component {
         const users = this.props.users.filter(user => !currentBoardMembers.find(boardMember => user._id === boardMember._id));
         return (
             <div className="board-team-members-container text-center column"
-               onClick={(ev) => this.onStopPropagation(ev)}>
+                onClick={(ev) => this.onStopPropagation(ev)}>
 
-                <div className="members-container-colors-container flex column">
-                    <div className="pointer uppercase"><h2>board members :</h2></div>
+                <div className="members-onboard flex column">
+                    <h2 className="fs14">board members :</h2>
                     <hr />
                     {this.state.currentBoardMembers.map(teamMember => {
                         return (
@@ -50,7 +50,7 @@ export default class BoardTeamMembers extends Component {
                                 onClick={() => this.updateTeamMembers(teamMember)}>
                                 <div className="team-member-icon-wrapper flex align-center justify-center" style={{ backgroundColor: '#dfe1e6', color: '#172b4d' }} >
                                     <div className="team-member-icon">
-                                        <p className="capitalize" style={{ color: '#172b4d' }}>
+                                        <p className="uppercase" style={{ color: '#172b4d' }}>
                                             {utils.createUserIcon(teamMember.firstName, teamMember.lastName)}
                                         </p>
                                     </div>
@@ -62,7 +62,8 @@ export default class BoardTeamMembers extends Component {
                 </div>
 
                 <div className="add-team-members flex column">
-                    <p className="pointer uppercase">add / remove users</p>
+                    <h2 className='fs14'>add / remove users</h2>
+                    <hr />
                     {users.map(user => {
                         return (
                             <div key={user._id} className="team-member flex align-center"

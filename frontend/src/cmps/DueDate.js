@@ -3,11 +3,6 @@ import CloseIcon from '@mui/icons-material/Close';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
-// import { updateBoard } from '../actions/BoardActions';
-// import { useDispatch } from 'react-redux';
-
-
-
 export default class DueDate extends React.Component {
     
     state = {

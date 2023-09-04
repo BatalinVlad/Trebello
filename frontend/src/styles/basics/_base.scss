@@ -95,6 +95,32 @@ input {
   }
 }
 
+select {
+  /* Reset all default styles */
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+select:hover {
+  background-color: transparent; /* Set the background to transparent on hover */
+  outline: none; /* Remove the outline on hover (focus) */
+  /* Add any other styles you want for the hover state */
+}
+
+select option:hover {
+  background-color: transparent;
+  /* Add any other styles you want for the hover state of options */
+}
+
+
+
 label {
   cursor: pointer;
   font-family: montserratBold, "sans-sarif";
