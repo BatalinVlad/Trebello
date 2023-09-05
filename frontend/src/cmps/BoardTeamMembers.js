@@ -71,7 +71,7 @@ export default class BoardTeamMembers extends Component {
                                 <div className="team-member-icon-wrapper flex align-center justify-center"
                                     style={{ backgroundColor: '#dfe1e6' }}>
                                     <div className="team-member-icon">
-                                        <p className="capitalize" style={{ color: '#172b4d' }}>
+                                        <p className="uppercase" style={{ color: '#172b4d' }}>
                                             {utils.createUserIcon(user.firstName, user.lastName)}
                                         </p>
                                     </div>
