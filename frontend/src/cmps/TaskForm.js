@@ -57,6 +57,7 @@ const TaskForm = props => {
         checkIfUrlAndSave(task.title);
     };
 
+    //Need to move to Utils
     const checkIfUrlAndSave = (url) => {
         const videoIdMatch = url.match(/(?:\?v=|\/embed\/|\/watch\?v=|\/\d{11}\/|\/\d{11}$)([a-zA-Z0-9_-]{11})/);
         const imgREGEX = /.(jpg|jpeg|png|gif)\/?$/;
@@ -71,7 +72,6 @@ const TaskForm = props => {
         } else {
             saveTask()
         }
-
     };
 
     const saveTask = (newTask = null) => {

@@ -35,11 +35,13 @@ export default class TaskDetails extends Component {
         toggleChooseLabels: false,
         toggleChooseMembers: false,
         toggleTodos: false,
-        onToggleDueDate: false,
+        toggleDueDate: false,
         toggleDeleteTodo: false,
+        toggleUploadImage: false,
         progressWidth: 0,
         currTodoId: '',
-        taskTitle: ''
+        taskTitle: '',
+        imageLink: ''
     }
 
     componentDidMount() {
@@ -58,7 +60,12 @@ export default class TaskDetails extends Component {
 
     onToggleDueDate = ev => {
         ev && ev.stopPropagation();
-        this.setState(prevState => ({ onToggleDueDate: !prevState.onToggleDueDate }));
+        this.setState(prevState => !prevState);
+    }
+
+    toggleUploadImageHandler = ev => {
+        ev && ev.stopPropagation();
+        this.setState(prevState => ({ toggleUploadImage: !prevState.toggleUploadImage }))
     }
 
 
@@ -69,10 +76,11 @@ export default class TaskDetails extends Component {
     onStopPropagationAndCloseOptions = (ev) => {
         ev.stopPropagation();
         this.setState({
-            onToggleDueDate: false,
+            toggleDueDate: false,
             toggleTodos: false,
             toggleChooseLabels: false,
-            toggleChooseMembers: false
+            toggleChooseMembers: false,
+            toggleUploadImage: false
         })
     }
 
@@ -226,10 +234,6 @@ export default class TaskDetails extends Component {
         this.setState({ taskTitle: taskTitle });
     }
 
-    // emitChange = (ev) => {
-    //     this.setState({ taskTitle: ev.target.innerText });
-    // }
-
     changeDescription = (ev) => {
         this.setState({ description: ev.target.value });
     }
@@ -246,14 +250,26 @@ export default class TaskDetails extends Component {
         this.props.updateBoard(updatedBoard, msg, notificationType);
     }
 
+    handleImageLinkChange = ev => {
+        this.setState({ imageLink: ev.target.value });
+    }
 
+    checkImageLink = () => {
+        const imgREGEX = /.(jpg|jpeg|png|gif)\/?$/;
+        if (this.state.imageLink.match(imgREGEX)) this.uploadTaskImage();
+    }
 
-    uploadImage = async (ev) => {
+    uploadTaskImage = async (ev) => {
         const task = this.props.board.tasks[this.props.taskId];
         const newColumn = { ...this.props.column }
         newColumn.taskIds = this.props.column.taskIds.slice();
-        const file = ev.target.files[0];
-        const imageUrl = await utils.uploadImg(file)
+        let imageUrl = '';
+        if (ev) {
+            const file = ev.target.files[0];
+            imageUrl = await utils.uploadImg(file)
+        } else {
+            imageUrl = this.state.imageLink;
+        }
         const newTask = { ...task }
         newTask.type = 'image';
         newTask.url = imageUrl;
@@ -420,7 +436,7 @@ export default class TaskDetails extends Component {
                                     <p>{moment(task.dueDate).format("MMMM Do YYYY, hh:mm a")}</p> :
                                     <p>This task doesn't have a due date yet</p>
                                 }
-                                {this.state.onToggleDueDate ? <DueDate
+                                {this.state.toggleDueDate ? <DueDate
                                     task={task}
                                     onToggle={this.onToggleDueDate}
                                     board={this.props.board}
@@ -479,13 +495,31 @@ export default class TaskDetails extends Component {
                                         <EventOutlinedIcon />
                                         <p className="capitalize">due date</p>
                                     </div>
-                                    <input style={{ display: "none" }} type="file" id="upload-img-2" onChange={ev => this.uploadImage(ev)}></input>
-                                    <label className="task-details-container-add-to-card-options-btn flex align-center" htmlFor="upload-img-2">
+                                    <div className="task-details-container-add-to-card-options-btn flex align-center"
+                                        onClick={ev => this.toggleUploadImageHandler(ev)}>
                                         <ImageOutlinedIcon />
-                                        <p className="capitalize">
+                                        <p className="capitalize ">
                                             upload image
                                         </p>
-                                    </label>
+                                    </div>
+                                    {this.state.toggleUploadImage &&
+                                        <div className="upload-tasl-image__wraper relative"
+                                            onClick={ev => ev.stopPropagation()}>
+                                            <input style={{ display: "none" }} type="file" id="upload-img-2" onChange={ev => this.uploadTaskImage(ev)}></input>
+                                            <div className="upload-task-image__container absolute">
+                                                <label className="" htmlFor="upload-img-2">
+                                                    <span className="text-center"> add file </span>
+                                                </label>
+                                                <div className="flex">
+                                                    <input type='text'
+                                                        placeholder='https://example.com/example.jpg'
+                                                        value={this.state.imageLink}
+                                                        onChange={ev => this.handleImageLinkChange(ev)} />
+                                                    <button onClick={this.checkImageLink}>ok</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
                                 </div>
                             </div>
 
