@@ -138,6 +138,7 @@ const Board = () => {
   };
 
   const onAddImg = async (ev) => {
+    debugger
     const file = ev.target.files[0];
     try {
       const res = await utils.uploadImg(file);

@@ -378,32 +378,35 @@ export default class TaskDetails extends Component {
                                 />
                                 <h2>Checklist</h2>
 
-                                {task.todos ?
-                                    <div className="check-list-container flex column">
-                                        {task.todos.map(todo => {
-                                            return <div key={todo.id} className="todo-item flex align-center space-between" onMouseEnter={() => this.showDeleteTodoButton(todo.id)}
-                                                onMouseLeave={() => this.hideDeleteTodoButton(todo.id)}>
-                                                <div className="flex align-center">
-                                                    <input type="checkbox" onChange={() => this.toggleTodoDone(todo)} checked={todo.isDone ? 'checked' : ''}>
-                                                    </input>
-                                                    <p className={todo.isDone ? "text-decoration" : ""}>
-                                                        {todo.text}
-                                                    </p>
+                                {task.todos &&
+                                    <div className="check-list-container-wrapper">
+                                        <div className="check-list-container flex column">
+                                            {task.todos.map(todo => {
+                                                return <div key={todo.id} className="todo-item flex align-center space-between" onMouseEnter={() => this.showDeleteTodoButton(todo.id)}
+                                                    onMouseLeave={() => this.hideDeleteTodoButton(todo.id)}>
+                                                    <div className="flex align-center">
+                                                        <input type="checkbox" onChange={() => this.toggleTodoDone(todo)} checked={todo.isDone ? 'checked' : ''}>
+                                                        </input>
+                                                        <p className={todo.isDone ? "text-decoration" : ""}>
+                                                            {todo.text}
+                                                        </p>
+                                                    </div>
+                                                    <DeleteOutlineIcon
+                                                        onClick={() => this.deleteTodo(todo.id)}
+                                                        className="pointer delete-btn"
+                                                        style={{ display: this.state.toggleDeleteTodo && this.state.currTodoId === todo.id ? 'block' : 'none' }}
+                                                    />
                                                 </div>
-                                                <DeleteOutlineIcon
-                                                    onClick={() => this.deleteTodo(todo.id)}
-                                                    className="pointer delete-btn"
-                                                    style={{ display: this.state.toggleDeleteTodo && this.state.currTodoId === todo.id ? 'block' : 'none' }}
-                                                />
-                                            </div>
-                                        })
-                                        }
+                                            })
+                                            }
+                                        </div>
                                         <div className="check-list-progress">
-                                            <div className="progress fill-height flex align-center" style={{ width: this.state.progressWidth + "%" }} >
+                                            <div className="progress fill-height flex align-center" style={{ width: this.state.progressWidth + "%", color: 'black' }} >
                                                 <small className="fill-width text-center">{this.state.progressWidth + "%"}</small>
                                             </div>
                                         </div>
-                                    </div> : ''
+                                    </div>
+
                                 }
                             </div>
                             <div className="task-details-container-duedate-container">
