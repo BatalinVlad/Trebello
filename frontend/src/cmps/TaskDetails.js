@@ -226,9 +226,9 @@ export default class TaskDetails extends Component {
         this.setState({ taskTitle: taskTitle });
     }
 
-    emitChange = (ev) => {
-        this.setState({ taskTitle: ev.target.innerText });
-    }
+    // emitChange = (ev) => {
+    //     this.setState({ taskTitle: ev.target.innerText });
+    // }
 
     changeDescription = (ev) => {
         this.setState({ description: ev.target.value });

@@ -102,6 +102,7 @@ const Board = () => {
   }
 
   const updateBoardHandler = (board, msg, notificationType) => {
+    if(filteredBoard) return;
     dispatch(updateBoard(board, msg, notificationType));
   }
 
@@ -152,12 +153,6 @@ const Board = () => {
       console.error(error);
     }
   };
-
-  // const onSortHandler = (sortBy, sortOrder) => {
-  //   setSortBy(sortBy);
-  //   setSortOrder(sortOrder);
-  //   sortBoard();
-  // };
 
   const toggleMiniDetails = (miniTask) => {
     if (miniTask) {
