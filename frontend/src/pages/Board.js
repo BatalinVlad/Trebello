@@ -193,7 +193,7 @@ const Board = () => {
   }
 
   const filterBoardHandler = (filterBy) => {
-    if (!filterBy.title && !filterBy.teamMembers) {
+    if (!filterBy.title && filterBy.teamMembers === 'all') {
       setFilteredBoard(null);
       return;
     }

@@ -51,13 +51,13 @@ const Filter = props => {
         {props.toggleFilterByMember &&
           <ul className={`options ${props.isDarkBackground ? 'dark' : 'light'}`}>
             <li className={`filter-option pointer ${'all' === filterByTeamMemberName && 'filter-checked'} `}
-              onClick={() => inputChange('teamMembers', "all")} >all...</li>
+              onClick={(ev) => inputChange('teamMembers', "all" ,  ev.stopPropagation() )} >all...</li>
             {teamMembers.map((teamMember) => (
               <li
                 className={`filter-option pointer ${teamMember.username === filterByTeamMemberName && 'filter-checked'} `}
                 key={teamMember._id}
                 value={teamMember.username}
-                onClick={() => inputChange('teamMembers', teamMember.username)}
+                onClick={(ev) => inputChange('teamMembers', teamMember.username , ev.stopPropagation() )}
               >
                 <span className="capitalize">
                   {teamMember.firstName} {teamMember.lastName}
