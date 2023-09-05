@@ -1,9 +1,7 @@
 .board-page {
   position: relative;
-  // background-image: url(../images/board-bg.jpg);
   background-size: cover;
-  background-position-x: center;
-  background-position-y: center;
+  background-position: center;
   height: 100vh;
 
   &-nav-bar {
@@ -27,15 +25,6 @@
     .MuiSvgIcon-root {
       color: white;
       cursor: pointer;
-    }
-
-    .nav-btn {
-      padding: 10px 15px;
-      background-color: #2020207e;
-      color: white;
-      text-transform: uppercase;
-      border-radius: 4px;
-      transition: 0.3s;
     }
 
     &-logo {
@@ -92,22 +81,3 @@
   line-height: 20px;
   margin-right: 2px;
 }
-
-.dark {
-  color: white;
-  background-color: rgba(0, 0, 0, 0.685);
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.827);
-  }
-}
-
-.light {
-  color: black;
-  background-color: #ffffffdc;
-
-  &:hover {
-    background-color: #ffffff;
-  }
-}
-
