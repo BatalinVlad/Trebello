@@ -102,7 +102,7 @@ const Board = () => {
   }
 
   const updateBoardHandler = (board, msg, notificationType) => {
-    if(filteredBoard) return;
+    if (filteredBoard) return;
     dispatch(updateBoard(board, msg, notificationType));
   }
 
@@ -245,6 +245,11 @@ const Board = () => {
         <div className="screen" onClick={closeAllTabs}>
 
           <div className="board-page fill-height flex column" style={{ backgroundImage: 'url(' + loadedBoard.boardBgImage + ')', backgroundAttachment: 'fixed' }}>
+            {filteredBoard &&
+              <div className="filter-modal__message fill-width flex justify-center absolute" style={ {color: isDarkBackground? 'white' : 'black'} }>
+                <p> You cannot make changes while filtering.. </p>
+              </div>
+            }
             <div className="board-page-nav-bar flex align-center space-between">
               <div className="board-page-nav-bar-logo" onClick={goBackHandler}> </div>
               <div className="flex align-center">
