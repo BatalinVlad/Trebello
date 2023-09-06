@@ -495,31 +495,31 @@ export default class TaskDetails extends Component {
                                         <EventOutlinedIcon />
                                         <p className="capitalize">due date</p>
                                     </div>
-                                    <div className="task-details-container-add-to-card-options-btn flex align-center"
+                                    <div className="task-details-container-add-to-card-options-btn flex align-center relative"
                                         onClick={ev => this.toggleUploadImageHandler(ev)}>
                                         <ImageOutlinedIcon />
                                         <p className="capitalize ">
                                             upload image
                                         </p>
-                                    </div>
-                                    {this.state.toggleUploadImage &&
-                                        <div className="upload-tasl-image__wraper relative"
-                                            onClick={ev => ev.stopPropagation()}>
-                                            <input style={{ display: "none" }} type="file" id="upload-img-2" onChange={ev => this.uploadTaskImage(ev)}></input>
-                                            <div className="upload-task-image__container absolute">
-                                                <label className="" htmlFor="upload-img-2">
-                                                    <span className="text-center"> add file </span>
-                                                </label>
-                                                <div className="flex">
-                                                    <input type='text'
-                                                        placeholder='https://example.com/example.jpg'
-                                                        value={this.state.imageLink}
-                                                        onChange={ev => this.handleImageLinkChange(ev)} />
-                                                    <button onClick={this.checkImageLink}>ok</button>
+                                        {this.state.toggleUploadImage &&
+                                            <div className="upload-tasl-image__wraper absolute"
+                                                onClick={ev => ev.stopPropagation()}>
+                                                <input style={{ display: "none" }} type="file" id="upload-img-2" onChange={ev => this.uploadTaskImage(ev)}></input>
+                                                <div className="upload-task-image__container absolute">
+                                                    <label className="" htmlFor="upload-img-2">
+                                                        <span className="text-center"> add file </span>
+                                                    </label>
+                                                    <div className="flex" style={{marginTop : '5px'}}>
+                                                        <input type='text'
+                                                            placeholder='https://example.com/example.jpg'
+                                                            value={this.state.imageLink}
+                                                            onChange={ev => this.handleImageLinkChange(ev)} />
+                                                        <button onClick={this.checkImageLink}>ok</button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    }
+                                        }
+                                    </div>
                                 </div>
                             </div>
 
