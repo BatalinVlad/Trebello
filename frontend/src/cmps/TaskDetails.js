@@ -50,8 +50,7 @@ export default class TaskDetails extends Component {
     }
 
     emitChange = (ev) => {
-        const targetValue = ev.target.value;
-        this.setState({ description: targetValue });
+        this.setState({ taskTitle: ev.target.innerText });
     }
 
     openUpdateDescriptionForm = () => {
