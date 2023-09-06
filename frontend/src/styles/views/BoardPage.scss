@@ -4,16 +4,6 @@
   background-position: center;
   height: 100vh;
 
-  .filter-modal__message {
-    p {
-      font-weight: bold;
-      margin-top: 10px;
-      padding: 5px 10px;
-      background: black;
-      border-radius: 5px;
-    }
-  }
-
   &-nav-bar {
     background-color: #0000005c;
     padding: 10px;
@@ -90,4 +80,22 @@
   font-size: 16px;
   line-height: 20px;
   margin-right: 2px;
+}
+
+// modals
+.filter-modal__message {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  color: white;
+  z-index: 3;
+  padding: 10px;
+  background: #000000ab;
+  border-radius: 5px;
+  border: 1px solid #83838375;
+  box-shadow: 0px 0px 5px 0px #adadad6e;
+  @media (max-width: 600px) {
+    width: 110px;
+    font-size: 10px;
+  }
 }

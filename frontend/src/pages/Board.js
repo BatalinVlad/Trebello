@@ -243,13 +243,11 @@ const Board = () => {
       {!boardToShow._id && <LoadPage />}
       {boardToShow._id &&
         <div className="screen" onClick={closeAllTabs}>
+          {filteredBoard &&
+            <p className="filter-modal__message"> You cannot make changes while filtering.. </p>
+          }
 
           <div className="board-page fill-height flex column" style={{ backgroundImage: 'url(' + loadedBoard.boardBgImage + ')', backgroundAttachment: 'fixed' }}>
-            {filteredBoard &&
-              <div className="filter-modal__message fill-width flex justify-center absolute" style={ {color: isDarkBackground? 'white' : 'black'} }>
-                <p> You cannot make changes while filtering.. </p>
-              </div>
-            }
             <div className="board-page-nav-bar flex align-center space-between">
               <div className="board-page-nav-bar-logo" onClick={goBackHandler}> </div>
               <div className="flex align-center">
