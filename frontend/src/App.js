@@ -5,6 +5,7 @@ import '../src/styles/global.scss'
 import Home from './pages/Home.js';
 import Board from './pages/Board.js';
 
+
 function App() {
   return (
     <Router>

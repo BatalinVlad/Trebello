@@ -2,8 +2,6 @@
 const dbService = require('../../services/db.service')
 const ObjectId = require('mongodb').ObjectId
 
-
-
 async function query() {
     const collection = await dbService.getCollection('user')
     try {

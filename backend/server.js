@@ -3,20 +3,25 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
+
+// cookies
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
+// routes
+const authRoutes = require('./api/auth/auth.routes');
+const userRoutes = require('./api/user/user.routes');
+const boardRoutes = require('./api/board/board.routes');
+
+// sockets with server
+const { connectSockets } = require('./api/socket/socket.routes')
+const http = require('http');
+const { Server } = require('socket.io');
+
 const app = express()
-const http = require('http').createServer(app);
-const io = require('socket.io')(http);
 
-const authRoutes = require('./api/auth/auth.routes')
-const userRoutes = require('./api/user/user.routes')
-const boardRoutes = require('./api/board/board.routes')
-const connectSockets = require('./api/socket/socket.routes')
-
-app.use(cookieParser())
 app.use(bodyParser.json());
+app.use(cookieParser())
 app.use(session({
     secret: 'sxjbijxixszaixsax76x87a6sxbash',
     resave: false,
@@ -24,22 +29,23 @@ app.use(session({
     cookie: { secure: false }
 }))
 
+// cors
+app.use(cors({
+    origin: ['https://trebello.netlify.app', 'http://localhost:3000'],
+    credentials: true
+}));
 
+const server = http.createServer(app);
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.resolve(__dirname, 'public')));
-    const corsOptions = {
-        origin: ['https://trebello.netlify.app'],
-        credentials: true
-    };
-    app.use(cors(corsOptions));
-} else {
-    const corsOptions = {
-        origin: ['http://localhost:3000'],
-        credentials: true
-    };
-    app.use(cors(corsOptions));
-}
+// creating server with io
+const io = new Server(server, {
+    cors: {
+        origin: ['https://trebello.netlify.app', 'http://localhost:3000'],
+        methods: ['GET', 'POST'],
+    }
+});
+
+connectSockets(io)
 
 // routes
 app.use('/api/auth', authRoutes)
@@ -49,10 +55,9 @@ app.get('/*', function (req, res) {
     res.sendFile(path.resolve(__dirname, 'public/index.html'))
 })
 
-connectSockets(io)
 
 const logger = require('./services/logger.service')
 const port = process.env.PORT || 3030;
-http.listen(port, () => {
+server.listen(port, () => {
     logger.info('Server is running on port: ' + port)
 });

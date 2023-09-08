@@ -29,7 +29,7 @@ const TaskForm = props => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        nameInputRef.current.focus();
+        // nameInputRef.current.focus();
     }, []);
 
     useEffect(() => {

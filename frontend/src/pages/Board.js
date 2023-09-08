@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { store } from 'react-notifications-component';
+// import { store } from 'react-notifications-component';
 // import FastAverageColor from 'fast-average-color';
 import { CSSTransition } from 'react-transition-group';
 import _ from 'lodash';
@@ -31,6 +31,8 @@ import { loadBoard, updateBoard, setBoard } from '../actions/BoardActions';
 import { logout, getLoggedInUser, getUsers } from '../actions/UserActions';
 import NavBarFilters from '../cmps/NavBarFilters';
 
+SocketService.setup();
+
 const Board = () => {
   const [filteredBoard, setFilteredBoard] = useState(null);
   const [showColAddForm, setShowColAddForm] = useState(false);
@@ -51,7 +53,6 @@ const Board = () => {
   const [miniTaskDetails, setMiniTaskDetails] = useState({});
   const [currColumnId, setCurrColumnId] = useState('');
   const [isDarkBackground, setIsDarkBackground] = useState(true); // change it later with new package
-  const [mobileMod, setMobileMod] = useState(false);
   const [currTaskDetails, setCurrTaskDetails] = useState(null)
 
   const loadedBoard = useSelector(state => state.boards.board);
@@ -70,21 +71,28 @@ const Board = () => {
     dispatch(getUsers());
     dispatch(getLoggedInUser());
     dispatch(loadBoard(boardType, boardId));
-    // resize();
-    window.addEventListener('resize', resize);
+  }, [dispatch, boardId, boardType]);
 
-    SocketService.setup();
+  useEffect(() => {
     SocketService.emit('boardId', boardId);
-    SocketService.on('updateBoard', (loadedBoard) => dispatch(setBoard(loadedBoard)));
-    SocketService.on('getNotification', (notification) => store.addNotification(notification));
+  }, [boardId])
+
+  useEffect(() => {
+    SocketService.on('updateBoard', board => {
+      dispatch(setBoard(board));
+    });
+    // (loadedBoard) => dispatch(setBoard(loadedBoard)));
+    // SocketService.on('getNotification', (notification) => store.addNotification(notification));
 
     return () => {
-      window.removeEventListener('resize', resize);
       SocketService.off('updateBoard');
-      SocketService.off('getNotification');
+      // SocketService.off('getNotification');
       SocketService.terminate();
     };
-  }, [dispatch, boardId, boardType]);
+  }, [loggedInUser, boardId])
+
+
+
 
 
   useEffect(() => {
@@ -230,10 +238,6 @@ const Board = () => {
     setFilteredBoard(clonedBoard);
   };
 
-  const resize = () => {
-    setMobileMod(window.innerWidth < 550);
-  };
-
   const logOutHandler = () => {
     dispatch(logout())
   }
@@ -261,13 +265,6 @@ const Board = () => {
                         </p>
                       </div>
                     </div>
-
-                    {!mobileMod &&
-                      <div className="logged-in-user flex column">
-                        <small>Logged as:</small>
-                        <p> {loggedInUser.username}</p>
-                      </div>
-                    }
                   </div>
                 }
                 {

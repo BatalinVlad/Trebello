@@ -5,7 +5,7 @@ const BASE_URL =
 
 let socket;
 
-export default {
+const SocketService = {
   setup,
   terminate,
   on,
@@ -14,7 +14,7 @@ export default {
 };
 
 function setup() {
-  socket = io(BASE_URL);
+  socket = io.connect(BASE_URL);
 }
 
 function terminate() {
@@ -32,3 +32,5 @@ function off(eventName, cb) {
 function emit(eventName, data) {
   socket.emit(eventName, data);
 }
+
+export default SocketService;

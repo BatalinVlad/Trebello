@@ -1,4 +1,9 @@
-import HttpService from './HttpService';
+import {
+  get as httpGet,
+  put as httpPut,
+  post,
+  del
+} from './HttpService';
 
 export default {
   add,
@@ -9,25 +14,22 @@ export default {
 };
 
 function query(boardsType) {
-  return HttpService.get(`board/boards/${boardsType}`);
+  return httpGet(`board/boards/${boardsType}`);
 }
 
-function get(type,boardId) {
-  return HttpService.get(`board/${type}/${boardId}`);
+function get(type, boardId) {
+  return httpGet(`board/${type}/${boardId}`);
 }
-
-// function _createQueryString(filterBy) {
-//   return Object.keys(filterBy).map(filter => filter + '=' + filterBy[filter]).join('&');
-// }
 
 function put(board) {
-  return HttpService.put(`board/${board._id}`, board);
+  return httpPut(`board/${board._id}`, board);
 }
 
 function remove(boardId) {
-  return HttpService.delete(`board/${boardId}`);
+  return del(`board/${boardId}`);
 }
 
 function add(board) {
-  return HttpService.post('board', board);
+  return post('board', board);
 }
+

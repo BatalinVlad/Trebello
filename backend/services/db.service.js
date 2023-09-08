@@ -8,9 +8,6 @@ module.exports = {
 }
 
 // Database Name
-
-
-
 const dbName = process.env.NODE_ENV === 'production' ? 'BOARD_DB_PROD' : 'BOARD_DB';
 
 var dbConn = null;

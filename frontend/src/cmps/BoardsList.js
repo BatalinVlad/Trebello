@@ -33,7 +33,7 @@ const BoardsList = ({ boards, templateBoards, user }) => {
                                 <p className="capitalize">created boards</p>
                                 <div className="boards-container flex row">
                                     {myBoards.map(myBoard => (
-                                        <NavLink className="pointer" key={myBoard._id} to={`/board/${'board'}/${myBoard._id}`}>
+                                        <NavLink className="pointer" key={myBoard._id} to={`/board/board/${myBoard._id}`}>
                                             <BoardPreview board={myBoard} />
                                         </NavLink>
                                     ))}
@@ -49,9 +49,9 @@ const BoardsList = ({ boards, templateBoards, user }) => {
                                 <span className="caspanitalize"> you're not collaborating on any boards yet... </span>
                             </div>
                             :
-                            <div className="boards-list-container">
+                            <div className="boards-list-container flex row">
                                 {myCollaboratedBoards.map(myCollaboratedBoard => (
-                                    <NavLink className="pointer" key={myCollaboratedBoard._id} to={`/board/${myCollaboratedBoard._id}`}>
+                                    <NavLink className="pointer" key={myCollaboratedBoard._id} to={`/board/board/${myCollaboratedBoard._id}`}>
                                         <BoardPreview board={myCollaboratedBoard} />
                                     </NavLink>
                                 ))}
