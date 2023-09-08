@@ -81,15 +81,14 @@ const Board = () => {
     SocketService.on('updateBoard', board => {
       dispatch(setBoard(board));
     });
-    // (loadedBoard) => dispatch(setBoard(loadedBoard)));
+
     // SocketService.on('getNotification', (notification) => store.addNotification(notification));
 
     return () => {
       SocketService.off('updateBoard');
       // SocketService.off('getNotification');
-      SocketService.terminate();
     };
-  }, [loggedInUser, boardId])
+  }, [loggedInUser, boardId, dispatch])
 
 
 

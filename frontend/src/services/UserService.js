@@ -1,12 +1,5 @@
 import { get, post } from './HttpService';
 
-export default {
-    login,
-    logout,
-    signup,
-    getLoggedInUser,
-    getUsers
-}
 
 async function login(userCred) {
     try {
@@ -50,4 +43,12 @@ async function getUsers() {
     } catch (err) {
         console.log('UserService: err in getting users', err);
     }
+}
+
+export {
+    login,
+    logout,
+    signup,
+    getLoggedInUser,
+    getUsers
 }

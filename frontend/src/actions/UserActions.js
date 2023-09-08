@@ -1,9 +1,16 @@
-import UserService from '../services/UserService';
+import {
+  login as httpLogin,
+  logout as httpLogout,
+  signup as httpSinup,
+  getLoggedInUser as httpGetLoggedInUser,
+  getUsers as httpGetUsers
+} from '../services/UserService'
+
 
 export function login(userCreds) {
   return async dispatch => {
     try {
-      const user = await UserService.login(userCreds);
+      const user = await httpLogin(userCreds);
       dispatch(_setUser(user));
     } catch (err) {
       console.log('UserActions: err in login', err);
@@ -14,7 +21,7 @@ export function login(userCreds) {
 export function signup(userCreds) {
   return async dispatch => {
     try {
-      const user = await UserService.signup(userCreds);
+      const user = await httpSinup(userCreds);
       dispatch(_setUser(user));
     } catch (err) {
       console.log('UserActions: err in signup', err);
@@ -25,7 +32,7 @@ export function signup(userCreds) {
 export function logout() {
   return async dispatch => {
     try {
-      await UserService.logout();
+      await httpLogout();
       dispatch(_setUser(null));
     } catch (err) {
       console.log('UserActions: err in logout', err);
@@ -36,10 +43,10 @@ export function logout() {
 export function getLoggedInUser() {
   return async dispatch => {
     try {
-      const user = await UserService.getLoggedInUser();
+      const user = await httpGetLoggedInUser();
       if (Object.entries(user).length === 0) return;
       dispatch(_setUser(user));
-    }  catch (err) {
+    } catch (err) {
       console.log('UserActions: err in logout', err);
     }
   };
@@ -55,7 +62,7 @@ function _setUser(user) {
 export function getUsers() {
   return async dispatch => {
     try {
-      const users = await UserService.getUsers();
+      const users = await httpGetUsers();
       dispatch(_setUsers(users));
     } catch (err) {
       console.log('UserActions: err in getUsers', err);

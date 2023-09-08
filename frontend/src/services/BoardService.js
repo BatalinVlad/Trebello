@@ -5,14 +5,6 @@ import {
   del
 } from './HttpService';
 
-export default {
-  add,
-  query,
-  get,
-  put,
-  remove
-};
-
 function query(boardsType) {
   return httpGet(`board/boards/${boardsType}`);
 }
@@ -33,3 +25,4 @@ function add(board) {
   return post('board', board);
 }
 
+export { add, query, get, put, remove };

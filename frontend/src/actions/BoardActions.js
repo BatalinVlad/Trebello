@@ -1,11 +1,11 @@
-import BoardService from '../services/BoardService';
+import  { add, query, get, put } from '../services/BoardService';
 import SocketService from '../services/SocketService';
 import utils from '../services/utils';
 
 export function loadBoards() {
   return async dispatch => {
     try {
-      const boards = await BoardService.query('board');
+      const boards = await query('board');
       dispatch(_setBoards(boards));
     } catch (err) {
       console.log('BoardActions: err in loadBoards', err);
@@ -23,7 +23,7 @@ function _setBoards(boards) {
 export function loadTemplateBoards() {
   return async dispatch => {
     try {
-      const templateBoards = await BoardService.query('templates');
+      const templateBoards = await query('templates');
       dispatch(_setTemplateBoards(templateBoards));
     } catch (err) {
       console.log('BoardActions: err in loadBoards', err);
@@ -41,7 +41,7 @@ function _setTemplateBoards(templateBoards) {
 export function loadBoard(type, boardId) {
   return async dispatch => {
     try {
-      const board = await BoardService.get(type, boardId);
+      const board = await get(type, boardId);
       dispatch(_boardUpdate(board)); // type UPDATE_BOARD , data: board
     } catch (err) {
       console.log('BoardActions: err in loadBoard', err);
@@ -64,7 +64,7 @@ export function updateBoard(board, msg, notificationType) {
     try {
       board.history.unshift({ id: utils.getRandomId(), msg: msg, time: Date.now() })
       dispatch(_boardUpdate(board));
-      await BoardService.put(board);
+      await put(board);
       SocketService.emit('boardUpdate', board);
       utils.emitNotification(msg, notificationType);
     } catch (err) {
@@ -83,7 +83,7 @@ function _boardUpdate(board) {
 export function createBoard(board) {
   return async dispatch => {
     try {
-      const addedBoard = await BoardService.add(board);
+      const addedBoard = await add(board);
       dispatch(_addBoard(addedBoard));
       return addedBoard;
     } catch (err) {
