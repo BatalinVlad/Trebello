@@ -23,7 +23,7 @@ const Login = props => {
 
   useEffect(() => {
     dispatch(getLoggedInUser());
-  }, [])
+  }, [dispatch])
 
   const loginHandleChange = ev => {
     const { name, value } = ev.target;
