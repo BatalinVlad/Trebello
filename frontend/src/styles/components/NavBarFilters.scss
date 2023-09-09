@@ -57,7 +57,6 @@
       &.nav-btn {
         font-size: 0.75rem;
         font-weight: 600;
-        padding-right: 10px;
         .dark {
           border: 1px solid rgba(255, 255, 255, 0.671);
         }
@@ -76,7 +75,20 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 800px) {
+  .board-page-nav-bar-filters {
+    .right-section {
+      .nav-btn {
+        width: 100%;
+      }
+      span {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 460px) {
   .board-page-nav-bar-filters {
     .left-section {
       justify-content: center;
@@ -109,6 +121,11 @@
     &-divider {
       display: none;
     }
+    .board-page-nav-bar-filters-item {
+      .board-page-nav-bar-filters-divider {
+        display: block;
+      }
+    }
   }
 }
 
@@ -121,7 +138,7 @@
   border-radius: 3px;
   color: #333;
   font-size: 12px;
-  width: 100%;
+  width: 50%;
   cursor: pointer;
 }
 
