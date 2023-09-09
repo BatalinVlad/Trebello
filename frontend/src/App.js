@@ -10,8 +10,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/board/:type/:id" element={<Board />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/board/:type/:id" element={<Board />} />
       </Routes>
     </Router>
   );

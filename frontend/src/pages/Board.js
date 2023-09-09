@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
-// import { store } from 'react-notifications-component';
-// import FastAverageColor from 'fast-average-color';
 import { CSSTransition } from 'react-transition-group';
 import _ from 'lodash';
 import { useNavigate, useParams } from 'react-router-dom';
-
 
 import LoadPage from '../cmps/LoadPage';
 import BoardColumns from '../cmps/BoardColumns';
@@ -12,7 +9,6 @@ import BoardHistory from '../cmps/BoardHistory';
 import BoardTeamMembers from '../cmps/BoardTeamMembers';
 import ColumnAddForm from '../cmps/ColumnAddForm';
 import Login from '../cmps/Login';
-// import Sort from '../cmps/Sort';
 import SplashMenu from '../cmps/SplashMenu';
 import TaskDetails from '../cmps/TaskDetails';
 import DynamicMiniComponent from '../cmps/dynamics/DynamicMiniComponent';
@@ -25,6 +21,9 @@ import SocketService from '../services/SocketService';
 
 //for checking bg images brightness
 import lightOrDarkImage from '@check-light-or-dark/image';
+
+//alert notification
+import { Store } from 'react-notifications-component';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { loadBoard, updateBoard, setBoard } from '../actions/BoardActions';
@@ -46,10 +45,6 @@ const Board = () => {
   const [showAddForm, setShowAddForm] = useState(false);
   const [toggleFilterByMember, setToggleFilterByMember] = useState(false);
 
-
-  // const [sortBy, setSortBy] = useState(null);
-  // const [sortOrder, setSortOrder] = useState(null);
-
   const [miniTaskDetails, setMiniTaskDetails] = useState({});
   const [currColumnId, setCurrColumnId] = useState('');
   const [isDarkBackground, setIsDarkBackground] = useState(true); // change it later with new package
@@ -66,7 +61,6 @@ const Board = () => {
   const boardId = useParams().id;
   const boardType = useParams().type;
 
-
   useEffect(() => {
     dispatch(getUsers());
     dispatch(getLoggedInUser());
@@ -81,18 +75,17 @@ const Board = () => {
     SocketService.on('updateBoard', board => {
       dispatch(setBoard(board));
     });
-
-    // SocketService.on('getNotification', (notification) => store.addNotification(notification));
+    // get notification if someone has updated the board and pop it up
+    SocketService.on('getNotification', (notification) => {
+      console.log(notification);
+      Store.addNotification(notification)
+    });
 
     return () => {
       SocketService.off('updateBoard');
-      // SocketService.off('getNotification');
+      SocketService.off('getNotification');
     };
   }, [loggedInUser, boardId, dispatch])
-
-
-
-
 
   useEffect(() => {
     if (loadedBoard.boardBgImage) {
