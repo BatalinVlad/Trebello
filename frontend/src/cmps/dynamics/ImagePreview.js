@@ -33,7 +33,7 @@ export default class ImagePreview extends Component {
         return (
             <section ref={this.imgContainer}>
                 <div
-                    className={`task-container  without-padding flex column align center ${task.bgColor}`}
+                    className={`task-container without-padding flex column align center ${task.bgColor ? task.bgColor : 'bgTaskWhite' }`}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                     ref={innerRef}

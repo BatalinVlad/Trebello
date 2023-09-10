@@ -26,7 +26,7 @@ export default class TaskPreview extends Component {
         const { task, provided, innerRef, showEditBtn, onTaskId } = this.props;
         return (
             <section ref={this.taskContainer}>
-                <div className={`task-container ${task.bgColor}`}
+                <div className={`task-container ${task.bgColor ? task.bgColor : 'bgTaskWhite' }`}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                     ref={innerRef}

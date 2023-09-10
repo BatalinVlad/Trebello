@@ -331,7 +331,7 @@ export default class TaskDetails extends Component {
                                 </div>
                             </header>
 
-                            <div className="chosen-labels-container">
+                            <div className="chosen-labels-container ">
                                 {this.state.toggleChooseLabels ?
                                     <Labels
                                         toggleChooseLabels={this.toggleChooseLabels}
