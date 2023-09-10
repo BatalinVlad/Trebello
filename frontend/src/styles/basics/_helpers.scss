@@ -229,8 +229,9 @@
 .bgTaskGreen {
     background: rgb(69, 193, 44);
     background: linear-gradient(0deg, rgba(69, 193, 44, 0.40940126050420167) 12%, rgba(48, 193, 50, 0.7959558823529411) 70%);
+
     &:hover {
-    background: linear-gradient(0deg, rgba(69, 193, 44, 0.40940126050420167) 0%, rgba(48, 193, 50, 0.7959558823529411) 100%);
+        background: linear-gradient(0deg, rgba(69, 193, 44, 0.40940126050420167) 0%, rgba(48, 193, 50, 0.7959558823529411) 100%);
     }
 }
 
@@ -238,20 +239,36 @@
 .bgTaskYellow {
     background: rgb(236, 227, 45);
     background: linear-gradient(0deg, rgba(236, 227, 45, 0.28895308123249297) 10%, rgba(236, 227, 45, 0.6334908963585435) 70%);
+
+    &:hover {
+        background: linear-gradient(0deg, rgba(236, 227, 45, 0.28895308123249297) 0%, rgba(236, 227, 45, 0.6334908963585435) 100%);
+    }
 }
 
 
 .bgTaskOrange {
     background: rgb(236, 186, 45);
     background: linear-gradient(0deg, rgba(236, 186, 45, 0.5690651260504201) 10%, rgba(236, 186, 45, 0.7063200280112045) 70%);
+
+    &:hover {
+        background: linear-gradient(0deg, rgba(236, 186, 45, 0.5690651260504201) 0%, rgba(236, 186, 45, 0.7063200280112045) 100%);
+    }
 }
 
 .bgTaskRed {
     background: rgb(236, 45, 45);
     background: linear-gradient(0deg, rgba(236, 45, 45, 0.3841911764705882) 10%, rgba(236, 83, 45, 0.6362920168067228) 70%);
+
+    &:hover {
+        background: linear-gradient(0deg, rgba(236, 45, 45, 0.3841911764705882) 0%, rgba(236, 83, 45, 0.6362920168067228) 100%);
+    }
 }
 
 .bgTaskBlue {
     background: rgb(45, 55, 236);
     background: linear-gradient(0deg, rgba(45, 55, 236, 0.4682247899159664) 10%, rgba(45, 55, 236, 0.7063200280112045) 70%);
+
+    &:hover {
+        background: linear-gradient(0deg, rgba(45, 55, 236, 0.4682247899159664) 0%, rgba(45, 55, 236, 0.7063200280112045) 100%);
+    }
 }
