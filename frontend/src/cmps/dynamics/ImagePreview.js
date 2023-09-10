@@ -33,7 +33,7 @@ export default class ImagePreview extends Component {
         return (
             <section ref={this.imgContainer}>
                 <div
-                    className={"task-container  without-padding flex column align center"}
+                    className={`task-container  without-padding flex column align center ${task.bgColor}`}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                     ref={innerRef}
@@ -46,7 +46,9 @@ export default class ImagePreview extends Component {
                         })
                         }
                     </div>
-                    <p className="task-container-title">{task.title}</p>
+                    {task.title !== '' &&
+                        <p className="task-container-title">{task.title}</p>
+                    }
                     {(showEditBtn && (onTaskId === task.id)) &&
                         <CreateIcon className="task-container-open-menu"
                             onClick={e => this.toggleMiniDetails(e)} />

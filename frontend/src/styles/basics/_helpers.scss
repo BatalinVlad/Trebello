@@ -79,7 +79,8 @@
     &.wrap {
         flex-wrap: wrap;
     }
-    &.grow{ 
+
+    &.grow {
         flex-grow: 1;
     }
 
@@ -187,7 +188,7 @@
 }
 
 // positions 
-.relative{
+.relative {
     position: relative;
 }
 
@@ -199,17 +200,69 @@
 .dark {
     color: white;
     background-color: rgba(0, 0, 0, 0.685);
-  
+
     &:hover {
-      background-color: rgba(0, 0, 0, 0.827);
+        background-color: rgba(0, 0, 0, 0.827);
     }
-  }
-  
-  .light {
+}
+
+.light {
     color: black;
     background-color: #ffffffdc;
-  
+
     &:hover {
-      background-color: #ffffff;
+        background-color: #ffffff;
     }
-  }
+}
+
+
+// colors for tasks
+
+.bgTaskWhite {
+    background: rgb(255, 255, 255);
+}
+
+.bgTaskGreen {
+    background: rgb(69, 193, 44);
+    background: linear-gradient(0deg, rgba(69, 193, 44, 0.40940126050420167) 12%, rgba(48, 193, 50, 0.7959558823529411) 70%);
+
+    :hover {
+        background: linear-gradient(0deg, rgba(69, 193, 44, 0.40940126050420167) 12%, rgba(48, 193, 50, 0.7959558823529411) 70%);
+    }
+}
+
+.bgTaskYellow {
+    background: rgb(236, 227, 45);
+    background: linear-gradient(0deg, rgba(236, 227, 45, 0.28895308123249297) 10%, rgba(236, 227, 45, 0.6334908963585435) 70%);
+
+    :hover {
+        background: linear-gradient(0deg, rgba(236, 227, 45, 0.28895308123249297) 10%, rgba(236, 227, 45, 0.6334908963585435) 70%);
+    }
+}
+
+.bgTaskOrange {
+    background: rgb(236, 186, 45);
+    background: linear-gradient(0deg, rgba(236, 186, 45, 0.5690651260504201) 10%, rgba(236, 186, 45, 0.7063200280112045) 70%);
+
+    :hover {
+        background: linear-gradient(0deg, rgba(236, 186, 45, 0.5690651260504201) 10%, rgba(236, 186, 45, 0.7063200280112045) 70%);
+    }
+}
+
+.bgTaskRed {
+    background: rgb(236, 45, 45);
+    background: linear-gradient(0deg, rgba(236, 45, 45, 0.3841911764705882) 10%, rgba(236, 83, 45, 0.6362920168067228) 70%);
+
+    :hover {
+        background: linear-gradient(0deg, rgba(236, 45, 45, 0.3841911764705882) 10%, rgba(236, 83, 45, 0.6362920168067228) 70%);
+    }
+}
+
+.bgTaskBlue {
+    background: rgb(45, 55, 236);
+    background: linear-gradient(0deg, rgba(45, 55, 236, 0.4682247899159664) 10%, rgba(45, 55, 236, 0.7063200280112045) 70%);
+
+    :hover {
+        background: linear-gradient(0deg, rgba(45, 55, 236, 0.4682247899159664) 10%, rgba(45, 55, 236, 0.7063200280112045) 70%);
+    }
+}

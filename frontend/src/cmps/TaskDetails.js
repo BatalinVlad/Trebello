@@ -16,11 +16,14 @@ import FileCopyOutlinedIcon from '@mui/icons-material/FileCopyOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
+import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined';
+
 
 import DueDate from './DueDate';
 import Labels from './Labels';
 import Members from './Members';
 import Todos from './Todos';
+import TaskBgColor from './TaskBgColor'
 
 import utils from '../services/utils'
 
@@ -38,6 +41,7 @@ export default class TaskDetails extends Component {
         toggleDueDate: false,
         toggleDeleteTodo: false,
         toggleUploadImage: false,
+        toggleTaskBgColor: false,
         progressWidth: 0,
         currTodoId: '',
         taskTitle: '',
@@ -59,12 +63,17 @@ export default class TaskDetails extends Component {
 
     onToggleDueDate = ev => {
         ev && ev.stopPropagation();
-        this.setState(prevState => !prevState);
+        this.setState(prevState => ({ toggleDueDate: !prevState.toggleDueDate }))
     }
 
     toggleUploadImageHandler = ev => {
         ev && ev.stopPropagation();
         this.setState(prevState => ({ toggleUploadImage: !prevState.toggleUploadImage }))
+    }
+
+    toggleTaskBgColorHandler = ev => {
+        ev && ev.stopPropagation();
+        this.setState(prevState => ({ toggleTaskBgColor: !prevState.toggleTaskBgColor }))
     }
 
 
@@ -79,7 +88,8 @@ export default class TaskDetails extends Component {
             toggleTodos: false,
             toggleChooseLabels: false,
             toggleChooseMembers: false,
-            toggleUploadImage: false
+            toggleUploadImage: false,
+            toggleTaskBgColor: false
         })
     }
 
@@ -344,6 +354,17 @@ export default class TaskDetails extends Component {
                                     }
                                 </div>
                             </div>
+
+                            {this.state.toggleTaskBgColor &&
+                                <TaskBgColor
+                                    toggleTaskBgColorHandler={this.toggleTaskBgColorHandler}
+                                    board={this.props.board}
+                                    task={task}
+                                    updateBoard={this.props.updateBoard}
+                                    user={this.props.user}
+                                />
+                            }
+
                             <div className="task-details-container-members-container">
                                 {this.state.toggleChooseMembers ?
                                     <Members
@@ -482,6 +503,10 @@ export default class TaskDetails extends Component {
                                         <LabelOutlinedIcon />
                                         <p className="capitalize" >labels</p>
                                     </div>
+                                    <div className="task-details-container-add-to-card-options-btn flex align-center relative" onClick={ev => this.toggleTaskBgColorHandler(ev)} >
+                                        <ColorLensOutlinedIcon />
+                                        <p className="capitalize">task color</p>
+                                    </div>
                                     <div className="task-details-container-add-to-card-options-btn flex align-center" onClick={ev => this.toggleChooseMembers(ev)} >
                                         <PersonAddOutlinedIcon />
                                         <p className="capitalize">members</p>
@@ -508,7 +533,7 @@ export default class TaskDetails extends Component {
                                                     <label className="" htmlFor="upload-img-2">
                                                         <span className="text-center"> add file </span>
                                                     </label>
-                                                    <div className="flex" style={{marginTop : '5px'}}>
+                                                    <div className="flex" style={{ marginTop: '5px' }}>
                                                         <input type='text'
                                                             placeholder='https://example.com/example.jpg'
                                                             value={this.state.imageLink}

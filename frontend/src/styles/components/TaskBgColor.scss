@@ -1,0 +1,33 @@
+.change-bgcolor-container {
+    top: 200px;
+    right: 20px;
+    width: 200px;
+    padding: 5px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0px 0px 0px 2px rgba(174, 174, 174, 0.7098039216);
+
+    @media (max-width:525px) {
+        top: 135px;
+        right: 10px;
+    }
+
+    .choose-color {
+        margin: 5px 0px;
+
+        .color {
+            cursor: pointer;
+            display: block;
+            width: 20px;
+            height: 15px;
+            border-radius: 5px;
+            box-shadow: 0px 1px 7px -3px black;
+
+            &:not(:first-child) {
+                margin-left: 3px;
+            }
+        }
+    }
+
+
+}

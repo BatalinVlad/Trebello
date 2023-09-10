@@ -26,7 +26,7 @@ export default class VideoPreview extends Component {
         return (
             <section ref={this.videoContainer}>
                 <div
-                    className={"task-container without-padding flex column"}
+                    className={`task-container without-padding flex column ${task.bgColor}`}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                     ref={innerRef}
