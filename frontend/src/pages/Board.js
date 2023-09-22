@@ -188,7 +188,7 @@ const Board = () => {
   }
 
   const filterBoardHandler = (filterBy) => {
-    if (!filterBy.title && filterBy.teamMembers === 'all') {
+    if (filterBy.title === '' && filterBy.teamMembers === 'all') {
       setFilteredBoard(null);
       return;
     }
@@ -226,6 +226,8 @@ const Board = () => {
           columns[column].taskIds = columns[column].taskIds.filter(id => id !== unmatchedId);
       }
     }
+
+    debugger
 
     setFilteredBoard(clonedBoard);
   };
