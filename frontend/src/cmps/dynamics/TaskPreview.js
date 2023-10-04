@@ -40,7 +40,7 @@ export default class TaskPreview extends Component {
                         })
                         }
                     </div>
-                    <p className="task-container-title">{task.title}</p>
+                    <p className="task-container-title flex align-center">{task.title}</p>
                     {(showEditBtn && (onTaskId === task.id)) &&
                         <CreateIcon className="task-container-open-menu"
                             onClick={e => this.toggleMiniDetails(e)} />
@@ -67,9 +67,9 @@ export default class TaskPreview extends Component {
                                     <CalendarMonthIcon />
                                 </div>
                         }
-                        <div className="team-members-container grid-item">
+                        <div className="team-members-container">
                             <div className="flex justify-end">
-                                {(task.taskTeamMembers.map(member => {
+                                {(task.taskTeamMembers.slice(0, 4).map(member => {
                                     return <div key={member._id} className="team-member-icon-wrapper flex align-center" style={{ backgroundColor: '#dfe1e6' }} >
                                         <div className="team-member-icon">
                                             <p className="flex align-center uppercase" style={{ color: '#172b4d' }}>

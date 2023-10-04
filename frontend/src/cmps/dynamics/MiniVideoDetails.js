@@ -64,13 +64,13 @@ export default class MiniVideoDetails extends Component {
                     height: height + 'px'
                 }}
             >
-                {task.type === 'video' ?
-                    <iframe title={task.id}
-                        type='text/html' width={videoDimensions.width}
-                        height={videoDimensions.height}
-                        src={task.url}
-                        allowFullScreen="allowfullscreen"></iframe>
-                    : <img ref={this.imgContainer} title={task.id} alt="task" src={task.url} />
+                {task.type === 'video' && ''
+                    // <iframe title={task.id}
+                    //     type='text/html' width={videoDimensions.width}
+                    //     height={videoDimensions.height}
+                    //     src={task.url}
+                    //     allowFullScreen="allowfullscreen"></iframe>
+                    // : <img ref={this.imgContainer} title={task.id} alt="task" src={task.url} />
                 }
                 <div className="task-container-labels flex">
                     {task.labels.map(label => {

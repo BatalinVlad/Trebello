@@ -31,7 +31,7 @@ app.use(session({
 
 // cors
 app.use(cors({
-    origin: ['https://trebello.netlify.app', 'http://localhost:3000'],
+    origin: ['https://trebello.netlify.app', 'http://localhost:3000' , 'https://www.youtube.com/'],
     credentials: true
 }));
 

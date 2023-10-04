@@ -77,7 +77,6 @@ const Board = () => {
     });
     // get notification if someone has updated the board and pop it up
     SocketService.on('getNotification', (notification) => {
-      console.log(notification);
       Store.addNotification(notification)
     });
 
@@ -188,7 +187,6 @@ const Board = () => {
   }
 
   const filterBoardHandler = (filterBy) => {
-    console.log(filterBy);
     if (!filterBy.title && filterBy.teamMembers === 'all') {
       setFilteredBoard(null);
       return;
@@ -243,7 +241,6 @@ const Board = () => {
           {filteredBoard &&
             <p className="filter-modal__message"> You cannot make changes while filtering.. </p>
           }
-
           <div className="board-page fill-height flex column" style={{ backgroundImage: 'url(' + loadedBoard.boardBgImage + ')', backgroundAttachment: 'fixed' }}>
             <div className="board-page-nav-bar flex align-center space-between">
               <div className="board-page-nav-bar-logo" onClick={goBackHandler}> </div>
@@ -252,7 +249,7 @@ const Board = () => {
                   <div className="flex">
                     <div className="team-member-icon-wrapper flex align-center justify-center" style={{ backgroundColor: 'rgba(223, 225, 230, 0.8)', color: '#172b4d' }} >
                       <div className="team-member-icon">
-                        <p>
+                        <p className="uppercase">
                           {utils.createUserIcon(loggedInUser.firstName,
                             loggedInUser.lastName)}
                         </p>

@@ -72,23 +72,22 @@ const Home = () => {
         <div className="home-page-header-container flex">
           <div className="header-image flex align-center justify-center fill-width fill-height">
 
+            <div className='login'>
+            </div>
+
+
             <div className="login-get-started-container flex align-center justify-center align-center">
               <div className="home-page-logo-get-started flex column align-center">
                 <div className="home-page-header-container-logo-img fill-width fill-height"></div>
-
-                <div className="text-center">
-                  <h2>Manage your tasks in a fun and easy way</h2>
-                </div>
-
-                <div className="get-started-btn">
-                  <Fab variant="extended">
+                <h2 className='text-center'>Manage your tasks in a fun and easy way</h2>
+                  <Fab variant="extended" className='mt-4'>
                     <p className="uppercase" onClick={createBoardHandler}>
                       get started
                     </p>
                   </Fab>
-                </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>

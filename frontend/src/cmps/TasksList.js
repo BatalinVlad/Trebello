@@ -12,7 +12,6 @@ const TasksList = props => {
         showTaskDetails: false,
     })
 
-
     const showEditBtn = (id) => {
         setState({ showEditBtn: true, onTaskId: id })
     }
@@ -20,7 +19,6 @@ const TasksList = props => {
     const hideEditBtn = () => {
         setState({ showEditBtn: false })
     }
-
 
     return (
         <section className={"task-list"}
