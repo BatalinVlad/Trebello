@@ -28,15 +28,17 @@
 
   &-container {
     justify-content: center;
+
     @media (max-width:835px) {
       justify-content: start;
-      .get-started-container{
+
+      .get-started-container {
         padding-left: 35px;
       }
     }
 
     @media (max-width:400px) {
-      .get-started-container{
+      .get-started-container {
         padding-left: 0px;
       }
     }
@@ -50,6 +52,12 @@
       letter-spacing: 4px;
       font-size: rem(50px);
       text-shadow: 3px 3px 3px black;
+    }
+
+    @media (max-width:400px) {
+      h1 {
+        font-size: 2.3rem;
+      }
     }
 
     h2 {
