@@ -17,6 +17,8 @@
     img {
       height: 100%;
       width: 100%;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
       z-index: 1;
       position: absolute;
       object-fit: cover;

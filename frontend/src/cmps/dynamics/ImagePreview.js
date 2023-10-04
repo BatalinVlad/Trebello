@@ -28,7 +28,7 @@ export default class ImagePreview extends Component {
         return (
             <section ref={this.imgContainer}>
                 <div
-                    className={`task-container without-padding flex column align center ${task.bgColor ? task.bgColor : 'bgTaskWhite' }`}
+                    className={`task-container without-padding flex column align center ${task.bgColor ? task.bgColor : 'bgTaskWhite'}`}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                     ref={innerRef}
@@ -57,19 +57,19 @@ export default class ImagePreview extends Component {
                             </div>
                         }
                         {(task.todos.length > 0) &&
-                                <div className="flex align-center">
-                                    <CheckBoxIcon />
-                                    <p>{task.todosDone + '/' + task.todos.length}</p>
-                                </div>
+                            <div className="flex align-center">
+                                <CheckBoxIcon />
+                                <p>{task.todosDone + '/' + task.todos.length}</p>
+                            </div>
                         }
                         {(task.dueDate) &&
-                                <div className="flex  align-center">
-                                    <CalendarMonthIcon />
-                                </div>
+                            <div className="flex  align-center">
+                                <CalendarMonthIcon />
+                            </div>
                         }
                         <div className="team-members-container">
                             <div className="flex justify-end">
-                                {(task.taskTeamMembers.slice(0, 4).map((member , index) => {
+                                {(task.taskTeamMembers.slice(0, 3).map((member) => {
                                     return <div key={member._id} className="team-member-icon-wrapper flex align-center" style={{ backgroundColor: '#dfe1e6' }} >
                                         <div className="team-member-icon">
                                             <p className="flex align-center uppercase" style={{ color: '#172b4d' }}>
@@ -79,6 +79,17 @@ export default class ImagePreview extends Component {
                                         </div>
                                     </div>
                                 }))}
+                                {
+                                    task.taskTeamMembers.length > 3 &&
+                                    <div className="team-member-icon-wrapper flex align-center" style={{ backgroundColor: '#dfe1e6' }} >
+                                        <div className="team-member-icon">
+                                            <p className="flex align-center uppercase" style={{ color: '#172b4d' }}>
+                                                {`+${task.taskTeamMembers.length - 3}`}
+                                            </p>
+                                        </div>
+                                    </div>
+                                }
+
                             </div>
                         </div>
                     </div>
