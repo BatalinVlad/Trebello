@@ -35,6 +35,12 @@
       }
     }
 
+    @media (max-width:400px) {
+      .get-started-container{
+        padding-left: 0px;
+      }
+    }
+
     min-height: 100vh;
     padding: 105px 15px 0px 15px;
     gap: 10px;
