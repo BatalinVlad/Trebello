@@ -27,18 +27,22 @@
   }
 
   &-container {
+    justify-content: center;
+    @media (max-width:835px) {
+      justify-content: start;
+      .get-started-container{
+        padding-left: 35px;
+      }
+    }
+
     min-height: 100vh;
-
-    @media (max-width: 805px) {}
-
     padding: 105px 15px 0px 15px;
     gap: 10px;
-
 
     h1 {
       line-height: initial;
       letter-spacing: 4px;
-      font-size: rem(40px);
+      font-size: rem(50px);
       text-shadow: 3px 3px 3px black;
     }
 
@@ -47,10 +51,6 @@
       color: white;
       font-size: 1rem;
       text-shadow: 1px 1px 1px black;
-    }
-
-    .login-get-started-container {
-      width: 60%;
     }
 
     .MuiFab-root {
@@ -71,7 +71,7 @@
 
       &:hover {
         background: #1d941d;
-        box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.678);
+        box-shadow: 0px 0px 10px 1px rgba(76, 76, 76, 0.431);
       }
     }
   }

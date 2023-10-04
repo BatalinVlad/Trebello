@@ -1,7 +1,7 @@
 .boards-list {
   padding: 0 10px;
 
-  @media (max-width: 805px) {
+  @media (max-width: 835px) {
     padding: 0 30px;
     width: 100%;
   }
@@ -40,10 +40,10 @@
     flex-wrap: wrap;
     overflow-x: hidden;
 
-    @media (max-width: 805px) {
+    @media (max-width: 835px) {
       flex-wrap: nowrap;
       width: 100%;
-      overflow-x: scroll;
+      overflow-x: auto;
     }
   }
 

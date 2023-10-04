@@ -58,8 +58,8 @@ const Home = () => {
     <div className="home-page relative">
       {isLogin && <div className="screen" onClick={toggleLoginHandler}></div>}
       <MainNavBar isLogin={isLogin} toggleLoginHandler={toggleLoginHandler} />
-      <div className="home-page-container flex wrap justify-center">
-        <div className="flex column" style={{marginBottom: '30px'}}>
+      <div className="home-page-container flex wrap">
+        <div className="get-started-container flex column" style={{ marginBottom: '30px' }}>
           <h1>TREBELLO</h1>
           <h2 style={{ width: '65%' }}>Manage your tasks in a fun and easy way</h2>
           <Fab variant="extended" style={{ marginTop: '35px' }}>
