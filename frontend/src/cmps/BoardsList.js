@@ -14,7 +14,7 @@ const BoardsList = ({ boards, templateBoards, user }) => {
             {templateBoards &&
                 <div className="boards-list-container" >
                     <h2 className="capitalize" style={{ padding:'5px'}}>check our premade templates</h2>
-                    <div className="templates-container flex center row" >
+                    <div className="templates-container flex row" >
                         {templateBoards.map(templateBoard => (
                             <div key={templateBoard._id} className="template-container">
                                 <NavLink className="pointer" to={`/board/${'templates'}/${templateBoard._id}`} >
