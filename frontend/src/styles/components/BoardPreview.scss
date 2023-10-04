@@ -1,58 +1,42 @@
 .board-preview {
-
   &.card {
-    width: 250px;
-    height: 200px;
+    width: 170px;
+    height: 100px;
     position: relative;
     transition: 0.3s;
-    z-index: 0;
-    .lightTitle {
-      color: white;
+
+    .title-container {
+      position: absolute;
+
+      p {
+        font-size: 12px;
+        color: white;
+        z-index: 2;
+      }
+
+      transition: all 0.2s ease;
     }
 
-    .darkTitle {
-      color: black;
+    &:hover {
+      .title-container {
+        background-color: rgba(0, 0, 0, 0.692);
+      }
+
+      p {
+        font-size: 14px;
+      }
     }
 
     img {
       height: 100%;
       width: 100%;
-      border-bottom-left-radius: 0px;
-      border-bottom-right-radius: 0px;
-      z-index: 1;
+      z-index: 0;
+      border-radius: 4px;
       position: absolute;
       object-fit: cover;
-      filter: brightness(0.9);
+      filter: brightness(0.8);
     }
 
-    h2 {
-      font-size: 1.5rem;
-      position: absolute;
-      margin: 0;
-    }
 
-    &:hover {
-      h2 {
-        font-size: 1.75rem;
-      }
-    }
-  }
-}
-
-.title-container {
-  position: absolute;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  &.lightTitle {
-    &:hover {
-      background-color: #0000006b;
-    }
-  }
-
-  &.darkTitle {
-    &:hover {
-      background-color: #ffffff81;
-    }
   }
 }

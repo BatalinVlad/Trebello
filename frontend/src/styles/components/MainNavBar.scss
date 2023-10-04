@@ -1,14 +1,9 @@
-
-
 .home-page-login {
-  z-index: 2;
+  position: absolute;
   color: whitesmoke;
-  background: #00000099;
-  position: fixed;
   width: 100%;
-  top: 0px;
-  right: 0px;
-  padding: 15px 20px;
+  padding-right: 10px;
+  padding-top: 10px;
 
   .MuiButtonBase-root {
     font-size: rem(16px);
@@ -29,5 +24,15 @@
     background-color: rgba(223, 225, 230, 0.8);
     color: #172b4d;
     font-weight: 700;
+  }
+
+  .login-btn {
+    padding: 4px 8px;
+    transition: .3s;
+
+    &:hover {
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 0.153);
+    }
   }
 }

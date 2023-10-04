@@ -14,7 +14,7 @@
 /* Handle */
 ::-webkit-scrollbar-thumb {
   border-radius: 4px;
-  background: #2c2c2c69;
+  background: #e6e6e669;
 }
 
 * {
@@ -155,20 +155,3 @@ a {
   cursor: pointer;
 }
 
-.login-btn {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  transition: 0.2s;
-  padding: 2px 4px;
-  text-transform: capitalize;
-
-  &:hover {
-    border-radius: 4px;
-    background-color: rgba(165, 165, 165, 0.829);
-  }
-
-  p {
-    color: white;
-  }
-}

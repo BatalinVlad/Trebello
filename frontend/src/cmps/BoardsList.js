@@ -11,41 +11,39 @@ const BoardsList = ({ boards, templateBoards, user }) => {
 
     return (
         <section className="boards-list">
-
-            <div className="boards-list-container" >
-                <h1 className="capitalize">check our premade templates</h1>
-                <div className="templates-container flex row" >
-                    {templateBoards.map(templateBoard => (
-                        <div key={templateBoard._id} className="template-container">
-                            <NavLink className="pointer" to={`/board/${'templates'}/${templateBoard._id}`} >
-                                <BoardPreview board={templateBoard} />
-                            </NavLink>
-                            <p>{templateBoard.board_title}</p>
-                        </div>
-                    ))}
+            {templateBoards &&
+                <div className="boards-list-container" >
+                    <h2 className="capitalize" style={{ paddingBottom: '10px' }}>check our premade templates</h2>
+                    <div className="templates-container flex row" >
+                        {templateBoards.map(templateBoard => (
+                            <div key={templateBoard._id} className="template-container">
+                                <NavLink className="pointer" to={`/board/${'templates'}/${templateBoard._id}`} >
+                                    <BoardPreview board={templateBoard} />
+                                </NavLink>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            </div>
-
+            }
             {
                 user &&
                 <div>
                     <div className="boards-list-container">
                         {(myBoards.length === 0) ?
                             <p> you haven't created a board yet...</p> :
-                            <>
+                            <div className='templates-container'>
                                 <p className="capitalize">created boards</p>
-                                <div className="boards-container flex row">
+                                <div className="board-container flex row">
                                     {myBoards.map(myBoard => (
                                         <NavLink className="pointer" key={myBoard._id} to={`/board/board/${myBoard._id}`}>
                                             <BoardPreview board={myBoard} />
                                         </NavLink>
                                     ))}
                                 </div>
-                            </>
+                            </div>
                         }
                     </div>
-
-                    <div className="boards-list-container flex column">
+                    <div className="boards-list-container flex column" style={{marginTop : '10px'}}>
                         <p className="capitalize"> boards you collaborate on </p>
                         {(myCollaboratedBoards.length === 0) ?
                             <div className="fill-width flex grow center">
