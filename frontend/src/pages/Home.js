@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Fab from '@mui/material/Fab';
-import LoadingSpinner from '../shared/UiElements/LoadingSpinner'
 
 import MainNavBar from '../cmps/MainNavBar';
 import BoardsList from '../cmps/BoardsList';

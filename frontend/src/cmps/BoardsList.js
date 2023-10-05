@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Tilt } from "react-tilt";
 
 import BoardPreview from './BoardPreview';
-import LoadingSpinner from '../shared/UiElements/LoadingSpinner';
 
 const BoardsList = ({ boards, templateBoards, user }) => {
     const myBoards = (user) ? boards.filter(board => board.createdBy._id === user._id) : '';
@@ -12,20 +12,19 @@ const BoardsList = ({ boards, templateBoards, user }) => {
 
     return (
         <section className="boards-list relative">
-
             {templateBoards &&
                 <div className="boards-list-container" >
                     <h2 className="capitalize" style={{ padding: '5px' }}>check our premade templates</h2>
                     <div className="templates-container flex row" >
                         {templateBoards.map(templateBoard => (
-                            <div key={templateBoard._id} className="template-container">
+                            <Tilt key={templateBoard._id} className="template-container">
                                 <NavLink className="pointer" to={`/board/${'templates'}/${templateBoard._id}`} >
                                     <BoardPreview board={templateBoard} />
                                 </NavLink>
-                            </div>
+                            </Tilt>
                         ))}
                     </div>
-                </div> 
+                </div>
             }
             {
                 user &&
@@ -37,9 +36,11 @@ const BoardsList = ({ boards, templateBoards, user }) => {
                                 <p className="capitalize">created boards</p>
                                 <div className="board-container flex row">
                                     {myBoards.map(myBoard => (
-                                        <NavLink className="pointer" key={myBoard._id} to={`/board/board/${myBoard._id}`}>
-                                            <BoardPreview board={myBoard} />
-                                        </NavLink>
+                                        <Tilt className="pointer" key={myBoard._id}>
+                                            <NavLink to={`/board/board/${myBoard._id}`}>
+                                                <BoardPreview board={myBoard} />
+                                            </NavLink>
+                                        </Tilt>
                                     ))}
                                 </div>
                             </div>
@@ -54,9 +55,11 @@ const BoardsList = ({ boards, templateBoards, user }) => {
                             :
                             <div className="boards-list-container flex row">
                                 {myCollaboratedBoards.map(myCollaboratedBoard => (
-                                    <NavLink className="pointer" key={myCollaboratedBoard._id} to={`/board/board/${myCollaboratedBoard._id}`}>
-                                        <BoardPreview board={myCollaboratedBoard} />
-                                    </NavLink>
+                                    <Tilt className="pointer" key={myCollaboratedBoard._id}>
+                                        <NavLink to={`/board/board/${myCollaboratedBoard._id}`}>
+                                            <BoardPreview board={myCollaboratedBoard} />
+                                        </NavLink>
+                                    </Tilt>
                                 ))}
                             </div>
                         }
