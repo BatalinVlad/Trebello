@@ -3,63 +3,40 @@
   border-radius: 4px;
   background: white;
   position: absolute;
-  width: 270px;
-  padding-top: 25px;
-  top: 198px;
-  right: 21px;
-  float: right;
+  width: 200px;
+  padding-top: 5px;
+  top: 164px;
+  right: 11px;
   z-index: 1;
+
+  p {
+    font-size: 12px;
+    margin-inline-start: 0px;
+    padding: 7px 0px;
+  }
 
   @media (max-width: 488px) {
     top: 133px;
     right: 12px;
   }
 
-  &-asign-members {
-    max-height: 120px;
-    overflow-y: auto;
-    margin: 0px 5px;
-    padding-left: 10px;
-
-    &-wrapper {
-      padding: 5px;
-    }
-  }
-
-  & > .MuiSvgIcon-root {
-    height: 18px;
-    width: 18px;
-  }
-
-  p {
-    margin-inline-start: 0px;
-    padding: 7px 0px;
-  }
-
-  hr {
+  &-asign-members,
+  .add-team-members {
     margin: 0 5px;
-  }
-
-  &-close-btn {
-    cursor: pointer;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 15px;
-    height: 15px;
+    margin-bottom: 5px;
+    max-height: 200px;
+    overflow-y: auto;
   }
 
   .team-member {
+    padding: 5px;
+    width: 100%;
     cursor: pointer;
-    margin-right: 15px;
-    border-radius: 2px;
-    padding: 10px 5px;
-    border-bottom: 1px solid rgba(92, 92, 92, 0.288);
 
     &-icon {
       &-wrapper {
-        width: 40px;
-        height: 40px;
+        width: 36px;
+        height: 36px;
         margin-right: 5px;
         padding: 2px 5px;
         border-radius: 50%;
@@ -74,17 +51,8 @@
     transition: 0.3s;
 
     &:hover {
-      background: rgba(124, 124, 124, 0.438);
+      border-radius: 10px;
+      background: rgba(210, 210, 210, 0.353);
     }
-  }
-
-  .add-team-members {
-    &-wrapper {
-      padding: 5px;
-    }
-    max-height: 120px;
-    overflow-y: auto;
-    margin: 0px 5px;
-    padding-left: 10px;
   }
 }

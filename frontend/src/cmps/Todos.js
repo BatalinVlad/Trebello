@@ -48,7 +48,7 @@ export default class Todo extends Component {
 
     render() {
         return (
-            <div className="check-list-item-container text-center"
+            <div className="check-list-item-container flex center text-center"
                 onClick={(ev) => this.onStopPropagation(ev)}
             >
                 <div className="checklist-closebtn-container">

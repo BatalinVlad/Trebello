@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import BoardPreview from './BoardPreview';
+import LoadingSpinner from '../shared/UiElements/LoadingSpinner';
 
 const BoardsList = ({ boards, templateBoards, user }) => {
     const myBoards = (user) ? boards.filter(board => board.createdBy._id === user._id) : '';
@@ -10,10 +11,11 @@ const BoardsList = ({ boards, templateBoards, user }) => {
     }) : '';
 
     return (
-        <section className="boards-list">
+        <section className="boards-list relative">
+
             {templateBoards &&
                 <div className="boards-list-container" >
-                    <h2 className="capitalize" style={{ padding:'5px'}}>check our premade templates</h2>
+                    <h2 className="capitalize" style={{ padding: '5px' }}>check our premade templates</h2>
                     <div className="templates-container flex row" >
                         {templateBoards.map(templateBoard => (
                             <div key={templateBoard._id} className="template-container">
@@ -23,7 +25,7 @@ const BoardsList = ({ boards, templateBoards, user }) => {
                             </div>
                         ))}
                     </div>
-                </div>
+                </div> 
             }
             {
                 user &&
@@ -31,7 +33,7 @@ const BoardsList = ({ boards, templateBoards, user }) => {
                     <div className="boards-list-container">
                         {(myBoards.length === 0) ?
                             <p> you haven't created a board yet...</p> :
-                            <div className='templates-container'>
+                            <div className='boards-container'>
                                 <p className="capitalize">created boards</p>
                                 <div className="board-container flex row">
                                     {myBoards.map(myBoard => (
@@ -43,7 +45,7 @@ const BoardsList = ({ boards, templateBoards, user }) => {
                             </div>
                         }
                     </div>
-                    <div className="boards-list-container flex column" style={{marginTop : '10px'}}>
+                    <div className="boards-list-container flex column" style={{ marginTop: '10px' }}>
                         <p className="capitalize"> boards you collaborate on </p>
                         {(myCollaboratedBoards.length === 0) ?
                             <div className="fill-width flex grow center">

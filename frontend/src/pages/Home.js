@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Fab from '@mui/material/Fab';
+import LoadingSpinner from '../shared/UiElements/LoadingSpinner'
 
 import MainNavBar from '../cmps/MainNavBar';
 import BoardsList from '../cmps/BoardsList';
@@ -58,8 +59,8 @@ const Home = () => {
     <div className="home-page relative">
       {isLogin && <div className="screen" onClick={toggleLoginHandler}></div>}
       <MainNavBar isLogin={isLogin} toggleLoginHandler={toggleLoginHandler} />
-      <div className="home-page-container flex wrap">
-        <div className="get-started-container flex column" style={{ marginBottom: '30px' }}>
+      <div className="home-page-container flex wrap relative">
+        <div className="get-started-container flex column" >
           <h1>TREBELLO</h1>
           <h2 style={{ width: '65%' }}>Manage your tasks in a fun and easy way</h2>
           <Fab variant="extended" style={{ marginTop: '35px' }}>
@@ -68,8 +69,8 @@ const Home = () => {
             </p>
           </Fab>
         </div>
-        {templateBoards && <BoardsList templateBoards={templateBoards} />}
-        {boards && <BoardsList boards={boards} user={loggedInUser} />}
+        <BoardsList templateBoards={templateBoards} />
+        <BoardsList boards={boards} user={loggedInUser} />
       </div>
       <HomePageFooter />
     </div>
