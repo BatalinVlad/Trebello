@@ -14,7 +14,7 @@ const BoardsList = ({ boards, templateBoards, user }) => {
         <section className="boards-list relative">
             {templateBoards &&
                 <div className="boards-list-container" >
-                    <h2 className="capitalize" style={{ padding: '5px' }}>check our premade templates</h2>
+                    <h2 className="capitalize" style={{ padding: '5px' , width: '100%' }}>check our premade templates</h2>
                     <div className="templates-container flex row" >
                         {templateBoards.map(templateBoard => (
                             <Tilt key={templateBoard._id} className="template-container">
