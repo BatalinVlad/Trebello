@@ -1,10 +1,9 @@
-.home-page-login {
+.home-page-login , .board-page-login{
   z-index: 2;
   position: absolute;
   color: whitesmoke;
-  width: 100%;
-  padding-right: 10px;
-  padding-top: 10px;
+  top: 7px;
+  right: 6px;
 
   .MuiButtonBase-root {
     font-size: rem(16px);

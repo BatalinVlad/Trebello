@@ -1,15 +1,30 @@
 .login-container {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
   z-index: 5;
   position: fixed;
   height: 100vh;
   top: 0px;
   right: 0px;
   width: 270px;
-  background: #050505e3;
-  color: white;
-  border-left: 3px solid rgba(207, 207, 207, 0.226);
-
+  
   p {
+    color: white;
     font-weight: 600;
   }
 
@@ -32,7 +47,7 @@
     transition: 0.3s;
 
     &:hover {
-      background-color: #5bac44d5;
+      background-color: #53c234;
     }
   }
 
@@ -51,7 +66,5 @@
     }
   }
 
-  hr {
-    margin: 20px 0px;
-  }
+
 }

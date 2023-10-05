@@ -126,7 +126,7 @@ const Login = props => {
   );
 
   let loginSection = (
-    <form className="login-container-login text-center" onSubmit={doLogin}>
+    <form className="login-container-login text-center" style={{marginBottom: '10px'}} onSubmit={doLogin}>
       <p> Login: </p>
       <input
         type="text"
@@ -164,7 +164,6 @@ const Login = props => {
         )}
         
         {!loggedInUser && loginSection}
-        <hr />
         {!loggedInUser && signupSection}
       </div>
     </div>

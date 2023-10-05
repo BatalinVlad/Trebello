@@ -241,7 +241,7 @@ const Board = () => {
           {filteredBoard &&
             <p className="filter-modal__message"> You cannot make changes while filtering.. </p>
           }
-          <div className="board-page fill-height flex column" style={{ backgroundImage: 'url(' + loadedBoard.boardBgImage + ')', backgroundAttachment: 'fixed' }}>
+          <div className="board-page relative fill-height flex column" style={{ backgroundImage: 'url(' + loadedBoard.boardBgImage + ')', backgroundAttachment: 'fixed' }}>
             <div className="board-page-nav-bar flex align-center space-between">
               <div className="board-page-nav-bar-logo" onClick={goBackHandler}> </div>
               <div className="flex align-center">
@@ -259,10 +259,12 @@ const Board = () => {
                 }
                 {
                   loggedInUser ? <ExitToAppIcon onClick={logOutHandler} /> :
-                    <div className="login-btn flex"
-                      onClick={toggleLoginHandler}>
-                      <PersonOutlineIcon />
-                      <p>login</p>
+                    <div className="board-page-login flex"
+                      onClick={toggleLoginHandler} >
+                      <div className='login-btn pointer flex'>
+                        <PersonOutlineIcon />
+                        <p>login</p>
+                      </div>
                     </div>
                 }
               </div>
