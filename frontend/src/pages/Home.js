@@ -61,7 +61,7 @@ const Home = () => {
       <div className="home-page-container flex wrap relative">
         <div className="get-started-container flex column" >
           <h1>TREBELLO</h1>
-          <h2 style={{ width: '65%' }}>Manage your tasks in a fun and easy way</h2>
+          <h2>Manage your tasks in a fun and easy way</h2>
           <Fab variant="extended" style={{ marginTop: '35px' }}>
             <p className="uppercase" onClick={createBoardHandler}>
               get started
