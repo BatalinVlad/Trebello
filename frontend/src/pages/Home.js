@@ -12,6 +12,7 @@ import { getLoggedInUser } from '../actions/UserActions'
 import HomePageFooter from '../cmps/HomePageFooter';
 
 const Home = () => {
+  const [toggleNewBoardModal, setToggleNewBoardModal] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const loggedInUser = useSelector(state => state.user.loggedInUser);
   const boards = useSelector(state => state.boards.boards);
@@ -28,6 +29,10 @@ const Home = () => {
 
   const toggleLoginHandler = () => {
     setIsLogin(prevIsLogin => !prevIsLogin);
+  };
+
+  const toggleNewBoardModalHandler = () => {
+    setToggleNewBoardModal(prevState => !prevState);
   };
 
   const createBoardHandler = async () => {
@@ -57,6 +62,7 @@ const Home = () => {
   return (
     <div className="home-page relative">
       {isLogin && <div className="screen" onClick={toggleLoginHandler}></div>}
+      {toggleNewBoardModal && <div style={{height: '300px' , width: '200px' , background: 'black'}}> NEW BOARD MODAL </div>}
       <MainNavBar isLogin={isLogin} toggleLoginHandler={toggleLoginHandler} />
       <div className="home-page-container flex column relative">
         <div className="get-started-container flex justify-center">
@@ -64,14 +70,15 @@ const Home = () => {
             <h1>TREBELLO</h1>
             <h2>Manage your tasks in a fun and easy way</h2>
             <Fab variant="extended" style={{ marginTop: '35px' }}>
-              <p className="uppercase" onClick={createBoardHandler}>
+            {/* onClick={toggleNewBoardModalHandler} */}
+              <p className="uppercase">
                 get started
               </p>
             </Fab>
           </div>
           <div className='get-started__img wrapper'>
             <img src='https://res.cloudinary.com/dzeycmkct/image/upload/v1696616042/get_started_img_wvhw22.png' alt='none'
-            className='fill obj-contain' />
+            className='fill obj-contain' style={{paddingLeft: '20px'}} />
           </div>
         </div>
         <BoardsList templateBoards={templateBoards} />
