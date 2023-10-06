@@ -16,38 +16,10 @@
     }
   }
 
-  .screen {
-    z-index: 3;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
-
   &-container {
-    justify-content: center;
-
-    @media (max-width:835px) {
-      justify-content: start;
-
-      .get-started-container {
-        padding-left: 35px;
-      }
-    }
-
-    @media (max-width:400px) {
-      .get-started-container {
-        width: 100%;
-        align-items: center;
-        padding-left: 0px;
-        h2{
-          width: 100%;
-        }
-      }
-    }
-
+    z-index: 1;
     min-height: 100vh;
     padding: 105px 15px 0px 15px;
-    gap: 10px;
 
     h1 {
       line-height: initial;
@@ -63,8 +35,8 @@
       font-size: 1rem;
       text-shadow: 1px 1px 1px black;
     }
-    
-    @media (max-width:400px) {
+
+    @media (max-width: 400px) {
       h1 {
         font-size: 2.3rem;
       }
@@ -73,6 +45,30 @@
         padding-top: 5px;
         font-size: 0.8rem;
         text-align: center;
+      }
+    }
+
+    @media (max-width: 835px) {
+      justify-content: start;
+
+      .get-started-container {
+        padding-left: 35px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .get-started-container {
+        width: 100%;
+        align-items: center;
+        padding-left: 0px;
+        flex-wrap: wrap;
+        h2 {
+          width: 100%;
+        }
+        .content {
+          align-items: center;
+          padding-bottom: 30px;
+        }
       }
     }
 
@@ -97,10 +93,23 @@
         box-shadow: 0px 0px 10px 1px rgba(76, 76, 76, 0.431);
       }
     }
+
+    .get-started__img {
+      height: 300px;
+      @media (max-width: 700px) {
+        height: 250px;
+      }
+      @media (max-width: 600px) {
+        height: 200px;
+      }
+    }
   }
 
   // boards list -------------------------
   .boards-list {
+    min-height: 110px;
+    margin: 0 auto;
+    z-index: 1;
     h1 {
       font-size: 20px;
     }
@@ -134,8 +143,13 @@
       }
     }
   }
-}
-
-.subtitle {
-  max-width: 300px;
+  .footer-bgimg {
+    height: 100%;
+    background-image: url("../images/footerbg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    bottom: 0px;
+    opacity: 0.6;
+  }
 }

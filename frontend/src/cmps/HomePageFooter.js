@@ -8,7 +8,7 @@ const sendMail = (mail) => {
 
 const HomePageFooter = () => {
     return (
-        <footer className="home-page-footer">
+        <footer className="home-page-footer z1">
             <div className='about-container-wrapper relative'>
                 <span>created by</span>
                 <div className="about-container flex">
@@ -26,7 +26,6 @@ const HomePageFooter = () => {
 
                 </div>
                 <div className="creator-img absolute pointer"> </div>
-
             </div>
         </footer>
     )
