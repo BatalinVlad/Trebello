@@ -188,7 +188,8 @@ const Board = () => {
   }
 
   const filterBoardHandler = (filterBy) => {
-    if (filterBy.title === '' && filterBy.teamMembers === 'all') {
+    console.log(filterBy);
+    if (!filterBy.title && filterBy.teamMembers === 'all') {
       setFilteredBoard(null);
       return;
     }
@@ -207,7 +208,7 @@ const Board = () => {
       (title.includes(filterTitle)) ? matchedIds.push(taskKey) : unmatchedIds.push(taskKey);
     }
 
-    if (filterBy.teamMembers) {
+    if (filterBy.teamMembers !== 'all') {
       for (const id of matchedIds) {
         let task = tasks[id];
         let teamMember = filterBy.teamMembers;
