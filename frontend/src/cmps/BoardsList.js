@@ -46,7 +46,7 @@ const BoardsList = ({ boards, templateBoards, user }) => {
                             </div>
                         }
                     </div>
-                    <div className="boards-list-container flex column" style={{ marginTop: '10px' }}>
+                    <div className="boards-list-container flex column" style={{ marginTop: '10px', paddingBottom: '120px'}}>
                         <p className="capitalize"> boards you collaborate on </p>
                         {(myCollaboratedBoards.length === 0) ?
                             <div className="fill-width flex grow center">

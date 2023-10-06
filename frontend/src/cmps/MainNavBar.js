@@ -33,7 +33,7 @@ const MainNavBar = ({ toggleLoginHandler , isLogin }) => {
                             </p>
                         </div>
                         <p className="flex column" style={{ paddingRight: 10 }}>
-                            <small>welcome!</small>
+                            <small>welcome back!</small>
                             {loggedInUser.username}
                         </p>
                     </div>
