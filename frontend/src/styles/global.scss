@@ -11,6 +11,7 @@
 @import "basics/buttons.scss";
 
 //Component
+@import "components/LoadingSpinner.scss";
 @import "components/LoadPage.scss";
 @import "components/ScreenFilter.scss";
 @import "components/MainNavBar.scss";
@@ -32,7 +33,7 @@
 @import "components/DueDate.scss";
 @import "components/CheckList.scss";
 @import "components/TaskBgColor.scss";
-
+@import "components/HomePageFooter.scss";
 
 //splash
 @import "components/SplashMenu.scss";

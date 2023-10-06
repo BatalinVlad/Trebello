@@ -7,7 +7,7 @@
             min-width: 260px;
             min-height: 52px;
             background-color: #ebecf0;
-            border-radius: 4px;
+            border-radius: 12px;
 
             input {
                 padding: 4px;
@@ -22,7 +22,7 @@
             transition: 0.3s;
 
             &:hover {
-                border-radius: 4px;
+                border-radius: 12px;
                 ;
             }
         }

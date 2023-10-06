@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Fab from '@mui/material/Fab';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import EmailIcon from '@mui/icons-material/Email';
 
 import MainNavBar from '../cmps/MainNavBar';
 import BoardsList from '../cmps/BoardsList';
@@ -11,6 +9,7 @@ import utils from '../services/utils';
 
 import { loadBoards, loadTemplateBoards, createBoard } from '../actions/BoardActions'
 import { getLoggedInUser } from '../actions/UserActions'
+import HomePageFooter from '../cmps/HomePageFooter';
 
 const Home = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -55,70 +54,24 @@ const Home = () => {
     board.history.push({ id: utils.getRandomId(), msg: msg, time: Date.now() });
   }
 
-
-  const sendMail = (mail) => {
-    window.open('mailto:' + mail);
-  }
-
-
-
   return (
-
-    <div className="home-page">
-      {isLogin && <div className="home-page screen" onClick={toggleLoginHandler}></div>}
+    <div className="home-page relative">
+      {isLogin && <div className="screen" onClick={toggleLoginHandler}></div>}
       <MainNavBar isLogin={isLogin} toggleLoginHandler={toggleLoginHandler} />
-
-      <section className="home-page-header">
-        <div className="home-page-header-container flex">
-          <div className="header-image flex align-center justify-center fill-width fill-height">
-
-            <div className="login-get-started-container flex align-center justify-center align-center">
-              <div className="home-page-logo-get-started flex column align-center">
-                <div className="home-page-header-container-logo-img fill-width fill-height"></div>
-
-                <div className="text-center">
-                  <h2>Manage your tasks in a fun and easy way</h2>
-                </div>
-
-                <div className="get-started-btn">
-                  <Fab variant="extended">
-                    <p className="uppercase" onClick={createBoardHandler}>
-                      get started
-                    </p>
-                  </Fab>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div className="home-page-container flex wrap relative">
+        <div className="get-started-container flex column" >
+          <h1>TREBELLO</h1>
+          <h2>Manage your tasks in a fun and easy way</h2>
+          <Fab variant="extended" style={{ marginTop: '35px' }}>
+            <p className="uppercase" onClick={createBoardHandler}>
+              get started
+            </p>
+          </Fab>
         </div>
-      </section>
-
-      {
-        templateBoards && boards &&
-        <BoardsList boards={boards} templateBoards={templateBoards} user={loggedInUser} />
-      }
-
-      <footer className="home-page-footer">
-        <div className='about-container-wrapper relative'>
-          <span>created by</span>
-          <div className="about-container flex">
-            <div className="info fill-width flex column ">
-              <div className="flex">
-                <p>Vlad Batalin</p>
-                <div>
-                  <a href="https://www.linkedin.com/in/vlad-batalin-647725180/" target="blank">
-                    <LinkedInIcon className="linkedInIcon"></LinkedInIcon></a>
-                  <EmailIcon onClick={() => sendMail('batalinvlad@gmail.com')} className="mail" />
-                </div>
-              </div>
-              <p className="bold capitalize">Full-stack development</p>
-            </div>
-
-          </div>
-          <div className="creator-img absolute pointer"> </div>
-
-        </div>
-      </footer>
+        <BoardsList templateBoards={templateBoards} />
+        <BoardsList boards={boards} user={loggedInUser} />
+      </div>
+      <HomePageFooter />
     </div>
   )
 }

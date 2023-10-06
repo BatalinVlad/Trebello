@@ -2,19 +2,21 @@
 
 ::-webkit-scrollbar {
   width: 4px;
-  height: 4px;
+  height: 12px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: rgba(34, 34, 34, 0.071);
+  background: rgba(11, 11, 11, 0.256);
   border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.166);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   border-radius: 4px;
-  background: #2c2c2c69;
+  border: 1px solid rgba(0, 0, 0, 0.166);
+  background: #ffffffce;
 }
 
 * {
@@ -33,7 +35,7 @@ body {
 }
 
 img {
-  border-radius: 4px;
+  border-radius: 12px;
 }
 
 h1,
@@ -155,20 +157,3 @@ a {
   cursor: pointer;
 }
 
-.login-btn {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  transition: 0.2s;
-  padding: 2px 4px;
-  text-transform: capitalize;
-
-  &:hover {
-    border-radius: 4px;
-    background-color: rgba(165, 165, 165, 0.829);
-  }
-
-  p {
-    color: white;
-  }
-}

@@ -29,11 +29,6 @@ const BoardColumns = props => {
         props.updateBoard(board, msg, notificationType);
     }
 
-    const handleDragStart = () => {
-        //maybe Ill add something cool later
-        // console.log('close all !');
-    }
-
     const onDragEnd = result => {
         const { destination, source, draggableId, type } = result;
 
@@ -139,7 +134,7 @@ const BoardColumns = props => {
     }
 
     return (
-        <DragDropContext onDragStart={handleDragStart} onDragEnd={onDragEnd}>
+        <DragDropContext onDragEnd={onDragEnd}>
             <Droppable droppableId="all-columns" direction="horizontal" type="column">
                 {(provided) => (
                     <div

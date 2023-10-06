@@ -22,7 +22,7 @@ export default class VideoPreview extends Component {
     }
 
     render() {
-        const { task, provided, innerRef , style, showEditBtn, onTaskId } = this.props;
+        const { task, provided, innerRef, style, showEditBtn, onTaskId } = this.props;
         return (
             <section ref={this.videoContainer}>
                 <div
@@ -32,15 +32,6 @@ export default class VideoPreview extends Component {
                     ref={innerRef}
                     style={style}
                 >
-                    <iframe
-                        width="248"
-                        height="142"
-                        src={task.url}
-                        title="embeded youtube"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                    ></iframe>
                     <div className="task-container-labels flex">
                         {task.labels.map(label => {
                             return <div key={label} className={label + ' small-label'}>
@@ -48,27 +39,26 @@ export default class VideoPreview extends Component {
                         })
                         }
                     </div>
-                    <p className="task-container-title">{task.title}</p>
+                    {task.title !== '' &&
+                        <p className="task-container-title">{task.title}</p>}
                     {(showEditBtn && (onTaskId === task.id)) ?
                         <CreateIcon className="task-container-open-menu"
                             onClick={e => this.toggleMiniDetails(e)} />
                         : ''}
-                    {(task.description !== '') ?
-                        <div className="grid-item justify-self-center align-self-center">
+                    {(task.description !== '') &&
+                        <div className="flex justify-self-center align-self-center">
                             <SubjectIcon />
                         </div>
-                        : <div className="grid-item"></div>
                     }
-                    {(task.todos.length > 0) ?
-                        <div className="grid-item align-center flex">
+                    {(task.todos.length > 0) &&
+                        <div className=" align-center flex">
                             <div className="flex">
                                 <CheckBoxIcon />
                                 <p>{task.todosDone + '/' + task.todos.length}</p>
                             </div>
                         </div>
-                        : <div className="grid-item"></div>
                     }
-                    <div className="team-members-container grid-item">
+                    <div className="team-members-container ">
                         <div className="flex justify-end">
                             {(task.taskTeamMembers.map(member => {
                                 return <div key={member._id} className="team-member-icon-wrapper flex align-center" style={{ backgroundColor: '#dfe1e6' }} >

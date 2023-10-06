@@ -26,7 +26,7 @@ export default class TaskPreview extends Component {
         const { task, provided, innerRef, showEditBtn, onTaskId } = this.props;
         return (
             <section ref={this.taskContainer}>
-                <div className={`task-container ${task.bgColor ? task.bgColor : 'bgTaskWhite' }`}
+                <div className={`task-container ${task.bgColor ? task.bgColor : 'bgTaskWhite'}`}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                     ref={innerRef}
@@ -40,13 +40,13 @@ export default class TaskPreview extends Component {
                         })
                         }
                     </div>
-                    <p className="task-container-title">{task.title}</p>
+                    <p className="task-container-title flex align-center">{task.title}</p>
                     {(showEditBtn && (onTaskId === task.id)) &&
                         <CreateIcon className="task-container-open-menu"
                             onClick={e => this.toggleMiniDetails(e)} />
                     }
 
-                    <div className="bottom-container flex row" style={(task.taskTeamMembers.length !== 0) ? {minHeight: '30px'} : null}> 
+                    <div className="bottom-container flex row" style={(task.taskTeamMembers.length !== 0) ? { minHeight: '30px' } : null}>
                         {(task.description !== '') &&
                             <div className="flex center">
                                 <SubjectIcon />
@@ -63,13 +63,13 @@ export default class TaskPreview extends Component {
                         }
 
                         {(task.dueDate) &&
-                                <div className="flex center">
-                                    <CalendarMonthIcon />
-                                </div>
+                            <div className="flex center">
+                                <CalendarMonthIcon />
+                            </div>
                         }
-                        <div className="team-members-container grid-item">
+                        <div className="team-members-container">
                             <div className="flex justify-end">
-                                {(task.taskTeamMembers.map(member => {
+                                {(task.taskTeamMembers.slice(0, 4).map(member => {
                                     return <div key={member._id} className="team-member-icon-wrapper flex align-center" style={{ backgroundColor: '#dfe1e6' }} >
                                         <div className="team-member-icon">
                                             <p className="flex align-center uppercase" style={{ color: '#172b4d' }}>
@@ -78,7 +78,16 @@ export default class TaskPreview extends Component {
                                             </p>
                                         </div>
                                     </div>
-                                }))
+                                }))}
+                                {
+                                    task.taskTeamMembers.length > 3 &&
+                                    <div className="team-member-icon-wrapper flex align-center" style={{ backgroundColor: '#dfe1e6' }} >
+                                        <div className="team-member-icon">
+                                            <p className="flex align-center uppercase" style={{ color: '#172b4d' }}>
+                                                {`+${task.taskTeamMembers.length - 3}`}
+                                            </p>
+                                        </div>
+                                    </div>
                                 }
                             </div>
                         </div>

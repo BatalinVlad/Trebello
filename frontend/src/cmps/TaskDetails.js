@@ -311,7 +311,7 @@ export default class TaskDetails extends Component {
                     <div className="task-details-container flex">
                         <CloseIcon className="add-column-back-to-board   flex align-center"
                             onClick={() => this.props.toggleTaskDetails()} />
-                        <div className="task-details-container-main full">
+                        <div className="task-details-container-main">
                             <header className="task-details-container-header">
                                 <DescriptionOutlinedIcon style={{
                                     color: '#42526e', position: 'absolute',

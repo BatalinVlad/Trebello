@@ -1,21 +1,17 @@
 .boards-list {
-  padding: 30px 100px;
-  @media (max-width: 750px) {
-    padding: 20px 0px;
+  padding: 0 10px;
 
-    h1 {
-      text-align: center;
-      font-size: rem(20px);
-      padding: 10px;
-    }
+  @media (max-width: 835px) {
+    width: 100%;
+  }
 
-    p {
-      padding-left: 10px;
-    }
+
+  &:last-child {
+    margin-bottom: 120px;
   }
 
   p {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     color: white;
     font-size: rem(12px);
   }
@@ -30,32 +26,46 @@
     border-color: #535456;
   }
 
-  &-container {
+  .templates-container {
     padding: 10px;
-    min-height: 150px;
-    gap: 10px;
+    gap: 15px;
+    width: 420px;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+
+    @media (max-width: 835px) {
+      flex-wrap: nowrap;
+      width: 100%;
+      overflow-x: auto;
+    }
   }
 
-  .templates-container,
   .boards-container {
+    padding: 10px;
     gap: 10px;
     overflow-x: scroll;
-    padding: 5px;
-    margin-bottom: 45px;
+  }
+
+  .board-container{
+    margin-bottom: 10px;
+    gap: 15px;
   }
 
   .template-container {
     cursor: pointer;
+    margin-bottom: 10px;
     background: white;
-    border-radius: 5px;
-    box-shadow: 0px 1px 9px -3px #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 1px 9px -3px #000000;
     transition: 0.3s;
+
     p {
       text-align: center;
       font-size: 15px;
       font-weight: bold;
       color: black;
     }
+
     &:hover {
       background: #e4e4e4;
     }

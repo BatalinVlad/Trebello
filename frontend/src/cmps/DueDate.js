@@ -18,6 +18,7 @@ export default class DueDate extends React.Component {
     }
 
     handleChange = date => {
+        console.log(date);
         this.setState({ dueDate: date });
         this.saveTask();
     }
@@ -50,7 +51,6 @@ export default class DueDate extends React.Component {
                 <div className="close-btn-container">
                     <CloseIcon className="duedate-edit-close-btn" onClick={this.props.onToggle} />
                 </div>
-
                 <div className="flex column align-center justify-center datepicker-container">
                     <DatePicker
                         selected={this.state.dueDate}

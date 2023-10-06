@@ -13,7 +13,12 @@
     display: block;
 }
 
-// Font Sizes
+// Margin 
+.mt-4{
+    margin-top: 4px
+}
+//Font 
+
 .fs12 {
     font-size: rem(12px);
 }
@@ -194,6 +199,18 @@
 
 .absolute {
     position: absolute;
+}
+
+.z1{
+    z-index: 1;
+}
+
+.z2{
+    z-index: 2;
+}
+
+.z3{
+    z-index: 3;
 }
 
 

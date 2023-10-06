@@ -29,17 +29,11 @@ const TaskForm = props => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        // nameInputRef.current.focus();
-    }, []);
-
-    useEffect(() => {
         if (prevTaskRef.current) {
             setEdit(true);
         }
         if (prevTaskRef.current !== props.task) {
-            // console.log('prev props changed');
             prevTaskRef.current = props.task;
-            // saveTask();
         }
     }, [props.task]);
 
@@ -58,21 +52,42 @@ const TaskForm = props => {
     };
 
     //Need to move to Utils
-    const checkIfUrlAndSave = (url) => {
-        const videoIdMatch = url.match(/(?:\?v=|\/embed\/|\/watch\?v=|\/\d{11}\/|\/\d{11}$)([a-zA-Z0-9_-]{11})/);
+    const checkIfUrlAndSave = async (url) => {
+        // const videoIdMatch = url.match(/(?:\?v=|\/embed\/|\/watch\?v=|\/\d{11}\/|\/\d{11}$)([a-zA-Z0-9_-]{11})/);
         const imgREGEX = /.(jpg|jpeg|png|gif)\/?$/;
 
-        if (videoIdMatch) {
-            const videoId = videoIdMatch[1];
-            const embedUrl = `https://www.youtube.com/embed/${videoId}`;
-            saveTask({ ...task, title: '', type: 'video', url: embedUrl });
-            console.log(embedUrl);
-        } else if (url.match(imgREGEX)) {
+        // if (videoIdMatch) {
+            // lets here make an api call
+            // const videoId = videoIdMatch[1];
+            // const apiUrl = `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&part=snippet&key=${API_KEY}`;
+            // const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+            // const video = await fetchVideoDetails(apiUrl)
+            // saveTask({ ...task, title: '', type: 'video', video , url: embedUrl });
+        // } else 
+        
+        if (url.match(imgREGEX)) {
             saveTask({ ...task, title: '', type: 'image', url });
         } else {
             saveTask()
         }
     };
+
+    // async function fetchVideoDetails(apiUrl) {
+    //     try {
+    //         const response = await fetch(apiUrl);
+
+    //         if (!response.ok) {
+    //             throw new Error(`Network response was not ok: ${response.status}`);
+    //         }
+
+    //         const data = await response.json();
+    //         const video = data.items[0];
+
+    //         return ({ title: video.snippet.title, thumbnail: video.snippet.thumbnails.high.url })
+    //     } catch (error) {
+    //         console.error('Error fetching video details:', error);
+    //     }
+    // }
 
     const saveTask = (newTask = null) => {
         const taskId = newTask ? newTask.id : task.id;
