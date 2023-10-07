@@ -1,0 +1,79 @@
+.new-board-modal {
+  .container {
+    position: fixed;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    max-width: 500px;
+    padding: 10px;
+    border-radius: 12px;
+
+    label {
+      font-size: 12px;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 2px;
+    }
+
+    input {
+      text-align: center;
+      height: 32px;
+      width: 100%;
+      border-radius: 6px;
+      padding-left: 5px;
+      margin-bottom: 5px;
+    }
+
+    @media (max-width: 500px) {
+      width: 90%;
+    }
+
+    .splash-menu {
+      position: inherit;
+      height: 378px;
+      background: transparent;
+      box-shadow: none;
+
+      @media (max-width: 500px) {
+        width: 100%;
+      }
+
+      &-search-bar {
+        padding: 0;
+        flex-basis: auto;
+        input {
+          margin-bottom: 0px;
+        }
+        button {
+          border: 1px solid #47013fc9;
+          background: #7c006dc9;
+          padding: 3px 7px;
+          transition: all 0.3s;
+
+          &:hover {
+            background: #47013fc9;
+          }
+        }
+      }
+    }
+  }
+}
+
+.home-page {
+  .new-board-modal {
+    height: 100vh;
+  }
+}

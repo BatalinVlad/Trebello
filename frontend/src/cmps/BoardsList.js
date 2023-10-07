@@ -4,7 +4,7 @@ import { Tilt } from "react-tilt";
 
 import BoardPreview from './BoardPreview';
 
-const BoardsList = ({ boards, templateBoards, user }) => {
+const BoardsList = ({ boards, templateBoards, user , toggleNewBoardModal }) => {
     const myBoards = (user) ? boards.filter(board => board.createdBy._id === user._id) : '';
     const myCollaboratedBoards = (user) ? boards.filter(board => {
         return board.teamMembers.find(teamMember => user._id === teamMember._id && user._id !== board.createdBy._id);
@@ -14,7 +14,7 @@ const BoardsList = ({ boards, templateBoards, user }) => {
         <section className="boards-list relative">
             {templateBoards &&
                 <div className="boards-list-container" >
-                    <h2 className="capitalize" style={{ padding: '5px' , width: '100%' }}>check our premade templates</h2>
+                    <h2 className="capitalize" style={{ padding: '5px', width: '100%' }}>check our premade templates</h2>
                     <div className="templates-container flex row" >
                         {templateBoards.map(templateBoard => (
                             <Tilt key={templateBoard._id} className="template-container">
@@ -42,11 +42,14 @@ const BoardsList = ({ boards, templateBoards, user }) => {
                                             </NavLink>
                                         </Tilt>
                                     ))}
+                                    <div className="add-board flex center pointer" onClick={toggleNewBoardModal}>
+                                            <button> add </button>
+                                    </div>
                                 </div>
                             </div>
                         }
                     </div>
-                    <div className="boards-list-container flex column" style={{ marginTop: '10px', paddingBottom: '120px'}}>
+                    <div className="boards-list-container flex column" style={{ marginTop: '10px', padding: '10px 0px 120px 0px' }}>
                         <p className="capitalize"> boards you collaborate on </p>
                         {(myCollaboratedBoards.length === 0) ?
                             <div className="fill-width flex grow center">

@@ -5,7 +5,6 @@
     width: 100%;
   }
 
-
   &:last-child {
     margin-bottom: 120px;
   }
@@ -38,14 +37,28 @@
   }
 
   .boards-container {
-    padding: 10px;
-    gap: 10px;
-    overflow-x: scroll;
+    width: 90vw;
+    overflow-x: auto;
   }
 
-  .board-container{
+  .board-container {
     margin-bottom: 10px;
     gap: 15px;
+
+    .add-board {
+      button {
+        border-radius: 6px;
+        background: rgb(124 0 109 / 17%);
+        padding: 20px 25px;
+        transition: all 0.3s;
+        color: white;
+        font-weight: bold;
+
+        &:hover {
+          background: rgba(124, 0, 109, 0.385);
+        }
+      }
+    }
   }
 
   .template-container {

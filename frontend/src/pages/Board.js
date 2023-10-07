@@ -33,6 +33,7 @@ import NavBarFilters from '../cmps/NavBarFilters';
 SocketService.setup();
 
 const Board = () => {
+  const [editableBoardTitle, setEditableBoardTitle] = useState('');
   const [filteredBoard, setFilteredBoard] = useState(null);
   const [showColAddForm, setShowColAddForm] = useState(false);
   const [showTaskDetails, setShowTaskDetails] = useState(false);
@@ -226,14 +227,23 @@ const Board = () => {
       }
     }
 
-    debugger
-
     setFilteredBoard(clonedBoard);
   };
 
   const logOutHandler = () => {
     dispatch(logout())
   }
+
+  const handleTitleChange = (e) => {
+    setEditableBoardTitle(e.target.innerText); // Update the state with edited content
+  };
+
+ 
+  const handleTitleBlur = () => {
+    let newBoard = {...boardToShow};
+    newBoard.title = editableBoardTitle;
+    updateBoardHandler(newBoard , `${loggedInUser} changed board Title` , 'success')
+  };
 
   return (
     <React.Fragment>
@@ -245,7 +255,16 @@ const Board = () => {
           }
           <div className="board-page relative fill-height flex column" style={{ backgroundImage: 'url(' + loadedBoard.boardBgImage + ')', backgroundAttachment: 'fixed' }}>
             <div className="board-page-nav-bar flex align-center space-between">
-              <div className="board-page-nav-bar-logo" onClick={goBackHandler}> </div>
+              {/* <div className="board-page-nav-bar-logo" onClick={goBackHandler}> </div> */}
+              <h1
+                style={{ fontSize: '16px', marginLeft: '10px' }}
+                contentEditable="true" // Make the element editable
+                onInput={handleTitleChange} // Handle content changes
+                onBlur={handleTitleBlur} // Handle onBlur to save the content
+                suppressContentEditableWarning={true}
+              >
+                {boardToShow.title}
+              </h1>
               <div className="flex align-center">
                 {loggedInUser &&
                   <div className="flex">
