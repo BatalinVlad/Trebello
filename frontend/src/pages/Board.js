@@ -29,6 +29,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { loadBoard, updateBoard, setBoard } from '../actions/BoardActions';
 import { logout, getLoggedInUser, getUsers } from '../actions/UserActions';
 import NavBarFilters from '../cmps/NavBarFilters';
+import LoadingSpinner from '../shared/UiElements/LoadingSpinner';
 
 SocketService.setup();
 
@@ -48,8 +49,10 @@ const Board = () => {
 
   const [miniTaskDetails, setMiniTaskDetails] = useState({});
   const [currColumnId, setCurrColumnId] = useState('');
-  const [isDarkBackground, setIsDarkBackground] = useState(true); // change it later with new package
   const [currTaskDetails, setCurrTaskDetails] = useState(null)
+
+  const [isDarkBackground, setIsDarkBackground] = useState(true); // change it later with new package
+  const [dominantColor, setdominantColor] = useState(null);
 
   const loadedBoard = useSelector(state => state.boards.board);
   const loggedInUser = useSelector(state => state.user.loggedInUser);
@@ -66,6 +69,10 @@ const Board = () => {
     dispatch(getUsers());
     dispatch(getLoggedInUser());
     dispatch(loadBoard(boardType, boardId));
+
+    return () => {
+      dispatch(setBoard([]));
+    }
   }, [dispatch, boardId, boardType]);
 
   useEffect(() => {
@@ -90,6 +97,7 @@ const Board = () => {
   useEffect(() => {
     if (loadedBoard.boardBgImage) {
       checkBgBrightenss(loadedBoard.boardBgImage)
+      checkDominantColor(loadedBoard.boardBgImage)
     }
   }, [loadedBoard.boardBgImage])
 
@@ -100,6 +108,44 @@ const Board = () => {
       res === 'dark' ? setIsDarkBackground(true) : setIsDarkBackground(false);
     });
   }
+
+  const checkDominantColor = async (imageUrl) => {
+    const img = new Image();
+    img.src = imageUrl;
+    img.crossOrigin = 'Anonymous'; // Enable cross-origin access if needed
+
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+
+      canvas.width = img.width;
+      canvas.height = img.height;
+
+      ctx.drawImage(img, 0, 0, img.width, img.height);
+
+      const imageData = ctx.getImageData(0, 0, img.width, img.height);
+      const pixelData = imageData.data;
+
+      let sumRed = 0;
+      let sumGreen = 0;
+      let sumBlue = 0;
+      let pixelCount = 0;
+
+      for (let i = 0; i < pixelData.length; i += 4) {
+        sumRed += pixelData[i];
+        sumGreen += pixelData[i + 1];
+        sumBlue += pixelData[i + 2];
+        pixelCount++;
+      }
+
+      const averageRed = Math.round(sumRed / pixelCount);
+      const averageGreen = Math.round(sumGreen / pixelCount);
+      const averageBlue = Math.round(sumBlue / pixelCount);
+
+      setdominantColor(`rgb(${averageRed}, ${averageGreen}, ${averageBlue} , 0.7)`);
+    };
+  };
+
 
   const updateBoardHandler = (board, msg, notificationType) => {
     if (filteredBoard) return;
@@ -207,7 +253,7 @@ const Board = () => {
       (title.includes(filterTitle)) ? matchedIds.push(taskKey) : unmatchedIds.push(taskKey);
     }
 
-    if (filterBy.teamMembers !== 'all') {
+    if (filterBy.teamMembers !== '' && filterBy.teamMembers !== 'all' ) {
       for (const id of matchedIds) {
         let task = tasks[id];
         let teamMember = filterBy.teamMembers;
@@ -238,29 +284,36 @@ const Board = () => {
     setEditableBoardTitle(e.target.innerText); // Update the state with edited content
   };
 
- 
-  const handleTitleBlur = () => {
-    let newBoard = {...boardToShow};
-    newBoard.title = editableBoardTitle;
-    updateBoardHandler(newBoard , `${loggedInUser} changed board Title` , 'success')
+
+  const boardTitleHandler = () => {
+    let newBoard = { ...boardToShow };
+    newBoard.title = editableBoardTitle !== '' ? editableBoardTitle : 'no title';
+    updateBoardHandler(newBoard, `${loggedInUser.username} changed board Title`, 'success')
   };
 
   return (
     <React.Fragment>
-      {!boardToShow._id && <LoadPage />}
+
+      {!boardToShow._id && 
+      <div className='loading_screen'>
+        <LoadingSpinner asOverlay />
+      </div>
+      }
       {boardToShow._id &&
         <div className="screen" onClick={closeAllTabs}>
           {filteredBoard &&
             <p className="filter-modal__message"> You cannot make changes while filtering.. </p>
           }
           <div className="board-page relative fill-height flex column" style={{ backgroundImage: 'url(' + loadedBoard.boardBgImage + ')', backgroundAttachment: 'fixed' }}>
-            <div className="board-page-nav-bar flex align-center space-between">
+            <div className="board-page-nav-bar flex align-center space-between"
+              style={{ background: `${dominantColor}`, backdropFilter: 'blur(5px)' }}
+            >
               {/* <div className="board-page-nav-bar-logo" onClick={goBackHandler}> </div> */}
               <h1
-                style={{ fontSize: '16px', marginLeft: '10px' }}
+                style={{ fontSize: '16px', marginLeft: '10px', color: `${isDarkBackground? 'white' : 'rgb(23, 43, 77)' }` }}
                 contentEditable="true" // Make the element editable
                 onInput={handleTitleChange} // Handle content changes
-                onBlur={handleTitleBlur} // Handle onBlur to save the content
+                onBlur={boardTitleHandler} // Handle onBlur to save the content
                 suppressContentEditableWarning={true}
               >
                 {boardToShow.title}
@@ -292,6 +345,7 @@ const Board = () => {
             </div>
 
             <NavBarFilters
+              dominantColor={dominantColor}
               isDarkBackground={isDarkBackground}
               toggleFilterByMember={toggleFilterByMember}
               toggleFilterByMemberHandler={toggleFilterByMemberHandler}
@@ -303,6 +357,8 @@ const Board = () => {
               setToggleSplashMenu={setToggleSplashMenu}
               setToggleLogin={setToggleLogin}
             />
+
+            {toggleSplashMenu && <div className='screen' style={{zIndex:'1'}}> </div>}
 
             <CSSTransition
               in={toggleSplashMenu}
@@ -316,6 +372,7 @@ const Board = () => {
                 closeAllTabs={closeAllTabs}
                 onAddImg={onAddImg}
                 showUploadBgImg={closeAllTabs}
+                dominantColor={dominantColor}
                 isDarkBackground={isDarkBackground}
                 user={loggedInUser ? loggedInUser.username : 'Guest'}
               />
@@ -355,7 +412,8 @@ const Board = () => {
                   {!showColAddForm &&
                     <button className={`board-page-add-another-column-btn
                   ${(isDarkBackground) ? 'dark' : 'light'}`}
-                      onClick={toggleAddColumn}>
+                      style={{ backgroundColor: `${dominantColor}`, backdropFilter: 'blur(5px)' }}
+                      onClick={toggleAddColumn}  >
                       <span className="add-icon">+</span>Add another list</button>
                   }
                   {showColAddForm && <ColumnAddForm board={boardToShow} updateBoard={updateBoardHandler}

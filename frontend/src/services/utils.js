@@ -77,3 +77,4 @@ function emitNotification(msg, type) {
   };
   SocketService.emit('sendNotification', notification);
 }
+

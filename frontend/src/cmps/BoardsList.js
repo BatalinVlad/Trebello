@@ -28,7 +28,7 @@ const BoardsList = ({ boards, templateBoards, user , toggleNewBoardModal }) => {
             }
             {
                 user &&
-                <div>
+                <div >
                     <div className="boards-list-container">
                         {(myBoards.length === 0) ?
                             <p> you haven't created a board yet...</p> :

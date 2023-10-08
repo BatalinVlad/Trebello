@@ -39,25 +39,31 @@ const Filter = props => {
       />
 
       <div
-        style={{ background: props.isDarkBackground ? 'white' : 'black' }}
+        style={{ background: `${props.dominantColor}` , backdropFilter:'blur(5px)' }}
         className="board-page-nav-bar-filters-divider"
       ></div>
 
-      <div className={`custom-select ${props.isDarkBackground ? 'dark' : 'light'}`}
+      <div className={`custom-select z3 ${props.isDarkBackground ? 'dark' : 'light'}`}
         onClick={props.toggleFilterByMemberHandler}
+        style={{ backgroundColor: `${props.dominantColor}`, backdropFilter:'blur(5px)' }}
+
       >
         <span style={{ color: props.isDarkBackground ? 'white' : 'black' }}>{filterByTeamMemberName}</span>
 
         {props.toggleFilterByMember &&
-          <ul className={`options ${props.isDarkBackground ? 'dark' : 'light'}`}>
+          <ul className={`options ${props.isDarkBackground ? 'dark' : 'light'}`}
+            style={{ backgroundColor: `${props.dominantColor}`, backdropFilter:'blur(5px)' }}
+          >
             <li className={`filter-option pointer ${'all' === filterByTeamMemberName && 'filter-checked'} `}
-              onClick={(ev) => inputChange('teamMembers', "all" ,  ev.stopPropagation() )} >all...</li>
+              onClick={(ev) => inputChange('teamMembers', "all", ev.stopPropagation())}
+              style={{ backgroundColor: `${props.dominantColor}` , backdropFilter:'blur(5px)' }}
+            >all...</li>
             {teamMembers.map((teamMember) => (
               <li
                 className={`filter-option pointer ${teamMember.username === filterByTeamMemberName && 'filter-checked'} `}
                 key={teamMember._id}
                 value={teamMember.username}
-                onClick={(ev) => inputChange('teamMembers', teamMember.username , ev.stopPropagation() )}
+                onClick={(ev) => inputChange('teamMembers', teamMember.username, ev.stopPropagation())}
               >
                 <span className="capitalize">
                   {teamMember.firstName} {teamMember.lastName}

@@ -3,7 +3,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import utils from '../services/utils';
 import office from '../unsplashdefaultdata/officequery';
 
-const SplashMenu = ({ perpage, setImageUrl, board, user, updateBoard }) => {
+const SplashMenu = ({ perpage, setImageUrl, board, user, updateBoard , dominantColor }) => {
     const [splashImagesUrls, setSplashImagesUrls] = useState(office);
     const [filterByName, setFilterByName] = useState('');
 
@@ -48,11 +48,15 @@ const SplashMenu = ({ perpage, setImageUrl, board, user, updateBoard }) => {
     };
 
     return (
-        <div className="splash-menu flex column align-center translateLeft" onClick={(ev) => stopPropagation(ev)}>
+        <div className="splash-menu flex column align-center translateLeft" onClick={(ev) => stopPropagation(ev)} 
+            style={{background:`${dominantColor && dominantColor.slice(0, -4) + '.9)'}`}}
+        >
             <div className="flex column fill-width filter-container">
                 <div className="splash-menu-search-bar fill-width flex justify-center">
                     <input type="text" placeholder="Search by name..." onChange={inputChange} />
-                    <button className="splash-menu-search-bar-save-btn flex center" onClick={onSave}>
+                    <button className="splash-menu-search-bar-save-btn flex center" 
+                    style={{backgroundColor: `${dominantColor && dominantColor}`}}
+                    onClick={onSave}>
                         <SearchIcon />
                     </button>
                 </div>

@@ -39,10 +39,12 @@ const NavBarFilters = props => {
                 <div className="left-section flex wrap" >
                     <button
                         className={`board-page-nav-bar-filters nav-btn goBackToHome flex justify-center align-center ${(props.isDarkBackground) ? 'dark' : 'light'}`}
-                        onClick={props.goBackHandler} >
+                        onClick={props.goBackHandler}
+                        style={{ backgroundColor: `${props.dominantColor}`, backdropFilter: 'blur(5px)' }}
+                    >
                         <HomeIcon />
                     </button>
-                    <div style={{ background: (props.isDarkBackground) ? 'white' : 'black' }} className="board-page-nav-bar-filters-divider"></div>
+                    <div style={{ backgroundColor: `${props.dominantColor}`, backdropFilter: 'blur(5px)' }} className="board-page-nav-bar-filters-divider"></div>
 
                     <Filter
                         toggleFilterByMember={props.toggleFilterByMember}
@@ -50,15 +52,17 @@ const NavBarFilters = props => {
                         filterBoardHandler={props.filterBoardHandler}
                         filterBoard={props.loadedBoard}
                         teamMembers={props.loadedBoard.teamMembers}
+                        dominantColor={props.dominantColor}
                         isDarkBackground={props.isDarkBackground} />
 
-                    <div style={{ background: (props.isDarkBackground) ? 'white' : 'black' }} className="board-page-nav-bar-filters-divider"></div>
+                    <div style={{ background: `${props.dominantColor}`, backdropFilter: 'blur(5px)' }} className="board-page-nav-bar-filters-divider"></div>
                 </div>
 
                 <div className="right-section flex align-center" style={{ marginTop: 2 }}>
                     <div className="board-page-nav-bar-filters-item fill-height">
                         <button
                             className={`nav-btn fill-height capitalize ${(props.isDarkBackground) ? 'dark' : 'light'}`}
+                            style={{ background: `${props.dominantColor}`, backdropFilter: 'blur(5px)' }}
                             onClick={toggleBoardTeamMembersHandler}>
                             <Typography component="p" className="flex align-center justify-center p-reset">
                                 <GroupAddOutlinedIcon style={{ marginRight: '4px' }} />
@@ -67,11 +71,12 @@ const NavBarFilters = props => {
                         </button>
                     </div>
 
-                    <div style={{ background: (props.isDarkBackground) ? 'white' : 'black' }} className="board-page-nav-bar-filters-divider"></div>
+                    <div style={{ background: `${props.dominantColor}`, backdropFilter: 'blur(5px)' }} className="board-page-nav-bar-filters-divider"></div>
 
                     <div className="board-page-nav-bar-filters-item fill-height" >
                         <button
                             className={`nav-btn fill-height capitalize ${(props.isDarkBackground) ? 'dark' : 'light'}`}
+                            style={{ background: `${props.dominantColor}` , backdropFilter:'blur(5px)' }}
                             onClick={(ev) => toggleSplashMenuHandler(ev)}>
                             <Typography component="p" className="flex align-center justify-center p-reset">
                                 <ImageSearchOutlinedIcon style={{ marginRight: 5 }} />
@@ -80,11 +85,12 @@ const NavBarFilters = props => {
                         </button>
                     </div>
 
-                    <div style={{ background: (props.isDarkBackground) ? 'white' : 'black' }} className="board-page-nav-bar-filters-divider"></div>
+                    <div style={{ background: `${props.dominantColor}` , backdropFilter:'blur(5px)' }} className="board-page-nav-bar-filters-divider"></div>
 
                     <div className="board-page-nav-bar-filters-item flex fill-height">
                         <button
                             className={`nav-btn fill-height capitalize ${(props.isDarkBackground) ? 'dark' : 'light'}`}
+                            style={{ background: `${props.dominantColor}` , backdropFilter:'blur(5px)' }}
                             onClick={toggleBoardHistoryHandler}>
                             <Typography component="p" className="flex align-center justify-center p-reset">
                                 <HistoryOutlinedIcon style={{ marginRight: 5 }} />

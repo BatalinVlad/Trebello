@@ -5,7 +5,7 @@ function BoardPreview({ board }) {
     <div className="board-preview card">
       <img src={board.boardBgThumbnail} alt="none" />
       <div className="fill-height fill-width flex justify-center align-center title-container">
-        <p className="capitalize" >{board.board_title}</p>
+        <p className="capitalize bold" >{board.title}</p>
       </div>
     </div>
   );
