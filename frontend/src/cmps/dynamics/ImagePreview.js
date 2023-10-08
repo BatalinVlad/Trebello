@@ -33,7 +33,8 @@ export default class ImagePreview extends Component {
                     {...provided.dragHandleProps}
                     ref={innerRef}
                 >
-                    <img title={task.id} alt="task" src={task.url} />
+                    <img title={task.id} alt="task" src={task.url} 
+                    style={{borderBottomLeftRadius: task.title !== '' && '0px' , borderBottomRightRadius: task.title !== '' && '0px' }}/>
                     <div className="task-container-labels flex wrap">
                         {task.labels.map(label => {
                             return <div key={label} className={label + ' small-label'}>
