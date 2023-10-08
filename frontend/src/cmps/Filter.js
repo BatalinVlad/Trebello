@@ -43,7 +43,7 @@ const Filter = props => {
         className="board-page-nav-bar-filters-divider"
       ></div>
 
-      <div className={`custom-select z3 ${props.isDarkBackground ? 'dark' : 'light'}`}
+      <div className={`custom-select z1 ${props.isDarkBackground ? 'dark' : 'light'}`}
         onClick={props.toggleFilterByMemberHandler}
         style={{ backgroundColor: `${props.dominantColor}`, backdropFilter:'blur(5px)' }}
 

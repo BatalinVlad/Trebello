@@ -151,6 +151,11 @@
   font-size: 12px;
   width: 50%;
   cursor: pointer;
+  transition: .3s;
+
+  &:hover {
+    box-shadow: 0px 0px 7px -1px rgba(255, 255, 255, 0.938);
+  }
 }
 
 .options {
