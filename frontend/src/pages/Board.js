@@ -3,7 +3,6 @@ import { CSSTransition } from 'react-transition-group';
 import _ from 'lodash';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import LoadPage from '../cmps/LoadPage';
 import BoardColumns from '../cmps/BoardColumns';
 import BoardHistory from '../cmps/BoardHistory';
 import BoardTeamMembers from '../cmps/BoardTeamMembers';
