@@ -57,7 +57,7 @@ const Home = () => {
           </div>
           <div className='get-started__img wrapper'>
             <img src='https://res.cloudinary.com/dzeycmkct/image/upload/v1696616042/get_started_img_wvhw22.png' alt='none'
-              className='fill obj-contain' style={{ paddingLeft: '20px' }} />
+              className='fill obj-contain' style={{ marginLeft: '10px' }} />
           </div>
         </div>
         <BoardsList templateBoards={templateBoards} />

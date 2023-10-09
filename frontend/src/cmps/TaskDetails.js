@@ -61,18 +61,35 @@ export default class TaskDetails extends Component {
         this.setState(prevState => ({ showEditDescriptionForm: true }))
     }
 
+    closeAll = () => {
+        this.setState({
+            showActivity: false,
+            showEditDescriptionForm: false,
+            toggleChooseLabels: false,
+            toggleChooseMembers: false,
+            toggleTodos: false,
+            toggleDueDate: false,
+            toggleDeleteTodo: false,
+            toggleUploadImage: false,
+            toggleTaskBgColor: false
+        })
+    }
+
     onToggleDueDate = ev => {
         ev && ev.stopPropagation();
+        this.closeAll();
         this.setState(prevState => ({ toggleDueDate: !prevState.toggleDueDate }))
     }
 
     toggleUploadImageHandler = ev => {
         ev && ev.stopPropagation();
+        this.closeAll();
         this.setState(prevState => ({ toggleUploadImage: !prevState.toggleUploadImage }))
     }
 
     toggleTaskBgColorHandler = ev => {
         ev && ev.stopPropagation();
+        this.closeAll()
         this.setState(prevState => ({ toggleTaskBgColor: !prevState.toggleTaskBgColor }))
     }
 
@@ -306,53 +323,56 @@ export default class TaskDetails extends Component {
         const task = this.props.board.tasks[this.props.taskId];
         const { column } = this.props;
         return (
-            <div className="screen flex align-center justify-center" onClick={() => this.props.toggleTaskDetails()}>
+            <div className="screen flex center" onClick={() => this.props.toggleTaskDetails()}>
                 <div className="task-details-container-wrapper flex" onClick={(ev) => this.onStopPropagationAndCloseOptions(ev)}>
-                    <div className="task-details-container flex">
-                        <CloseIcon className="add-column-back-to-board   flex align-center"
+                    <div className="task-details-container flex relative">
+                        <CloseIcon className="back flex center"
                             onClick={() => this.props.toggleTaskDetails()} />
                         <div className="task-details-container-main">
-                            <header className="task-details-container-header">
-                                <DescriptionOutlinedIcon style={{
-                                    color: '#42526e', position: 'absolute',
-                                    top: '10px',
-                                    left: '12px'
-                                }} />
-                                <h2
-                                    contentEditable='true'
-                                    spellCheck="false"
-                                    onFocus={() => this.setTaskName(task.id)}
-                                    onInput={(ev) => this.emitChange(ev)}
-                                    onBlur={() => this.saveTaskName(task.id, this.state.taskTitle)}
-                                    suppressContentEditableWarning={true}
-                                >{task.title}</h2>
-                                <div className="task-details-container-in-list flex">
-                                    <p>in list <span>{column.title}</span></p>
+                            <div className="task_title flex">
+                                <DescriptionOutlinedIcon className='main_icon flex center' />
+                                <div className='main_item  flex column'>
+                                    <h2
+                                        contentEditable='true'
+                                        spellCheck="false"
+                                        onFocus={() => this.setTaskName(task.id)}
+                                        onInput={(ev) => this.emitChange(ev)}
+                                        onBlur={() => this.saveTaskName(task.id, this.state.taskTitle)}
+                                        suppressContentEditableWarning={true}
+                                    >
+                                        {task.title}
+                                    </h2>
+                                    <div className="task-details-container-in-list flex">
+                                        <p>in list <span>{column.title}</span></p>
+                                    </div>
                                 </div>
-                            </header>
+                            </div>
 
                             <div className="chosen-labels-container ">
-                                {this.state.toggleChooseLabels ?
+                                {this.state.toggleChooseLabels &&
                                     <Labels
                                         toggleChooseLabels={this.toggleChooseLabels}
                                         board={this.props.board}
                                         task={task}
                                         updateBoard={this.props.updateBoard}
-                                    /> : ''
+                                    />
                                 }
-                                {task.labels.length !== 0 && <h3 className="uppercase" style={{
-                                    fontSize: '.75rem',
-                                    fontWeight: 500,
-                                    letterSpacing: '.04em',
-                                }}>Labels</h3>}
-                                <div className="labels-choosen-container flex">
-                                    {
-                                        task.labels.map(label => {
-                                            return <div key={label} className={label + ' medium-label'}>
+                                {task.labels.length !== 0 &&
+                                    <div className='flex'>
+                                        <LabelOutlinedIcon className='main_icon' />
+                                        <div className='main_item flex column'>
+                                            <h2>Labels</h2>
+                                            <div className="labels-choosen-container flex">
+                                                {
+                                                    task.labels.map(label => {
+                                                        return <div key={label} className={label + ' medium-label'}>
+                                                        </div>
+                                                    })
+                                                }
                                             </div>
-                                        })
-                                    }
-                                </div>
+                                        </div>
+                                    </div>
+                                }
                             </div>
 
                             {this.state.toggleTaskBgColor &&
@@ -365,76 +385,73 @@ export default class TaskDetails extends Component {
                                 />
                             }
 
-                            <div className="task-details-container-members-container">
-                                {this.state.toggleChooseMembers ?
+                            <div className="main-members-container">
+                                {this.state.toggleChooseMembers &&
                                     <Members
                                         toggleChooseMembers={this.toggleChooseMembers}
                                         board={this.props.board}
                                         task={task}
                                         updateBoard={this.props.updateBoard}
                                         users={this.props.users}
-                                    /> : ''
+                                    />
                                 }
-                                {task.taskTeamMembers.length !== 0 && <h3 className="uppercase" style={{
-                                    fontSize: '.75rem',
-                                    fontWeight: 500,
-                                    letterSpacing: '.04em'
-                                }}>members</h3>}
-                                <div className="flex asigned-team-members-container">
-                                    {
-                                        task.taskTeamMembers.map(member => {
-                                            return <div key={member._id} className="task-details-container-team-member" >
-                                                <span className="uppercase fs14 flex center">
-                                                    {utils.createUserIcon(member.firstName,
-                                                        member.lastName)}
-                                                </span>
-                                            </div>
-                                        })
-                                    }
-                                </div>
-                            </div>
-                            <div className="task-details-container-check-list-container">
-                                {this.state.toggleTodos ?
-                                    <Todos
-                                        toggleTodos={this.toggleTodos}
-                                        board={this.props.board}
-                                        user={this.props.user}
-                                        task={task}
-                                        updateBoard={this.props.updateBoard}
-                                        updateProgressBar={this.updateProgressBar}
-                                    /> : ''
-                                }
-                                <AssignmentTurnedInOutlinedIcon
-                                    style={{
-                                        color: '#42526e',
-                                        position: 'relative',
-                                        top: '35px',
-                                        right: '44px',
-                                    }}
-                                />
-                                <h2>Checklist</h2>
 
-                                {task.todos &&
-                                    <div className="check-list-container-wrapper">
-                                        <div className="check-list-container flex column">
-                                            {task.todos.map(todo => {
-                                                return <div key={todo.id} className="todo-item flex align-center space-between" onMouseEnter={() => this.showDeleteTodoButton(todo.id)}
-                                                    onMouseLeave={() => this.hideDeleteTodoButton(todo.id)}>
-                                                    <div className="flex align-center">
-                                                        <input type="checkbox" onChange={() => this.toggleTodoDone(todo)} checked={todo.isDone ? 'checked' : ''}>
-                                                        </input>
-                                                        <p className={todo.isDone ? "text-decoration" : ""}>
-                                                            {todo.text}
-                                                        </p>
+                                {task.taskTeamMembers.length !== 0 &&
+                                    <div className='flex'>
+                                        <PersonAddOutlinedIcon className='main_icon' />
+                                        <div className='main_item flex column'>
+                                            <h2>Members</h2>
+                                            <div className="flex asigned-team-members-container">
+                                                {task.taskTeamMembers.map(member => {
+                                                    return <div key={member._id} className="task-details-container-team-member" >
+                                                        <span className="uppercase fs14 flex center">
+                                                            {utils.createUserIcon(member.firstName,
+                                                                member.lastName)}
+                                                        </span>
                                                     </div>
-                                                    <DeleteOutlineIcon
-                                                        onClick={() => this.deleteTodo(todo.id)}
-                                                        className="pointer delete-btn"
-                                                        style={{ display: this.state.toggleDeleteTodo && this.state.currTodoId === todo.id ? 'block' : 'none' }}
-                                                    />
-                                                </div>
-                                            })
-                                            }
+                                                })}
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+
+                            {this.state.toggleTodos &&
+                                <Todos
+                                    toggleTodos={this.toggleTodos}
+                                    board={this.props.board}
+                                    user={this.props.user}
+                                    task={task}
+                                    updateBoard={this.props.updateBoard}
+                                    updateProgressBar={this.updateProgressBar}
+                                />
+                            }
+                            {task.todos &&
+                                <div className="check-list-container flex">
+                                    <AssignmentTurnedInOutlinedIcon className='main_icon' />
+                                    <div className='main_item flex column'>
+                                        <h2>Checklist</h2>
+                                        <div className="check-list-container-wrapper">
+                                            <div className="check-list-container flex column">
+                                                {task.todos.map(todo => {
+                                                    return <div key={todo.id} className="todo-item flex align-center space-between" onMouseEnter={() => this.showDeleteTodoButton(todo.id)}
+                                                        onMouseLeave={() => this.hideDeleteTodoButton(todo.id)}>
+                                                        <div className="flex align-center">
+                                                            <input type="checkbox" onChange={() => this.toggleTodoDone(todo)} checked={todo.isDone && 'checked'}>
+                                                            </input>
+                                                            <p className={todo.isDone ? "text-decoration" : ""}>
+                                                                {todo.text}
+                                                            </p>
+                                                        </div>
+                                                        <DeleteOutlineIcon
+                                                            onClick={() => this.deleteTodo(todo.id)}
+                                                            className="pointer delete-btn"
+                                                            style={{ display: this.state.toggleDeleteTodo && this.state.currTodoId === todo.id ? 'block' : 'none' }}
+                                                        />
+                                                    </div>
+                                                })
+                                                }
+                                            </div>
                                         </div>
                                         <div className="check-list-progress">
                                             <div className="progress fill-height flex align-center" style={{ width: this.state.progressWidth + "%", color: 'black' }} >
@@ -442,62 +459,56 @@ export default class TaskDetails extends Component {
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                }
-                            </div>
-                            <div className="task-details-container-duedate-container">
-                                <EventOutlinedIcon style={{
-                                    color: '#42526e', position: 'relative',
-                                    top: '35px',
-                                    right: '44px'
-                                }} />
-                                <h2>Due Date</h2>
-                                {(task.dueDate) ?
-                                    <p>{moment(task.dueDate).format("MMMM Do YYYY, hh:mm a")}</p> :
-                                    <p>This task doesn't have a due date yet</p>
-                                }
-                                {this.state.toggleDueDate ? <DueDate
+                            }
+                            <div className="duedate-container flex">
+                                <EventOutlinedIcon className='main_icon' />
+                                <div className='main_item flex column'>
+                                    <h2>Due Date</h2>
+                                    {(task.dueDate) ?
+                                        <p>{moment(task.dueDate).format("MMMM Do YYYY, hh:mm a")}</p>
+                                        :
+                                        <p>no date selected..</p>
+                                    }
+                                </div>
+                                {this.state.toggleDueDate && <DueDate
                                     task={task}
                                     onToggle={this.onToggleDueDate}
                                     board={this.props.board}
                                     updateBoard={this.props.updateBoard}
                                     updateProgressBar={this.updateProgressBar}
                                     user={this.props.user}
-                                /> : ''}
+                                />}
                             </div>
 
-                            <div className="task-details-container-description">
-                                <NotesIcon style={{
-                                    color: '#42526e', position: 'relative',
-                                    top: '35px',
-                                    right: '44px'
-                                }} />
-                                <h2>Description</h2>
-                                <textarea className="fill-width"
-                                    name="description"
-                                    cols="40"
-                                    onChange={this.changeDescription}
-                                    onClick={this.openUpdateDescriptionForm}
-                                    value={this.state.description}
-                                    spellCheck="false"
-                                    placeholder="Add a more detailed description...">
-                                </textarea>
-                                {this.state.showEditDescriptionForm ?
-                                    <div className="flex align-center">
-                                        <button className="task-form-save-btn uppercase" onClick={(ev) => this.onSaveDescription(ev, task)}>save</button>
-                                        <CloseIcon className="task-form-back-btn" onClick={this.closeUpdateDescriptionForm} />
-                                    </div> : ''
-                                }
+                            <div className="description flex">
+                                <NotesIcon className='main_icon' />
+
+                                <div className='main_item flex column'>
+                                    <h2>Description</h2>
+                                    <textarea className="fill-width"
+                                        name="description"
+                                        cols="40"
+                                        onChange={this.changeDescription}
+                                        onClick={this.openUpdateDescriptionForm}
+                                        value={this.state.description}
+                                        spellCheck="false"
+                                        placeholder="Add a more detailed description...">
+                                    </textarea>
+                                    {this.state.showEditDescriptionForm &&
+                                        <div className="flex align-center" style={{marginTop:'4px'}}>
+                                            <button className="task-form-save-btn uppercase" onClick={(ev) => this.onSaveDescription(ev, task)}>save</button>
+                                            <CloseIcon className="task-form-back-btn" onClick={this.closeUpdateDescriptionForm} />
+                                        </div>
+                                    }
+                                </div>
                             </div>
                         </div>
 
                         <div className="task-details-container-overall-options">
                             <div className="task-details-container-add-to-card-options container">
-                                <h3 className="uppercase" style={{
-                                    fontSize: '0.75rem',
-                                    fontWeight: 500,
-                                    letterSpacing: '0.04em'
-                                }}>add to card</h3>
+                                <h2>add to card</h2>
                                 <div className="task-details-container-add-to-card-options flex column">
                                     <div className="task-details-container-add-to-card-options-btn flex align-center" onClick={ev => this.toggleChooseLabels(ev)}>
                                         <LabelOutlinedIcon />
@@ -519,6 +530,7 @@ export default class TaskDetails extends Component {
                                         <EventOutlinedIcon />
                                         <p className="capitalize">due date</p>
                                     </div>
+
                                     <div className="task-details-container-add-to-card-options-btn flex align-center relative"
                                         onClick={ev => this.toggleUploadImageHandler(ev)}>
                                         <ImageOutlinedIcon />
@@ -548,11 +560,7 @@ export default class TaskDetails extends Component {
                             </div>
 
                             <div className="task-details-container-actions-options container flex column ">
-                                <h3 className="uppercase" style={{
-                                    fontSize: '0.75rem',
-                                    fontWeight: 500,
-                                    letterSpacing: '0.04em'
-                                }}>actions</h3>
+                                <h2>actions</h2>
                                 <div className="task-details-container-actions-options-btn flex align-center" onClick={() => this.onDuplicateTask(column, task)}>
                                     <FileCopyOutlinedIcon />
                                     <p className="capitalize">duplicate</p>

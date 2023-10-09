@@ -1,11 +1,11 @@
 .duedate-edit {
   width: 200px;
-  height: 120px;
+  // height: 120px;
   background-color: white;
   box-shadow: 0px 0px 0px 2px #aeaeaeb5;
   border-radius: 4px;
   right: 11px;
-  top: 244px;
+  top: 254px;
   position: absolute;
   z-index: 2;
 
@@ -20,15 +20,10 @@
     right: 5px;
   }
 
-  .react-datepicker-wrapper {
-    input {
-      text-align: center;
-      padding: 5px 0px;
-      width: 180px;
-      box-shadow: inset 0 0 0 2px #dfe1e6;
-      margin-bottom: 15px;
-      border-radius: 4px;
-    }
+  input{
+    border-radius: 4px;
+    width: 100%;
+    text-align: center;
   }
 }
 
@@ -46,20 +41,5 @@
   &>.MuiSvgIcon-root {
     height: 18px;
     width: 18px;
-  }
-}
-
-.add-duedate-btn {
-  width: 48px;
-  font-size: 0.625rem;
-  padding: 6px 10px;
-  margin-top: 3px;
-  color: white;
-  font-weight: 600;
-  background-color: #5aac44;
-  transition: 0.3s;
-
-  &:hover {
-    background-color: #5bac44d5;
   }
 }
