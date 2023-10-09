@@ -431,15 +431,15 @@ export default class TaskDetails extends Component {
                                     <AssignmentTurnedInOutlinedIcon className='main_icon' />
                                     <div className='main_item flex column'>
                                         <h2>Checklist</h2>
-                                        <div className="check-list-container-wrapper">
-                                            <div className="check-list-container flex column">
+                                        <div className="items wrapper">
+                                            <div className="items flex column">
                                                 {task.todos.map(todo => {
-                                                    return <div key={todo.id} className="todo-item flex align-center space-between" onMouseEnter={() => this.showDeleteTodoButton(todo.id)}
+                                                    return <div key={todo.id} className="item flex align-center space-between" onMouseEnter={() => this.showDeleteTodoButton(todo.id)}
                                                         onMouseLeave={() => this.hideDeleteTodoButton(todo.id)}>
                                                         <div className="flex align-center">
-                                                            <input type="checkbox" onChange={() => this.toggleTodoDone(todo)} checked={todo.isDone && 'checked'}>
+                                                            <input type="checkbox" onChange={() => this.toggleTodoDone(todo)} checked={todo.isDone ? 'checked' : ''}>
                                                             </input>
-                                                            <p className={todo.isDone ? "text-decoration" : ""}>
+                                                            <p className={todo.isDone ? "text-decoration" : ''}>
                                                                 {todo.text}
                                                             </p>
                                                         </div>
@@ -453,11 +453,13 @@ export default class TaskDetails extends Component {
                                                 }
                                             </div>
                                         </div>
-                                        <div className="check-list-progress">
-                                            <div className="progress fill-height flex align-center" style={{ width: this.state.progressWidth + "%", color: 'black' }} >
-                                                <small className="fill-width text-center">{this.state.progressWidth + "%"}</small>
+                                        {task.todos.length !== 0 &&
+                                            <div className="check-list-progress">
+                                                <div className="progress fill-height flex align-center" style={{ width: this.state.progressWidth + "%", color: 'black' }} >
+                                                    <small className="fill-width text-center">{this.state.progressWidth + "%"}</small>
+                                                </div>
                                             </div>
-                                        </div>
+                                        }
                                     </div>
                                 </div>
 
@@ -497,7 +499,7 @@ export default class TaskDetails extends Component {
                                         placeholder="Add a more detailed description...">
                                     </textarea>
                                     {this.state.showEditDescriptionForm &&
-                                        <div className="flex align-center" style={{marginTop:'4px'}}>
+                                        <div className="flex align-center" style={{ marginTop: '4px' }}>
                                             <button className="task-form-save-btn uppercase" onClick={(ev) => this.onSaveDescription(ev, task)}>save</button>
                                             <CloseIcon className="task-form-back-btn" onClick={this.closeUpdateDescriptionForm} />
                                         </div>
@@ -508,7 +510,7 @@ export default class TaskDetails extends Component {
 
                         <div className="task-details-container-overall-options">
                             <div className="task-details-container-add-to-card-options container">
-                                <h2>add to card</h2>
+                                <h2>options</h2>
                                 <div className="task-details-container-add-to-card-options flex column">
                                     <div className="task-details-container-add-to-card-options-btn flex align-center" onClick={ev => this.toggleChooseLabels(ev)}>
                                         <LabelOutlinedIcon />
@@ -535,7 +537,7 @@ export default class TaskDetails extends Component {
                                         onClick={ev => this.toggleUploadImageHandler(ev)}>
                                         <ImageOutlinedIcon />
                                         <p className="capitalize ">
-                                            upload image
+                                            image
                                         </p>
                                         {this.state.toggleUploadImage &&
                                             <div className="upload-tasl-image__wraper absolute"

@@ -45,6 +45,8 @@
   .main_item {
     margin-left: 20px;
     margin-bottom: 20px;
+    flex-grow: 1;
+    margin-right: 10px;
   }
 
   .MuiSvgIcon-root {
@@ -71,8 +73,8 @@
 
   .chosen-labels-container,
   .main-members-container,
-  .check-list-container, 
-  .duedate-container, 
+  .check-list-container,
+  .duedate-container,
   .description {
     margin-left: 10px;
   }
@@ -95,54 +97,64 @@
     }
   }
 
-  check-list-container {
-    .check-list-container {
-      max-height: 80px;
+  .check-list-container {
+    .items.wrapper {
+      max-height: 90px;
       overflow-y: auto;
+      margin-bottom: 10px;
     }
+    .items {
+      .item {
+        input {
+          margin-left: 0;
+        }
+        &:hover {
+          background-color: rgba(235, 235, 235, 0.452);
+        }
 
-    .todo-item {
-      &:hover {
-        background-color: rgba(235, 235, 235, 0.452);
-      }
+        .delete-btn {
+          height: 17px;
+          width: 17px;
+          &:hover {
+            color: rgba(255, 24, 24, 0.997);
+            cursor: pointer;
+          }
+        }
 
-      .delete-btn {
-        height: 17px;
-        width: 17px;
-      }
-
-      &:hover {
-        background-color: rgba(235, 235, 235, 0.452);
-        cursor: pointer;
-      }
-    }
-
-    .check-list-progress {
-      height: 20px;
-      margin-top: 10px;
-      border-radius: 20px;
-      width: 200px;
-
-      .progress {
-        border-radius: 20px;
-        background-color: #5aac44;
-
-        small {
-          font-family: montserratBold, "sans-sarif";
-          color: rgb(78, 78, 78);
-          margin-left: 5px;
+        &:hover {
+          background-color: rgba(235, 235, 235, 0.452);
+          cursor: pointer;
         }
       }
     }
   }
 
-  &-overall-options {
-    .container {
-      padding-top: 20px;
-    }
+  .check-list-progress {
+    height: 20px;
+    border-radius: 20px;
+    width: 200px;
+    color: white;
 
+    .progress {
+      border-radius: 20px;
+      background-color: #5aac44;
+
+      small {
+        font-family: montserratBold, "sans-sarif";
+        color: rgb(0, 0, 0);
+      }
+    }
+  }
+  &-overall-options {
     @media (max-width: 525px) {
       padding: 30px 0px;
+      h2 {
+        font-size: 12px;
+      }
+    }
+
+    .container {
+      padding-top: 20px;
     }
   }
 
