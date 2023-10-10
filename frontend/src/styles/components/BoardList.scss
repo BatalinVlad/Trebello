@@ -25,6 +25,10 @@
     border-color: #535456;
   }
 
+  &-container{
+    gap: 15px;
+  }
+
   .templates-container {
     gap: 15px;
 
@@ -43,6 +47,7 @@
   .board-container {
     margin-bottom: 10px;
     gap: 15px;
+
   }
 
   .template-container {
