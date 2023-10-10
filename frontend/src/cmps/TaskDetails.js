@@ -53,51 +53,6 @@ export default class TaskDetails extends Component {
         this.setState({ description: currTask.description }, this.updateProgressBar);
     }
 
-    emitChange = (ev) => {
-        this.setState({ taskTitle: ev.target.innerText });
-    }
-
-    openUpdateDescriptionForm = () => {
-        this.setState(prevState => ({ showEditDescriptionForm: true }))
-    }
-
-    closeAll = () => {
-        this.setState({
-            showActivity: false,
-            showEditDescriptionForm: false,
-            toggleChooseLabels: false,
-            toggleChooseMembers: false,
-            toggleTodos: false,
-            toggleDueDate: false,
-            toggleDeleteTodo: false,
-            toggleUploadImage: false,
-            toggleTaskBgColor: false
-        })
-    }
-
-    onToggleDueDate = ev => {
-        ev && ev.stopPropagation();
-        this.closeAll();
-        this.setState(prevState => ({ toggleDueDate: !prevState.toggleDueDate }))
-    }
-
-    toggleUploadImageHandler = ev => {
-        ev && ev.stopPropagation();
-        this.closeAll();
-        this.setState(prevState => ({ toggleUploadImage: !prevState.toggleUploadImage }))
-    }
-
-    toggleTaskBgColorHandler = ev => {
-        ev && ev.stopPropagation();
-        this.closeAll()
-        this.setState(prevState => ({ toggleTaskBgColor: !prevState.toggleTaskBgColor }))
-    }
-
-
-    closeUpdateDescriptionForm = () => {
-        this.setState({ showEditDescriptionForm: false })
-    }
-
     onStopPropagationAndCloseOptions = (ev) => {
         ev.stopPropagation();
         this.setState({
@@ -110,8 +65,56 @@ export default class TaskDetails extends Component {
         })
     }
 
+    emitChange = (ev) => {
+        this.setState({ taskTitle: ev.target.innerText });
+    }
+
+    openUpdateDescriptionForm = () => {
+        this.setState({showEditDescriptionForm: true})
+    }
+
+    // closeAll = () => {
+    //     this.setState({
+    //         showActivity: false,
+    //         showEditDescriptionForm: false,
+    //         toggleChooseLabels: false,
+    //         toggleChooseMembers: false,
+    //         toggleTodos: false,
+    //         toggleDueDate: false,
+    //         toggleDeleteTodo: false,
+    //         toggleUploadImage: false,
+    //         toggleTaskBgColor: false
+    //     })
+    // }
+
+    onToggleDueDate = ev => {
+        // ev && ev.stopPropagation();
+        this.onStopPropagationAndCloseOptions(ev); 
+        this.setState(prevState => ({ toggleDueDate: !prevState.toggleDueDate }))
+    }
+
+    toggleUploadImageHandler = ev => {
+        // ev && ev.stopPropagation();
+        this.onStopPropagationAndCloseOptions(ev); 
+        this.setState(prevState => ({ toggleUploadImage: !prevState.toggleUploadImage }))
+    }
+
+    toggleTaskBgColorHandler = ev => {
+        // ev && ev.stopPropagation();
+        this.onStopPropagationAndCloseOptions(ev); 
+        this.setState(prevState => ({ toggleTaskBgColor: !prevState.toggleTaskBgColor }))
+    }
+
+
+    closeUpdateDescriptionForm = () => {
+        this.setState({ showEditDescriptionForm: false })
+    }
+
+  
+
     toggleChooseLabels = (ev) => {
-        ev.stopPropagation();
+        // ev.stopPropagation();
+        this.onStopPropagationAndCloseOptions(ev); 
         this.setState(prevState => ({ toggleChooseLabels: !prevState.toggleChooseLabels }))
     }
 
@@ -132,12 +135,14 @@ export default class TaskDetails extends Component {
     }
 
     toggleChooseMembers = (ev) => {
-        ev.stopPropagation();
+        // ev.stopPropagation();
+        this.onStopPropagationAndCloseOptions(ev); 
         this.setState(prevState => ({ toggleChooseMembers: !prevState.toggleChooseMembers }))
     }
 
     toggleTodos = (ev) => {
-        ev.stopPropagation();
+        // ev.stopPropagation();
+        this.onStopPropagationAndCloseOptions(ev); 
         this.setState(prevState => ({ toggleTodos: !prevState.toggleTodos }))
     }
 
@@ -327,7 +332,7 @@ export default class TaskDetails extends Component {
                 <div className="task-details-container-wrapper flex" onClick={(ev) => this.onStopPropagationAndCloseOptions(ev)}>
                     <div className="task-details-container flex relative">
                         <CloseIcon className="back flex center"
-                            onClick={() => this.props.toggleTaskDetails()} />
+                            onClick={() => this.props.toggleTaskDetails() } />
                         <div className="task-details-container-main">
                             <div className="task_title flex">
                                 <DescriptionOutlinedIcon className='main_icon flex center' />
