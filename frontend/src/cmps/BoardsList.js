@@ -33,7 +33,7 @@ const BoardsList = ({ boards, templateBoards, user, toggleNewBoardModal }) => {
                         {(myBoards.length === 0) ?
                             <div>
                                 <p> you haven't created a board yet...</p>
-                                <div className="add-board flex center pointer" onClick={toggleNewBoardModal}>
+                                <div className="add-board flex pointer" onClick={toggleNewBoardModal}>
                                     <button> add </button>
                                 </div>
                             </div>

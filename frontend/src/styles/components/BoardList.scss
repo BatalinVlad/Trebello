@@ -43,21 +43,6 @@
   .board-container {
     margin-bottom: 10px;
     gap: 15px;
-
-    .add-board {
-      button {
-        border-radius: 6px;
-        background: rgb(124 0 109 / 17%);
-        padding: 20px 25px;
-        transition: all 0.3s;
-        color: white;
-        font-weight: bold;
-
-        &:hover {
-          background: rgba(124, 0, 109, 0.385);
-        }
-      }
-    }
   }
 
   .template-container {
@@ -79,4 +64,21 @@
       background: #e4e4e4;
     }
   }
+
+  
+  .add-board {
+    button {
+      border-radius: 6px;
+      background: rgb(124 0 109 / 17%);
+      padding: 20px 25px;
+      transition: all 0.3s;
+      color: white;
+      font-weight: bold;
+
+      &:hover {
+        background: rgba(124, 0, 109, 0.385);
+      }
+    }
+  }
 }
+
