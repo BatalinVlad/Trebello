@@ -4,7 +4,7 @@ import { Tilt } from "react-tilt";
 
 import BoardPreview from './BoardPreview';
 
-const BoardsList = ({ boards, templateBoards, user , toggleNewBoardModal }) => {
+const BoardsList = ({ boards, templateBoards, user, toggleNewBoardModal }) => {
     const myBoards = (user) ? boards.filter(board => board.createdBy._id === user._id) : '';
     const myCollaboratedBoards = (user) ? boards.filter(board => {
         return board.teamMembers.find(teamMember => user._id === teamMember._id && user._id !== board.createdBy._id);
@@ -31,7 +31,13 @@ const BoardsList = ({ boards, templateBoards, user , toggleNewBoardModal }) => {
                 <div >
                     <div className="boards-list-container">
                         {(myBoards.length === 0) ?
-                            <p> you haven't created a board yet...</p> :
+                            <div>
+                                <p> you haven't created a board yet...</p>
+                                <div className="add-board flex center pointer" onClick={toggleNewBoardModal}>
+                                    <button> add </button>
+                                </div>
+                            </div>
+                            :
                             <div className='boards-container'>
                                 <p className="capitalize">created boards</p>
                                 <div className="board-container flex row">
@@ -43,7 +49,7 @@ const BoardsList = ({ boards, templateBoards, user , toggleNewBoardModal }) => {
                                         </Tilt>
                                     ))}
                                     <div className="add-board flex center pointer" onClick={toggleNewBoardModal}>
-                                            <button> add </button>
+                                        <button> add </button>
                                     </div>
                                 </div>
                             </div>
@@ -52,9 +58,7 @@ const BoardsList = ({ boards, templateBoards, user , toggleNewBoardModal }) => {
                     <div className="boards-list-container flex column" style={{ marginTop: '10px', padding: '10px 0px 120px 0px' }}>
                         <p className="capitalize"> boards you collaborate on </p>
                         {(myCollaboratedBoards.length === 0) ?
-                            <div className="fill-width flex grow center">
-                                <span className="caspanitalize"> you're not collaborating on any boards yet... </span>
-                            </div>
+                            <span className="caspanitalize" style={{paddingLeft:'10px'}}> you're not collaborating on any boards yet... </span>
                             :
                             <div className="boards-list-container flex row">
                                 {myCollaboratedBoards.map(myCollaboratedBoard => (
