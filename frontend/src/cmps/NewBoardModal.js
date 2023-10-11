@@ -25,6 +25,7 @@ const NewBoardModal = ({ loggedInUser }) => {
 
   const createNewBoard = async () => {
     let board = {
+      type:'board',
       title: boardTitle || 'no title',
       teamMembers: [loggedInUser && loggedInUser],
       tasks: {},

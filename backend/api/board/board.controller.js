@@ -38,7 +38,8 @@ async function addBoard(req, res) {
 async function deleteBoard(req, res) {
     try {
         await boardService.remove(req.params.id)
-        res.end()
+        const updatedBoards = await boardService.query('board');
+        res.send(updatedBoards)
     } catch (err) {
         logger.error('Cannot delete board', err);
         res.status(500).send({ error: 'Cannot delete board' });

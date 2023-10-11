@@ -350,6 +350,7 @@ const Board = () => {
               toggleFilterByMemberHandler={toggleFilterByMemberHandler}
               goBackHandler={goBackHandler}
               loadedBoard={loadedBoard}
+              loggedInUser={loggedInUser}
               filterBoardHandler={filterBoardHandler}
               setToggleBoardTeamMembers={setToggleBoardTeamMembers}
               setShowHistory={setShowHistory}
@@ -413,7 +414,7 @@ const Board = () => {
                   ${(isDarkBackground) ? 'dark' : 'light'}`}
                       style={{ backgroundColor: `${dominantColor}`, backdropFilter: 'blur(5px)' }}
                       onClick={toggleAddColumn}  >
-                      <span className="add-icon">+</span>Add another list</button>
+                       + Add another list</button>
                   }
                   {showColAddForm && <ColumnAddForm board={boardToShow} updateBoard={updateBoardHandler}
                     toggleAddForm={toggleAddColumn} user={loggedInUser ? loggedInUser.username : 'Guest'} />}

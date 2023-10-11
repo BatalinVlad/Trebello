@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Avatar } from '@mui/material';
 
 import utils from '../services/utils'
 
@@ -70,11 +71,13 @@ export default class BoardTeamMembers extends Component {
                                 onClick={() => this.updateTeamMembers(user)}>
                                 <div className="team-member-icon-wrapper flex align-center justify-center"
                                     style={{ backgroundColor: '#dfe1e6' }}>
-                                    <div className="team-member-icon">
-                                        <p className="uppercase" style={{ color: '#172b4d' }}>
-                                            {utils.createUserIcon(user.firstName, user.lastName)}
-                                        </p>
-                                    </div>
+                                    <Avatar>
+                                        <div className="team-member-icon">
+                                            <p className="uppercase" style={{ color: '#172b4d' }}>
+                                                {utils.createUserIcon(user.firstName, user.lastName)}
+                                            </p>
+                                        </div>
+                                    </Avatar>
                                 </div>
                                 <span className="capitalize">{user.firstName} {user.lastName}</span>
                             </div>

@@ -53,18 +53,18 @@ export default class ImagePreview extends Component {
                         style={(task.taskTeamMembers.length !== 0) ? { minHeight: '30px' } : null} >
 
                         {(task.description !== '') &&
-                            <div className="flex justify-self-center align-self-center">
+                            <div className="flex center" style={{paddingBottom: '3px'}}>
                                 <SubjectIcon />
                             </div>
                         }
                         {(task.todos.length > 0) &&
-                            <div className="flex align-center">
+                            <div className="flex align-center" style={{paddingBottom: '3px'}}>
                                 <CheckBoxIcon />
                                 <p>{task.todosDone + '/' + task.todos.length}</p>
                             </div>
                         }
                         {(task.dueDate) &&
-                            <div className="flex  align-center">
+                            <div className="flex  align-center" style={{paddingBottom: '3px'}}>
                                 <CalendarMonthIcon />
                             </div>
                         }

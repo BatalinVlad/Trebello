@@ -1,4 +1,4 @@
-import  { add, query, get, put } from '../services/BoardService';
+import { add, query, get, put, remove } from '../services/BoardService';
 import SocketService from '../services/SocketService';
 import utils from '../services/utils';
 
@@ -96,5 +96,17 @@ export function createBoard(board) {
       type: 'ADD_BOARD',
       addedBoard
     };
+  }
+}
+
+export function deleteBoard(boardId) {
+  return async dispatch => {
+    try {
+      const boards = await remove(boardId);
+      dispatch(_setBoards(boards));
+      return boards;
+    } catch (err) {
+      console.log('BoardActions: err in deleting board', err);
+    }
   }
 }

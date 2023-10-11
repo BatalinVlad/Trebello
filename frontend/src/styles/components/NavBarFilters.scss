@@ -149,7 +149,8 @@
   border-radius: 3px;
   color: #333;
   font-size: 12px;
-  width: 50%;
+  min-width: 50px;
+  text-align: center;
   cursor: pointer;
   transition: .3s;
 
