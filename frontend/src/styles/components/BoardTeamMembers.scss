@@ -1,14 +1,13 @@
 .board-team-members-container {
   z-index: 1;
   height: 100vh;
-  background: #050505e3;
-  color: white;
   position: fixed;
   right: 0px;
   width: rem(350px);
-  border-left: 3px solid rgba(207, 207, 207, 0.226);
   overflow: auto;
-
+  h2,p,span {
+    font-weight: 600;
+  }
   .members-onboard,
   .add-team-members {
     h2 {
@@ -28,15 +27,6 @@
 
   hr {
     margin: 0 5px;
-  }
-
-  &-close-btn {
-    cursor: pointer;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 15px;
-    height: 15px;
   }
 
   .team-member {
@@ -67,7 +57,7 @@
     transition: 0.3s;
 
     &:hover {
-      background: rgba(124, 124, 124, 0.438);
+      background: rgba(129, 129, 129, 0.137);
     }
   }
 

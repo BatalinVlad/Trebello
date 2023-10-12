@@ -252,7 +252,7 @@ const Board = () => {
       (title.includes(filterTitle)) ? matchedIds.push(taskKey) : unmatchedIds.push(taskKey);
     }
 
-    if (filterBy.teamMembers !== '' && filterBy.teamMembers !== 'all' ) {
+    if (filterBy.teamMembers !== '' && filterBy.teamMembers !== 'all') {
       for (const id of matchedIds) {
         let task = tasks[id];
         let teamMember = filterBy.teamMembers;
@@ -293,10 +293,10 @@ const Board = () => {
   return (
     <React.Fragment>
 
-      {!boardToShow._id && 
-      <div className='loading_screen'>
-        <LoadingSpinner asOverlay />
-      </div>
+      {!boardToShow._id &&
+        <div className='loading_screen'>
+          <LoadingSpinner asOverlay />
+        </div>
       }
       {boardToShow._id &&
         <div className="screen" onClick={closeAllTabs}>
@@ -309,7 +309,7 @@ const Board = () => {
             >
               {/* <div className="board-page-nav-bar-logo" onClick={goBackHandler}> </div> */}
               <h1
-                style={{ fontSize: '16px', marginLeft: '10px', color: `${isDarkBackground? 'white' : 'rgb(23, 43, 77)' }` }}
+                style={{ fontSize: '16px', marginLeft: '10px', color: `${isDarkBackground ? 'white' : 'rgb(23, 43, 77)'}` , maxWidth: '100px'}}
                 contentEditable="true" // Make the element editable
                 onInput={handleTitleChange} // Handle content changes
                 onBlur={boardTitleHandler} // Handle onBlur to save the content
@@ -358,7 +358,7 @@ const Board = () => {
               setToggleLogin={setToggleLogin}
             />
 
-            {toggleSplashMenu && <div className='screen' style={{zIndex:'1'}}> </div>}
+            {toggleSplashMenu && <div className='screen' style={{ zIndex: '1' }}> </div>}
 
             <CSSTransition
               in={toggleSplashMenu}
@@ -414,7 +414,7 @@ const Board = () => {
                   ${(isDarkBackground) ? 'dark' : 'light'}`}
                       style={{ backgroundColor: `${dominantColor}`, backdropFilter: 'blur(5px)' }}
                       onClick={toggleAddColumn}  >
-                       + Add another list</button>
+                      + Add another list</button>
                   }
                   {showColAddForm && <ColumnAddForm board={boardToShow} updateBoard={updateBoardHandler}
                     toggleAddForm={toggleAddColumn} user={loggedInUser ? loggedInUser.username : 'Guest'} />}
@@ -456,7 +456,9 @@ const Board = () => {
               unmountOnExit
             >
               <BoardTeamMembers board={boardToShow}
+                dominantColor={dominantColor}
                 users={users}
+                isDarkBackground={isDarkBackground}
                 updateBoard={updateBoardHandler} />
             </CSSTransition>
           </div>

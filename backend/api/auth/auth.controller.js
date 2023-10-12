@@ -29,7 +29,7 @@ async function signup(req, res) {
     }
 }
 
-async function logout(req, res){
+async function logout(req, res) {
     try {
         req.session.destroy()
         res.send({ message: 'logged out successfully' })
@@ -46,7 +46,7 @@ async function getLoggedInUser(req, res) {
             res.json(req.session.user);
         } else {
             res.json({});
-        }     
+        }
     } catch (err) {
         logger.error('no signedin users', err);
         res.status(500).send({ error: 'no signedin users' });
