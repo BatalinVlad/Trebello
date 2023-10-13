@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  getLoggedInUser,
   login,
   logout,
   signup
 } from '../actions/UserActions';
 
-const Login = props => {
+const Login = () => {
   const [msg, setMsg] = useState('');
   const [loginCred, setLoginCred] = useState({ email: '', password: '' });
   const [signupCred, setSignupCred] = useState({
@@ -20,10 +19,6 @@ const Login = props => {
 
   const loggedInUser = useSelector(state => state.user.loggedInUser);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getLoggedInUser());
-  }, [dispatch])
 
   const loginHandleChange = ev => {
     const { name, value } = ev.target;
@@ -89,6 +84,7 @@ const Login = props => {
         value={signupCred.firstName}
         onChange={signupHandleChange}
         placeholder="First Name"
+        required={true}
       />
       <input
         type="text"
@@ -96,6 +92,7 @@ const Login = props => {
         value={signupCred.lastName}
         onChange={signupHandleChange}
         placeholder="Last Name"
+        required={true}
       />
       <input
         type="text"
@@ -103,6 +100,7 @@ const Login = props => {
         value={signupCred.email}
         onChange={signupHandleChange}
         placeholder="Email"
+        required={true}
       />
       <br />
       <input
@@ -111,6 +109,7 @@ const Login = props => {
         value={signupCred.username}
         onChange={signupHandleChange}
         placeholder="Username"
+        required={true}
       />
       <br />
       <input
@@ -119,6 +118,7 @@ const Login = props => {
         value={signupCred.password}
         onChange={signupHandleChange}
         placeholder="Password"
+        required={true}
       />
       <br />
       <button className="login-container-signup-btn">Signup</button>
@@ -134,6 +134,7 @@ const Login = props => {
         value={loginCred.email}
         onChange={loginHandleChange}
         placeholder="Email"
+        required={true}
       />
       <br />
       <input
@@ -142,6 +143,7 @@ const Login = props => {
         value={loginCred.password}
         onChange={loginHandleChange}
         placeholder="Password"
+        required={true}
       />
       <br />
       <button className="login-container-login-btn">Login</button>

@@ -280,6 +280,10 @@ const Board = () => {
   }
 
   const handleTitleChange = (e) => {
+    if (e.target.innerText.length >= 10) {
+      setEditableBoardTitle(editableBoardTitle); // Update the state with edited content
+      return
+    };
     setEditableBoardTitle(e.target.innerText); // Update the state with edited content
   };
 
@@ -309,7 +313,7 @@ const Board = () => {
             >
               {/* <div className="board-page-nav-bar-logo" onClick={goBackHandler}> </div> */}
               <h1
-                style={{ fontSize: '16px', marginLeft: '10px', color: `${isDarkBackground ? 'white' : 'rgb(23, 43, 77)'}` , maxWidth: '100px'}}
+                style={{ fontSize: '16px', marginLeft: '10px', color: `${isDarkBackground ? 'white' : 'rgb(23, 43, 77)'}`, maxWidth: '200px' , maxHeight: '23px' , overflowY: 'hidden' }}
                 contentEditable="true" // Make the element editable
                 onInput={handleTitleChange} // Handle content changes
                 onBlur={boardTitleHandler} // Handle onBlur to save the content

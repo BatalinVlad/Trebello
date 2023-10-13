@@ -16,10 +16,13 @@ async function login(req, res) {
 async function signup(req, res) {
     try {
         const { firstName, lastName, email, password, username } = req.body
-        logger.debug(firstName + "," + lastName + "," + email + ", " + username + ', ' + password)
-        const account = await authService.signup(firstName, lastName, email, password, username)
-        logger.debug(`auth.route - new account created: ` + JSON.stringify(account))
+        logger.debug(firstName + "," + lastName + "," + email + ", " + username + ', ' + password);
+        //signup
+        const account = await authService.signup(firstName, lastName, email, password, username);
+        logger.debug(`auth.route - new account created: ` + JSON.stringify(account));
+        //login
         const user = await authService.login(email, password)
+        //save to ..
         req.session.user = user
         req.session.save();
         res.json(user)
@@ -40,7 +43,6 @@ async function logout(req, res) {
 
 async function getLoggedInUser(req, res) {
     try {
-
         if (req.session.user) {
             req.session.save();
             res.json(req.session.user);
