@@ -42,6 +42,7 @@ async function logout(req, res) {
 }
 
 async function getLoggedInUser(req, res) {
+    console.log(req.session.user);
     try {
         if (req.session.user) {
             req.session.save();
