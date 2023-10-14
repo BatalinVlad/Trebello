@@ -6,6 +6,8 @@ const cors = require('cors');
 // cookies
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const MemoryStore = require('memorystore')(session);
+
 
 // routes
 const authRoutes = require('./api/auth/auth.routes');
@@ -25,12 +27,15 @@ app.use(session({
     secret: 'sxjbijxixszaixsax76x87a6sxbash',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }
+    cookie: { secure: true, maxAge: 86400000 },
+    store: new MemoryStore({
+        checkPeriod: 86400000 // prune expired entries every 24h
+    }),
 }))
 
 // cors
 app.use(cors({
-    origin: ['https://trebello.netlify.app', 'http://localhost:3000' ],
+    origin: ['https://trebello.netlify.app', 'http://localhost:3000'],
     credentials: true
 }));
 
