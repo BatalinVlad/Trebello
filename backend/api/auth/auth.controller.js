@@ -44,10 +44,7 @@ async function logout(req, res) {
 }
 
 async function getLoggedInUser(req, res) {
-    logger.error('get logged in user', err);
     logger.error('session: ', req.session);
-
-
     //session not apear
     try {
         if (req.session.user) {
