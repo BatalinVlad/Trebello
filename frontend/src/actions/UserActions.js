@@ -42,15 +42,14 @@ export function logout() {
 
 export function getLoggedInUser() {
   return async dispatch => {
-    const storedData = JSON.parse(localStorage.getItem('userData'));
-    if (storedData && storedData.token && new Date(storedData.expiration) > new Date()) {
-      console.log('do log in dispatch');
-      console.log(storedData);
-    }
     try {
-      const user = await httpGetLoggedInUser();
-      if (Object.entries(user).length === 0) return;
-      dispatch(_setUser(user));
+      const storedData = JSON.parse(localStorage.getItem('userData'));
+      if (storedData && storedData.token && new Date(storedData.expiration) > new Date()) {
+        const userId = storedData.userId;
+        const user = await httpGetLoggedInUser(userId);
+        if (Object.entries(user).length === 0) return;
+        dispatch(_setUser(user));
+      }
     } catch (err) {
       console.log('UserActions: err in logout', err);
     }

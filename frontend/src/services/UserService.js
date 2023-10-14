@@ -4,7 +4,7 @@ import { get, post } from './HttpService';
 async function login(userCred) {
     try {
         const user = await post('auth/login', userCred);
-        let tokenExpirationDate =  new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 7); //exp in 1week
+        let tokenExpirationDate = new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 7); //exp in 1week
         localStorage.setItem('userData',
             JSON.stringify({
                 userId: user._id,
@@ -20,7 +20,7 @@ async function login(userCred) {
 async function signup(userCred) {
     try {
         const user = await post('auth/signup', userCred);
-        let tokenExpirationDate =  new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 7); //exp in 1week
+        let tokenExpirationDate = new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 7); //exp in 1week
         localStorage.setItem('userData',
             JSON.stringify({
                 userId: user._id,
@@ -42,9 +42,9 @@ async function logout() {
     }
 }
 
-async function getLoggedInUser() {
+async function getLoggedInUser(userId) {
     try {
-        const user = await get('auth/user');
+        const user = await get('auth/user', userId);
         return user;
     } catch (err) {
         console.log('UserService: err in getting loggedInUser', err);
