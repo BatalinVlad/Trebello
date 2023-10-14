@@ -5,7 +5,7 @@ const cors = require('cors');
 
 // cookies
 const cookieParser = require('cookie-parser');
-const session = require('express-session');
+const session = require('cookie-session');
 
 // routes
 const authRoutes = require('./api/auth/auth.routes');
@@ -25,6 +25,7 @@ app.use(session({
     secret: 'sxjbijxixszaixsax76x87a6sxbash',
     resave: false,
     saveUninitialized: true,
+    maxAge: 1000 * 60 * 15,
     cookie: { secure: true }
 }))
 
