@@ -19,9 +19,9 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getLoggedInUser());
     dispatch(loadBoards());
     dispatch(loadTemplateBoards());
-    dispatch(getLoggedInUser());
   }, [dispatch]);
 
   const toggleLoginHandler = () => {

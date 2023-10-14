@@ -27,7 +27,7 @@ app.use(session({
     secret: 'sxjbijxixszaixsax76x87a6sxbash',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: true, maxAge: 86400000 },
+    cookie: { secure: process.env.NODE_ENV === 'production' ? true : false , maxAge: 86400000 },
     store: new MemoryStore({
         checkPeriod: 86400000 // prune expired entries every 24h
     }),
