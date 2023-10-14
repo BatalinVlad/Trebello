@@ -1,7 +1,6 @@
 const bcrypt = require('bcryptjs');
 const userService = require('../user/user.service');
 const logger = require('../../services/logger.service');
-const jwt = require('jsonwebtoken');
 
 const saltRounds = 10
 
@@ -13,18 +12,6 @@ async function login(email, password) {
     const match = await bcrypt.compare(password, user.password)
     if (!match) return Promise.reject('Invalid email or password')
     delete user.password;
-
-    // let token;
-    // try {
-    //   token = jwt.sign(
-    //     {
-    //       userId: user._id,
-    //     },
-    //     'supersecret_dont_share',
-    //     { expiresIn: '1h' });
-    // } catch (err) {
-    // }
-    // user.token = token;
     return user;
 }
 

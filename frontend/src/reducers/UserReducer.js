@@ -1,5 +1,5 @@
 let localLoggedinUser = null;
-// if (localStorage.user) localLoggedinUser = JSON.parse(localStorage.user);
+if (localStorage.userData) localLoggedinUser = JSON.parse(localStorage.userData);
 
 const initialState = {
   loggedInUser: localLoggedinUser,

@@ -25,6 +25,8 @@ async function signup(req, res) {
         //save to ..
         req.session.user = user
         req.session.save();
+        logger.debug(`try: ${req.session.user.firstName}`)
+
         res.json(user)
     } catch (err) {
         logger.error('[SIGNUP] ' + err)
@@ -42,15 +44,11 @@ async function logout(req, res) {
 }
 
 async function getLoggedInUser(req, res) {
-    //session not apear
-    logger.debug(`try: ${req.session.user.firstName}`)
-
     try {
         if (req.session.user) {
             req.session.save();
             res.json(req.session.user);
         } else {
-            logger.debug('not found' + req.session.user);
             res.json({});
         }
     } catch (err) {
