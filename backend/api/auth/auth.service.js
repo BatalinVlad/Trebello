@@ -14,17 +14,17 @@ async function login(email, password) {
     if (!match) return Promise.reject('Invalid email or password')
     delete user.password;
 
-    let token;
-    try {
-      token = jwt.sign(
-        {
-          userId: user._id,
-        },
-        'supersecret_dont_share',
-        { expiresIn: '1h' });
-    } catch (err) {
-    }
-    user.token = token;
+    // let token;
+    // try {
+    //   token = jwt.sign(
+    //     {
+    //       userId: user._id,
+    //     },
+    //     'supersecret_dont_share',
+    //     { expiresIn: '1h' });
+    // } catch (err) {
+    // }
+    // user.token = token;
     return user;
 }
 

@@ -7,7 +7,7 @@ async function login(req, res) {
         const user = await authService.login(email, password)
         req.session.user = user;
         req.session.save();
-        logger.debug(`new session created:`, req.session)
+        logger.debug(`new session created: ${req.session.user}`)
 
         res.json(user)
     } catch (err) {
