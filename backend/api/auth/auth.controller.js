@@ -7,7 +7,7 @@ async function login(req, res) {
         const user = await authService.login(email, password)
         req.session.user = user;
         req.session.save();
-        logger.debug(`new session created: ${req.session}`)
+        logger.debug(`new session created:` , req.session)
 
         res.json(user)
     } catch (err) {
@@ -44,6 +44,10 @@ async function logout(req, res) {
 }
 
 async function getLoggedInUser(req, res) {
+    logger.error('get logged in user', err);
+    logger.error('session: ', req.session);
+
+
     //session not apear
     try {
         if (req.session.user) {
