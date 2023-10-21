@@ -28,7 +28,7 @@ const BoardsList = ({ boards, templateBoards, user, toggleNewBoardModal }) => {
             }
             {
                 user &&
-                <div >
+                <div style={{marginTop:'20px'}}>
                     <div className="boards-list-container">
                         {(myBoards.length === 0) ?
                             <div>
