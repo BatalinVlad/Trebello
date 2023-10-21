@@ -73,20 +73,6 @@ export default class TaskDetails extends Component {
         this.setState({showEditDescriptionForm: true})
     }
 
-    // closeAll = () => {
-    //     this.setState({
-    //         showActivity: false,
-    //         showEditDescriptionForm: false,
-    //         toggleChooseLabels: false,
-    //         toggleChooseMembers: false,
-    //         toggleTodos: false,
-    //         toggleDueDate: false,
-    //         toggleDeleteTodo: false,
-    //         toggleUploadImage: false,
-    //         toggleTaskBgColor: false
-    //     })
-    // }
-
     onToggleDueDate = ev => {
         // ev && ev.stopPropagation();
         this.onStopPropagationAndCloseOptions(ev); 
@@ -135,13 +121,11 @@ export default class TaskDetails extends Component {
     }
 
     toggleChooseMembers = (ev) => {
-        // ev.stopPropagation();
         this.onStopPropagationAndCloseOptions(ev); 
         this.setState(prevState => ({ toggleChooseMembers: !prevState.toggleChooseMembers }))
     }
 
     toggleTodos = (ev) => {
-        // ev.stopPropagation();
         this.onStopPropagationAndCloseOptions(ev); 
         this.setState(prevState => ({ toggleTodos: !prevState.toggleTodos }))
     }

@@ -246,6 +246,7 @@ const Board = () => {
 
     for (const taskKey in tasks) {
       let task = tasks[taskKey];
+      
       let filterTitle = filterBy.title.toLowerCase();
       let title = task.title.toLowerCase();
 
