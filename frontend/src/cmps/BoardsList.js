@@ -60,7 +60,7 @@ const BoardsList = ({ boards, templateBoards, user, toggleNewBoardModal }) => {
                         {(myCollaboratedBoards.length === 0) ?
                             <span className="caspanitalize" style={{paddingLeft:'10px'}}> you're not collaborating on any boards yet... </span>
                             :
-                            <div className="boards-list-container flex row">
+                            <div className="boards-container flex" style={{gap:'15px', paddingBottom:'10px' }}>
                                 {myCollaboratedBoards.map(myCollaboratedBoard => (
                                     <Tilt className="pointer" key={myCollaboratedBoard._id}>
                                         <NavLink to={`/board/board/${myCollaboratedBoard._id}`}>
