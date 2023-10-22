@@ -11,6 +11,7 @@ async function login(userCred) {
                 firstName: user.firstName,
                 lastName: user.lastName,
                 username: user.username,
+                color: user.color,
                 expiration: tokenExpirationDate.toISOString()
             }));
         return user;
@@ -29,6 +30,7 @@ async function signup(userCred) {
                 firstName: user.firstName,
                 lastName: user.lastName,
                 username: user.username,
+                color: user.color,
                 expiration: tokenExpirationDate.toISOString()
             }));
         return user;
