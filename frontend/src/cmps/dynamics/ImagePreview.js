@@ -33,15 +33,16 @@ export default class ImagePreview extends Component {
                     {...provided.dragHandleProps}
                     ref={innerRef}
                 >
-                    <img title={task.id} alt="task" src={task.url} 
-                    style={{borderBottomLeftRadius: task.title !== '' && '0px' , borderBottomRightRadius: task.title !== '' && '0px' }}/>
-                    <div className="task-container-labels flex wrap">
-                        {task.labels.map(label => {
-                            return <div key={label} className={label + ' small-label'}>
-                            </div>
-                        })
-                        }
-                    </div>
+                    <img title={task.id} alt="task" src={task.url}
+                        style={{ borderBottomLeftRadius: task.title !== '' && '0px', borderBottomRightRadius: task.title !== '' && '0px' }} />
+                    {task.labels.length > 0 &&
+                        <div className="task-container-labels flex wrap">
+                            {task.labels.map(label => {
+                                return <div key={label} className={label + ' small-label'}>
+                                </div>
+                            })}
+                        </div>
+                    }
                     {task.title !== '' &&
                         <p className="task-container-title">{task.title}</p>
                     }
@@ -53,25 +54,25 @@ export default class ImagePreview extends Component {
                         style={(task.taskTeamMembers.length !== 0) ? { minHeight: '30px' } : null} >
 
                         {(task.description !== '') &&
-                            <div className="flex center" style={{paddingBottom: '3px'}}>
+                            <div className="flex center" style={{ paddingBottom: '3px' }}>
                                 <SubjectIcon />
                             </div>
                         }
                         {(task.todos.length > 0) &&
-                            <div className="flex align-center" style={{paddingBottom: '3px'}}>
+                            <div className="flex align-center" style={{ paddingBottom: '3px' }}>
                                 <CheckBoxIcon />
                                 <p>{task.todosDone + '/' + task.todos.length}</p>
                             </div>
                         }
                         {(task.dueDate) &&
-                            <div className="flex  align-center" style={{paddingBottom: '3px'}}>
+                            <div className="flex  align-center" style={{ paddingBottom: '3px' }}>
                                 <CalendarMonthIcon />
                             </div>
                         }
                         <div className="team-members-container">
                             <div className="flex justify-end">
                                 {(task.taskTeamMembers.slice(0, 3).map((member) => {
-                                    return <div key={member._id} className="team-member-icon-wrapper flex align-center" style={{ backgroundColor: '#dfe1e6' }} >
+                                    return <div key={member._id} className="team-member-icon-wrapper flex align-center" style={{ backgroundColor: '#dfe1e6', boxShadow: '0px 0px 3px 0px #000000bf' }} >
                                         <div className="team-member-icon">
                                             <p className="flex align-center uppercase" style={{ color: '#172b4d' }}>
                                                 {utils.createUserIcon(member.firstName,
@@ -82,7 +83,7 @@ export default class ImagePreview extends Component {
                                 }))}
                                 {
                                     task.taskTeamMembers.length > 3 &&
-                                    <div className="team-member-icon-wrapper flex align-center" style={{ backgroundColor: '#dfe1e6' }} >
+                                    <div className="team-member-icon-wrapper flex align-center" style={{ backgroundColor: '#dfe1e6', boxShadow: '0px 0px 3px 0px #000000bf' }} >
                                         <div className="team-member-icon">
                                             <p className="flex align-center uppercase" style={{ color: '#172b4d' }}>
                                                 {`+${task.taskTeamMembers.length - 3}`}

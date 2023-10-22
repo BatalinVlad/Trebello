@@ -54,7 +54,7 @@ export default class TaskDetails extends Component {
     }
 
     onStopPropagationAndCloseOptions = (ev) => {
-        ev.stopPropagation();
+        ev && ev.stopPropagation();
         this.setState({
             toggleDueDate: false,
             toggleTodos: false,
@@ -70,24 +70,24 @@ export default class TaskDetails extends Component {
     }
 
     openUpdateDescriptionForm = () => {
-        this.setState({showEditDescriptionForm: true})
+        this.setState({ showEditDescriptionForm: true })
     }
 
     onToggleDueDate = ev => {
         // ev && ev.stopPropagation();
-        this.onStopPropagationAndCloseOptions(ev); 
+        this.onStopPropagationAndCloseOptions(ev);
         this.setState(prevState => ({ toggleDueDate: !prevState.toggleDueDate }))
     }
 
     toggleUploadImageHandler = ev => {
         // ev && ev.stopPropagation();
-        this.onStopPropagationAndCloseOptions(ev); 
+        this.onStopPropagationAndCloseOptions(ev);
         this.setState(prevState => ({ toggleUploadImage: !prevState.toggleUploadImage }))
     }
 
     toggleTaskBgColorHandler = ev => {
         // ev && ev.stopPropagation();
-        this.onStopPropagationAndCloseOptions(ev); 
+        this.onStopPropagationAndCloseOptions(ev);
         this.setState(prevState => ({ toggleTaskBgColor: !prevState.toggleTaskBgColor }))
     }
 
@@ -96,11 +96,11 @@ export default class TaskDetails extends Component {
         this.setState({ showEditDescriptionForm: false })
     }
 
-  
+
 
     toggleChooseLabels = (ev) => {
         // ev.stopPropagation();
-        this.onStopPropagationAndCloseOptions(ev); 
+        this.onStopPropagationAndCloseOptions(ev);
         this.setState(prevState => ({ toggleChooseLabels: !prevState.toggleChooseLabels }))
     }
 
@@ -121,12 +121,12 @@ export default class TaskDetails extends Component {
     }
 
     toggleChooseMembers = (ev) => {
-        this.onStopPropagationAndCloseOptions(ev); 
+        this.onStopPropagationAndCloseOptions(ev);
         this.setState(prevState => ({ toggleChooseMembers: !prevState.toggleChooseMembers }))
     }
 
     toggleTodos = (ev) => {
-        this.onStopPropagationAndCloseOptions(ev); 
+        this.onStopPropagationAndCloseOptions(ev);
         this.setState(prevState => ({ toggleTodos: !prevState.toggleTodos }))
     }
 
@@ -316,7 +316,7 @@ export default class TaskDetails extends Component {
                 <div className="task-details-container-wrapper flex" onClick={(ev) => this.onStopPropagationAndCloseOptions(ev)}>
                     <div className="task-details-container flex relative">
                         <CloseIcon className="back flex center"
-                            onClick={() => this.props.toggleTaskDetails() } />
+                            onClick={() => this.props.toggleTaskDetails()} />
                         <div className="task-details-container-main">
                             <div className="task_title flex">
                                 <DescriptionOutlinedIcon className='main_icon flex center' />
@@ -340,6 +340,7 @@ export default class TaskDetails extends Component {
                             <div className="chosen-labels-container ">
                                 {this.state.toggleChooseLabels &&
                                     <Labels
+                                        closeAll={this.onStopPropagationAndCloseOptions}
                                         toggleChooseLabels={this.toggleChooseLabels}
                                         board={this.props.board}
                                         task={task}
@@ -366,6 +367,7 @@ export default class TaskDetails extends Component {
 
                             {this.state.toggleTaskBgColor &&
                                 <TaskBgColor
+                                    closeAll={this.onStopPropagationAndCloseOptions}
                                     toggleTaskBgColorHandler={this.toggleTaskBgColorHandler}
                                     board={this.props.board}
                                     task={task}
@@ -377,6 +379,7 @@ export default class TaskDetails extends Component {
                             <div className="main-members-container">
                                 {this.state.toggleChooseMembers &&
                                     <Members
+                                        closeAll={this.onStopPropagationAndCloseOptions}
                                         toggleChooseMembers={this.toggleChooseMembers}
                                         board={this.props.board}
                                         task={task}
@@ -407,6 +410,7 @@ export default class TaskDetails extends Component {
 
                             {this.state.toggleTodos &&
                                 <Todos
+                                    closeAll={this.onStopPropagationAndCloseOptions}
                                     toggleTodos={this.toggleTodos}
                                     board={this.props.board}
                                     user={this.props.user}
@@ -465,7 +469,7 @@ export default class TaskDetails extends Component {
                                 </div>
                                 {this.state.toggleDueDate && <DueDate
                                     task={task}
-                                    onToggle={this.onToggleDueDate}
+                                    closeAll={this.onStopPropagationAndCloseOptions}
                                     board={this.props.board}
                                     updateBoard={this.props.updateBoard}
                                     updateProgressBar={this.updateProgressBar}

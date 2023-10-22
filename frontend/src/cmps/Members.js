@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import utils from '../services/utils';
+import CloseIcon from '@mui/icons-material/Close';
 
 const Members = (props) => {
   const [choosenMembers, setChoosenMembers] = useState([]);
@@ -51,6 +52,9 @@ const Members = (props) => {
 
   return (
     <div className="members-container text-center column" onClick={(ev) => onStopPropagation(ev)}>
+      <div className='fill-with flex justify-end'>
+        <CloseIcon onClick={ev => props.closeAll(ev)} style={{ color: 'black' , paddingRight:'4px' }} />
+      </div>
       <p className="uppercase">assigned members</p>
       <hr />
 

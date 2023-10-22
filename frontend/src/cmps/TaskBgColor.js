@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import CloseIcon from '@mui/icons-material/Close';
 
-const TaskBgColor = ({ board, task, updateBoard, user, toggleTaskBgColorHandler }) => {
-    const [chosenColor, setChosenColor] = useState('bgTaskWhite')
+const TaskBgColor = ({ board, task, updateBoard, user, closeAll }) => {
+    const [chosenColor, setChosenColor] = useState('')
 
     const changeTaskBgColor = (ev) => {
         const colorChnaged = ev.target.getAttribute('value');
@@ -28,16 +28,16 @@ const TaskBgColor = ({ board, task, updateBoard, user, toggleTaskBgColorHandler 
     return (
         <div className="change-bgcolor-container absolute " onClick={ev => ev.stopPropagation()}>
             <div className='fill-with flex justify-end'>
-                <CloseIcon onClick={toggleTaskBgColorHandler} style={{ color: 'black' }} />
+                <CloseIcon onClick={ev => closeAll(ev)}  style={{ color: 'black' }} />
             </div>
             <p>choose background color</p>
             <div className="choose-color flex justify-center">
                 <span className='color' style={{ backgroundColor: 'white' }} value='bgTaskWhite' onClick={ev => changeTaskBgColor(ev)}></span>
-                <span className='color' style={{ backgroundColor: 'green' }} value='bgTaskGreen' onClick={ev => changeTaskBgColor(ev)}></span>
-                <span className='color' style={{ backgroundColor: 'yellow' }} value='bgTaskYellow' onClick={ev => changeTaskBgColor(ev)}></span>
-                <span className='color' style={{ backgroundColor: 'orange' }} value='bgTaskOrange' onClick={ev => changeTaskBgColor(ev)}></span>
-                <span className='color' style={{ backgroundColor: 'red' }} value='bgTaskRed' onClick={ev => changeTaskBgColor(ev)}></span>
-                <span className='color' style={{ backgroundColor: 'blue' }} value='bgTaskBlue' onClick={ev => changeTaskBgColor(ev)}></span>
+                <span className='color' style={{ backgroundColor: '#1d976c' }} value='bgTaskGreen' onClick={ev => changeTaskBgColor(ev)}></span>
+                <span className='color' style={{ backgroundColor: '#fffc00' }} value='bgTaskYellow' onClick={ev => changeTaskBgColor(ev)}></span>
+                <span className='color' style={{ backgroundColor: '#ff8008' }} value='bgTaskOrange' onClick={ev => changeTaskBgColor(ev)}></span>
+                <span className='color' style={{ backgroundColor: '#eb3349' }} value='bgTaskRed' onClick={ev => changeTaskBgColor(ev)}></span>
+                <span className='color' style={{ backgroundColor: '#1fa2ff' }} value='bgTaskBlue' onClick={ev => changeTaskBgColor(ev)}></span>
             </div>
         </div>
     )

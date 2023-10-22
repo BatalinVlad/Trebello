@@ -52,7 +52,7 @@ export default class Todo extends Component {
                 onClick={(ev) => this.onStopPropagation(ev)}
             >
                 <div className="checklist-closebtn-container">
-                    <CloseIcon className="check-list-item-container-close-btn pointer" onClick={this.props.toggleTodos} />
+                    <CloseIcon className="check-list-item-container-close-btn pointer" onClick={ev => this.props.closeAll(ev)} />
                 </div>
 
                 <div className="input-container flex column justify-center align-center">

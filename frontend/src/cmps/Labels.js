@@ -63,7 +63,7 @@ export default class Labels extends Component {
                 onClick={(ev) => this.onStopPropagation(ev)}
                 style={{ ...updateStyle }}
             >
-                <CloseIcon className="labels-container-close-btn" onClick={this.props.toggleChooseLabels} /> 
+                <CloseIcon className="labels-container-close-btn" onClick={ev => this.props.closeAll(ev)} /> 
                 <p className="uppercase">choose labels</p>
                 <hr />
                 <div className="labels-container-colors-container flex column align-center ">

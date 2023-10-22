@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import CloseIcon from '@mui/icons-material/Close';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -31,7 +30,6 @@ const DueDate = (props) => {
         const msg = `${props.user} changed the due date for task '${props.task.title}'`;
         const notificationType = 'success';
         props.updateBoard(newBoard, msg, notificationType);
-        props.onToggle();
     };
 
     return (

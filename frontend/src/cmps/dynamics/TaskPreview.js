@@ -32,14 +32,14 @@ export default class TaskPreview extends Component {
                     ref={innerRef}
                 >
                     {task.url && <img title={task.id} alt="task" src={task.url} />}
-
-                    <div className="task-container-labels flex wrap">
-                        {task.labels.map(label => {
-                            return <div key={label} className={label + ' small-label'}>
-                            </div>
-                        })
-                        }
-                    </div>
+                    {task.labels.length > 0 &&
+                        <div className="task-container-labels flex wrap">
+                            {task.labels.map(label => {
+                                return <div key={label} className={label + ' small-label'}>
+                                </div>
+                            })}
+                        </div>
+                    }
                     <p className="task-container-title flex align-center">{task.title}</p>
                     {(showEditBtn && (onTaskId === task.id)) &&
                         <CreateIcon className="task-container-open-menu"
@@ -48,13 +48,13 @@ export default class TaskPreview extends Component {
 
                     <div className="bottom-container flex row" style={(task.taskTeamMembers.length !== 0) ? { minHeight: '30px' } : null}>
                         {(task.description !== '') &&
-                            <div className="flex center" style={{paddingBottom: '3px'}}>
+                            <div className="flex center" style={{ paddingBottom: '3px' }}>
                                 <SubjectIcon />
                             </div>
                         }
 
                         {(task.todos.length > 0) &&
-                            <div className="flex center" style={{paddingBottom: '3px'}}>
+                            <div className="flex center" style={{ paddingBottom: '3px' }}>
                                 <div className="flex align-center">
                                     <CheckBoxIcon />
                                     <p>{task.todosDone + '/' + task.todos.length}</p>
@@ -63,14 +63,14 @@ export default class TaskPreview extends Component {
                         }
 
                         {(task.dueDate) &&
-                            <div className="flex center" style={{paddingBottom: '3px'}}>
+                            <div className="flex center" style={{ paddingBottom: '3px' }}>
                                 <CalendarMonthIcon />
                             </div>
                         }
                         <div className="team-members-container">
                             <div className="flex justify-end">
                                 {(task.taskTeamMembers.slice(0, 4).map(member => {
-                                    return <div key={member._id} className="team-member-icon-wrapper flex align-center" style={{ backgroundColor: '#dfe1e6' }} >
+                                    return <div key={member._id} className="team-member-icon-wrapper flex align-center" style={{ backgroundColor: '#dfe1e6', boxShadow: '0px 0px 3px 0px #000000bf' }} >
                                         <div className="team-member-icon">
                                             <p className="flex align-center uppercase" style={{ color: '#172b4d' }}>
                                                 {utils.createUserIcon(member.firstName,
@@ -81,7 +81,7 @@ export default class TaskPreview extends Component {
                                 }))}
                                 {
                                     task.taskTeamMembers.length > 3 &&
-                                    <div className="team-member-icon-wrapper flex align-center" style={{ backgroundColor: '#dfe1e6' }} >
+                                    <div className="team-member-icon-wrapper flex align-center" style={{ backgroundColor: '#dfe1e6', boxShadow: '0px 0px 3px 0px #000000bf' }} >
                                         <div className="team-member-icon">
                                             <p className="flex align-center uppercase" style={{ color: '#172b4d' }}>
                                                 {`+${task.taskTeamMembers.length - 3}`}
