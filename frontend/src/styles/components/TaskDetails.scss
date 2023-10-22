@@ -19,6 +19,7 @@
   h2 {
     font-weight: 600;
   }
+
   h2,
   h3 {
     color: #172b4d;
@@ -56,12 +57,14 @@
 
   .task_title {
     margin-left: 10px;
+
     h2 {
       padding-right: 5px;
       max-width: 300px;
       max-height: 81px;
       overflow: auto;
     }
+
     @media (max-width: 400px) {
       h2 {
         max-width: 200px;
@@ -83,6 +86,11 @@
     max-width: 80%;
     overflow: auto;
     padding-bottom: 3px;
+    p {
+      width: 36px;
+      height: 36px;
+      font-family: montserratExtraBold, "sans-sarif";
+    }
   }
 
   &-team-member {
@@ -90,11 +98,6 @@
     border-radius: 100%;
     font-weight: bold;
     margin: 3px;
-
-    span {
-      width: 36px;
-      height: 36px;
-    }
   }
 
   .check-list-container {
@@ -103,11 +106,13 @@
       overflow-y: auto;
       margin-bottom: 10px;
     }
+
     .items {
       .item {
         input {
           margin-left: 0;
         }
+
         &:hover {
           background-color: rgba(235, 235, 235, 0.452);
         }
@@ -115,6 +120,7 @@
         .delete-btn {
           height: 17px;
           width: 17px;
+
           &:hover {
             color: rgba(255, 24, 24, 0.997);
             cursor: pointer;
@@ -145,9 +151,11 @@
       }
     }
   }
+
   &-overall-options {
     @media (max-width: 525px) {
       padding: 30px 0px;
+
       h2 {
         font-size: 12px;
       }
@@ -213,6 +221,7 @@
       }
     }
   }
+
   .upload-task-image__container {
     top: 22px;
     left: -92px;
@@ -221,6 +230,7 @@
     background-color: white;
     border-radius: 4px;
     box-shadow: 0px 0px 0px 2px rgba(174, 174, 174, 0.7098039216);
+
     label {
       background: #5aac44;
       font-size: 12px;
@@ -229,16 +239,19 @@
       padding: 3px 10px;
       border-radius: 5px;
     }
+
     input {
       padding-top: 5px;
       width: 100%;
       background-color: #dfe1e6;
       padding: 3px 10px;
     }
+
     button {
       font-size: 10px;
       background-color: #000000a3;
       color: white;
+
       &:hover {
         background-color: #5aac44;
       }

@@ -1,4 +1,5 @@
-.home-page-login , .board-page-login{
+.home-page-login,
+.board-page-login {
   z-index: 2;
   position: absolute;
   color: whitesmoke;
@@ -18,12 +19,15 @@
   }
 
   .team-member-icon {
+    p {
+      font-family: montserratBold;
+    }
+
     padding: 0 13px;
     border-radius: 50%;
     margin-right: 5px;
     background-color: rgba(223, 225, 230, 0.8);
     color: #172b4d;
-    font-weight: 700;
   }
 
   .login-btn {

@@ -325,7 +325,7 @@ const Board = () => {
               <div className="flex align-center">
                 {loggedInUser &&
                   <div className="flex">
-                    <div className="team-member-icon-wrapper flex align-center justify-center" style={{ backgroundColor: 'rgba(223, 225, 230, 0.8)', color: '#172b4d' }} >
+                    <div className="team-member-icon-wrapper flex align-center justify-center" style={{ background: loggedInUser.color , color: '#172b4d' , boxShadow: '0px 0px 3px 0px #000000bf'}} >
                       <div className="team-member-icon">
                         <p className="uppercase">
                           {utils.createUserIcon(loggedInUser.firstName,

@@ -19,6 +19,7 @@ export function login(userCreds) {
 }
 
 export function signup(userCreds) {
+  console.log(userCreds);
   return async dispatch => {
     try {
       const user = await httpSinup(userCreds);

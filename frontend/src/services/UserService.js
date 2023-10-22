@@ -10,7 +10,6 @@ async function login(userCred) {
                 _id: user._id,
                 firstName: user.firstName,
                 lastName: user.lastName,
-                email: user.email,
                 username: user.username,
                 expiration: tokenExpirationDate.toISOString()
             }));
@@ -26,8 +25,10 @@ async function signup(userCred) {
         let tokenExpirationDate = new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 7); //exp in 1week
         localStorage.setItem('userData',
             JSON.stringify({
-                userId: user._id,
-                token: user.token,
+                _id: user._id,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                username: user.username,
                 expiration: tokenExpirationDate.toISOString()
             }));
         return user;

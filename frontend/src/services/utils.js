@@ -1,5 +1,5 @@
-import axios from 'axios'
 
+import axios from 'axios'
 import SocketService from './SocketService';
 
 export default {
@@ -27,13 +27,13 @@ function createUserIcon(firstName, lastName) {
 }
 
 function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
+    const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+    const h = randomInt(0, 360);
+    const s = randomInt(42, 98);
+    const l = randomInt(40, 90);
+    return `hsl(${h}, ${s}%, ${l}%)`;
 }
+
 
 function uploadImg(file) {
   const CLOUD_NAME = 'dujlxvxxv'
@@ -52,7 +52,7 @@ function uploadImg(file) {
     .catch(err => console.error(err))
 }
 
-function getImagesFromUnsplash(filterName , perpage) {
+function getImagesFromUnsplash(filterName, perpage) {
   const client_id = '9a992bf0a58ef7c4735758c98ec044dcdb524c2178db25d55cd773d7436f15d1'
   const URL = `https://api.unsplash.com/search/photos?per_page=${perpage}&query=${filterName}&client_id=${client_id}`
   return axios.get(URL)

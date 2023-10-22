@@ -49,8 +49,8 @@ export default class BoardTeamMembers extends Component {
                         return (
                             <div key={teamMember._id} className="team-member flex align-center"
                                 onClick={() => this.updateTeamMembers(teamMember)}>
-                                <div className="team-member-icon-wrapper flex center" style={{ backgroundColor: '#dfe1e6', color: '#172b4d' }} >
-                                    <div className="team-member-icon">
+                                <div className="team-member-icon-wrapper flex center" style={{ background: teamMember.color ,boxShadow: '0px 0px 1px 0px #000000bf'}} >
+                                    <div className="team-member-icon" >
                                         <p className="uppercase" style={{ color: '#172b4d' }}>
                                             {utils.createUserIcon(teamMember.firstName, teamMember.lastName)}
                                         </p>
@@ -72,8 +72,7 @@ export default class BoardTeamMembers extends Component {
                         return (
                             <div key={user._id} className="team-member flex align-center"
                                 onClick={() => this.updateTeamMembers(user)}>
-                                <div className="team-member-icon-wrapper flex align-center justify-center"
-                                    style={{ backgroundColor: '#dfe1e6' }}>
+                                <div className="team-member-icon-wrapper flex align-center justify-center" style={{background: user.color , boxShadow: '0px 0px 1px 0px #000000bf'}}>
                                     <div className="team-member-icon">
                                         <p className="uppercase" style={{ color: '#172b4d' }}>
                                             {utils.createUserIcon(user.firstName, user.lastName)}

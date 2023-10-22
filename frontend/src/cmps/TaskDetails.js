@@ -395,11 +395,11 @@ export default class TaskDetails extends Component {
                                             <h2>Members</h2>
                                             <div className="flex asigned-team-members-container">
                                                 {task.taskTeamMembers.map(member => {
-                                                    return <div key={member._id} className="task-details-container-team-member" >
-                                                        <span className="uppercase fs14 flex center">
+                                                    return <div key={member._id} className="task-details-container-team-member" style={{ background: member.color, boxShadow: '0px 0px 3px 0px #000000bf' }} >
+                                                        <p className="uppercase fs14 flex center bold" style={{color: '#172b4d'}}>
                                                             {utils.createUserIcon(member.firstName,
                                                                 member.lastName)}
-                                                        </span>
+                                                        </p>
                                                     </div>
                                                 })}
                                             </div>
