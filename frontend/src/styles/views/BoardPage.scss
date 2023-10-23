@@ -4,7 +4,17 @@
   background-position: center;
   height: 100vh;
 
+  &-login{
+    top: 12px;
+    right: 20px;
+
+    .login-btn{
+      padding: 5px;
+    }
+  }
+
   &-nav-bar {
+    min-height: 57px;
     background-color: #0000005c;
     padding: 10px;
 
