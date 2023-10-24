@@ -66,7 +66,7 @@ export default class MiniImageDetails extends Component {
                     maxHeight: height + 'px'
                 }}
             >
-                <img ref={this.imgContainer} title={task.id} alt="task" src={task.url} />
+                <img ref={this.imgContainer} title={task.id} style={{objectFit:'cover'}} alt="task" src={task.url} />
                 <div className="task-container-labels flex">
                     {task.labels.map(label => {
                         return <div key={label} className={label + ' small-label'}>
