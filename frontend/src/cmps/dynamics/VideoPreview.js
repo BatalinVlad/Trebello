@@ -61,7 +61,7 @@ export default class VideoPreview extends Component {
                     <div className="team-members-container ">
                         <div className="flex justify-end">
                             {(task.taskTeamMembers.map(member => {
-                                return <div key={member._id} className="team-member-icon-wrapper flex align-center" style={{ backgroundColor: '#dfe1e6' }} >
+                                return <div key={member._id} className="team-member-icon-wrapper flex align-center" style={{ background: '#dfe1e6' }} >
                                     <div className="team-member-icon">
                                         <p className="flex align-center uppercase" style={{ color: '#172b4d' }}>
                                             {utils.createUserIcon(member.firstName,

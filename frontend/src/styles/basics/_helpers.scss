@@ -280,14 +280,6 @@
     #93f9b9,
     #1d976c
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  &:hover {
-    background: linear-gradient(
-      to right,
-      #1d976c,
-      #93f9b9
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  }
 }
 
 .bgTaskYellow {
@@ -302,14 +294,6 @@
     #fffd75,
     #fffc00
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  &:hover {
-    background: linear-gradient(
-      to right,
-      #fffc00,
-      #fffd75
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  }
 }
 
 .bgTaskOrange {
@@ -325,10 +309,6 @@
     #ffc837,
     #ff8008
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  &:hover {
-    background: linear-gradient(to right, #ff8008, #ffc837);
-  }
 }
 
 .bgTaskRed {
@@ -343,14 +323,6 @@
     #f45c43,
     #eb3349
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  &:hover {
-    background: linear-gradient(
-      to right,
-      #eb3349,
-      #f45c43
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  }
 }
 
 .bgTaskBlue {
@@ -367,15 +339,6 @@
     #12d8fa,
     #1fa2ff
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  &:hover {
-    background: linear-gradient(
-      to right,
-      #1fa2ff,
-      #12d8fa,
-      #a6ffcb
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  }
 }
 
 //IMAGES

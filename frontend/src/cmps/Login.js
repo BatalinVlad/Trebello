@@ -5,6 +5,7 @@ import {
   logout,
   signup
 } from '../actions/UserActions';
+import utils from '../services/utils';
 
 const Login = () => {
   const [msg, setMsg] = useState('');
@@ -14,7 +15,8 @@ const Login = () => {
     lastName: '',
     username: '',
     email: '',
-    password: ''
+    password: '',
+    color: ''
   });
 
   const loggedInUser = useSelector(state => state.user.loggedInUser);
@@ -54,14 +56,16 @@ const Login = () => {
     if (!firstName || !lastName || !email || !password || !username) {
       return setMsg('All inputs are required!');
     }
-    const signupCreds = { firstName, lastName, username, email, password };
+    const color = utils.getRandomColor();
+    const signupCreds = { firstName, lastName, username, email, password, color };
     dispatch(signup(signupCreds));
     setSignupCred({
       firstName: '',
       lastName: '',
       username: '',
       email: '',
-      password: ''
+      password: '',
+      color: ''
     });
   };
 
@@ -126,7 +130,7 @@ const Login = () => {
   );
 
   let loginSection = (
-    <form className="login-container-login text-center" style={{marginBottom: '10px'}} onSubmit={doLogin}>
+    <form className="login-container-login text-center" style={{ marginBottom: '10px' }} onSubmit={doLogin}>
       <p> Login: </p>
       <input
         type="text"
@@ -164,7 +168,7 @@ const Login = () => {
             </div>
           </div>
         )}
-        
+
         {!loggedInUser && loginSection}
         {!loggedInUser && signupSection}
       </div>

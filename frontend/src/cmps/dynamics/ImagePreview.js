@@ -72,9 +72,9 @@ export default class ImagePreview extends Component {
                         <div className="team-members-container">
                             <div className="flex justify-end">
                                 {(task.taskTeamMembers.slice(0, 3).map((member) => {
-                                    return <div key={member._id} className="team-member-icon-wrapper flex align-center" style={{ backgroundColor: '#dfe1e6', boxShadow: '0px 0px 3px 0px #000000bf' }} >
+                                    return <div key={member._id} className="team-member-icon-wrapper flex align-center" style={{ background: member.color, color: '#172b4d', boxShadow: '0px 0px 1px 0px #000000bf' }} >
                                         <div className="team-member-icon">
-                                            <p className="flex align-center uppercase" style={{ color: '#172b4d' }}>
+                                            <p className="flex align-center uppercase" style={{ color: '#172b4d'  }}>
                                                 {utils.createUserIcon(member.firstName,
                                                     member.lastName)}
                                             </p>
@@ -83,7 +83,7 @@ export default class ImagePreview extends Component {
                                 }))}
                                 {
                                     task.taskTeamMembers.length > 3 &&
-                                    <div className="team-member-icon-wrapper flex align-center" style={{ backgroundColor: '#dfe1e6', boxShadow: '0px 0px 3px 0px #000000bf' }} >
+                                    <div className="team-member-icon-wrapper flex align-center" style={{ background: '#dfe1e6', color: '#172b4d', boxShadow: '0px 0px 1px 0px #000000bf' }} >
                                         <div className="team-member-icon">
                                             <p className="flex align-center uppercase" style={{ color: '#172b4d' }}>
                                                 {`+${task.taskTeamMembers.length - 3}`}

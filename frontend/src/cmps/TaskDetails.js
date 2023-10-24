@@ -66,7 +66,8 @@ export default class TaskDetails extends Component {
     }
 
     emitChange = (ev) => {
-        this.setState({ taskTitle: ev.target.innerText });
+        const newTaskTitle = ev.target.innerText === '' ? 'no title' : ev.target.innerText;
+        this.setState({ taskTitle: newTaskTitle });
     }
 
     openUpdateDescriptionForm = () => {
@@ -74,19 +75,16 @@ export default class TaskDetails extends Component {
     }
 
     onToggleDueDate = ev => {
-        // ev && ev.stopPropagation();
         this.onStopPropagationAndCloseOptions(ev);
         this.setState(prevState => ({ toggleDueDate: !prevState.toggleDueDate }))
     }
 
     toggleUploadImageHandler = ev => {
-        // ev && ev.stopPropagation();
         this.onStopPropagationAndCloseOptions(ev);
         this.setState(prevState => ({ toggleUploadImage: !prevState.toggleUploadImage }))
     }
 
     toggleTaskBgColorHandler = ev => {
-        // ev && ev.stopPropagation();
         this.onStopPropagationAndCloseOptions(ev);
         this.setState(prevState => ({ toggleTaskBgColor: !prevState.toggleTaskBgColor }))
     }
@@ -96,10 +94,7 @@ export default class TaskDetails extends Component {
         this.setState({ showEditDescriptionForm: false })
     }
 
-
-
     toggleChooseLabels = (ev) => {
-        // ev.stopPropagation();
         this.onStopPropagationAndCloseOptions(ev);
         this.setState(prevState => ({ toggleChooseLabels: !prevState.toggleChooseLabels }))
     }
@@ -245,8 +240,11 @@ export default class TaskDetails extends Component {
     }
 
     setTaskName = (taskId) => {
-        const taskTitle = this.props.board.tasks[taskId].title;
-        this.setState({ taskTitle: taskTitle });
+        console.log(this.props.board.tasks[taskId].title);
+        const newTitle = this.props.board.tasks[taskId].title === '' ? 'no title' : this.props.board.tasks[taskId].title;
+        console.log('new title: ' ,newTitle);
+
+        this.setState({ taskTitle: newTitle });
     }
 
     changeDescription = (ev) => {
@@ -256,9 +254,8 @@ export default class TaskDetails extends Component {
     saveTaskName = (taskId, title) => {
         const taskTitle = this.props.board.tasks[taskId].title;
         if (taskTitle === title) return;
-
         const updatedBoard = { ...this.props.board };
-        updatedBoard.tasks[taskId].title = title;
+        updatedBoard.tasks[taskId].title = title
 
         const msg = `${this.props.user} changed the title of the task '${taskTitle}' to '${title}'`;
         const notificationType = 'success';
@@ -329,7 +326,7 @@ export default class TaskDetails extends Component {
                                         onBlur={() => this.saveTaskName(task.id, this.state.taskTitle)}
                                         suppressContentEditableWarning={true}
                                     >
-                                        {task.title}
+                                        {task.title === '' ? 'no title' : task.title}
                                     </h2>
                                     <div className="task-details-container-in-list flex">
                                         <p>in list <span>{column.title}</span></p>
@@ -395,11 +392,11 @@ export default class TaskDetails extends Component {
                                             <h2>Members</h2>
                                             <div className="flex asigned-team-members-container">
                                                 {task.taskTeamMembers.map(member => {
-                                                    return <div key={member._id} className="task-details-container-team-member" >
-                                                        <span className="uppercase fs14 flex center">
+                                                    return <div key={member._id} className="task-details-container-team-member" style={{ background: member.color, boxShadow: '0px 0px 3px 0px #000000bf' }} >
+                                                        <p className="uppercase fs14 flex center bold" style={{ color: '#172b4d' }}>
                                                             {utils.createUserIcon(member.firstName,
                                                                 member.lastName)}
-                                                        </span>
+                                                        </p>
                                                     </div>
                                                 })}
                                             </div>

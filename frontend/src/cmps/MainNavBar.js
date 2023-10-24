@@ -26,7 +26,7 @@ const MainNavBar = ({ toggleLoginHandler , isLogin }) => {
             <div className="home-page-login flex justify-end align-center">
                 {loggedInUser &&
                     <div className="flex">
-                        <div className="team-member-icon flex align-center uppercase">
+                        <div className="team-member-icon flex align-center uppercase" style={{ background: loggedInUser.color , boxShadow: '0px 0px 1px 0px #000000bf'}}>
                             <p className="uppercase">
                                 {utils.createUserIcon(loggedInUser.firstName,
                                     loggedInUser.lastName)}

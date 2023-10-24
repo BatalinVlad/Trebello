@@ -38,6 +38,8 @@ export default function ColumnAddForm(props) {
 
     const saveColumn = async (ev) => {
         ev.preventDefault();
+        const title = column.title !== '' ? column.title : 'no title';
+        column.title = title;
         const newBoard = {
             ...props.board,
             columns: {
@@ -59,13 +61,13 @@ export default function ColumnAddForm(props) {
     useEffect(() => {
         setFormDataForEdit();
         nameInputRef.current.focus();
-        
+
     }, [props.column, setFormDataForEdit]);
 
     useEffect(() => {
         nameInputRef.current.focus();
     }, [])
-    
+
     return (
         <form className="add-column-form-container flex column space-between" onSubmit={saveColumn}>
             <input

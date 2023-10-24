@@ -17,7 +17,6 @@ const Home = () => {
   const templateBoards = useSelector(state => state.templateBoards.templateBoards);
 
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(loadBoards());
     dispatch(loadTemplateBoards());

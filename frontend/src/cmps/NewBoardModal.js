@@ -32,9 +32,9 @@ const NewBoardModal = ({ loggedInUser }) => {
       columns: {},
       columnOrder: [],
       style: {},
-      boardBgImage: imageUrl.full || 'https://images.unsplash.com/photo-1511649475669-e288648b2339?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjExMTc0M30',
+      boardBgImage: imageUrl ? imageUrl.full : 'https://images.unsplash.com/photo-1511649475669-e288648b2339?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjExMTc0M30',
       history: [],
-      boardBgThumbnail: imageUrl.thumb || 'https://images.unsplash.com/photo-1511649475669-e288648b2339?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjExMTc0M30',
+      boardBgThumbnail: imageUrl ? imageUrl.thumb : 'https://images.unsplash.com/photo-1511649475669-e288648b2339?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjExMTc0M30',
       createdBy: loggedInUser || { _id: 'guest', username: 'guest' }
     };
 
