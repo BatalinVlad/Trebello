@@ -74,7 +74,7 @@ export default class ImagePreview extends Component {
                                 {(task.taskTeamMembers.slice(0, 3).map((member) => {
                                     return <div key={member._id} className="team-member-icon-wrapper flex align-center" style={{ background: member.color, color: '#172b4d', boxShadow: '0px 0px 1px 0px #000000bf' }} >
                                         <div className="team-member-icon">
-                                            <p className="flex align-center uppercase" style={{ color: '#172b4d' }}>
+                                            <p className="flex align-center uppercase" style={{ color: '#172b4d'  }}>
                                                 {utils.createUserIcon(member.firstName,
                                                     member.lastName)}
                                             </p>

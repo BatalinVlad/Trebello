@@ -108,12 +108,13 @@ const BoardColumns = props => {
     }
 
     const setColumnName = (columnId) => {
-        const columnTitle = props.board.columns[columnId].title;
+        const columnTitle = props.board.columns[columnId].title !== '' ? props.board.columns[columnId].title : 'no title' ;
         setTitle(columnTitle);
     }
 
     const emitChange = (ev) => {
-        setTitle(ev.target.innerText);
+        const columnTitle  = ev.target.innerText !== '' ? ev.target.innerText : 'no ttile';      
+        setTitle(columnTitle);
     }
 
     const saveColumnName = (columnId, title) => {
