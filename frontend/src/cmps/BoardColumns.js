@@ -113,7 +113,7 @@ const BoardColumns = props => {
     }
 
     const emitChange = (ev) => {
-        const columnTitle  = ev.target.innerText !== '' ? ev.target.innerText : 'no ttile';      
+        const columnTitle  = ev.target.innerText !== '' ? ev.target.innerText : 'no title';      
         setTitle(columnTitle);
     }
 
