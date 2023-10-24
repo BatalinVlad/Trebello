@@ -63,7 +63,7 @@ export default class MiniImageDetails extends Component {
                 style={{
                     left: boundingClientRect.left + 'px',
                     top: top + 'px',
-                    height: height + 'px'
+                    maxHeight: height + 'px'
                 }}
             >
                 <img ref={this.imgContainer} title={task.id} alt="task" src={task.url} />

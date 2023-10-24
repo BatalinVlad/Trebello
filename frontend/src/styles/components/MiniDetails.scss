@@ -10,13 +10,13 @@
     background-color: white;
     width: 252px;
     position: relative;
-    border-radius: 4px;
+    border-radius: 15px;
     border: 1px solid #d5d5d5c9;
-    z-index: 1;
+    z-index: 3;
 
     &-editor {
       position: absolute;
-      z-index: 1;
+      z-index: 3;
       &-button {
         width: fit-content;
         background: rgba(0, 0, 0, 0.6);
@@ -54,7 +54,7 @@
 
     &-save-btn {
       position: absolute;
-      z-index: 1;
+      z-index: 3;
       width: 48px;
       font-size: 0.625rem;
       padding: 6px 10px;
