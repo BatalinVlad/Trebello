@@ -13,10 +13,6 @@ export default class MiniTextDetails extends Component {
         title: '',
     }
 
-    componentDidMount() {
-        this.textArea.current.focus();
-    }
-
     handleFocus = ev => {
         ev.target.select();
     }

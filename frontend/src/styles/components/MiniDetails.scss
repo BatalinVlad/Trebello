@@ -2,7 +2,6 @@
   position: absolute;
   height: 100vh;
   width: 100vw;
-  bottom: 2px;
   text-align: center;
 
   & .mini-details {
@@ -101,11 +100,13 @@
   img {
     margin: 0 auto;
     display: block;
-    width: 252px;
+    width: 253px;
     max-height: 220px;
     height: auto;
     position: relative;
     right: 1px;
     bottom: 1px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
   }
 }
