@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 
-// import Avatar from '@material-ui/core/Avatar';
-//icons :
-
 import NotesIcon from '@mui/icons-material/Notes';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import CloseIcon from '@mui/icons-material/Close';
@@ -17,7 +14,6 @@ import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined';
-
 
 import DueDate from './DueDate';
 import Labels from './Labels';
@@ -300,7 +296,6 @@ export default class TaskDetails extends Component {
         this.props.updateBoard(newBoard, msg, notificationType);
         this.props.toggleTaskDetails();
     }
-
 
     render() {
         const task = this.props.board.tasks[this.props.taskId];
