@@ -9,8 +9,6 @@ import { getLoggedInUser } from '../actions/UserActions'
 import HomePageFooter from '../cmps/HomePageFooter';
 import NewBoardModal from '../cmps/NewBoardModal';
 
-import utils from '../services/utils';
-
 const Home = () => {
   const [toggleNewBoardModal, setToggleNewBoardModal] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
