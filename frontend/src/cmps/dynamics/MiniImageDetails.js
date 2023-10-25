@@ -51,7 +51,7 @@ export default class MiniImageDetails extends Component {
         let height = boundingClientRect.height;
         let top = boundingClientRect.top;
         if (height + top > window.innerHeight) {
-            height = (window.innerHeight - top - 50) > 252 ? window.innerHeight - top - 50 : 252;
+            height = (window.innerHeight - top - 50) > 253 ? window.innerHeight - top - 50 : 253;
         }
         if (boundingClientRect.top > (window.innerHeight - (window.innerHeight / 4))) {
             top = window.innerHeight - height - 50;
@@ -63,10 +63,10 @@ export default class MiniImageDetails extends Component {
                 style={{
                     left: boundingClientRect.left + 'px',
                     top: top + 'px',
-                    height: height + 'px'
+                    maxHeight: height + 'px'
                 }}
             >
-                <img ref={this.imgContainer} title={task.id} alt="task" src={task.url} />
+                <img ref={this.imgContainer} title={task.id} style={{objectFit:'cover'}} alt="task" src={task.url} />
                 <div className="task-container-labels flex">
                     {task.labels.map(label => {
                         return <div key={label} className={label + ' small-label'}>
