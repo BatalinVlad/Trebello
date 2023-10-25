@@ -282,7 +282,7 @@ const Board = () => {
   }
 
   const handleTitleChange = (e) => {
-    if (e.target.innerText.length >= 10) {
+    if (e.target.innerText.length >= 20) {
       setEditableBoardTitle(editableBoardTitle); // Update the state with edited content
       return
     };
@@ -320,6 +320,7 @@ const Board = () => {
                 onInput={handleTitleChange} // Handle content changes
                 onBlur={boardTitleHandler} // Handle onBlur to save the content
                 suppressContentEditableWarning={true}
+                spellCheck="false"
               >
                 {boardToShow.title}
               </h1>
