@@ -20,11 +20,9 @@ const Home = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    const color = utils.getRandomColor();
-    console.log(color);
-    // dispatch(loadBoards());
-    // dispatch(loadTemplateBoards());
-    // dispatch(getLoggedInUser());
+    dispatch(loadBoards());
+    dispatch(loadTemplateBoards());
+    dispatch(getLoggedInUser());
   }, [dispatch]);
 
   const toggleLoginHandler = () => {
