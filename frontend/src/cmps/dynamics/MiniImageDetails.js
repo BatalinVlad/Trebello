@@ -86,13 +86,13 @@ const MiniImageDetails = (props) => {
                     <textarea
                         name="title"
                         className={"text-area" + (labelLen > 0 ? ' preview-label' : '')}
-                        style={{
-                            padding: '5px',
-                            borderTopLeftRadius: '0px',
-                            borderTopRightRadius: '0px',
-                            height: '20px',
-                            position: 'relative',
-                        }}
+                        // style={{
+                        //     padding: '5px',
+                        //     borderTopLeftRadius: '0px',
+                        //     borderTopRightRadius: '0px',
+                        //     height: '20px',
+                        //     position: 'relative',
+                        // }}
                         defaultValue={'add a title..'}
                         ref={textAreaRef}
                         onFocus={handleFocus}
