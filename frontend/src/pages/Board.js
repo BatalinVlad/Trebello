@@ -147,7 +147,6 @@ const Board = () => {
 
 
   const updateBoardHandler = (board, msg, notificationType) => {
-    console.log('update board');
     if (filteredBoard) return;
     dispatch(updateBoard(board, msg, notificationType));
   }

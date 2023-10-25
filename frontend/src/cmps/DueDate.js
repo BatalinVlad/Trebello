@@ -3,7 +3,6 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const DueDate = (props) => {
-    console.log(props);
     const [dueDate, setDueDate] = useState(null);
 
     useEffect(() => {
