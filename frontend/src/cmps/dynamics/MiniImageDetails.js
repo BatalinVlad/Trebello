@@ -16,7 +16,6 @@ export default class MiniImageDetails extends Component {
     }
 
     componentDidMount() {
-        this.textArea.current.focus();
         this.setState({ imgHeight: this.imgContainer.current.getBoundingClientRect().height });
     }
 
