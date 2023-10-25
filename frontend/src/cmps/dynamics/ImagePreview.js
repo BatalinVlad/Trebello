@@ -51,7 +51,7 @@ export default class ImagePreview extends Component {
                             onClick={e => this.toggleMiniDetails(e)} />
                     }
                     <div className="bottom-container flex row fill-width"
-                        style={(task.taskTeamMembers.length !== 0) ? { minHeight: '30px' } : null} >
+                        style={(task.taskTeamMembers.length !== 0) ? { minHeight: '35px' } : null} >
 
                         {(task.description !== '') &&
                             <div className="flex center" style={{ paddingBottom: '3px' }}>

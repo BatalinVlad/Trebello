@@ -18,6 +18,35 @@
       position: inherit;
     }
 
+    .team-members-container {
+      position: absolute;
+      bottom: -36px;
+      right: 11px;
+      .team-member-icon {
+        padding: 0 3px;
+      }
+
+      .team-member-icon-wrapper {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        margin: 4px 2px;
+        padding: 2px 5px;
+        background-color: #dfe1e6;
+        justify-content: center;
+
+        p {
+          font-size: rem(10px);
+          font-family: montserratExtraBold, sans-serif;
+          color: white;
+        }
+      }
+    }
+
+
+
+
+
     &-editor {
       position: absolute;
       z-index: 3;

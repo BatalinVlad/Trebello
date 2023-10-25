@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import MiniDetailsEditor from '../MiniDetailsEditor';
 import ScreenFilter from '../ScreenFilter';
+import utils from '../../services/utils';
 
 const MiniImageDetails = (props) => {
     const textAreaRef = useRef(null);
@@ -100,6 +101,31 @@ const MiniImageDetails = (props) => {
                     >
                     </textarea>
                 }
+                <div className="team-members-container z4">
+                    <div className="flex justify-end">
+                        {(task.taskTeamMembers.slice(0, 3).map((member) => {
+                            return <div key={member._id} className="team-member-icon-wrapper flex align-center" style={{ background: member.color, color: '#172b4d', boxShadow: '0px 0px 1px 0px #000000bf' }} >
+                                <div className="team-member-icon">
+                                    <p className="flex align-center uppercase" style={{ color: '#172b4d' }}>
+                                        {utils.createUserIcon(member.firstName,
+                                            member.lastName)}
+                                    </p>
+                                </div>
+                            </div>
+                        }))}
+                        {
+                            task.taskTeamMembers.length > 3 &&
+                            <div className="team-member-icon-wrapper flex align-center" style={{ background: '#dfe1e6', color: '#172b4d', boxShadow: '0px 0px 1px 0px #000000bf' }} >
+                                <div className="team-member-icon">
+                                    <p className="flex align-center uppercase" style={{ color: '#172b4d' }}>
+                                        {`+${task.taskTeamMembers.length - 3}`}
+                                    </p>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
             </div>
             <button
                 className="mini-details-save-btn"

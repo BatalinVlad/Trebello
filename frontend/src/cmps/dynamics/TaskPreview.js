@@ -49,7 +49,7 @@ export default class TaskPreview extends Component {
                             onClick={e => this.toggleMiniDetails(e)} />
                     }
 
-                    <div className="bottom-container flex row" style={(task.taskTeamMembers.length !== 0) ? { minHeight: '30px' } : null}>
+                    <div className="bottom-container flex row" style={(task.taskTeamMembers.length !== 0) ? { minHeight: '35px' } : null}>
                         {(task.description !== '') &&
                             <div className="flex center" style={{ paddingBottom: '3px' }}>
                                 <SubjectIcon />
