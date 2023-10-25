@@ -50,7 +50,6 @@ export default class TaskDetails extends Component {
 
     componentDidMount() {
         const currTask = this.props.board.tasks[this.props.taskId]
-        console.log(currTask);
         this.setState({ description: currTask.description }, this.updateProgressBar);
     }
 
@@ -241,10 +240,7 @@ export default class TaskDetails extends Component {
     }
 
     setTaskName = (taskId) => {
-        console.log(this.props.board.tasks[taskId].title);
         const newTitle = this.props.board.tasks[taskId].title === '' ? 'no title' : this.props.board.tasks[taskId].title;
-        console.log('new title: ', newTitle);
-
         this.setState({ taskTitle: newTitle });
     }
 
