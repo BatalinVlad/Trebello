@@ -55,7 +55,7 @@ const BoardsList = ({ boards, templateBoards, user, toggleNewBoardModal }) => {
                             </div>
                         }
                     </div>
-                    <div className="boards-list-container flex column" style={{ marginTop: '10px', padding: '10px 0px 120px 0px' }}>
+                    <div className="boards-list-container flex column" style={{ marginTop: '10px', padding: '10px 0px 80px 0px' }}>
                         <p className="capitalize"> boards you collaborate on </p>
                         {(myCollaboratedBoards.length === 0) ?
                             <span className="caspanitalize" style={{paddingLeft:'10px'}}> you're not collaborating on any boards yet... </span>
