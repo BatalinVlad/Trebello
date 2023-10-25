@@ -31,7 +31,10 @@ export default class TaskPreview extends Component {
                     {...provided.dragHandleProps}
                     ref={innerRef}
                 >
-                    {task.url && <img title={task.id} alt="task" src={task.url} />}
+                    {task.url &&
+                    <img title={task.id} alt="task" src={task.url}
+                    style={{ borderBottomLeftRadius: task.title !== '' && '0px', borderBottomRightRadius: task.title !== '' && '0px' }} />
+                    }
                     {task.labels.length > 0 &&
                         <div className="task-container-labels flex wrap">
                             {task.labels.map(label => {
