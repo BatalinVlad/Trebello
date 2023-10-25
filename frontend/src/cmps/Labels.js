@@ -1,81 +1,79 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 
-export default class Labels extends Component {
-    state = {
-        choosenLabels: []
-    }
-
-    componentDidMount = () => {
-        this.setNewState();
-    }
-
-    setNewState = () => {
-        this.setState({ choosenLabels: this.props.task.labels })
-    }
-
-    updateChoosenLabels = (ev) => {
+const Labels = ({ task, board, updateBoard, user, closeAll, miniTask }) => {
+    const [choosenLabels, setChoosenLabels] = useState([]);
+    
+    useEffect(() => {
+        setChoosenLabels(task.labels);
+    }, [task.labels]);
+    
+    const updateChoosenLabels = (ev) => {
         const label = ev.target.classList[0];
-        const choosenLabels = this.state.choosenLabels;
         const labelIdx = choosenLabels.findIndex(currLabel => currLabel === label);
         let msg = '';
         let notificationType = '';
+        
         if (labelIdx >= 0) {
-            choosenLabels.splice(labelIdx, 1)
-            msg = `A label was removed from the task '${this.props.task.title}'`;
+            choosenLabels.splice(labelIdx, 1);
+            msg = `A label was removed from the task '${task.title}'`;
             notificationType = 'danger';
         } else {
             choosenLabels.push(label);
-            msg = `A label was added to the task '${this.props.task.title}'`;
+            msg = `A label was added to the task '${task.title}'`;
             notificationType = 'success';
         }
-        this.setState({ choosenLabels }, () => this.onSave(msg, notificationType));
+        
+        setChoosenLabels([...choosenLabels], () => onSave(msg, notificationType));
     }
-
-    onSave = (msg, notificationType) => {
-        const newTask = { ...this.props.task, labels: this.state.choosenLabels };
+    
+    const onSave = (msg, notificationType) => {
+        const newTask = { ...task, labels: choosenLabels };
         const newBoard = {
-            ...this.props.board,
+            ...board,
             tasks: {
-                ...this.props.board.tasks,
+                ...board.tasks,
                 [newTask.id]: newTask
             }
-        }
-        this.props.updateBoard(newBoard, msg, notificationType);
+        };
+        
+        updateBoard(newBoard, msg, notificationType);
     }
-
-    onStopPropagation = (ev) => {
+    
+    const onStopPropagation = (ev) => {
         ev.stopPropagation();
     }
-
-    render() {
-        let updateStyle = null;
-        if (this.props.miniTask) {
-            updateStyle = {
-                left: 12 + 'px',
-                top: 36 + 'px',
-            }
-
+    
+    const isLabelChosen = (label) => {
+        return choosenLabels.includes(label) ? 'chosen' : '';
+    };
+    
+    let updateStyle = null;
+    if (miniTask) {
+        updateStyle = {
+            left: '12px',
+            top: '36px',
         }
-
-        return (
-            <div className="labels-container text-center"
-                onClick={(ev) => this.onStopPropagation(ev)}
-                style={{ ...updateStyle }}
-            >
-                <CloseIcon className="labels-container-close-btn" onClick={ev => this.props.closeAll(ev)} /> 
-                <p className="uppercase">choose labels</p>
-                <hr />
-                <div className="labels-container-colors-container flex column align-center ">
-                    <div className="label-color-1 large-label" onClick={(ev) => this.updateChoosenLabels(ev)}></div>
-                    <div className="label-color-2 large-label" onClick={(ev) => this.updateChoosenLabels(ev)}></div>
-                    <div className="label-color-3 large-label" onClick={(ev) => this.updateChoosenLabels(ev)}></div>
-                    <div className="label-color-4 large-label" onClick={(ev) => this.updateChoosenLabels(ev)}></div>
-                    <div className="label-color-5 large-label" onClick={(ev) => this.updateChoosenLabels(ev)}></div>
-                    <div className="label-color-6 large-label" onClick={(ev) => this.updateChoosenLabels(ev)}></div>
-                </div>
-            </div>
-        );
-
     }
+    
+    return (
+        <div className="labels-container text-center"
+            onClick={(ev) => onStopPropagation(ev)}
+            style={{ ...updateStyle }}
+        >
+            <CloseIcon className="labels-container-close-btn" onClick={ev => closeAll(ev)} />
+            <p className="uppercase">choose labels</p>
+            <hr />
+            <div className="labels-container-colors-container flex">
+                <div className={`label-color-1 large-label ${isLabelChosen('label-color-1')}`} onClick={(ev) => updateChoosenLabels(ev)}></div>
+                <div className={`label-color-2 large-label ${isLabelChosen('label-color-2')}`} onClick={(ev) => updateChoosenLabels(ev)}></div>
+                <div className={`label-color-3 large-label ${isLabelChosen('label-color-3')}`} onClick={(ev) => updateChoosenLabels(ev)}></div>
+                <div className={`label-color-4 large-label ${isLabelChosen('label-color-4')}`} onClick={(ev) => updateChoosenLabels(ev)}></div>
+                <div className={`label-color-5 large-label ${isLabelChosen('label-color-5')}`} onClick={(ev) => updateChoosenLabels(ev)}></div>
+                <div className={`label-color-6 large-label ${isLabelChosen('label-color-6')}`} onClick={(ev) => updateChoosenLabels(ev)}></div>
+            </div>
+        </div>
+    );
 }
+
+export default Labels;

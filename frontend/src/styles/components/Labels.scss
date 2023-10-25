@@ -4,7 +4,7 @@
     background: white;
     position: absolute;
     width: 200px;
-    top: 92px;
+    top: 94px;
     right: 11px;
     z-index: 1;
 
@@ -30,7 +30,12 @@
     }
 
     &-colors-container {
-        padding: 20px 10px;
+        .large-label{
+            margin: 3px;
+        }
+        .large-label.chosen{
+            border: 2px solid rgba(0, 0, 0, 0.519);
+        }
     }
 
     &>.MuiSvgIcon-root {

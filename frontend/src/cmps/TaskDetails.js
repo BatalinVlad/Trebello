@@ -305,9 +305,6 @@ export default class TaskDetails extends Component {
                 <div className="task-details-container-wrapper flex" onClick={(ev) => this.onStopPropagationAndCloseOptions(ev)}>
                     <div className="task-details-container flex column relative">
                         <CloseIcon className="back flex center" onClick={() => this.props.toggleTaskDetails()} />
-                        <div className='img'>
-                            <img src={task.url} alt=':( ...' className='fill obj-cover'/>
-                        </div>
                         <div className='flex'>
                             <div className="task-details-container-main">
                                 <div className="task_title flex">
@@ -546,7 +543,7 @@ export default class TaskDetails extends Component {
                                     </div>
                                 </div>
 
-                                <div className="task-details-container-actions-options container flex column ">
+                                <div className="task-details-container-actions-options container flex column " style={{marginBottom: '20px'}}>
                                     <h2>actions</h2>
                                     <div className="task-details-container-actions-options-btn flex align-center" onClick={() => this.onDuplicateTask(column, task)}>
                                         <FileCopyOutlinedIcon />
@@ -559,6 +556,11 @@ export default class TaskDetails extends Component {
                                 </div>
                             </div>
                         </div>
+                        {task.url &&
+                            <div className='img'>
+                                <img src={task.url} alt=':( ...' className='fill obj-cover' />
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
