@@ -40,7 +40,6 @@ const Home = () => {
     <div className="home-page relative">
       {isLogin && <div className="screen" onClick={closeAll}></div>}
       {toggleNewBoardModal && <div className="screen" onClick={closeAll}></div>}
-
       {toggleNewBoardModal && <NewBoardModal loggedInUser={loggedInUser} />}
       <MainNavBar isLogin={isLogin} toggleLoginHandler={toggleLoginHandler} />
       <div className="home-page-container flex column relative">
