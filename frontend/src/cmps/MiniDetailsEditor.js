@@ -83,7 +83,10 @@ export default class MiniDetailsEditor extends Component {
                 top: (top - 5) + 'px'
             }}
         >
-            <MiniDetailsButton text="🖊️ Edit Labels" onClick={this.onToggleLabels} />
+            <MiniDetailsButton text="🖊️ Edit Labels" onClick={() => {
+                this.onStopPropagationAndCloseOptions();
+                this.onToggleLabels();
+            }} />
             {this.state.onToggleLabels ? <Labels
                 closeAll={this.onStopPropagationAndCloseOptions}
                 miniTask={miniTask}
@@ -91,7 +94,10 @@ export default class MiniDetailsEditor extends Component {
                 toggleChooseLabels={this.onToggleLabels}
                 board={this.props.board}
                 updateBoard={this.props.updateBoard} /> : ''}
-            <MiniDetailsButton text="🎭 Change Members" onClick={this.onToggleMembers} />
+            <MiniDetailsButton text="🎭 Change Members" onClick={() => {
+                this.onStopPropagationAndCloseOptions();
+                this.onToggleMembers();
+            }} />
             {this.state.onToggleMembers ? <Members
                 closeAll={this.onStopPropagationAndCloseOptions}
                 pos={true}
@@ -100,13 +106,15 @@ export default class MiniDetailsEditor extends Component {
                 updateBoard={this.props.updateBoard}
                 toggleChooseMembers={this.onToggleMembers}
             /> : ''}
-            <MiniDetailsButton text="📅 Change Due Date" onClick={this.onToggleDueDate} />
+            <MiniDetailsButton text="📅 Change Due Date" onClick={() => {
+                this.onStopPropagationAndCloseOptions();
+                this.onToggleDueDate();
+            }} />
             {this.state.onToggleDueDate ? <DueDate
                 closeAll={this.onStopPropagationAndCloseOptions}
                 task={miniTask.task}
                 board={this.props.board}
                 updateBoard={this.props.updateBoard}
-                updateProgressBar={this.updateProgressBar}
                 user={this.props.user}
             /> : ''}
             <MiniDetailsButton text="⎘ Duplicate Task" onClick={this.onDuplicateTask} />

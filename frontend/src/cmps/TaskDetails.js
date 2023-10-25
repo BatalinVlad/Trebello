@@ -461,7 +461,6 @@ export default class TaskDetails extends Component {
                                         closeAll={this.onStopPropagationAndCloseOptions}
                                         board={this.props.board}
                                         updateBoard={this.props.updateBoard}
-                                        // updateProgressBar={this.updateProgressBar}
                                         user={this.props.user}
                                     />}
                                 </div>
