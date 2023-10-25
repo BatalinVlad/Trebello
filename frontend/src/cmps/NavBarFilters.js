@@ -53,26 +53,23 @@ const NavBarFilters = props => {
         <React.Fragment>
             <div className="board-page-nav-bar-filters flex wrap align-center space-between">
                 <div className="left-section flex wrap" >
-                    <button
-                        className={`board-page-nav-bar-filters nav-btn goBackToHome flex justify-center align-center ${(props.isDarkBackground) ? 'dark' : 'light'}`}
-                        onClick={props.goBackHandler}
-                        style={{ backgroundColor: `${props.dominantColor}`, backdropFilter: 'blur(5px)' }}
-                    >
-                        <HomeIcon />
-                    </button>
-                    <div style={{ backgroundColor: `${props.dominantColor}`, backdropFilter: 'blur(5px)' }} className="board-page-nav-bar-filters-divider"></div>
-
-                    <Filter
-                        toggleFilterByMember={props.toggleFilterByMember}
-                        toggleFilterByMemberHandler={props.toggleFilterByMemberHandler}
-                        filterBoardHandler={props.filterBoardHandler}
-                        filterBoard={props.loadedBoard}
-                        teamMembers={props.loadedBoard.teamMembers}
-                        dominantColor={props.dominantColor}
-                        isDarkBackground={props.isDarkBackground} />
-
-                    <div style={{ background: `${props.dominantColor}`, backdropFilter: 'blur(5px)' }} className="board-page-nav-bar-filters-divider"></div>
-
+                    <div className="container flex">
+                        <button
+                            className={`board-page-nav-bar-filters nav-btn goBackToHome flex justify-center align-center ${(props.isDarkBackground) ? 'dark' : 'light'}`}
+                            onClick={props.goBackHandler}
+                            style={{ backgroundColor: `${props.dominantColor}`, backdropFilter: 'blur(5px)' }}
+                        >
+                            <HomeIcon />
+                        </button>
+                        <Filter
+                            toggleFilterByMember={props.toggleFilterByMember}
+                            toggleFilterByMemberHandler={props.toggleFilterByMemberHandler}
+                            filterBoardHandler={props.filterBoardHandler}
+                            filterBoard={props.loadedBoard}
+                            teamMembers={props.loadedBoard.teamMembers}
+                            dominantColor={props.dominantColor}
+                            isDarkBackground={props.isDarkBackground} />
+                    </div>
                 </div>
 
                 <div className="right-section flex align-center" style={{ marginTop: 2 }}>
