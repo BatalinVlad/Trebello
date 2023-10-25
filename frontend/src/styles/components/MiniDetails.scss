@@ -45,7 +45,7 @@
       }
 
       .labels-container {
-        background: black;
+        background: #000000e0;
 
         .labels-container-close-btn,
         p {
@@ -53,11 +53,11 @@
         }
 
         top: 36px;
-        right: 42px;
+        left: 8px;
       }
 
       .members-container {
-        background: black;
+        background: #000000e0;
 
         .close-icon,
         p {
@@ -65,15 +65,17 @@
         }
 
         top: 72px;
-        right: 2px;
+        left: 8px;
       }
 
       .duedate-edit {
         top: 110px;
-        right: 2px;
+        left: 8px;
+        background: #000000e0;
+
 
         input {
-          background: black;
+          background: #000000e0;
           color: white;
           height: 30px;
           width: 100%;

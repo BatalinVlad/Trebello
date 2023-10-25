@@ -52,8 +52,6 @@ const Members = (props) => {
         <CloseIcon onClick={ev => props.closeAll(ev)} style={{paddingRight: '4px' }} />
       </div>
       <p className="uppercase">assigned members</p>
-      <hr />
-
       <div className="members-container-asign-members-wrapper flex">
         <div className="members-container-asign-members flex column fill-width">
           {props.task.taskTeamMembers.map(member => (

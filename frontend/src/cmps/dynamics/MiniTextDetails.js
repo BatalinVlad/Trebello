@@ -1,57 +1,51 @@
-import React, { Component } from 'react';
-
+import React, { useState, useRef, useEffect } from 'react';
 import MiniDetailsEditor from '../MiniDetailsEditor';
 import ScreenFilter from '../ScreenFilter';
 
-export default class MiniTextDetails extends Component {
-    constructor(props) {
-        super(props);
-        this.textArea = React.createRef();
-    }
+const MiniTextDetails = (props) => {
+    const textAreaRef = useRef(null);
 
-    state = {
-        title: '',
-    }
+    const [title, setTitle] = useState('');
 
-    handleFocus = ev => {
+    const handleFocus = (ev) => {
         ev.target.select();
     }
 
-    emitChange = (ev) => {
+    const emitChange = (ev) => {
         const targetValue = ev.target.value;
-        this.setState({ title: targetValue });
+        setTitle(targetValue);
     }
 
-    onSave = _ => {
-        const newTask = { ...this.props.miniTask.task, title: this.state.title ? this.state.title : this.props.miniTask.task.title };
+    const onSave = () => {
+        const { miniTask, board, user, updateBoard, onToggle } = props;
+        const newTask = { ...miniTask.task, title: title ? title : miniTask.task.title };
         const newBoard = {
-            ...this.props.board,
+            ...board,
             tasks: {
-                ...this.props.board.tasks,
+                ...board.tasks,
                 [newTask.id]: newTask
             }
         }
-        const msg = `${this.props.user} changed the title of the task '${this.props.miniTask.task.title}' to '${this.state.title}'`;
+        const msg = `${user} changed the title of the task '${miniTask.task.title}' to '${title}'`;
         const notificationType = 'success';
-        this.props.updateBoard(newBoard, msg, notificationType);
-        this.props.onToggle();
+        updateBoard(newBoard, msg, notificationType);
+        onToggle();
     }
 
-    render() {
-        const { task } = this.props.miniTask;
-        const { boundingClientRect } = this.props.miniTask;
-        const labelLen = task.labels.length;
-        let height = boundingClientRect.height;
-        let top = boundingClientRect.top;
+    const { task, boundingClientRect } = props.miniTask;
+    const labelLen = task.labels.length;
+    let height = boundingClientRect.height;
+    let top = boundingClientRect.top;
 
-        if (height + top > window.innerHeight) {
-            height = (window.innerHeight - top - 50) > 248 ? window.innerHeight - top - 50 : 248;
-        }
-        if (boundingClientRect.top > (window.innerHeight - (window.innerHeight / 4))) {
-            top = window.innerHeight - height - 50;
-        }
-        
-        return <div className="mini-details-container">
+    if (height + top > window.innerHeight) {
+        height = (window.innerHeight - top - 50) > 248 ? window.innerHeight - top - 50 : 248;
+    }
+    if (boundingClientRect.top > (window.innerHeight - (window.innerHeight / 4))) {
+        top = window.innerHeight - height - 50;
+    }
+
+    return (
+        <div className="mini-details-container">
             <div
                 className="mini-details"
                 style={{
@@ -62,8 +56,7 @@ export default class MiniTextDetails extends Component {
             >
                 <div className="task-container-labels flex">
                     {task.labels.map(label => {
-                        return <div key={label} className={label + ' small-label'}>
-                        </div>
+                        return <div key={label} className={label + ' small-label'}></div>
                     })
                     }
                 </div>
@@ -71,9 +64,9 @@ export default class MiniTextDetails extends Component {
                     name="title"
                     className={"text-area" + (labelLen > 0 ? ' preview-label' : '')}
                     defaultValue={task.title}
-                    ref={this.textArea}
-                    onFocus={this.handleFocus}
-                    onInput={this.emitChange}
+                    ref={textAreaRef}
+                    onFocus={handleFocus}
+                    onInput={emitChange}
                     placeholder="Add a card title..."
                 >
                 </textarea>
@@ -84,16 +77,18 @@ export default class MiniTextDetails extends Component {
                     left: boundingClientRect.left + 'px',
                     top: (top + height + 10) + 'px'
                 }}
-                onClick={this.onSave}
+                onClick={onSave}
             >SAVE</button>
             <MiniDetailsEditor
-                user={this.props.user}
-                miniTask={this.props.miniTask}
-                board={this.props.board}
-                updateBoard={this.props.updateBoard}
-                onToggle={this.props.onToggle}
+                user={props.user}
+                miniTask={props.miniTask}
+                board={props.board}
+                updateBoard={props.updateBoard}
+                onToggle={props.onToggle}
             />
-            <ScreenFilter onToggle={this.props.onToggle} />
-        </div >
-    }
+            <ScreenFilter onToggle={props.onToggle} />
+        </div>
+    );
 }
+
+export default MiniTextDetails;
