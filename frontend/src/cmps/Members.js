@@ -48,8 +48,8 @@ const Members = (props) => {
 
   return (
     <div className="members-container text-center column" onClick={(ev) => onStopPropagation(ev)}>
-      <div className='fill-with flex justify-end'>
-        <CloseIcon onClick={ev => props.closeAll(ev)} style={{ color: 'black', paddingRight: '4px' }} />
+      <div className='close-icon fill-with flex justify-end'>
+        <CloseIcon onClick={ev => props.closeAll(ev)} style={{paddingRight: '4px' }} />
       </div>
       <p className="uppercase">assigned members</p>
       <hr />
@@ -63,7 +63,7 @@ const Members = (props) => {
                   <p className='uppercase' style={{color:'#172b4d'}}>{utils.createUserIcon(member.firstName, member.lastName)}</p>
                 </div>
               </div>
-              <p style={{color:'#172b4d'}}>{member.firstName} {member.lastName}</p>
+              <p>{member.firstName} {member.lastName}</p>
             </div>
           ))}
         </div>

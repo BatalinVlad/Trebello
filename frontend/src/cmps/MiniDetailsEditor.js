@@ -26,9 +26,18 @@ export default class MiniDetailsEditor extends Component {
         this.setState(prevState => ({ onToggleMembers: !prevState.onToggleMembers }));
     }
 
+    onStopPropagationAndCloseOptions = (ev) => {
+        ev && ev.stopPropagation();
+        this.setState({
+            onToggleLabels: false,
+            onToggleDueDate: false,
+            onToggleMembers: false
+        })
+    }
+
     onDuplicateTask = _ => {
         const { task } = this.props.miniTask
-        const newTask = { ...task, id: utils.getRandomId(), labels: [...task.labels], todos: [...task.todos], taskTeamMembers: [...task.taskTeamMembers]};
+        const newTask = { ...task, id: utils.getRandomId(), labels: [...task.labels], todos: [...task.todos], taskTeamMembers: [...task.taskTeamMembers] };
         const newBoard = {
             ...this.props.board,
             tasks: {
@@ -53,7 +62,7 @@ export default class MiniDetailsEditor extends Component {
         taskIds.splice(idx, 1);
         delete board.tasks[miniTask.task.id];
         const msg = `'${task.title}' was deleted by ${this.props.user}`;
-        const notificationType = 'danger'; 
+        const notificationType = 'danger';
         this.props.updateBoard(board, msg, notificationType);
         this.props.onToggle();
     }
@@ -63,7 +72,7 @@ export default class MiniDetailsEditor extends Component {
         const { boundingClientRect } = this.props.miniTask;
         let top = boundingClientRect.top;
 
-        if(top + 180 > window.innerHeight){
+        if (top + 180 > window.innerHeight) {
             top = window.innerHeight - 180;
         }
 
@@ -76,6 +85,7 @@ export default class MiniDetailsEditor extends Component {
         >
             <MiniDetailsButton text="🖊️ Edit Labels" onClick={this.onToggleLabels} />
             {this.state.onToggleLabels ? <Labels
+                closeAll={this.onStopPropagationAndCloseOptions}
                 miniTask={miniTask}
                 task={miniTask.task}
                 toggleChooseLabels={this.onToggleLabels}
@@ -83,6 +93,7 @@ export default class MiniDetailsEditor extends Component {
                 updateBoard={this.props.updateBoard} /> : ''}
             <MiniDetailsButton text="🎭 Change Members" onClick={this.onToggleMembers} />
             {this.state.onToggleMembers ? <Members
+                closeAll={this.onStopPropagationAndCloseOptions}
                 pos={true}
                 task={miniTask.task}
                 board={this.props.board}
@@ -91,10 +102,12 @@ export default class MiniDetailsEditor extends Component {
             /> : ''}
             <MiniDetailsButton text="📅 Change Due Date" onClick={this.onToggleDueDate} />
             {this.state.onToggleDueDate ? <DueDate
+                closeAll={this.onStopPropagationAndCloseOptions}
                 task={miniTask.task}
-                onToggle={this.onToggleDueDate}
                 board={this.props.board}
                 updateBoard={this.props.updateBoard}
+                updateProgressBar={this.updateProgressBar}
+                user={this.props.user}
             /> : ''}
             <MiniDetailsButton text="⎘ Duplicate Task" onClick={this.onDuplicateTask} />
             <MiniDetailsButton text="🗑️ Delete Task" onClick={this.onDelete} />

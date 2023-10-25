@@ -49,12 +49,6 @@ const Labels = ({ task, board, updateBoard, user, closeAll, miniTask }) => {
     };
     
     let updateStyle = null;
-    if (miniTask) {
-        updateStyle = {
-            left: '12px',
-            top: '36px',
-        }
-    }
     
     return (
         <div className="labels-container text-center"
@@ -63,7 +57,6 @@ const Labels = ({ task, board, updateBoard, user, closeAll, miniTask }) => {
         >
             <CloseIcon className="labels-container-close-btn" onClick={ev => closeAll(ev)} />
             <p className="uppercase">choose labels</p>
-            <hr />
             <div className="labels-container-colors-container flex">
                 <div className={`label-color-1 large-label ${isLabelChosen('label-color-1')}`} onClick={(ev) => updateChoosenLabels(ev)}></div>
                 <div className={`label-color-2 large-label ${isLabelChosen('label-color-2')}`} onClick={(ev) => updateChoosenLabels(ev)}></div>

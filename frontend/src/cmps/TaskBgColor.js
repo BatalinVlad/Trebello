@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 
 const TaskBgColor = ({ board, task, updateBoard, user, closeAll }) => {
-    const [chosenColor, setChosenColor] = useState('');
+    const [chosenColor, setChosenColor] = useState(task.bgColor || 'bgTaskWhite');
 
     const changeTaskBgColor = (ev) => {
         const colorChanged = ev.target.getAttribute('value');
@@ -35,7 +35,7 @@ const TaskBgColor = ({ board, task, updateBoard, user, closeAll }) => {
             <div className='fill-with flex justify-end'>
                 <CloseIcon onClick={ev => closeAll(ev)} style={{ color: 'black' }} />
             </div>
-            <p>choose background color</p>
+            <p className='text-center'>choose background color</p>
             <div className="choose-color flex justify-center">
                 <span className={`color ${isColorChosen('bgTaskWhite')}`} style={{ backgroundColor: 'white' }} value='bgTaskWhite' onClick={ev => changeTaskBgColor(ev)}></span>
                 <span className={`color ${isColorChosen('bgTaskGreen')}`} style={{ backgroundColor: '#1d976c' }} value='bgTaskGreen' onClick={ev => changeTaskBgColor(ev)}></span>

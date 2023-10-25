@@ -16,6 +16,7 @@
     &-editor {
       position: absolute;
       z-index: 3;
+
       &-button {
         width: fit-content;
         background: rgba(0, 0, 0, 0.6);
@@ -25,10 +26,12 @@
         cursor: pointer;
         line-height: 20px;
         font-weight: 400;
+
         & p {
           font-family: sans-serif;
           color: white;
         }
+
         transition: 0.2s ease;
       }
 
@@ -36,18 +39,42 @@
         transform: translate(5px, 0);
       }
 
-      .react-datepicker-wrapper {
-        position: relative;
-        left: 8px;
-        bottom: 3px;
-
-        input {
-          width: 175px;
+      .labels-container{
+        background: black;
+        .labels-container-close-btn,p{
+          color: white;
         }
+        top: 36px;
+        right: 42px;
       }
 
-      .react-datepicker {
-        width: 328px;
+      .members-container {
+        background: black;
+
+        .close-icon,
+        p {
+          color: white;
+        }
+
+        top: 72px;
+        right: 2px;
+      }
+
+      .react-datepicker-wrapper {
+        position: relative;
+
+      }
+
+      .duedate-edit {
+        top: 110px;
+        right: 2px;
+
+        input {
+          background: black;
+          color: white;
+          height: 30px;
+          width: 100%;
+        }
       }
     }
 
@@ -62,6 +89,7 @@
       font-weight: 600;
       background-color: #5aac44;
       transition: 0.3s;
+
       &:hover {
         background-color: #5bac44d5;
       }
@@ -88,12 +116,6 @@
       bottom: 14px;
       padding-top: 20px;
       padding-left: 3px;
-    }
-
-    .task-container-labels {
-      z-index: 2;
-      position: relative;
-      top: 2px;
     }
   }
 
