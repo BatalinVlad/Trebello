@@ -312,6 +312,9 @@ export default class TaskDetails extends Component {
             <div className="screen flex center" onClick={() => this.props.toggleTaskDetails()}>
                 <div className="task-details-container-wrapper flex" onClick={(ev) => this.onStopPropagationAndCloseOptions(ev)}>
                     <div className="task-details-container flex relative">
+                        <div className='img'>
+                            <p>IMAGE CONTAINER</p>
+                        </div>
                         <CloseIcon className="back flex center"
                             onClick={() => this.props.toggleTaskDetails()} />
                         <div className="task-details-container-main">
