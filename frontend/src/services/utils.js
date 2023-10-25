@@ -27,12 +27,39 @@ function createUserIcon(firstName, lastName) {
 }
 
 function getRandomColor() {
-    const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-    const h = randomInt(0, 360);
-    const s = randomInt(42, 98);
-    const l = randomInt(40, 90);
-    return `hsl(${h}, ${s}%, ${l}%)`;
+  const randomBrightColor = generateRandomBrightColor();
+  const linearGradient = createLinearGradient(randomBrightColor, true);
+  return linearGradient;
 }
+
+function generateRandomBrightColor() {
+  const hue = Math.floor(Math.random() * 360);
+  const saturation = 90 + Math.floor(Math.random() * 10);
+  const lightness = 70 + Math.floor(Math.random() * 10);
+
+  return {
+    hue,
+    saturation,
+    lightness,
+    toString: function () {
+      return `hsl(${this.hue}, ${this.saturation}%, ${this.lightness}%)`;
+    },
+  };
+}
+
+function createLinearGradient(brightColor, moreBright = true) {
+  const lightness = moreBright ? brightColor.lightness + 10 : brightColor.lightness - 10;
+  const secondColor = `hsl(${brightColor.hue}, ${brightColor.saturation}%, ${lightness}%)`;
+  return `linear-gradient(90deg, ${brightColor}, ${secondColor})`;
+}
+
+
+
+
+
+
+
+
 
 
 function uploadImg(file) {

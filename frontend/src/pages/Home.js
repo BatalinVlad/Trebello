@@ -9,6 +9,8 @@ import { getLoggedInUser } from '../actions/UserActions'
 import HomePageFooter from '../cmps/HomePageFooter';
 import NewBoardModal from '../cmps/NewBoardModal';
 
+import utils from '../services/utils';
+
 const Home = () => {
   const [toggleNewBoardModal, setToggleNewBoardModal] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
@@ -18,9 +20,11 @@ const Home = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loadBoards());
-    dispatch(loadTemplateBoards());
-    dispatch(getLoggedInUser());
+    const color = utils.getRandomColor();
+    console.log(color);
+    // dispatch(loadBoards());
+    // dispatch(loadTemplateBoards());
+    // dispatch(getLoggedInUser());
   }, [dispatch]);
 
   const toggleLoginHandler = () => {
