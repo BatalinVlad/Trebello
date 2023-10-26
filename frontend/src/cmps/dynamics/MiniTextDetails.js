@@ -42,8 +42,6 @@ const MiniTextDetails = (props) => {
         height = (window.innerHeight - top - 50) > 248 ? window.innerHeight - top - 50 : 248;
     }
 
-    console.log(props);
-
     return (
         <div className="mini-details-container">
             <div
