@@ -77,7 +77,7 @@ export default class MiniDetailsEditor extends Component {
         }
 
         return <div
-            className="mini-details-editor"
+            className="mini-details-editor flex column"
             style={{
                 left: (boundingClientRect.left + 265) + 'px',
                 top: (top - 5) + 'px'
@@ -119,6 +119,10 @@ export default class MiniDetailsEditor extends Component {
             /> : ''}
             <MiniDetailsButton text="⎘ Duplicate Task" onClick={this.onDuplicateTask} />
             <MiniDetailsButton text="🗑️ Delete Task" onClick={this.onDelete} />
+            <button
+                className="mini-details-save-btn"
+                onClick={this.props.onSave}
+            >SAVE</button>
         </div>
     }
 }

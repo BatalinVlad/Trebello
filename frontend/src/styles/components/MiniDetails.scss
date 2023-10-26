@@ -86,6 +86,7 @@
       }
 
       .members-container {
+        z-index: 3;
         background: #000000e0;
 
         .close-icon,
@@ -113,8 +114,8 @@
     }
 
     &-save-btn {
-      position: absolute;
-      z-index: 3;
+      margin-left: 10px;
+      z-index: 1;
       width: 48px;
       font-size: 0.625rem;
       padding: 6px 10px;

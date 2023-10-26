@@ -87,10 +87,8 @@ const MiniImageDetails = (props) => {
                         name="title"
                         className={"text-area" + (labelLen > 0 ? ' preview-label' : '')}
                         style={{
-                            padding: '5px',
                             borderTopLeftRadius: '0px',
                             borderTopRightRadius: '0px',
-                            // height: '50px',
                             position: 'relative',
                         }}
                         defaultValue={'add a title..'}
@@ -123,24 +121,16 @@ const MiniImageDetails = (props) => {
                                 </div>
                             </div>
                         }
-
                     </div>
                 </div>
             </div>
-            <button
-                className="mini-details-save-btn"
-                style={{
-                    left: boundingClientRect.left + 'px',
-                    top: (top + height + (task.title ? -2 : 32)) + 'px'
-                }}
-                onClick={onSave}
-            >SAVE</button>
             <MiniDetailsEditor
                 user={props.user}
                 miniTask={props.miniTask}
                 board={props.board}
                 updateBoard={props.updateBoard}
                 onToggle={props.onToggle}
+                onSave={onSave}
             />
             <ScreenFilter onToggle={props.onToggle} />
         </div >

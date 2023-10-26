@@ -97,20 +97,13 @@ const MiniTextDetails = (props) => {
                     </div>
                 </div>
             </div>
-            <button
-                className="mini-details-save-btn"
-                style={{
-                    left: boundingClientRect.left + 'px',
-                    top: (top + height + 10) + 'px'
-                }}
-                onClick={onSave}
-            >SAVE</button>
             <MiniDetailsEditor
                 user={props.user}
                 miniTask={props.miniTask}
                 board={props.board}
                 updateBoard={props.updateBoard}
                 onToggle={props.onToggle}
+                onSave={onSave}
             />
             <ScreenFilter onToggle={props.onToggle} />
         </div>
