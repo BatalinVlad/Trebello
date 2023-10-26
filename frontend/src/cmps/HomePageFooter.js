@@ -21,7 +21,7 @@ const HomePageFooter = () => {
                                 <EmailIcon onClick={() => sendMail('batalinvlad@gmail.com')} className="mail" />
                             </div>
                         </div>
-                        <p className="bold capitalize">Full-stack development</p>
+                        <p className="bold uppercase">Full-stack developer</p>
                     </div>
 
                 </div>

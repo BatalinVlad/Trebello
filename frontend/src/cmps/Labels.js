@@ -21,7 +21,7 @@ export default class Labels extends Component {
         let msg = '';
         let notificationType = '';
         if (labelIdx >= 0) {
-            choosenLabels.splice(labelIdx, 1)
+            choosenLabels.splice(labelIdx, 1);
             msg = `A label was removed from the task '${this.props.task.title}'`;
             notificationType = 'danger';
         } else {
@@ -48,34 +48,24 @@ export default class Labels extends Component {
         ev.stopPropagation();
     }
 
+    isLabelChosen = (label) => {
+        return this.state.choosenLabels.includes(label);
+    }
+
     render() {
-        let updateStyle = null;
-        if (this.props.miniTask) {
-            updateStyle = {
-                left: 12 + 'px',
-                top: 36 + 'px',
-            }
-
-        }
-
         return (
-            <div className="labels-container text-center"
-                onClick={(ev) => this.onStopPropagation(ev)}
-                style={{ ...updateStyle }}
-            >
+            <div className="labels-container text-center" onClick={(ev) => this.onStopPropagation(ev)}>
                 <CloseIcon className="labels-container-close-btn" onClick={ev => this.props.closeAll(ev)} /> 
                 <p className="uppercase">choose labels</p>
-                <hr />
-                <div className="labels-container-colors-container flex column align-center ">
-                    <div className="label-color-1 large-label" onClick={(ev) => this.updateChoosenLabels(ev)}></div>
-                    <div className="label-color-2 large-label" onClick={(ev) => this.updateChoosenLabels(ev)}></div>
-                    <div className="label-color-3 large-label" onClick={(ev) => this.updateChoosenLabels(ev)}></div>
-                    <div className="label-color-4 large-label" onClick={(ev) => this.updateChoosenLabels(ev)}></div>
-                    <div className="label-color-5 large-label" onClick={(ev) => this.updateChoosenLabels(ev)}></div>
-                    <div className="label-color-6 large-label" onClick={(ev) => this.updateChoosenLabels(ev)}></div>
+                <div className="labels-container-colors-container flex ">
+                    <div className={`label-color-1 large-label ${this.isLabelChosen('label-color-1') ? 'chosen' : ''}`} onClick={(ev) => this.updateChoosenLabels(ev)}></div>
+                    <div className={`label-color-2 large-label ${this.isLabelChosen('label-color-2') ? 'chosen' : ''}`} onClick={(ev) => this.updateChoosenLabels(ev)}></div>
+                    <div className={`label-color-3 large-label ${this.isLabelChosen('label-color-3') ? 'chosen' : ''}`} onClick={(ev) => this.updateChoosenLabels(ev)}></div>
+                    <div className={`label-color-4 large-label ${this.isLabelChosen('label-color-4') ? 'chosen' : ''}`} onClick={(ev) => this.updateChoosenLabels(ev)}></div>
+                    <div className={`label-color-5 large-label ${this.isLabelChosen('label-color-5') ? 'chosen' : ''}`} onClick={(ev) => this.updateChoosenLabels(ev)}></div>
+                    <div className={`label-color-6 large-label ${this.isLabelChosen('label-color-6') ? 'chosen' : ''}`} onClick={(ev) => this.updateChoosenLabels(ev)}></div>
                 </div>
             </div>
         );
-
     }
 }

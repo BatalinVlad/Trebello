@@ -5,14 +5,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 const DueDate = (props) => {
     const [dueDate, setDueDate] = useState(null);
 
-
     useEffect(() => {
         setDueDate(props.task.dueDate ? new Date(props.task.dueDate) : new Date());
     }, [props.task.dueDate, setDueDate])
-
-    // const setDate = () => {
-    //     setDueDate(props.task.dueDate ? new Date(props.task.dueDate) : new Date());
-    // };
 
     const handleChange = (date) => {
         saveTask(date);

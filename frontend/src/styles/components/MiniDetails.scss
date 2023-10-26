@@ -10,12 +10,47 @@
     width: 252px;
     position: relative;
     border-radius: 15px;
-    border: 1px solid #d5d5d5c9;
+    box-shadow: 0px 0px 11px -2px rgba(0, 0, 0, 0.641);
     z-index: 3;
+
+    .task-container-labels {
+      z-index: 2;
+      position: inherit;
+    }
+
+    .team-members-container {
+      position: absolute;
+      bottom: -36px;
+      right: 11px;
+      .team-member-icon {
+        padding: 0 3px;
+      }
+
+      .team-member-icon-wrapper {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        margin: 4px 2px;
+        padding: 2px 5px;
+        background-color: #dfe1e6;
+        justify-content: center;
+
+        p {
+          font-size: rem(10px);
+          font-family: montserratExtraBold, sans-serif;
+          color: white;
+        }
+      }
+    }
+
+
+
+
 
     &-editor {
       position: absolute;
       z-index: 3;
+
       &-button {
         width: fit-content;
         background: rgba(0, 0, 0, 0.6);
@@ -25,10 +60,12 @@
         cursor: pointer;
         line-height: 20px;
         font-weight: 400;
+
         & p {
           font-family: sans-serif;
           color: white;
         }
+
         transition: 0.2s ease;
       }
 
@@ -36,24 +73,49 @@
         transform: translate(5px, 0);
       }
 
-      .react-datepicker-wrapper {
-        position: relative;
-        left: 8px;
-        bottom: 3px;
+      .labels-container {
+        background: #000000e0;
 
-        input {
-          width: 175px;
+        .labels-container-close-btn,
+        p {
+          color: white;
         }
+
+        top: 36px;
+        left: 8px;
       }
 
-      .react-datepicker {
-        width: 328px;
+      .members-container {
+        z-index: 3;
+        background: #000000e0;
+
+        .close-icon,
+        p {
+          color: white;
+        }
+
+        top: 72px;
+        left: 8px;
+      }
+
+      .duedate-edit {
+        top: 110px;
+        left: 8px;
+        background: #000000e0;
+
+
+        input {
+          background: #000000e0;
+          color: white;
+          height: 30px;
+          width: 100%;
+        }
       }
     }
 
     &-save-btn {
-      position: absolute;
-      z-index: 3;
+      margin-left: 10px;
+      z-index: 1;
       width: 48px;
       font-size: 0.625rem;
       padding: 6px 10px;
@@ -62,6 +124,7 @@
       font-weight: 600;
       background-color: #5aac44;
       transition: 0.3s;
+
       &:hover {
         background-color: #5bac44d5;
       }
@@ -88,12 +151,6 @@
       bottom: 14px;
       padding-top: 20px;
       padding-left: 3px;
-    }
-
-    .task-container-labels {
-      z-index: 2;
-      position: relative;
-      top: 2px;
     }
   }
 

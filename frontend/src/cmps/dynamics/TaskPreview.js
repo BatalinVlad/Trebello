@@ -31,7 +31,10 @@ export default class TaskPreview extends Component {
                     {...provided.dragHandleProps}
                     ref={innerRef}
                 >
-                    {task.url && <img title={task.id} alt="task" src={task.url} />}
+                    {task.url &&
+                    <img title={task.id} alt="task" src={task.url}
+                    style={{ borderBottomLeftRadius: task.title !== '' && '0px', borderBottomRightRadius: task.title !== '' && '0px' }} />
+                    }
                     {task.labels.length > 0 &&
                         <div className="task-container-labels flex wrap">
                             {task.labels.map(label => {
@@ -46,7 +49,7 @@ export default class TaskPreview extends Component {
                             onClick={e => this.toggleMiniDetails(e)} />
                     }
 
-                    <div className="bottom-container flex row" style={(task.taskTeamMembers.length !== 0) ? { minHeight: '30px' } : null}>
+                    <div className="bottom-container flex row" style={(task.taskTeamMembers.length !== 0) ? { minHeight: '35px' } : null}>
                         {(task.description !== '') &&
                             <div className="flex center" style={{ paddingBottom: '3px' }}>
                                 <SubjectIcon />
@@ -69,7 +72,7 @@ export default class TaskPreview extends Component {
                         }
                         <div className="team-members-container">
                             <div className="flex justify-end">
-                                {(task.taskTeamMembers.slice(0, 4).map(member => {
+                                {(task.taskTeamMembers.slice(0, 3).map(member => {
                                     return <div key={member._id} className="team-member-icon-wrapper flex align-center" style={{ background: member.color, color: '#172b4d', boxShadow: '0px 0px 1px 0px #000000bf' }} >
                                         <div className="team-member-icon">
                                             <p className="flex align-center uppercase" style={{ color: '#172b4d' }}>
