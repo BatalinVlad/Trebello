@@ -90,7 +90,7 @@ const MiniImageDetails = (props) => {
                             padding: '5px',
                             borderTopLeftRadius: '0px',
                             borderTopRightRadius: '0px',
-                            height: '50px',
+                            // height: '50px',
                             position: 'relative',
                         }}
                         defaultValue={'add a title..'}
