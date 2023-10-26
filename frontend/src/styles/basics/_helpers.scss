@@ -77,7 +77,7 @@
 .flex {
   display: flex;
 
-  >*.full {
+  > *.full {
     flex: 1;
   }
 
@@ -275,26 +275,18 @@
 .bgTaskGreen {
   background: #1d976c;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right,
-      #93f9b9,
-      #1d976c);
+  background: -webkit-linear-gradient(to right, #93f9b9, #1d976c);
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right,
-      #93f9b9,
-      #1d976c);
+  background: linear-gradient(to right, #93f9b9, #1d976c);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .bgTaskYellow {
   background: #fffc00;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right,
-      #fffd75,
-      #fffc00);
+  background: -webkit-linear-gradient(to right, #fffd8a, #fffc00);
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right,
-      #fffd75,
-      #fffc00);
+  background: linear-gradient(to right, #fffd8a, #fffc00);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
@@ -302,41 +294,27 @@
   transition: all 0.3s;
   background: #ff8008;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right,
-      #ffc837,
-      #ff8008);
+  background: -webkit-linear-gradient(to right, #ffc837, #ff8008);
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right,
-      #ffc837,
-      #ff8008);
+  background: linear-gradient(to right, #ffc837, #ff8008);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .bgTaskRed {
   background: #eb3349;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right,
-      #f45c43,
-      #eb3349);
+  background: -webkit-linear-gradient(to right, #f45c43, #eb3349);
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right,
-      #f45c43,
-      #eb3349);
+  background: linear-gradient(to right, #ff7760, #ff2e47);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .bgTaskBlue {
   background: #1fa2ff;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right,
-      #a6ffcb,
-      #12d8fa,
-      #1fa2ff);
+  background: -webkit-linear-gradient(to right, #a6ffcb, #12d8fa, #1fa2ff);
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right,
-      #a6ffcb,
-      #12d8fa,
-      #1fa2ff);
+  background: linear-gradient(to right, #a6ffcb, #12d8fa, #1fa2ff);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
