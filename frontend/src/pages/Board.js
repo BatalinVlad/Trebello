@@ -246,7 +246,7 @@ const Board = () => {
 
     for (const taskKey in tasks) {
       let task = tasks[taskKey];
-      
+
       let filterTitle = filterBy.title.toLowerCase();
       let title = task.title.toLowerCase();
 
@@ -304,7 +304,7 @@ const Board = () => {
         </div>
       }
       {boardToShow._id &&
-        <div className="screen" onClick={closeAllTabs}>
+        <div className="screen" onClick={closeAllTabs} >
           {filteredBoard &&
             <p className="filter-modal__message"> You cannot make changes while filtering.. </p>
           }
@@ -314,7 +314,7 @@ const Board = () => {
             >
               {/* <div className="board-page-nav-bar-logo" onClick={goBackHandler}> </div> */}
               <h1
-                style={{ fontSize: '16px', marginLeft: '10px', color: `${isDarkBackground ? 'white' : 'rgb(23, 43, 77)'}`, maxWidth: '200px' , maxHeight: '23px' , overflowY: 'hidden' }}
+                style={{ fontSize: '16px', marginLeft: '10px', color: `${isDarkBackground ? 'white' : 'rgb(23, 43, 77)'}`, maxWidth: '200px', maxHeight: '23px', overflowY: 'hidden' }}
                 contentEditable="true" // Make the element editable
                 onInput={handleTitleChange} // Handle content changes
                 onBlur={boardTitleHandler} // Handle onBlur to save the content
@@ -326,7 +326,7 @@ const Board = () => {
               <div className="flex align-center">
                 {loggedInUser &&
                   <div className="flex">
-                    <div className="team-member-icon-wrapper flex align-center justify-center" style={{ background: loggedInUser.color , color: '#172b4d' , boxShadow: '0px 0px 3px 0px #000000bf'}} >
+                    <div className="team-member-icon-wrapper flex align-center justify-center" style={{ background: loggedInUser.color, color: '#172b4d', boxShadow: '0px 0px 3px 0px #000000bf' }} >
                       <div className="team-member-icon">
                         <p className="uppercase">
                           {utils.createUserIcon(loggedInUser.firstName,

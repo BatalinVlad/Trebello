@@ -48,9 +48,9 @@ const MiniImageDetails = (props) => {
     if (height + top > window.innerHeight) {
         height = (window.innerHeight - top - 50) > 253 ? window.innerHeight - top - 50 : 253;
     }
-    if (boundingClientRect.top > (window.innerHeight - (window.innerHeight / 4))) {
-        top = window.innerHeight - height - 50;
-    }
+    // if (boundingClientRect.top > (window.innerHeight - (window.innerHeight / 4))) {
+    //     top = window.innerHeight - height - 50;
+    // }
 
     return (
         <div className="mini-details-container">
@@ -62,7 +62,14 @@ const MiniImageDetails = (props) => {
                     maxHeight: height + 'px'
                 }}
             >
-                <img ref={imgContainerRef} title={task.id} style={{ objectFit: 'cover' }} alt="task" src={task.url} />
+                <img ref={imgContainerRef}
+                    title={task.id}
+                    style={{
+                        objectFit: 'cover',
+                        borderBottomLeftRadius: task.title === '' ? '15px' : '0px',
+                        borderBottomRightRadius: task.title === '' ? '15px' : '0px',
+                    }}
+                    alt="task" src={task.url} />
                 <div className="task-container-labels flex">
                     {task.labels.map(label => {
                         return <div key={label} className={label + ' small-label'}></div>

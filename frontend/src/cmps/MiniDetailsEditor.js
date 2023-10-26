@@ -106,10 +106,10 @@ export default class MiniDetailsEditor extends Component {
                 updateBoard={this.props.updateBoard}
                 toggleChooseMembers={this.onToggleMembers}
             /> : ''}
-            <MiniDetailsButton text="📅 Change Due Date" onClick={() => {
+            {/* <MiniDetailsButton text="📅 Change Due Date" onClick={() => {
                 this.onStopPropagationAndCloseOptions();
                 this.onToggleDueDate();
-            }} />
+            }} /> */}
             {this.state.onToggleDueDate ? <DueDate
                 closeAll={this.onStopPropagationAndCloseOptions}
                 task={miniTask.task}

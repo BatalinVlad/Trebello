@@ -301,7 +301,7 @@ export default class TaskDetails extends Component {
         const task = this.props.board.tasks[this.props.taskId];
         const { column } = this.props;
         return (
-            <div className="screen flex center" onClick={() => this.props.toggleTaskDetails()}>
+            <div className="screen flex center" style={{ overflowY: 'auto' }} onClick={() => this.props.toggleTaskDetails()}>
                 <div className="task-details-container-wrapper flex" onClick={(ev) => this.onStopPropagationAndCloseOptions(ev)}>
                     <div className="task-details-container flex column relative">
                         <CloseIcon className="back flex center" onClick={() => this.props.toggleTaskDetails()} />
