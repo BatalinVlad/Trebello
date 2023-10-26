@@ -71,7 +71,7 @@ const MiniImageDetails = (props) => {
                 {task.title !== '' ?
                     <textarea
                         name="title"
-                        className={"text-area" + (labelLen > 0 ? ' preview-label' : '')}
+                        className={"text-area " + (labelLen > 0 ? ' preview-label' : '')}
                         // style={{
                         //     height: height - imgHeight + 'px',
                         //     position: 'relative',
@@ -131,7 +131,7 @@ const MiniImageDetails = (props) => {
                 className="mini-details-save-btn"
                 style={{
                     left: boundingClientRect.left + 'px',
-                    top: (top + height + (task.title ? 40 : 50)) + 'px'
+                    top: (top + height + (task.title ? -2 : 32)) + 'px'
                 }}
                 onClick={onSave}
             >SAVE</button>

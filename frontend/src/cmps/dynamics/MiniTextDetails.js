@@ -49,11 +49,11 @@ const MiniTextDetails = (props) => {
         <div className="mini-details-container">
             <div
                 className="mini-details"
-                // style={{
-                //     left: boundingClientRect.left + 'px',
-                //     top: top + 'px',
-                //     height: height + 'px'
-                // }}
+                style={{
+                    left: boundingClientRect.left + 'px',
+                    top: top + 'px',
+                    height: height + 'px'
+                }}
             >
                 <div className="task-container-labels flex">
                     {task.labels.map(label => {
@@ -101,7 +101,7 @@ const MiniTextDetails = (props) => {
                 className="mini-details-save-btn"
                 style={{
                     left: boundingClientRect.left + 'px',
-                    top: (top + height + 30) + 'px'
+                    top: (top + height + 10) + 'px'
                 }}
                 onClick={onSave}
             >SAVE</button>
