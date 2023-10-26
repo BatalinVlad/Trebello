@@ -37,12 +37,9 @@ const MiniTextDetails = (props) => {
     const labelLen = task.labels.length;
     let height = boundingClientRect.height;
     let top = boundingClientRect.top;
-
+    
     if (height + top > window.innerHeight) {
         height = (window.innerHeight - top - 50) > 248 ? window.innerHeight - top - 50 : 248;
-    }
-    if (boundingClientRect.top > (window.innerHeight - (window.innerHeight / 4))) {
-        top = window.innerHeight - height - 50;
     }
 
     return (
