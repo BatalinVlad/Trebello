@@ -37,19 +37,21 @@ const MiniTextDetails = (props) => {
     const labelLen = task.labels.length;
     let height = boundingClientRect.height;
     let top = boundingClientRect.top;
-    
+
     if (height + top > window.innerHeight) {
         height = (window.innerHeight - top - 50) > 248 ? window.innerHeight - top - 50 : 248;
     }
 
+    console.log(props);
+
     return (
         <div className="mini-details-container">
             <div
-                className="mini-details"
+                className={"mini-details " + (props.miniTask.task.bgColor)}
                 style={{
                     left: boundingClientRect.left + 'px',
                     top: top + 'px',
-                    height: height + 'px'
+                    height: height + 'px',
                 }}
             >
                 <div className="task-container-labels flex">
@@ -60,7 +62,8 @@ const MiniTextDetails = (props) => {
                 </div>
                 <textarea
                     name="title"
-                    className={"text-area" + (labelLen > 0 ? ' preview-label' : '')}
+                    className={"text-area " + (labelLen > 0 ? ' preview-label' : '')}
+                    style={{ backgroundColor: task.title !== '' ? 'transparent' : 'white' }}
                     defaultValue={task.title}
                     ref={textAreaRef}
                     onFocus={handleFocus}

@@ -55,7 +55,7 @@ const MiniImageDetails = (props) => {
     return (
         <div className="mini-details-container">
             <div
-                className="mini-details"
+                className={"mini-details " + (props.miniTask.task.bgColor)}
                 style={{
                     left: boundingClientRect.left + 'px',
                     top: top + 'px',
@@ -72,10 +72,7 @@ const MiniImageDetails = (props) => {
                     <textarea
                         name="title"
                         className={"text-area " + (labelLen > 0 ? ' preview-label' : '')}
-                        // style={{
-                        //     height: height - imgHeight + 'px',
-                        //     position: 'relative',
-                        // }}
+                        style={{ backgroundColor: task.title !== '' ? 'transparent' : 'white' }}
                         defaultValue={task.title}
                         ref={textAreaRef}
                         onFocus={handleFocus}
@@ -90,6 +87,7 @@ const MiniImageDetails = (props) => {
                             borderTopLeftRadius: '0px',
                             borderTopRightRadius: '0px',
                             position: 'relative',
+                            backgroundColor: 'transparent',
                         }}
                         defaultValue={'add a title..'}
                         ref={textAreaRef}
