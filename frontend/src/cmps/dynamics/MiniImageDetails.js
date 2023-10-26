@@ -72,10 +72,10 @@ const MiniImageDetails = (props) => {
                     <textarea
                         name="title"
                         className={"text-area" + (labelLen > 0 ? ' preview-label' : '')}
-                        style={{
-                            height: height - imgHeight + 'px',
-                            position: 'relative',
-                        }}
+                        // style={{
+                        //     height: height - imgHeight + 'px',
+                        //     position: 'relative',
+                        // }}
                         defaultValue={task.title}
                         ref={textAreaRef}
                         onFocus={handleFocus}
@@ -86,13 +86,13 @@ const MiniImageDetails = (props) => {
                     <textarea
                         name="title"
                         className={"text-area" + (labelLen > 0 ? ' preview-label' : '')}
-                        // style={{
-                        //     padding: '5px',
-                        //     borderTopLeftRadius: '0px',
-                        //     borderTopRightRadius: '0px',
-                        //     height: '20px',
-                        //     position: 'relative',
-                        // }}
+                        style={{
+                            padding: '5px',
+                            borderTopLeftRadius: '0px',
+                            borderTopRightRadius: '0px',
+                            height: '50px',
+                            position: 'relative',
+                        }}
                         defaultValue={'add a title..'}
                         ref={textAreaRef}
                         onFocus={handleFocus}
@@ -131,7 +131,7 @@ const MiniImageDetails = (props) => {
                 className="mini-details-save-btn"
                 style={{
                     left: boundingClientRect.left + 'px',
-                    top: (top + height + (task.title ? 10 : 32)) + 'px'
+                    top: (top + height + (task.title ? 40 : 50)) + 'px'
                 }}
                 onClick={onSave}
             >SAVE</button>
