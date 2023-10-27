@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { Link } from 'react-router-dom';
 import MainNavBar from '../cmps/MainNavBar';
 import BoardsList from '../cmps/BoardsList';
 
@@ -45,7 +45,9 @@ const Home = () => {
       <div className="home-page-container flex column relative">
         <div className="get-started-container flex justify-center">
           <div className='content flex column'>
-            <h1>TREBELLO</h1>
+            <Link to='/'>
+              <h1 className='pointer'>TREBELLO</h1>
+            </Link>
             <h2>Manage your tasks in a fun and easy way</h2>
             <button className='get-started-btn' style={{ marginTop: '35px' }} onClick={toggleNewBoardModalHandler}>
               <p className="uppercase">
