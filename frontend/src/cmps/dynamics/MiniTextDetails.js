@@ -91,7 +91,6 @@ const MiniTextDetails = (props) => {
                                     </div>
                                 </div>
                             }
-
                         </div>
                     </div>
                 </div>

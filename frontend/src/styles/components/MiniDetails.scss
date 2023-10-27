@@ -25,6 +25,7 @@
     .task-container-labels {
       z-index: 2;
       position: inherit;
+      padding: 2px 7px;
     }
 
     .team-members-container {
@@ -148,18 +149,17 @@
       line-height: 1.6;
       border: 1px solid transparent;
       box-shadow: none;
-      padding-top: 0px;
+      padding: 2px 7px;
       position: relative;
       right: 1px;
       outline: none;
-      height: 100%;
     }
 
     & .preview-label {
       position: relative;
-      bottom: 14px;
-      padding-top: 20px;
-      padding-left: 3px;
+      // bottom: 14px;
+      // padding-top: 20px;
+      // padding-left: 3px;
     }
   }
 

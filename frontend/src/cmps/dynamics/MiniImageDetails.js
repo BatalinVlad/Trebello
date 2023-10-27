@@ -59,7 +59,7 @@ const MiniImageDetails = (props) => {
                 style={{
                     left: boundingClientRect.left + 'px',
                     top: top + 'px',
-                    maxHeight: height + 'px'
+                    height: height + 'px'
                 }}
             >
                 <img ref={imgContainerRef}
