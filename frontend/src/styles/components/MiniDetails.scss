@@ -1,8 +1,17 @@
 .mini-details-container {
   position: absolute;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   text-align: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: rgba(0, 0, 0, 0.74);
+  z-index: 3;
+
+  .screen-filter{
+    background: transparent;
+  }
+
 
   & .mini-details {
     position: relative;
