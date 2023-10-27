@@ -452,8 +452,12 @@ const Board = () => {
               classNames="modal"
               unmountOnExit
             >
-              <BoardHistory variant="outlined"
-                className="home-page-login" history={boardToShow.history} />
+              <BoardHistory
+                variant="outlined"
+                isDarkBackground={isDarkBackground}
+                dominantColor={dominantColor}
+                className="home-page-login"
+                history={boardToShow.history} />
             </CSSTransition>
             <CSSTransition
               in={toggleBoardTeamMembers}

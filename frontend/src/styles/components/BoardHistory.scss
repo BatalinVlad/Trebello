@@ -9,7 +9,8 @@
     background: #050505e3;
     color: white;
     border-left: 3px solid rgba(207, 207, 207, 0.226);
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     
     & .msg {
         min-height: 50px;

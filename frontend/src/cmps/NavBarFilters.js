@@ -114,7 +114,8 @@ const NavBarFilters = props => {
                             className={`nav-btn flex center fill-height capitalize ${(props.isDarkBackground) ? 'dark' : 'light'}`}
                             style={{ background: `${props.dominantColor}`, backdropFilter: 'blur(5px)' }}
                             onClick={toggleBoardHistoryHandler}>
-                            <HistoryOutlinedIcon style={{ marginRight: 5 }} />
+                            <HistoryOutlinedIcon 
+                            style={{ marginRight: 5 }} />
                             <span> show history </span>
                         </button>
                     </div>

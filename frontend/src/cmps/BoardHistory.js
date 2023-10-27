@@ -1,23 +1,30 @@
-import React, { Component } from 'react';
+import React from 'react';
 import moment from 'moment';
 
-export default class BoardHistory extends Component {
-    render() {
-        return (
-            <div className="boardhistory-container column">
-                <div className="flex column">
-                    <div className="uppercase text-center">
-                        <h2>board history :</h2>
-                    </div>
-                    <hr />
+const BoardHistory = (props) => {
+    return (
+        <div className="boardhistory-container column"
+            style={{ background: props.dominantColor, backdropFilter: 'blur(10px)' }}
+        >
+            <div className="flex column">
+                <div className="uppercase text-center">
+                    <h2 className={props.isDarkBackground ? 'light' : 'dark'} style={{ background: 'transparent' }}>board history :</h2>
                 </div>
-                <ul className="clean-list">
-                    {this.props.history.map(item => (
-                        <li key={item.id}><div className="msg">{item.msg}<br />{moment(item.time).calendar()}</div><hr /></li>
-
-                    ))}
-                </ul>
             </div>
-        )
-    }
-}
+            <ul className="clean-list">
+                {props.history.map((item) => (
+                    <li key={item.id}>
+                        <div className={props.isDarkBackground ? 'light msg' : 'dark msg'} style={{ background: 'transparent' }}>
+                            {item.msg}
+                            <br />
+                            {moment(item.time).calendar()}
+                        </div>
+                        <hr />
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
+};
+
+export default BoardHistory;

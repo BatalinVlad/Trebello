@@ -556,7 +556,7 @@ export default class TaskDetails extends Component {
                             </div>
                         </div>
                         {task.url &&
-                            <div className='img'>
+                            <div className='footer-img'>
                                 <img src={task.url} alt=':( ...' className='fill obj-cover' />
                             </div>
                         }
