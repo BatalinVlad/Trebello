@@ -29,7 +29,7 @@
 
     .team-members-container {
       position: absolute;
-      top: -36px;
+      bottom: -36px;
       right: 11px;
       .team-member-icon {
         padding: 0 3px;
@@ -132,9 +132,10 @@
       color: white;
       font-weight: 600;
       background-color: #5aac44;
-      transition: 0.3s;
+      transition: all 0.3s;
 
       &:hover {
+        transform: translate(5px, 0);
         background-color: #5bac44d5;
       }
     }
