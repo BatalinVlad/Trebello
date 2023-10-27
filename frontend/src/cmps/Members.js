@@ -9,17 +9,18 @@ const Members = (props) => {
 
   useEffect(() => {
     // check if those who asigned are still on board
-    // const checkedInMembers = checkChoosenMembers(props.task.taskTeamMembers);
+    const checkedInMembers = checkChoosenMembers(props.task.taskTeamMembers);
     // already asigned
-    setChoosenMembers(props.task.taskTeamMembers);
+    setChoosenMembers(checkedInMembers);
     // from all team members find the ones that are available  to asign
     setAvailableMembers(props.board.teamMembers.filter(currMember => !choosenMembers.find(taskMember => taskMember._id === currMember._id)));
   }, [props.task.taskTeamMembers, props.board.teamMembers, setChoosenMembers, setAvailableMembers, choosenMembers]);
 
   const checkChoosenMembers = (membersToCheck) => {
-    const checkedInMembers = props.board.teamMembers.flter(currMember => membersToCheck.find(memberToCheck => memberToCheck._id === currMember._id));
-    return checkedInMembers
+    const checkedInMembers = props.board.teamMembers.filter(currMember => membersToCheck.find(memberToCheck => memberToCheck._id === currMember._id));
+    return checkedInMembers;
   }
+  
 
   const updateChoosenMembers = (teamMember) => {
     let msg = '';
