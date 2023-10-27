@@ -14,7 +14,7 @@ const Members = (props) => {
     setChoosenMembers(checkedInMembers);
     // from all team members find the ones that are available  to asign
     setAvailableMembers(props.board.teamMembers.filter(currMember => !choosenMembers.find(taskMember => taskMember._id === currMember._id)));
-  }, [props.task.taskTeamMembers, props.board.teamMembers, setChoosenMembers, setAvailableMembers, choosenMembers]);
+  }, [props.task.taskTeamMembers, props.board.teamMembers, setChoosenMembers, setAvailableMembers]);
 
   const checkChoosenMembers = (membersToCheck) => {
     const checkedInMembers = props.board.teamMembers.filter(currMember => membersToCheck.find(memberToCheck => memberToCheck._id === currMember._id));

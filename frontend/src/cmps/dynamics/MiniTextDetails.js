@@ -94,6 +94,7 @@ const MiniTextDetails = (props) => {
 
                         </div>
                     </div>
+                </div>
                 <MiniDetailsEditor
                     user={props.user}
                     miniTask={props.miniTask}
@@ -102,7 +103,6 @@ const MiniTextDetails = (props) => {
                     onToggle={props.onToggle}
                     onSave={onSave}
                 />
-                </div>
             <ScreenFilter onToggle={props.onToggle} />
         </div>
     );
