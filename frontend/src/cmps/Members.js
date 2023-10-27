@@ -1,16 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import utils from '../services/utils';
 import CloseIcon from '@mui/icons-material/Close';
+import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
 
 const Members = (props) => {
   const [choosenMembers, setChoosenMembers] = useState([]);
   const [availableMembers, setAvailableMembers] = useState([]);
 
   useEffect(() => {
+    // check if those who asigned are still on board
+    // const checkedInMembers = checkChoosenMembers(props.task.taskTeamMembers);
+    // already asigned
     setChoosenMembers(props.task.taskTeamMembers);
+    // from all team members find the ones that are available  to asign
     setAvailableMembers(props.board.teamMembers.filter(currMember => !choosenMembers.find(taskMember => taskMember._id === currMember._id)));
-  }, [props.task.taskTeamMembers , props.board.teamMembers , setChoosenMembers , setAvailableMembers , choosenMembers]);
-  
+  }, [props.task.taskTeamMembers, props.board.teamMembers, setChoosenMembers, setAvailableMembers, choosenMembers]);
+
+  const checkChoosenMembers = (membersToCheck) => {
+    const checkedInMembers = props.board.teamMembers.flter(currMember => membersToCheck.find(memberToCheck => memberToCheck._id === currMember._id));
+    return checkedInMembers
+  }
+
   const updateChoosenMembers = (teamMember) => {
     let msg = '';
     let notificationType = '';
@@ -49,35 +59,29 @@ const Members = (props) => {
   return (
     <div className="members-container text-center column" onClick={(ev) => onStopPropagation(ev)}>
       <div className='close-icon fill-with flex justify-end'>
-        <CloseIcon onClick={ev => props.closeAll(ev)} style={{paddingRight: '4px' }} />
+        <CloseIcon onClick={ev => props.closeAll(ev)} style={{ paddingRight: '4px' }} />
       </div>
-      <p className="uppercase">assigned members</p>
       <div className="members-container-asign-members-wrapper flex">
-        <div className="members-container-asign-members flex column fill-width">
-          {props.task.taskTeamMembers.map(member => (
-            <div key={member._id} className="team-member flex" onClick={() => updateChoosenMembers(member)}>
-              <div className="team-member-icon-wrapper flex align-center justify-center" style={{ background: member.color , color: '#172b4d' , boxShadow: '0px 0px 1px 0px #000000bf'}}>
-                <div className="team-member-icon">
-                  <p className='uppercase' style={{color:'#172b4d'}}>{utils.createUserIcon(member.firstName, member.lastName)}</p>
+        <div className="members-container-asign-members flex column fill-width" style={{ paddingRight: '2px' }}>
+          {props.board.teamMembers.map(member => (
+            <div
+              key={member._id}
+              className={`team-member flex align-center space-between ${choosenMembers.some(assignedMember => assignedMember._id === member._id) ? 'assigned' : ''}`}
+              onClick={() => updateChoosenMembers(member)}
+            >
+              <div className='flex align-center'>
+                <div className="team-member-icon-wrapper flex align-center justify-center" style={{ background: member.color, color: '#172b4d', boxShadow: '0px 0px 1px 0px #000000bf' }}>
+                  <div className="team-member-icon">
+                    <p className='uppercase' style={{ color: '#172b4d' }}>{utils.createUserIcon(member.firstName, member.lastName)}</p>
+                  </div>
                 </div>
+                <p>{member.firstName} {member.lastName}</p>
               </div>
-              <p>{member.firstName} {member.lastName}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="add-team-members-wrapper flex column">
-        <p className="uppercase">add a team member</p>
-        <div className="add-team-members flex column">
-          {availableMembers.map(teamMember => (
-            <div key={teamMember._id} className="team-member flex align-center" onClick={() => updateChoosenMembers(teamMember)}>
-              <div className="team-member-icon-wrapper flex align-center justify-center" style={{ background: teamMember.color, color: '#172b4d' , boxShadow: '0px 0px 3px 0px #000000bf' }}>
-                <div className="team-member-icon">
-                  <p className='uppercase' style={{color:'#172b4d'}}>{utils.createUserIcon(teamMember.firstName, teamMember.lastName)}</p>
-                </div>
-              </div>
-              <p>{teamMember.firstName} {teamMember.lastName}</p>
+              {choosenMembers.some(assignedMember => assignedMember._id === member._id) &&
+                <CheckCircleOutlineRoundedIcon
+                  style={{ color: '#969696' }}
+                />
+              }
             </div>
           ))}
         </div>
