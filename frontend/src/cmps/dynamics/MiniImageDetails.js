@@ -7,7 +7,6 @@ const MiniImageDetails = (props) => {
     const textAreaRef = useRef(null);
     const imgContainerRef = useRef(null);
     const [title, setTitle] = useState('');
-
     const [currTask, setCurrTask] = useState();
 
     useEffect(() => {
@@ -52,7 +51,6 @@ const MiniImageDetails = (props) => {
     return (
         <div className="mini-details-container">
             {currTask &&
-
                 <div
                     className={"mini-details " + (props.miniTask.task.bgColor)}
                     style={{
@@ -67,6 +65,7 @@ const MiniImageDetails = (props) => {
                             objectFit: 'cover',
                             borderBottomLeftRadius: task.title === '' ? '15px' : '0px',
                             borderBottomRightRadius: task.title === '' ? '15px' : '0px',
+                            bottom: task.title === '' ? '0px' : '1px',
                         }}
                         alt="task" src={task.url} />
                     <div className="task-container-labels flex">
