@@ -67,11 +67,12 @@ export default class ImagePreview extends Component {
                         {(task.dueDate) &&
                             <div className="flex  align-center" style={{ paddingBottom: '3px' }}>
                                 <CalendarMonthIcon />
+                                <p style={{ paddingTop: '8px', fontSize: '12px' }}>{new Date(task.dueDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</p>
                             </div>
                         }
                         <div className="team-members-container">
                             <div className="flex justify-end">
-                                { (task.taskTeamMembers.slice(0, 3).map((member) => {
+                                {(task.taskTeamMembers.slice(0, 3).map((member) => {
                                     return <div key={member._id} className="team-member-icon-wrapper flex align-center" style={{ background: member.color, color: '#172b4d', boxShadow: '0px 0px 1px 0px #000000bf' }} >
                                         <div className="team-member-icon">
                                             <p className="flex align-center uppercase" style={{ color: '#172b4d' }}>
