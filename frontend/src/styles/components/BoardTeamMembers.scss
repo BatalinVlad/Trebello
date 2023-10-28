@@ -29,6 +29,11 @@
     margin: 0 5px;
   }
 
+  .assigned.team-member {
+    background: rgba(35, 35, 35, 0.415);
+
+  }
+
   .team-member {
     cursor: pointer;
     margin-bottom: 5px;
@@ -56,7 +61,7 @@
     transition: 0.3s;
 
     &:hover {
-      background: rgba(129, 129, 129, 0.137);
+      background: rgba(35, 35, 35, 0.415);
     }
   }
 
