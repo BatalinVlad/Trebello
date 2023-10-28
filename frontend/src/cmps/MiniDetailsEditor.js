@@ -98,9 +98,10 @@ const MiniDetailsEditor = (props) => {
             {onToggleMembers ? <Members
                 closeAll={onStopPropagationAndCloseOptions}
                 pos={true}
-                task={miniTask.task}
+                task={props.task}
                 board={props.board}
                 updateBoard={props.updateBoard}
+                setCurrTask={props.setCurrTask}
                 toggleChooseMembers={onToggleMembersHandler}
             /> : ''}
             {onToggleDueDate ? <DueDate

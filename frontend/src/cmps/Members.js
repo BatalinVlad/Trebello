@@ -21,7 +21,7 @@ const Members = (props) => {
     const checkedInMembers = props.board.teamMembers.filter(currMember => membersToCheck.find(memberToCheck => memberToCheck._id === currMember._id));
     return checkedInMembers;
   }
-  
+
 
   const updateChoosenMembers = (teamMember) => {
     let msg = '';
@@ -52,6 +52,8 @@ const Members = (props) => {
       }
     };
     props.updateBoard(newBoard, msg, notificationType);
+    console.log(props);
+    props.setCurrTask && props.setCurrTask(newTask);
   };
 
   const onStopPropagation = (ev) => {
