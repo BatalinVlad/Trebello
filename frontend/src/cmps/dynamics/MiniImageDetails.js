@@ -8,17 +8,6 @@ const MiniImageDetails = (props) => {
     const imgContainerRef = useRef(null);
 
     const [title, setTitle] = useState('');
-    const [imgHeight, setImgHeight] = useState(220);
-
-    useEffect(() => {
-        if (imgContainerRef.current) {
-            setImgHeight(imgContainerRef.current.getBoundingClientRect().height);
-        }
-    }, []);
-
-    const handleFocus = (ev) => {
-        ev.target.select();
-    }
 
     const emitChange = (ev) => {
         setTitle(ev.target.value);
@@ -48,9 +37,7 @@ const MiniImageDetails = (props) => {
     if (height + top > window.innerHeight) {
         height = (window.innerHeight - top - 50) > 253 ? window.innerHeight - top - 50 : 253;
     }
-    // if (boundingClientRect.top > (window.innerHeight - (window.innerHeight / 4))) {
-    //     top = window.innerHeight - height - 50;
-    // }
+
 
     return (
         <div className="mini-details-container">
@@ -82,7 +69,6 @@ const MiniImageDetails = (props) => {
                         style={{ backgroundColor: task.title !== '' ? 'transparent' : 'white' }}
                         defaultValue={task.title}
                         ref={textAreaRef}
-                        onFocus={handleFocus}
                         onInput={emitChange}
                         placeholder="Add a card title..."
                     >
@@ -98,7 +84,6 @@ const MiniImageDetails = (props) => {
                         }}
                         defaultValue={'add a title..'}
                         ref={textAreaRef}
-                        onFocus={handleFocus}
                         onInput={emitChange}
                         placeholder="Add a card title..."
                     >

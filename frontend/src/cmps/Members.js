@@ -4,6 +4,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
 
 const Members = (props) => {
+  console.log(props);
   const [choosenMembers, setChoosenMembers] = useState([]);
   const [availableMembers, setAvailableMembers] = useState([]);
 

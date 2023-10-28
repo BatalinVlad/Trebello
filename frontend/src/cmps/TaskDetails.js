@@ -373,7 +373,6 @@ export default class TaskDetails extends Component {
                                             board={this.props.board}
                                             task={task}
                                             updateBoard={this.props.updateBoard}
-                                            users={this.props.users}
                                         />
                                     }
 
