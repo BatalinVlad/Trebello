@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
-
 import utils from '../services/utils';
+import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
 
 const BoardTeamMembers = (props) => {
     const [currentBoardMembers, setCurrentBoardMembers] = useState([]);
-    const [availibleMembers, setAvailibleMembers] = useState();
 
     useEffect(() => {
-        const availableMembers = props.users.filter(user => !currentBoardMembers.find(boardMember => user._id === boardMember._id));
-        setAvailibleMembers(availableMembers);
         setCurrentBoardMembers(props.board.teamMembers);
     }, [props.board.teamMembers]);
 
@@ -51,26 +48,32 @@ const BoardTeamMembers = (props) => {
             }}
         >
             <div className="members-onboard flex column">
-                <h2 className='fs14' style={{ color: props.isDarkBackground ? 'white' : 'black' }}>
+                <h2 className='fs14 text-center' style={{ color: props.isDarkBackground ? 'white' : 'black' }}>
                     assigned members to the board
                 </h2>
-                <hr />
                 {props.users.map(user => (
                     <div
                         key={user._id}
-                        className={`team-member flex align-center ${isUserAssigned(user) ? 'assigned' : ''}`}
+                        className={`team-member flex align-center space-between ${isUserAssigned(user) ? 'assigned' : ''}`}
                         onClick={() => updateTeamMembers(user)}
                     >
-                        <div className="team-member-icon-wrapper flex center" style={{ background: user.color, boxShadow: '0px 0px 1px 0px #000000bf' }}>
-                            <div className="team-member-icon">
-                                <p className="uppercase" style={{ color: '#172b4d' }}>
-                                    {utils.createUserIcon(user.firstName, user.lastName)}
-                                </p>
+                        <div className='flex align-center'>
+                            <div className="team-member-icon-wrapper flex center" style={{ background: user.color, boxShadow: '0px 0px 1px 0px #000000bf' }}>
+                                <div className="team-member-icon">
+                                    <p className="uppercase" style={{ color: '#172b4d' }}>
+                                        {utils.createUserIcon(user.firstName, user.lastName)}
+                                    </p>
+                                </div>
                             </div>
+                            <span className="capitalize" style={{ color: props.isDarkBackground ? 'white' : 'black' }}>
+                                {user.firstName} {user.lastName}
+                            </span>
                         </div>
-                        <span className="capitalize" style={{ color: props.isDarkBackground ? 'white' : 'black' }}>
-                            {user.firstName} {user.lastName}
-                        </span>
+                        {isUserAssigned(user) &&
+                            <CheckCircleOutlineRoundedIcon
+                                style={{ color: '#969696' }}
+                            />
+                        }
                     </div>
                 ))}
             </div>
