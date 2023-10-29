@@ -65,14 +65,15 @@ const MiniImageDetails = (props) => {
                             objectFit: 'cover',
                             borderBottomLeftRadius: task.title === '' ? '15px' : '0px',
                             borderBottomRightRadius: task.title === '' ? '15px' : '0px',
-                            bottom: task.title === '' ? '0px' : '1px',
                         }}
                         alt="task" src={task.url} />
-                    <div className="task-container-labels flex">
-                        {task.labels.map(label => {
-                            return <div key={label} className={label + ' small-label'}></div>
-                        })}
-                    </div>
+                    {task.labels.length > 0 &&
+                        <div className="task-container-labels flex">
+                            {task.labels.map(label => {
+                                return <div key={label} className={label + ' small-label'}></div>
+                            })}
+                        </div>
+                    }
                     {task.title !== '' ?
                         <textarea
                             name="title"
@@ -83,22 +84,7 @@ const MiniImageDetails = (props) => {
                             onInput={emitChange}
                             placeholder="Add a card title..."
                         >
-                        </textarea> :
-                        <textarea
-                            name="title"
-                            className={"text-area" + (labelLen > 0 ? ' preview-label' : '')}
-                            style={{
-                                borderTopLeftRadius: '0px',
-                                borderTopRightRadius: '0px',
-                                position: 'relative',
-                                backgroundColor: 'transparent',
-                            }}
-                            defaultValue={'add a title..'}
-                            ref={textAreaRef}
-                            onInput={emitChange}
-                            placeholder="Add a card title..."
-                        >
-                        </textarea>
+                        </textarea> : ''
                     }
                     <div className="team-members-container z4">
                         <div className="flex justify-end">
