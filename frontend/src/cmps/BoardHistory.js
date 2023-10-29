@@ -8,13 +8,13 @@ const BoardHistory = (props) => {
         >
             <div className="flex column">
                 <div className="uppercase text-center">
-                    <h2 className={props.isDarkBackground ? 'light' : 'dark'} style={{ background: 'transparent' }}>board history :</h2>
+                    <h2 className={props.isDarkBackground ? 'dark' : 'light'} style={{ background: 'transparent' }}>board history :</h2>
                 </div>
             </div>
             <ul className="clean-list">
                 {props.history.map((item) => (
                     <li key={item.id}>
-                        <div className={props.isDarkBackground ? 'light msg' : 'dark msg'} style={{ background: 'transparent' }}>
+                        <div className={props.isDarkBackground ? 'dark msg' : 'light msg'} style={{ background: 'transparent' }}>
                             {item.msg}
                             <br />
                             {moment(item.time).calendar()}
