@@ -5,6 +5,7 @@ import { Tilt } from "react-tilt";
 import BoardPreview from './BoardPreview';
 
 const BoardsList = ({ boards, templateBoards, user, toggleNewBoardModal }) => {
+    (user) && console.log(user)
     const myBoards = (user) ? boards.filter(board => board.createdBy._id === user._id) : '';
     const myCollaboratedBoards = (user) ? boards.filter(board => {
         return board.teamMembers.find(teamMember => user._id === teamMember._id);
