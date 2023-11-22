@@ -9,7 +9,6 @@ const BoardsList = ({ boards, templateBoards, user, toggleNewBoardModal }) => {
     const myCollaboratedBoards = (user) ? boards.filter(board => {
         return board.teamMembers.find(teamMember => user._id === teamMember._id);
     }) : '';
-//check it
     return (
         <section className="boards-list relative">
             {templateBoards &&
