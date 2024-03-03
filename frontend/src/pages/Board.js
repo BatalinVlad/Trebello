@@ -312,7 +312,6 @@ const Board = () => {
             <div className="board-page-nav-bar flex align-center space-between"
               style={{ background: `${dominantColor}`, backdropFilter: 'blur(5px)' }}
             >
-              {/* <div className="board-page-nav-bar-logo" onClick={goBackHandler}> </div> */}
               <h1
                 style={{ fontSize: '16px', marginLeft: '10px', color: `${isDarkBackground ? 'white' : 'rgb(23, 43, 77)'}`, maxWidth: '200px', maxHeight: '23px', overflowY: 'hidden' }}
                 contentEditable="true" // Make the element editable

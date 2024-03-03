@@ -32,11 +32,11 @@ const BoardColumns = props => {
     const onDragEnd = result => {
         const { destination, source, draggableId, type } = result;
 
-        if (!destination) { //outside of the draggable container...
+        if (!destination) {
             return;
         };
 
-        if (destination.droppableId === source.droppableId && // same place
+        if (destination.droppableId === source.droppableId && 
             destination.index === source.index) {
             return;
         };

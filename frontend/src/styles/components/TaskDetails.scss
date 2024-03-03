@@ -10,11 +10,12 @@
   }
 
   .footer-img {
-    img{
+    img {
       box-shadow: 0px 0px 8px -2px #000000a3;
       border-top-right-radius: 0px;
       border-top-left-radius: 0px;
     }
+
     border-radius: 15px;
     height: 200px;
   }
@@ -176,11 +177,14 @@
 
   &-overall-options {
     padding-right: 5px;
+
     @media (max-width: 525px) {
-      padding: 30px 0px;
+      padding-top: 10px;
+      margin-right: 3px;
 
       h2 {
-        font-size: 12px;
+        margin-right: 5px;
+        font-size: 10px;
       }
     }
 
